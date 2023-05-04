@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,33 +19,50 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 /////////////
 // Student //
 /////////////
+Route::middleware(['auth', 'user-access:student'])->group(function () {
+    Route::get('/student/home', [HomeController::class, 'studentHome'])->name('student.home');
 
+});
 
 /////////////
 // Faculty //
 /////////////
+Route::middleware(['auth', 'user-access:faculty'])->group(function () {
+    Route::get('/faculty/home', [HomeController::class, 'facultyHome'])->name('faculty.home');
 
+});
 
 ////////////
 // Doctor //
 ////////////
+Route::middleware(['auth', 'user-access:doctor'])->group(function () {
+    Route::get('/doctor/home', [HomeController::class, 'doctorHome'])->name('doctor.home');
 
+});
 
 /////////////
 // Dentist //
 /////////////
+Route::middleware(['auth', 'user-access:dentist'])->group(function () {
+    Route::get('/dentist/home', [HomeController::class, 'dentistHome'])->name('dentist.home');
 
+});
 
-////////////
-// Clinic //
-////////////
+///////////
+// Nurse //
+///////////
+Route::middleware(['auth', 'user-access:nurse'])->group(function () {
+    Route::get('/nurse/home', [HomeController::class, 'nurseHome'])->name('nurse.home');
 
+});
 
 ///////////
 // Admin //
 ///////////
+Route::middleware(['auth', 'user-access:admin'])->group(function () {
+    Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
+
+});
