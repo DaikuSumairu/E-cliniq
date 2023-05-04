@@ -26,7 +26,7 @@ return new class extends Migration
              * 5 = admin
              * */
             $table->tinyInteger('role');
-            $table->string("school_id")->unique();
+            $table->string("school_id")->unique()->nullable();
             $table->string("year")->nullable();
             $table->string("grade")->nullable();
             $table->string("course")->nullable();
