@@ -304,109 +304,198 @@ return [
         // Sidebar items:
 
         //Student
-        [],
-        [],
+        [
+            
+        ],
+        [
+
+        ],
 
         //Faculty
-        [],
-        [],
+        [
+
+        ],
+        [
+
+        ],
         
         //Doctor
-        [],
-        [],
-        
-        //Dentist
-        [],
-        [],
-        
-        //Nurse
-        [],
-        [],
-        
-        //Admin
-        [],
-
         [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text' => 'Appointment',
+            'icon' => 'fas fa-sharp fa-solid fa-calendar',
             'submenu' => [
                 [
-                    'text' => 'level_one',
+                    'text' => 'Queue Appointment',
                     'url'  => '#',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
+                    'text' => 'Pending Appointment',
                     'url'  => '#',
                 ],
             ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'can' => 'doctor',
         ],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
+            'text' => "Patient's Records",
+            'url'  => '#',
+            'icon' => 'fas fa-regular fa-file-medical',
+            'can' => 'doctor',
+        ],
+        
+        //Dentist
+        [
+            'text' => 'Appointment',
+            'icon' => 'fas fa-sharp fa-solid fa-calendar',
+            'submenu' => [
+                [
+                    'text' => 'Queue Appointment',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Pending Appointment',
+                    'url'  => '#',
+                ],
+            ],
+            'can' => 'dentist',
         ],
         [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+            'text' => "Patient's Records",
+            'url'  => '#',
+            'icon' => 'fas fa-regular fa-file-medical',
+            'can' => 'dentist',
         ],
+        
+        //Nurse
+        [
+            'text' => 'Appointment',
+            'icon' => 'fas fa-sharp fa-solid fa-calendar',
+            'submenu' => [
+                [
+                    'text' => 'Queue Appointment',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Pending Appointment',
+                    'url'  => '#',
+                ],
+            ],
+            'can' => 'nurse',
+        ],
+        [
+            'text' => "Patient's Records",
+            'url'  => '#',
+            'icon' => 'fas fa-regular fa-file-medical',
+            'can' => 'nurse',
+        ],
+        [
+            'text' => 'Inventory',
+            'url'  => '#',
+            'icon' => 'fas fa-sharp fa-regular fa-box',
+            'can' => 'nurse',
+        ],
+        [
+            'text' => 'Reports',
+            'icon' => 'fas fa-doutone fa-memo',
+            'submenu' => [
+                [
+                    'text' => 'Emergency Report',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Admin Report',
+                    'url'  => '#',
+                ],
+            ],
+            'can' => 'nurse',
+        ],
+        
+        //Admin
+        [
+
+        ],
+        
+        
+        //[
+        //    'type' => 'sidebar-menu-search',
+        //    'text' => 'search',
+        //],
+        //[
+        //    'text' => 'blog',
+        //    'url'  => 'admin/blog',
+        //    'can'  => 'manage-blog',
+        //],
+        //[
+        //    'text'        => 'pages',
+        //    'url'         => 'admin/pages',
+        //    'icon'        => 'far fa-fw fa-file',
+        //    'label'       => 4,
+        //    'label_color' => 'success',
+        //],
+        //['header' => 'account_settings'],
+        //[
+        //    'text' => 'profile',
+        //    'url'  => 'admin/settings',
+        //    'icon' => 'fas fa-fw fa-user',
+        //],
+        //[
+        //    'text' => 'change_password',
+        //    'url'  => 'admin/settings',
+        //    'icon' => 'fas fa-fw fa-lock',
+        //],
+        //[
+        //    'text'    => 'multilevel',
+        //    'icon'    => 'fas fa-fw fa-share',
+        //    'submenu' => [
+        //        [
+        //            'text' => 'level_one',
+        //            'url'  => '#',
+        //        ],
+        //        [
+        //            'text'    => 'level_one',
+        //            'url'     => '#',
+        //            'submenu' => [
+        //                [
+        //                    'text' => 'level_two',
+        //                    'url'  => '#',
+        //                ],
+        //                [
+        //                    'text'    => 'level_two',
+        //                    'url'     => '#',
+        //                    'submenu' => [
+        //                        [
+        //                            'text' => 'level_three',
+        //                            'url'  => '#',
+        //                        ],
+        //                        [
+        //                            'text' => 'level_three',
+        //                            'url'  => '#',
+        //                        ],
+        //                    ],
+        //                ],
+        //            ],
+        //        ],
+        //        [
+        //            'text' => 'level_one',
+        //            'url'  => '#',
+        //        ],
+        //    ],
+        //],
+        //['header' => 'labels'],
+        //[
+        //    'text'       => 'important',
+        //    'icon_color' => 'red',
+        //    'url'        => '#',
+        //],
+        //[
+        //    'text'       => 'warning',
+        //    'icon_color' => 'yellow',
+        //    'url'        => '#',
+        //],
+        //[
+        //    'text'       => 'information',
+        //    'icon_color' => 'cyan',
+        //    'url'        => '#',
+        //],
     ],
 
     /*
