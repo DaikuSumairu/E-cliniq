@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Record;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class RecordController extends Controller
 {
@@ -12,7 +15,10 @@ class RecordController extends Controller
      */
     public function index()
     {
-        //
+        $records = Record::latest()->paginate(10);
+
+        return view('nurse.record.index', compact('records'))->
+            with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -20,7 +26,7 @@ class RecordController extends Controller
      */
     public function create()
     {
-        //
+        return view('nurse.record.create');
     }
 
     /**
@@ -28,7 +34,15 @@ class RecordController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'detail' => 'required',
+        ]);
+        
+        Record::create($request->all());
+         
+        return redirect()->route('nurse.record.index')
+                        ->with('success','Record created successfully.');
     }
 
     /**
@@ -36,7 +50,7 @@ class RecordController extends Controller
      */
     public function show(Record $record)
     {
-        //
+        return view('nurse.record.show',compact('record'));
     }
 
     /**
@@ -44,7 +58,7 @@ class RecordController extends Controller
      */
     public function edit(Record $record)
     {
-        //
+        return view('nurse.record.show',compact('record'));
     }
 
     /**
@@ -52,7 +66,15 @@ class RecordController extends Controller
      */
     public function update(Request $request, Record $record)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'detail' => 'required',
+        ]);
+        
+        $record->update($request->all());
+        
+        return redirect()->route('nurse.record.index')
+                        ->with('success','Record updated successfully');
     }
 
     /**
@@ -60,6 +82,9 @@ class RecordController extends Controller
      */
     public function destroy(Record $record)
     {
-        //
+        $record->delete();
+         
+        return redirect()->route('nurse.record.index')
+                        ->with('success','Record deleted successfully');
     }
 }

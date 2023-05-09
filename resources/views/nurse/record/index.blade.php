@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Homepage')
+@section('title', "Patient's Records")
 
 @section('content_header')
-    <h1>Daily Visit List</h1>
+    <h1>Patient's Record</h1>
 @stop
 
 @section('content')
-    <p>Content of Daily Visit</p>
+    <p>Content for Patient's Record</p>
 @stop
 
 @section('css')

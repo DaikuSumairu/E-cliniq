@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RecordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,6 +58,16 @@ Route::middleware(['auth', 'user-access:dentist'])->group(function () {
 Route::middleware(['auth', 'user-access:nurse'])->group(function () {
     Route::get('/nurse/home', [HomeController::class, 'nurseHome'])->name('nurse.home');
 
+    //Record
+    Route::resource('nurse/records', RecordController::class)->names([
+        'index' => 'nurse.recordIndex',
+        'create' => 'nurse.recordCreate',
+        'store' => 'nurse.recordStore',
+        'show' => 'nurse.recordShow',
+        'edit' => 'nurse.recordEdit',
+        'update' => 'nurse.recordUpdate',
+        'delete' => 'nurse.recordDelete',
+    ]);
 });
 
 ///////////
