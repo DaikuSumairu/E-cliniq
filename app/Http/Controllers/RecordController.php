@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Record;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -15,10 +16,13 @@ class RecordController extends Controller
      */
     public function index()
     {
-        $records = Record::latest()->paginate(10);
+        $users = User::whereNotIn('role', [2, 3, 4, 5])
+            ->orderBy('school_id')
+            ->paginate(10);
+        $records = Record::paginate(10);
 
-        return view('nurse.record.index', compact('records'))->
-            with('i', (request()->input('page', 1) - 1) * 5);
+        return view('nurse.record.index',compact('users', 'records'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**

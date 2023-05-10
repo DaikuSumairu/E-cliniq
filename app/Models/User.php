@@ -60,4 +60,9 @@ class User extends Authenticatable
             ][$value],
         );
     }
+
+    public function record()
+    {
+        return $this->hasOne(Record::class);
+    }
 }

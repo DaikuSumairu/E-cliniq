@@ -201,8 +201,8 @@ class CreateStudentSeeder extends Seeder
                 'password' => bcrypt('Sample123456'),
                 'school_id' => '2021-237169',
                 'grade' => 'Grade 12',
-                'course' => 'STEM - ',
-                'section' => '',
+                'course' => 'STEM - Multi Media',
+                'section' => 'STEM 215',
             ],
             [
                 'name' => 'John Doe',
