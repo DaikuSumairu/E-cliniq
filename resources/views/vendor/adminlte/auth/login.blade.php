@@ -18,9 +18,10 @@
     @php( $password_reset_url = $password_reset_url ? url($password_reset_url) : '' )
 @endif
 
-@section('auth_header', __('adminlte::adminlte.login_message'))
 
 @section('auth_body')
+    <h5 class="fw-normal">Login into your <img src="assets/office.png" alt="office" width="80"> account</h5>
+    
     <form action="{{ $login_url }}" method="post">
         @csrf
 

@@ -16,7 +16,17 @@
 @section('classes_body'){{ ($auth_type ?? 'login') . '-page' }}@stop
 
 @section('body')
-    <div class="{{ $auth_type ?? 'login' }}-box">
+<div style="
+    height: 100%;
+    width: 100%;
+    background-image: url(../assets/APC_Building_BG.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    ">
+    <div class="{{ $auth_type ?? 'login' }}-box" style="margin: auto; background-color: #e9ecef;">
 
         {{-- Logo --}}
         <div class="{{ $auth_type ?? 'login' }}-logo">
@@ -53,7 +63,6 @@
             @hasSection('auth_header')
                 <div class="card-header {{ config('adminlte.classes_auth_header', '') }}">
                     <h3 class="card-title float-none text-center">
-                        @yield('auth_header')
                     </h3>
                 </div>
             @endif
@@ -73,6 +82,7 @@
         </div>
 
     </div>
+</div>
 @stop
 
 @section('adminlte_js')
