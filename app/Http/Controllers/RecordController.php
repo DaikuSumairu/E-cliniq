@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Record;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
-use Illuminate\View\View;
 
 class RecordController extends Controller
 {
@@ -28,9 +25,10 @@ class RecordController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($user)
     {
-        return view('nurse.record.create');
+        $user = User::findOrFail($user);
+        return view('nurse.record.create',compact('user'));
     }
 
     /**
@@ -39,12 +37,24 @@ class RecordController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'detail' => 'required',
+            'date_created',
+            'birth_date' => 'required',
+            'age',
+            'sex' => 'required',
+            'civil_status' => 'required',
+            'address' => 'required',
+            'mobile_number' => 'required',
+            'contact_person' => 'required',
+            'contact_person_number' => 'required',
         ]);
-        
-        Record::create($request->all());
-         
+
+        $userID = $request->input('user_id');
+
+        $recordData = $request->all();
+        $recordData['user_id'] = $userID;
+
+        Record::create($recordData);
+
         return redirect()->route('nurse.record.index')
                         ->with('success','Record created successfully.');
     }
@@ -71,8 +81,15 @@ class RecordController extends Controller
     public function update(Request $request, Record $record)
     {
         $request->validate([
-            'name' => 'required',
-            'detail' => 'required',
+            'date_updated',
+            'birth_date' => 'required',
+            'age',
+            'sex' => 'required',
+            'civil_status' => 'required',
+            'address' => 'required',
+            'mobile_number' => 'required',
+            'contact_person' => 'required',
+            'contact_person_number' => 'required',
         ]);
         
         $record->update($request->all());
@@ -84,11 +101,11 @@ class RecordController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Record $record)
-    {
-        $record->delete();
-         
-        return redirect()->route('nurse.record.index')
-                        ->with('success','Record deleted successfully');
-    }
+    //public function destroy(Record $record)
+    //{
+    //    $record->delete();
+    //     
+    //    return redirect()->route('nurse.record.index')
+    //                    ->with('success','Record deleted successfully');
+    //}
 }

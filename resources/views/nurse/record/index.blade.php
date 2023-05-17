@@ -24,6 +24,10 @@
                 <td>{{ $user->section }}</td>
                 <td>{{ $user->school_id }}</td>
                 <td>
+                    <!-- 
+                        If User have record then 'show' and 'edit' will appear, 
+                        else 'create' will appear instead
+                    -->
                     @if ($user->record)
                         <a class="btn btn-info" href="{{ route('nurse.recordShow', $user->record->id) }}">Show</a>            
                         <a class="btn btn-primary" href="{{ route('nurse.recordEdit', $user->record->id) }}">Edit</a>

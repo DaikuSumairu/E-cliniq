@@ -61,13 +61,18 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
     //Record
     Route::resource('nurse/records', RecordController::class)->names([
         'index' => 'nurse.recordIndex',
-        'create' => 'nurse.recordCreate',
+        //'create' => 'nurse.recordCreate',
         'store' => 'nurse.recordStore',
         'show' => 'nurse.recordShow',
         'edit' => 'nurse.recordEdit',
         'update' => 'nurse.recordUpdate',
         //'delete' => 'nurse.recordDelete',
+    ])->except([
+        'create'
     ]);
+    Route::get('nurse/records/create/{user}', [RecordController::class, 'create'])->name('nurse.recordCreate');
+
+
 });
 
 ///////////
