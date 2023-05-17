@@ -66,7 +66,7 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
         'show' => 'nurse.recordShow',
         'edit' => 'nurse.recordEdit',
         'update' => 'nurse.recordUpdate',
-        'delete' => 'nurse.recordDelete',
+        //'delete' => 'nurse.recordDelete',
     ]);
 });
 
