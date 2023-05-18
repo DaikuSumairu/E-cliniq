@@ -38,6 +38,7 @@ class RecordController extends Controller
     {
         $request->validate([
             'date_created',
+            'date_updated',
             'birth_date' => 'required',
             'age',
             'sex' => 'required',
@@ -55,8 +56,7 @@ class RecordController extends Controller
 
         Record::create($recordData);
 
-        return redirect()->route('nurse.record.index')
-                        ->with('success','Record created successfully.');
+        return redirect()->back()->with('success','Record created successfully.');
     }
 
     /**
@@ -95,7 +95,7 @@ class RecordController extends Controller
         $record->update($request->all());
         
         return redirect()->route('nurse.record.index')
-                        ->with('success','Record updated successfully');
+            ->with('success','Record updated successfully');
     }
 
     /**

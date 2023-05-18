@@ -70,7 +70,6 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
     ])->except([
         'create'
     ]);
-    Route::get('nurse/records/create/{user}', [RecordController::class, 'create'])->name('nurse.recordCreate');
 
 
 });
