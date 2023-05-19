@@ -7,8 +7,13 @@
 @stop
 
 @section('content')
-    <!-- Date Created and Updated -->
     <div class="position-relative">
+        <!-- Going Back to Patient's Record -->
+        <div class="position-left" style="margin-left: 70px;">
+            <a class="btn btn-primary" href="{{ route('nurse.recordIndex') }}">Go Back</a>
+        </div>
+
+        <!-- Date Created and Updated -->
         <div class="position-right ml-auto" style="width: 300px;">
             <p class="h5"><strong>Date Created: </strong>{{ $record->date_created }}</p>
             <p class="h5"><strong>Date Updated: </strong>{{ $record->date_updated }}</p><br>
