@@ -40,7 +40,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="editModalLabel{{$record->id}}">Edit Record</h5>
+                                        <h5 class="modal-title" id="editModalLabel{{$record->id}}">Edit Record of {{$record->user->name}}</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -51,6 +51,9 @@
                                             @csrf
                                             @method('PUT')
                                         
+                                            <!-- Date Updated (Hidden) -->
+                                            <input type="hidden" name="date_updated" value="{{ now() }}">
+
                                             <!-- First Row -->
                                             <div class="row mb-3">
                                                 <!-- Birth Date -->
@@ -150,7 +153,7 @@
                                 <input type="hidden" name="user_id" value="{{ $user->id }}">
                                 <!-- Date Created (Hidden) -->
                                 <input type="hidden" name="date_created" value="{{ now() }}">
-                                <!-- Date Updated (Hidden Null) -->
+                                <!-- Date Updated (Hidden) -->
                                 <input type="hidden" name="date_updated" value="{{ now() }}">
 
                                 <!-- First Row -->
