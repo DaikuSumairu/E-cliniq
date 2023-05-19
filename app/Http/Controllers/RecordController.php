@@ -94,8 +94,7 @@ class RecordController extends Controller
         
         $record->update($request->all());
         
-        return redirect()->route('nurse.record.index')
-            ->with('success','Record updated successfully');
+        return redirect()->back()->with('success','Record updated successfully');
     }
 
     /**
