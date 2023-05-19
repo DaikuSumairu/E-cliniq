@@ -7,7 +7,78 @@
 @stop
 
 @section('content')
-    <p>Content for Patient's Record</p>
+    <!-- Date Created and Updated -->
+    <div class="position-relative">
+        <div class="position-right ml-auto" style="width: 300px;">
+            <p class="h5"><strong>Date Created: </strong>{{ $record->date_created }}</p>
+            <p class="h5"><strong>Date Updated: </strong>{{ $record->date_updated }}</p><br>
+        </div>
+    </div>
+
+    <!-- Genral Information -->
+    <div class="container shadow px-4 py-3 mx-auto mb-3" style="border-style: solid; border-color: #bfbfbf;">
+
+        <div class="row">
+            <div class=col>
+                <!-- Name -->
+                <p class="h5 mb-3"><strong>Name: </strong> {{ $record->user->name }}</p>
+                
+                @if($record->user->role == 'faculty')
+                    <!-- Department -->
+                    <p class="h5 mb-3"><strong>Department: </strong> {{ $record->user->department }}</p>
+                @else
+                    <!-- Course -->
+                    <p class="h5 mb-3"><strong>Course: </strong> {{ $record->user->course }}</p>
+                    
+                    @if ($record->user->year && is_null($record->user->grade))
+                        <!-- Year -->
+                        <p class="h5 mb-3"><strong>Year: </strong> {{ $record->user->year }}</p>
+                    @elseif($record->user->grade && is_null($record->user->year))
+                        <!-- Grade -->
+                        <p class="h5 mb-3"><strong>Grade: </strong> {{ $record->user->grade }}</p>
+                    @endif
+                    <!-- Section -->
+                    <p class="h5 mb-3"><strong>Section: </strong> {{ $record->user->section }}</p>
+                @endif
+                <!-- ID -->
+                <p class="h5"><strong>School ID: </strong> {{ $record->user->school_id }}</p>
+            </div>
+            <div class=col>
+                <!-- Firts Line -->
+                <ul class="list-inline mb-3">
+                    <!-- Birth Date -->
+                    <li class="list-inline-item h5 mr-4"><strong>Birth Date: </strong> {{ $record->birth_date }}</li>
+                    <!-- Age -->
+                    <li class="list-inline-item h5 mr-4"><strong>Age: </strong> {{ $record->age }}</li>
+                    <!-- Sex -->
+                    <li class="list-inline-item h5"><strong>Sex: </strong> {{ $record->sex }}</li>  
+                </ul>
+                
+                <!-- Second Line -->
+                <ul class="list-inline mb-3">
+                    <!-- Civil Status -->
+                    <li class="list-inline-item h5 mr-5"><strong>Civil Status: </strong> {{ $record->civil_status }}</li>
+                    <!-- Mobile Number -->
+                    <li class="list-inline-item h5"><strong>Mobile #: </strong> +63{{ $record->mobile_number }}</li>
+                </ul>
+                <!-- Contact Person Name -->
+                <p class="h5 mb-2"><strong>Contact Person Name: </strong> {{ $record->contact_person }}</p>
+                <!-- Contact Person Mobile Number -->
+                <p class="h5 mb-3"><strong>Contact Person Mobile #: </strong> +63{{ $record->contact_person_number }}</p>
+                <!-- Address -->
+                <p class="h5"><strong>Address: </strong> {{ $record->address }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto">
+        <div class="row">
+            <button type="button" class="col btn btn-secondary h5 mx-1">Consultation</button>
+            <button type="button" class="col btn btn-info h5 mr-1">Medical Exam</button>
+            <button type="button" class="col btn btn-info h5 mx-1">Dental Exam</button>
+            <button type="button" class="col btn btn-danger h5 ml-1">Emergency Report</button>
+        </div>
+    </div>
 @stop
 
 @section('css')
@@ -15,5 +86,5 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    
 @stop

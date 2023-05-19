@@ -64,11 +64,11 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
         //'create' => 'nurse.recordCreate',
         'store' => 'nurse.recordStore',
         'show' => 'nurse.recordShow',
-        'edit' => 'nurse.recordEdit',
+        //'edit' => 'nurse.recordEdit',
         'update' => 'nurse.recordUpdate',
         //'delete' => 'nurse.recordDelete',
     ])->except([
-        'create'
+        'create','edit'
     ]);
 
 
