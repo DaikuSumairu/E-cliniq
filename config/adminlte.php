@@ -389,7 +389,7 @@ return [
         ],
         [
             'text' => 'Inventory',
-            'url'  => '#',
+            'route'  => 'nurse.InventoryIndex',
             'icon' => 'fas fa-sharp fa-regular fa-box',
             'can' => 'nurse',
         ],
