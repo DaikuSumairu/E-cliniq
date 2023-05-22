@@ -37,7 +37,6 @@ class RecordController extends Controller
     {
         $request->validate([
             'date_created',
-            'date_updated',
             'birth_date' => 'required',
             'age',
             'sex' => 'required',

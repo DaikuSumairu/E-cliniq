@@ -9,21 +9,27 @@
 @section('content')
     <div class="position-relative">
         <!-- Going Back to Patient's Record -->
-        <div class="position-left" style="margin-left: 70px;">
+        <div class="position-left">
             <a class="btn btn-primary" href="{{ route('nurse.recordIndex') }}">Go Back</a>
         </div>
 
         <!-- Date Created and Updated -->
         <div class="position-right ml-auto" style="width: 300px;">
             <p class="h5"><strong>Date Created: </strong>{{ $record->date_created }}</p>
-            <p class="h5"><strong>Date Updated: </strong>{{ $record->date_updated }}</p><br>
+            <p class="h5"><strong>Date Updated: </strong>
+                @if ($record->date_updated)
+                    {{ $record->date_updated }}
+                @else
+                    No Update Done
+                @endif
+            </p><br>
         </div>
     </div>
 
     <!-- Genral Information -->
     <div class="container shadow px-4 py-3 mx-auto mb-3" style="border-style: solid; border-color: #bfbfbf;">
-
         <div class="row">
+            <!-- Right Side -->
             <div class=col>
                 <!-- Name -->
                 <p class="h5 mb-3"><strong>Name: </strong> {{ $record->user->name }}</p>
@@ -48,6 +54,8 @@
                 <!-- ID -->
                 <p class="h5"><strong>School ID: </strong> {{ $record->user->school_id }}</p>
             </div>
+
+            <!-- Left Side -->
             <div class=col>
                 <!-- Firts Line -->
                 <ul class="list-inline mb-3">
@@ -69,7 +77,11 @@
                 <!-- Contact Person Name -->
                 <p class="h5 mb-2"><strong>Contact Person Name: </strong> {{ $record->contact_person }}</p>
                 <!-- Contact Person Mobile Number -->
-                <p class="h5 mb-3"><strong>Contact Person Mobile #: </strong> +63{{ $record->contact_person_number }}</p>
+                @if($record->contact_person_mobile != 'null')
+                    <p class="h5 mb-3"><strong>Contact Person Mobile #: </strong> +63{{ $record->contact_person_number }}</p>
+                @else
+                    <p class="h5 mb-3"><strong>Contact Person Mobile #: </strong></p>
+                @endif
                 <!-- Address -->
                 <p class="h5"><strong>Address: </strong> {{ $record->address }}</p>
             </div>

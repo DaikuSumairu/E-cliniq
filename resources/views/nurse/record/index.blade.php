@@ -20,17 +20,30 @@
             <tr>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->course ?: $user->department }}</td>
-                <td>{{ $user->year ?: $user->grade }}</td>
-                <td>{{ $user->section }}</td>
+                <td>
+                    @if ($user->year ?: $user->grade )
+                        {{ $user->year ?: $user->grade }}
+                    @else
+                        Not Applicable
+                    @endif
+                </td>
+                <td>
+                    @if($user->section)
+                        {{ $user->section }}
+                    @else
+                        Not Applicable
+                    @endif
+                </td>
                 <td>{{ $user->school_id }}</td>
                 <td>
                     <!-- 
                         If User have record then 'show' and 'edit' will appear, 
-                        else 'create' will appear instead
+                        else 'create' will appear.
                     -->
                     @if (!$records->where('user_id', $user->id)->count())
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#createModal{{$user->id}}">Create New Record</button>
                     @endif
+
                     @foreach ($records->where('user_id', $user->id) as $record)
                         <a class="btn btn-info" href="{{ route('nurse.recordShow', $record->id) }}">Show</a>            
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{$record->id}}">Edit</button>
@@ -100,9 +113,10 @@
                                                 <div class="col-6 mb-1">
                                                     <label for="mobile_number">Mobile #:</label>
                                                     <span id="mobile_number">+63</span>
-                                                    <input type="text" class="col-sm-6 ml-1" id="mobile_number" name="mobile_number" pattern="[9][0-9]{9}" title='Please enter a valid 10-digit mobile number where the 1st digit start with "9"' value="{{ $record->mobile_number }}">
+                                                    <input type="text" class="col-sm-6 ml-1" id="mobile_number" name="mobile_number" pattern="[9][0-9]{9}" title='Please enter a valid 10-digit mobile number where the 1st digit start with "9"' 
+                                                    value="{{ $record->mobile_number }}" required>
                                                 </div>
-                                                <input type="text" class="col-sm-12" id="address" name="address" value="{{ $record->address }}">
+                                                <input type="text" class="col-sm-12" id="address" name="address" value="{{ $record->address }}" required>
                                             </div>
                                         
                                             <!-- Fourth Row -->
@@ -110,7 +124,7 @@
                                                 <!-- Contact Person -->
                                                 <div class="col-6">
                                                     <label for="contact_person">Contact Person Name:</label>
-                                                    <input type="text" class="col-sm-12" id="contact_person" name="contact_person" value="{{ $record->contact_person }}">
+                                                    <input type="text" class="col-sm-12" id="contact_person" name="contact_person" value="{{ $record->contact_person }}" required>
                                                 </div>
                                         
                                                 <!-- Contact Person # -->
@@ -118,7 +132,8 @@
                                                     <label for="contact_person_number">Contact Person #:</label>
                                                     <div class="input-group">
                                                         <span id="contact_person_number">+63</span>
-                                                        <input type="text" class="col-sm-6 ml-2" id="contact_person_number" name="contact_person_number" pattern="[9][0-9]{9}" title='Please enter a valid 10-digit mobile number where the 1st digit start with "9"' value="{{ $record->contact_person_number }}">
+                                                        <input type="text" class="col-sm-6 ml-2" id="contact_person_number" name="contact_person_number" pattern="[9][0-9]{9}" title='Please enter a valid 10-digit mobile number where the 1st digit start with "9"' 
+                                                        value="{{ $record->contact_person_number }}" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -130,7 +145,6 @@
                             </div>
                         </div>
                     @endforeach
-
                 </td>
             </tr>
 
@@ -153,8 +167,6 @@
                                 <input type="hidden" name="user_id" value="{{ $user->id }}">
                                 <!-- Date Created (Hidden) -->
                                 <input type="hidden" name="date_created" value="{{ now() }}">
-                                <!-- Date Updated (Hidden) -->
-                                <input type="hidden" name="date_updated" value="{{ now() }}">
 
                                 <!-- First Row -->
                                 <div class="row mb-3">
@@ -167,7 +179,7 @@
                                     <!-- Age -->
                                     <div class="col-5">
                                         <label for="age{{$user->id}}">Age:</label>
-                                        <input type="text" readonly class="col-sm-2 ml-1" id="age{{$user->id}}" style="border: none; outline: none;" name="age">
+                                        <input type="text" readonly class="col-sm-4 ml-1" id="age{{$user->id}}" style="border: none; outline: none;" name="age">
                                     </div>
                                 </div>
 
@@ -206,7 +218,7 @@
                                         <label for="mobile_number">Mobile #:</label>                                        
                                         <span id="mobile_number">+63</span>
                                         <input type="text" class="col-sm-6 ml-1" id="mobile_number" name="mobile_number" 
-                                            pattern="[9][0-9]{9}" title='Please enter a valid 10-digit mobile number where the first number start at "9"'>
+                                            pattern="[9][0-9]{9}" title='Please enter a valid 10-digit mobile number where the first number start at "9"' required>
                                     </div>
                                     <input type="text" class="col-sm-12" id="address" name="address" required>
                                 </div>
@@ -216,7 +228,7 @@
                                     <!-- Contact Person -->
                                     <div class="col-6">
                                         <label for="contact_person">Contact Person Name:</label>                                        
-                                        <input type="text" class="col-sm-12" id="contact_person" name="contact_person">
+                                        <input type="text" class="col-sm-12" id="contact_person" name="contact_person" required>
                                     </div>
                                     
                                     <!-- Contact Person # -->
@@ -225,7 +237,7 @@
                                         <div class="input-group">                                      
                                             <span id="contact_person_number">+63</span>
                                             <input type="text" class="col-sm-6 ml-2" id="contact_person_number" name="contact_person_number" 
-                                                pattern="[9][0-9]{9}" title='Please enter a valid 10-digit mobile number where the first number start at "9"'>
+                                                pattern="[9][0-9]{9}" title='Please enter a valid 10-digit mobile number where the first number start at "9"' required>
                                         </div>    
                                     </div>
                                 </div>
