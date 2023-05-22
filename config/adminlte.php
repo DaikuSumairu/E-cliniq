@@ -337,7 +337,7 @@ return [
         ],
         [
             'text' => "Patient's Records",
-            'url'  => '#',
+            'route'=> 'doctor.recordIndex',
             'icon' => 'fas fa-regular fa-file-medical',
             'can' => 'doctor',
         ],
@@ -360,7 +360,7 @@ return [
         ],
         [
             'text' => "Patient's Records",
-            'url'  => '#',
+            'route'=> 'dentist.recordIndex',
             'icon' => 'fas fa-regular fa-file-medical',
             'can' => 'dentist',
         ],

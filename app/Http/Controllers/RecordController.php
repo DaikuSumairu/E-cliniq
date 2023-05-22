@@ -18,8 +18,21 @@ class RecordController extends Controller
             ->paginate(10);
         $records = Record::paginate(10);
 
-        return view('nurse.record.index',compact('users', 'records'))
+        if(auth()->user()->role == 'nurse')
+        {
+            return view('nurse.record.index',compact('users', 'records'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
+        }
+        elseif(auth()->user()->role == 'doctor')
+        {
+            return view('doctor.record.index',compact('users', 'records'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
+        }
+        elseif(auth()->user()->role == 'dentist')
+        {
+            return view('dentist.record.index',compact('users', 'records'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
+        }
     }
 
     /**
@@ -62,7 +75,18 @@ class RecordController extends Controller
      */
     public function show(Record $record)
     {
-        return view('nurse.record.show',compact('record'));
+        if(auth()->user()->role == 'nurse')
+        {
+            return view('nurse.record.show',compact('record'));
+        }
+        elseif(auth()->user()->role == 'doctor')
+        {
+            return view('doctor.record.show',compact('record'));
+        }
+        elseif(auth()->user()->role == 'dentist')
+        {
+            return view('dentist.record.show',compact('record'));
+        }
     }
 
     /**
