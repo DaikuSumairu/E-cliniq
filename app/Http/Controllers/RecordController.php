@@ -25,11 +25,10 @@ class RecordController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create($user)
-    {
-        $user = User::findOrFail($user);
-        return view('nurse.record.create',compact('user'));
-    }
+    //public function create($user)
+    //{
+    //    
+    //}
 
     /**
      * Store a newly created resource in storage.
@@ -55,8 +54,7 @@ class RecordController extends Controller
 
         Record::create($recordData);
 
-        return redirect()->route('nurse.record.index')
-                        ->with('success','Record created successfully.');
+        return redirect()->back()->with('success','Record created successfully.');
     }
 
     /**
@@ -70,10 +68,10 @@ class RecordController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Record $record)
-    {
-        return view('nurse.record.show',compact('record'));
-    }
+    //public function edit(Record $record)
+    //{
+    //    
+    //}
 
     /**
      * Update the specified resource in storage.
@@ -94,8 +92,7 @@ class RecordController extends Controller
         
         $record->update($request->all());
         
-        return redirect()->route('nurse.record.index')
-                        ->with('success','Record updated successfully');
+        return redirect()->back()->with('success','Record updated successfully');
     }
 
     /**

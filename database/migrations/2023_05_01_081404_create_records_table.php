@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id')->unique();
             $table->integer('user_id')->unsigned();
             $table->date('date_created');
-            $table->date('date_updated');
+            $table->date('date_updated')->nullable();
             $table->date('birth_date');
             $table->integer('age');
             $table->string('sex');

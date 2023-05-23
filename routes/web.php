@@ -66,13 +66,12 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
         //'create' => 'nurse.recordCreate',
         'store' => 'nurse.recordStore',
         'show' => 'nurse.recordShow',
-        'edit' => 'nurse.recordEdit',
+        //'edit' => 'nurse.recordEdit',
         'update' => 'nurse.recordUpdate',
         //'delete' => 'nurse.recordDelete',
     ])->except([
-        'create'
+        'create','edit'
     ]);
-    Route::get('nurse/records/create/{user}', [RecordController::class, 'create'])->name('nurse.recordCreate');
 
     //Inventory
     Route::resource('inventory', InventoryController::class)->names([
