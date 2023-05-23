@@ -1,8 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RecordController;
+use App\Http\Controllers\InventoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -95,7 +97,16 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
         'create','edit'
     ]);
 
-
+    //Inventory
+    Route::resource('inventory', InventoryController::class)->names([
+        'index' => 'nurse.InventoryIndex',
+        'create' => 'nurse.InventoryCreate',
+        'store' => 'nurse.InventoryStore',
+        'show' => 'nurse.InventoryShow',
+        'edit' => 'nurse.InventoryEdit',
+        'update' => 'nurse.InventoryUpdate',
+        'delete' => 'nurse.InventoryDelete',
+    ]);
 });
 
 ///////////
