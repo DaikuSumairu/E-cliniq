@@ -32,7 +32,7 @@ class MedicalExamController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Record $record)
     {
         // Connect Medical Exam ID to that specific Record ID
         $recordID = $request->input('record_id');
@@ -143,7 +143,7 @@ class MedicalExamController extends Controller
         // Create Family History Positive
         FamilyHistoryPositive::create($familyHistoryPositiveData);
 
-        return Redirect::back()->with('success', 'Record created successfully.');
+        return redirect()->route('nurse.recordShow', ['record' => $recordID])->with('success', 'Record created successfully.');
     }
 
     /**
