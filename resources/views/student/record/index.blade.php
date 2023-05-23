@@ -12,24 +12,12 @@
         <div class="position-relative">
             <!-- Going Back to Patient's Record -->
             <div class="position-left">
-                <a class="btn btn-primary" href="{{ route('nurse.recordIndex') }}">Go Back</a>
-            </div>
-
-            <!-- Date Created and Updated -->
-            <div class="position-right ml-auto" style="width: 300px;">
-                <p class="h5"><strong>Date Created: </strong>{{ $record->date_created }}</p>
-                <p class="h5"><strong>Date Updated: </strong>
-                    @if ($record->date_updated)
-                        {{ $record->date_updated }}
-                    @else
-                        No Update Done
-                    @endif
-                </p><br>
+                <a class="btn btn-primary" href="{{ route('student.home') }}">Go Back</a>
             </div>
         </div>
 
         <!-- Genral Information -->
-        <div class="container shadow px-4 py-3 mx-auto mb-3" style="border-style: solid; border-color: #bfbfbf;">
+        <div class="container shadow mt-4 px-4 py-3 mx-auto mb-3" style="border-style: solid; border-color: #bfbfbf;">
             <div class="row">
                 <!-- Right Side -->
                 <div class=col>
@@ -86,16 +74,17 @@
 
         <div class="container mx-auto">
             <div class="row">
-                <button type="button" class="col btn btn-secondary h5 mx-1">Consultation</button>
-                <button type="button" class="col btn btn-info h5 mr-1">Medical Exam</button>
-                <button type="button" class="col btn btn-info h5 mx-1">Dental Exam</button>
-                <button type="button" class="col btn btn-danger h5 ml-1">Emergency Report</button>
+                <button type="button" class="col btn btn-secondary mx-1">Consultation</button>
+                <button type="button" class="col btn btn-info mr-1">Medical Exam</button>
+                <button type="button" class="col btn btn-info mx-1">Dental Exam</button>
+                <button type="button" class="col btn btn-danger ml-1">Emergency Report</button>
             </div>
         </div>
     @else
         <!-- Show a message if the user ID doesn't match the record's user ID -->
         <div class="text-center">
             <h1>You don't have a record created yet.</h1>
+            <h5>Please go to the Clinic Office or Set an Appointment for your Records.</h5>
         </div>
     @endif
 @stop
