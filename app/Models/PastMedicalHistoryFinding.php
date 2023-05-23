@@ -27,7 +27,6 @@ class PastMedicalHistoryFinding extends Model
         '14_findings',
         '15_findings',
         '16_findings',
-        'others_findings',
     ];
 
     public function past_medical_history()

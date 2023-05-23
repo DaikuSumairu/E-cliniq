@@ -15,11 +15,17 @@ class MedicalExam extends Model
         'date_updated',
     ];
 
+    //has relationship
     public function past_medical_history()
     {
         return $this->hasOne(PastMedicalHistory::class);
     }
+    public function family_history()
+    {
+        return $this->hasOne(FamilyHistory::class);
+    }
 
+    //it belongs to
     public function record()
     {
         return $this->belongsTo(Record::class);

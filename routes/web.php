@@ -100,7 +100,6 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
 
     //Record Item (Medical Exam)
     Route::resource('nurse/records/medical_exam', MedicalExamController::class)->names([
-        //'create' => 'nurse.medExamCreate',
         'store' => 'nurse.medExamStore',
         'edit' => 'nurse.medExamEdit',
         'update' => 'nurse.medExamUpdate',

@@ -6,6 +6,8 @@ use App\Models\Record;
 use App\Models\MedicalExam;
 use App\Models\PastMedicalHistory;
 use App\Models\PastMedicalHistoryFinding;
+use App\Models\FamilyHistory;
+use App\Models\FamilyHistoryPositive;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
@@ -86,7 +88,6 @@ class MedicalExamController extends Controller
             '14_findings',
             '15_findings',
             '16_findings',
-            'others_findings',
         ]);
 
         $pastMedicalHistoryID = $pastMedicalHistory->id;
@@ -95,6 +96,52 @@ class MedicalExamController extends Controller
 
         // Create Past Medical History Finding
         PastMedicalHistoryFinding::create($pastMedicalHistoryFindingData);
+
+        // Connect Family History ID to the Medical Exam ID
+        $request->validate([
+            'bronchial_asthma_1',
+            'diabetes_melilitus_1',
+            'thyroid_disorder_1',
+            'opthalmologic_disease',
+            'cancer',
+            'cardiac_disorder_1',
+            'hypertension_1',
+            'tuberculosis_1',
+            'nervous_disorder',
+            'musculoskeletal',
+            'liver_disease',
+            'kidney_disease',
+            'others_1',
+        ]);
+
+        $familyHistoryData = $request->all();
+        $familyHistoryData['medical_exam_id'] = $medicalExamID;
+
+        // Create Family History
+        $familyHistory = FamilyHistory::create($familyHistoryData);
+
+        // Connect Family History ID to the Medical Exam ID
+        $request->validate([
+            '1_positive',
+            '2_positive',
+            '3_positive',
+            '4_positive',
+            '5_positive',
+            '6_positive',
+            '7_positive',
+            '8_positive',
+            '9_positive',
+            '10_positive',
+            '11_positive',
+            '12_positive',
+        ]);
+
+        $familyHistoryID = $familyHistory->id;
+        $familyHistoryPositiveData = $request->all();
+        $familyHistoryPositiveData['family_history_id'] = $familyHistoryID;
+
+        // Create Family History Positive
+        FamilyHistoryPositive::create($familyHistoryPositiveData);
 
         return Redirect::back()->with('success', 'Record created successfully.');
     }

@@ -87,7 +87,7 @@
 
     <div class="container mx-auto">
         <div class="row">
-            <div class="col-3 border">
+            <div class="col-2 border">
                 <div id="consultation-date" class="mini-date">
                     <p>Consultation Date Here</p>
                 </div>
@@ -115,12 +115,13 @@
                 </div>
 
                 <!-- Medical Exam -->
-                <div id="medical-exam-content" class="mini-content pt-3">
+                <div id="medical-exam-content" class="mini-content pt-1">
                     @if(isset($record->medical_exam))
                         @if(isset($record) && !empty($record))
                             <div class="container" style="height: 288px; overflow: auto;">
                                 <div class="row row-cols-3">
-                                    <div class="col">
+                                    <!-- Past Medical History -->
+                                    <div class="col mr-2">
                                         <div class="text-center">
                                             <h5><strong>Past Medical Exam</strong></h5>
                                         </div>
@@ -249,7 +250,112 @@
                                             <tr>
                                                 <td >Others</td>
                                                 <td colspan="2">
-                                                    {{ $record->medical_exam->past_medical_history->past_medical_history_finding->others_findings }}
+                                                    {{ $record->medical_exam->past_medical_history->others }}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <!-- Family History -->
+                                    <div class="col">
+                                        <div class="text-center">
+                                            <h5><strong>Family History</strong></h5>
+                                        </div>
+                                        <table class="table table-sm table-bordered">
+                                            <tr>
+                                                <th></th>
+                                                <th class="text-center">(-)</th>
+                                                <th class="text-center" width="250px">(+)</th>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Bronchial Asthma</td>
+                                                <td class="text-center">
+                                                    {{ $record->medical_exam->family_history['bronchial_asthma_1'] }}
+                                                </td>
+                                                <td>{{ $record->medical_exam->family_history->family_history_positive['1_positive'] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Diabetes Melilitus</td>
+                                                <td class="text-center">
+                                                    {{ $record->medical_exam->family_history['diabetes_melilitus_1'] }}
+                                                </td>
+                                                <td>{{ $record->medical_exam->family_history->family_history_positive['2_positive'] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Thyroid Disorder</td>
+                                                <td class="text-center">
+                                                    {{ $record->medical_exam->family_history['thyroid_disorder_1'] }}
+                                                </td>
+                                                <td>{{ $record->medical_exam->family_history->family_history_positive['3_positive'] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Opthalmologic Disease</td>
+                                                <td class="text-center">
+                                                    {{ $record->medical_exam->family_history->opthalmologic_disease }}
+                                                </td>
+                                                <td>{{ $record->medical_exam->family_history->family_history_positive['4_positive'] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cancer</td>
+                                                <td class="text-center">
+                                                    {{ $record->medical_exam->family_history->cancer }}
+                                                </td>
+                                                <td>{{ $record->medical_exam->family_history->family_history_positive['5_positive'] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cardiac Disorder</td>
+                                                <td class="text-center">
+                                                    {{ $record->medical_exam->family_history['cardiac_disorder_1'] }}
+                                                </td>
+                                                <td>{{ $record->medical_exam->family_history->family_history_positive['6_positive'] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Hypertension</td>
+                                                <td class="text-center">
+                                                    {{ $record->medical_exam->family_history['hypertension_1'] }}
+                                                </td>
+                                                <td>{{ $record->medical_exam->family_history->family_history_positive['7_positive'] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tuberculosis</td>
+                                                <td class="text-center">
+                                                    {{ $record->medical_exam->family_history['tuberculosis_1'] }}
+                                                </td>
+                                                <td>{{ $record->medical_exam->family_history->family_history_positive['8_positive'] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nervous Disorder</td>
+                                                <td class="text-center">
+                                                    {{ $record->medical_exam->family_history->nervous_disorder }}
+                                                </td>
+                                                <td>{{ $record->medical_exam->family_history->family_history_positive['9_positive'] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Musculoskeletal</td>
+                                                <td class="text-center">
+                                                    {{ $record->medical_exam->family_history->musculoskeletal }}
+                                                </td>
+                                                <td>{{ $record->medical_exam->family_history->family_history_positive['10_positive'] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Liver Disease</td>
+                                                <td class="text-center">
+                                                    {{ $record->medical_exam->family_history->liver_disease }}
+                                                </td>
+                                                <td>{{ $record->medical_exam->family_history->family_history_positive['11_positive'] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Kidney Disease</td>
+                                                <td class="text-center">
+                                                    {{ $record->medical_exam->family_history->kidney_disease }}
+                                                </td>
+                                                <td>{{ $record->medical_exam->family_history->family_history_positive['12_positive'] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td >Others</td>
+                                                <td colspan="2">
+                                                    {{ $record->medical_exam->family_history['others_1'] }}
                                                 </td>
                                             </tr>
                                         </table>

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('past_medical_history_findings', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id')->unique();
             $table->integer('past_medical_history_id')->unsigned();
             $table->text('1_findings')->nullable();
             $table->text('2_findings')->nullable();
@@ -30,7 +30,6 @@ return new class extends Migration
             $table->text('14_findings')->nullable();
             $table->text('15_findings')->nullable();
             $table->text('16_findings')->nullable();
-            $table->text('others_findings')->nullable();
             $table->timestamps();
 
             //Foreign keys
