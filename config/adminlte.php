@@ -305,18 +305,48 @@ return [
 
         //Student
         [
-            
+            'text' => 'Appointment',
+            'icon' => 'fas fa-sharp fa-solid fa-calendar',
+            'submenu' => [
+                [
+                    'text' => 'Queue Appointment',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Pending Appointment',
+                    'url'  => '#',
+                ],
+            ],
+            'can' => 'student',
         ],
         [
-
+            'text' => "My Health Record",
+            'route' => 'student.recordIndex',
+            'icon' => 'fas fa-regular fa-file-medical',
+            'can' => 'student',
         ],
 
         //Faculty
         [
-
+            'text' => 'Appointment',
+            'icon' => 'fas fa-sharp fa-solid fa-calendar',
+            'submenu' => [
+                [
+                    'text' => 'Queue Appointment',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Pending Appointment',
+                    'url'  => '#',
+                ],
+            ],
+            'can' => 'faculty',
         ],
         [
-
+            'text' => "My Health Record",
+            'route' => 'faculty.recordIndex',
+            'icon' => 'fas fa-regular fa-file-medical',
+            'can' => 'faculty',
         ],
         
         //Doctor
