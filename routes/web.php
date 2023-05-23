@@ -26,6 +26,13 @@ Auth::routes();
 Route::middleware(['auth', 'user-access:student'])->group(function () {
     Route::get('/student/home', [HomeController::class, 'studentHome'])->name('student.home');
 
+    //Record
+    Route::resource('student/records', RecordController::class)->names([
+        'index' => 'student.recordIndex',
+    ])->except([
+        'create', 'store', 'show', 'edit', 'update', 'delete'
+    ]);
+
 });
 
 /////////////
@@ -34,6 +41,12 @@ Route::middleware(['auth', 'user-access:student'])->group(function () {
 Route::middleware(['auth', 'user-access:faculty'])->group(function () {
     Route::get('/faculty/home', [HomeController::class, 'facultyHome'])->name('faculty.home');
 
+    //Record
+    Route::resource('faculty/records', RecordController::class)->names([
+        'index' => 'faculty.recordIndex',
+    ])->except([
+        'create', 'store', 'show', 'edit', 'update', 'delete'
+    ]);
 });
 
 ////////////
@@ -45,14 +58,9 @@ Route::middleware(['auth', 'user-access:doctor'])->group(function () {
     //Record
     Route::resource('doctor/records', RecordController::class)->names([
         'index' => 'doctor.recordIndex',
-        //'create' => 'doctor.recordCreate',
-        'store' => 'doctor.recordStore',
         'show' => 'doctor.recordShow',
-        //'edit' => 'doctor.recordEdit',
-        'update' => 'doctor.recordUpdate',
-        //'delete' => 'doctor.recordDelete',
     ])->except([
-        'create','edit'
+        'create','store', 'edit', 'update', 'delete'
     ]);
 });
 
@@ -65,14 +73,9 @@ Route::middleware(['auth', 'user-access:dentist'])->group(function () {
     //Record
     Route::resource('dentist/records', RecordController::class)->names([
         'index' => 'dentist.recordIndex',
-        //'create' => 'dentist.recordCreate',
-        'store' => 'dentist.recordStore',
         'show' => 'dentist.recordShow',
-        //'edit' => 'dentist.recordEdit',
-        'update' => 'dentist.recordUpdate',
-        //'delete' => 'dentist.recordDelete',
     ])->except([
-        'create','edit'
+        'create','store', 'edit', 'update', 'delete'
     ]);
 });
 
@@ -85,12 +88,9 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
     //Record
     Route::resource('nurse/records', RecordController::class)->names([
         'index' => 'nurse.recordIndex',
-        //'create' => 'nurse.recordCreate',
         'store' => 'nurse.recordStore',
         'show' => 'nurse.recordShow',
-        //'edit' => 'nurse.recordEdit',
         'update' => 'nurse.recordUpdate',
-        //'delete' => 'nurse.recordDelete',
     ])->except([
         'create','edit'
     ]);
