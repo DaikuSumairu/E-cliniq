@@ -23,6 +23,11 @@ class Record extends Model
         'contact_person_number',
     ];
 
+    public function medical_exam()
+    {
+        return $this->hasOne(MedicalExam::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
