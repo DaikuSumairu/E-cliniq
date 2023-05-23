@@ -49,7 +49,6 @@
     </table>
   
     {!! $users->links('custom.pagination', ['paginator' => $users]) !!}
-    {!! $records->links() !!}
 @stop
 
 @section('css')
