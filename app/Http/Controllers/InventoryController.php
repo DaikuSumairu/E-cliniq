@@ -12,8 +12,9 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        $inventoryItems = Inventory::all();
-        return view('nurse.inventory.index', compact('inventoryItems'));
+        $inventoryItems = Inventory::paginate(10);
+        return view('nurse.inventory.index', compact('inventoryItems'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**

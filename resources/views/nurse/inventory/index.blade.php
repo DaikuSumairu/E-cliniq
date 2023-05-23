@@ -17,8 +17,7 @@
 -->
 
 @section('content')
-<p> Inventory </p>
-<div class="table-responsive">
+<div class="table-responsive pb-4">
     <table class="table">
         <thead>
             <tr>
@@ -39,6 +38,7 @@
             @endforeach
         </tbody>
     </table>
+    {!! $inventoryItems->links('custom.pagination', ['paginator' => $inventoryItems]) !!}
 </div>
 @stop
 
