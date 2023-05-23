@@ -41,7 +41,7 @@
                         else 'create' will appear.
                     -->
                     @foreach ($records->where('user_id', $user->id) as $record)
-                        <a class="btn btn-info" href="{{ route('doctor.recordShow', $record->id) }}">Show</a>            
+                        <a class="btn btn-info" href="{{ route('dentist.recordShow', $record->id) }}">Show</a>            
                     @endforeach
                 </td>
             </tr>
