@@ -33,6 +33,16 @@ class RecordController extends Controller
             return view('dentist.record.index',compact('users', 'records'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
         }
+        elseif(auth()->user()->role == 'student')
+        {
+            $record = Record::where('user_id', '=', auth()->user()->id)->first();
+            return view('student.record.index', compact('record'));
+        }
+        elseif(auth()->user()->role == 'faculty')
+        {
+            $record = Record::where('user_id', '=', auth()->user()->id)->first();
+            return view('faculty.record.index', compact('record'));
+        }
     }
 
     /**
