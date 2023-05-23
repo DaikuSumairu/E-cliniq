@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\MedicalExamController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -96,6 +97,18 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
     ])->except([
         'create','edit'
     ]);
+
+    //Record Item (Medical Exam)
+    Route::resource('nurse/records/medical_exam', MedicalExamController::class)->names([
+        //'create' => 'nurse.medExamCreate',
+        'store' => 'nurse.medExamStore',
+        'edit' => 'nurse.medExamEdit',
+        'update' => 'nurse.medExamUpdate',
+    ])->except([
+        'index', 'show', 'delete'
+    ]);
+    Route::get('nurse/records/medical_exam/{record}', [MedicalExamController::class, 'create'])
+        ->name('nurse.medExamCreate');
 
     //Inventory
     Route::resource('inventory', InventoryController::class)->names([
