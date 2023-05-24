@@ -26,12 +26,13 @@ class FamilyHistory extends Model
         'others_1',
     ];
     
+    //has relationship
     public function family_history_positive()
     {
         return $this->hasOne(FamilyHistoryPositive::class);
     }
     
-
+    //it belongs to
     public function medical_exam()
     {
         return $this->belongsTo(MedicalExam::class);

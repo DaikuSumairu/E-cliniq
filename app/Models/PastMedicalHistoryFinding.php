@@ -29,6 +29,7 @@ class PastMedicalHistoryFinding extends Model
         '16_findings',
     ];
 
+    //it belongs to
     public function past_medical_history()
     {
         return $this->belongsTo(PastMedicalHistory::class);

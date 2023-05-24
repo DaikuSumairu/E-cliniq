@@ -68,6 +68,7 @@ class User extends Authenticatable
         );
     }
 
+    //has relationship
     public function record()
     {
         return $this->hasOne(Record::class);

@@ -25,6 +25,7 @@ class FamilyHistoryPositive extends Model
         '12_positive',
     ];
 
+    //it belongs to
     public function family_history()
     {
         return $this->belongsTo(FamilyHistory::class);
