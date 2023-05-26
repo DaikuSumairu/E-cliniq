@@ -447,9 +447,10 @@
                         </table>
                     </div>
                 </div>
-            </div>
-            <div class="position-right ml-auto" style="width: 75px;">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                
+                <div class="position-right ml-auto" style="width: 75px;">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </div>
         </form>
     </div>
