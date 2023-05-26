@@ -471,6 +471,7 @@
                                                 </tr>
                                             </table>
 
+                                            <!-- Hospitalization and Operation -->
                                             <div class="container border mt-2 pt-2">
                                                 <div class="row">
                                                     @if($record->medical_exam->personal_and_social_history->hospitalization == "Yes")
@@ -495,6 +496,89 @@
                                                     @endif
                                                 </div>
                                             </div>
+
+                                            <!-- Review of System -->
+                                            <div class="text-center">
+                                                <h5><strong>G. Review of System</strong></h5>
+                                            </div>
+                                            <table class="table table-sm table-bordered mb-2">
+                                                <tr>
+                                                    <th></th>
+                                                    <th class="text-center">(-)</th>
+                                                    <th class="text-center" width="250px">(+)</th>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Skin</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->review_of_system->skin }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['1_positive2'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Opthalmologic</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->review_of_system->opthalmologic }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['2_positive2'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>ENT</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->review_of_system->ent }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['3_positive2'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Cardiovascular</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->review_of_system->cardiovascular }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['4_positive2'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Respiratory</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->review_of_system->respiratory }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['5_positive2'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Gastro Intestinal</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->review_of_system->gastro_intestinal }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['6_positive2'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Neuro-Psychiatric</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->review_of_system->neuro_psychiatric }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['7_positive2'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Hematology</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->review_of_system->hematology }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['8_positive2'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Genitourinary</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->review_of_system->genitourinary }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['9_positive2'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Musculo-Skeletal</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->review_of_system->musculo_skeletal }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['10_positive2'] }}</td>
+                                                </tr>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>

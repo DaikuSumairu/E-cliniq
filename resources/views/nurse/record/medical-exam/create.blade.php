@@ -263,11 +263,11 @@
                             <div class="col-0">
                                 <p class="mr-1"><strong>Smoker:</strong></p>
                             </div>
-                            <input type="number" name="stick" class="col-0 mx-1" style="height: 25px; width: 50px;" id="stick" disable>
+                            <input type="number" name="stick" class="col-0 mx-1" style="height: 25px; width: 50px;" id="stick" disable required>
                             <div class="col-0">
                                 <p>sticks/day</p>
                             </div>
-                            <input type="number" name="pack" class="col-0 mx-1" style="height: 25px; width: 50px;" id="pack" disable>
+                            <input type="number" name="pack" class="col-0 mx-1" style="height: 25px; width: 50px;" id="pack" disable required>
                             <div class="col-0">
                                 <p>pack year/s</p>
                             </div>
@@ -277,11 +277,11 @@
                             <div class="col-0">
                                 <p class="mr-1"><strong>Alcoholic:</strong></p>
                             </div>
-                            <input type="number" name="frequent" class="col-0 mx-1" style="height: 25px; width: 50px;" id="frequent" disable>
+                            <input type="number" name="frequent" class="col-0 mx-1" style="height: 25px; width: 50px;" id="frequent" disable required>
                             <div class="col-0">
                                 <p>bottles/shot</p>
                             </div>
-                            <input type="number" name="week" class="col-0 mx-1" style="height: 25px; width: 50px;" id="week" disable>
+                            <input type="number" name="week" class="col-0 mx-1" style="height: 25px; width: 50px;" id="week" disable required>
                             <div class="col-0">
                                 <p>/week</p>
                             </div>
@@ -290,7 +290,7 @@
                             <input type="checkbox" id="medication" name="medication" value="Yes" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'medication')" checked>
                             <div class="col">
                                 <p><strong>Medication:</strong></p>
-                                <textarea class="form-control" name="take" id="take" disable></textarea>
+                                <textarea class="form-control" name="take" id="take" disable required></textarea>
                             </div>
                         </div>
                     </div>
@@ -345,22 +345,106 @@
                             </tr>
                         </table>
                     
-                        <div class="container border mt-2 pt-2">
+                        <!-- Hospitalization and Operation -->
+                        <div class="container border my-3 pt-2">
                             <div class="row">
                                 <input type="checkbox" id="hospitalization" name="hospitalization" value="Yes" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'hospitalization')" checked>
                                 <div class="col-0 mb-3">
                                     <p class="h5 mr-1"><strong>E. Hospitalization/s:</strong></p>
                                 </div>
-                                <input type="number" name="hosp_times" class="col-0 mx-1" style="height: 25px; width: 138px;" id="hosp_times" disable>
+                                <input type="number" name="hosp_times" class="col-0 mx-1" style="height: 25px; width: 138px;" id="hosp_times" disable required>
                             </div>
                             <div class="row">
                                 <input type="checkbox" id="operation" name="operation" value="Yes" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'operation')" checked>
                                 <div class="col-0">
                                     <p class="h5 mr-1"><strong>F. Operation/s:</strong></p>
                                 </div>
-                                <input type="number" name="op_times" class="col-0 mx-1" style="height: 25px; width: 185px;" id="op_times" disable>
+                                <input type="number" name="op_times" class="col-0 mx-1" style="height: 25px; width: 185px;" id="op_times" disable required>
                             </div>
                         </div>
+
+                        <!-- Review of System -->
+                        <div class="text-center">
+                            <h3><strong>G. Review of System</strong></h3>
+                        </div>
+                        <table class="table table-sm table-bordered mb-2">
+                            <tr>
+                                <th></th>
+                                <th class="text-center">(-)</th>
+                                <th class="text-center" width="250px">(+)</th>
+                            </tr>
+
+                            <tr>
+                                <td>Skin</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="skin" name="skin" value="Yes" onchange="toggleTextarea('skin')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="1_positive2" id="findingsTextarea_skin" onchange="clearInput('skin')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Opthalmologic</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="opthalmologic" name="opthalmologic" value="Yes" onchange="toggleTextarea('opthalmologic')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="2_positive2" id="findingsTextarea_opthalmologic" onchange="clearInput('opthalmologic')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>ENT</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="ent" name="ent" value="Yes" onchange="toggleTextarea('ent')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="3_positive2" id="findingsTextarea_ent" onchange="clearInput('ent')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Cardiovascular</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="cardiovascular" name="cardiovascular" value="Yes" onchange="toggleTextarea('cardiovascular')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="4_positive2" id="findingsTextarea_cardiovascular" onchange="clearInput('cardiovascular')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Respiratory</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="respiratory" name="respiratory" value="Yes" onchange="toggleTextarea('respiratory')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="5_positive2" id="findingsTextarea_respiratory" onchange="clearInput('respiratory')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Gastro Intestinal</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="gastro_intestinal" name="gastro_intestinal" value="Yes" onchange="toggleTextarea('gastro_intestinal')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="6_positive2" id="findingsTextarea_gastro_intestinal" onchange="clearInput('gastro_intestinal')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Neuro-Psychiatric</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="neuro_psychiatric" name="neuro_psychiatric" value="Yes" onchange="toggleTextarea('neuro_psychiatric')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="7_positive2" id="findingsTextarea_neuro_psychiatric" onchange="clearInput('neuro_psychiatric')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Hematology</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="hematology" name="hematology" value="Yes" onchange="toggleTextarea('hematology')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="8_positive2" id="findingsTextarea_hematology" onchange="clearInput('hematology')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Genitourinary</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="genitourinary" name="genitourinary" value="Yes" onchange="toggleTextarea('genitourinary')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="9_positive2" id="findingsTextarea_genitourinary" onchange="clearInput('genitourinary')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Musculo-Skeletal</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="musculo_skeletal" name="musculo_skeletal" value="Yes" onchange="toggleTextarea('musculo_skeletal')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="10_positive2" id="findingsTextarea_musculo_skeletal" onchange="clearInput('musculo_skeletal')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -384,9 +468,11 @@
             if (!checkbox.checked) {
                 textarea.value = ""; // Clear input text
                 checkbox.value = "No";
+                textarea.required = true;
             }else{
                 textarea.value = "Not Applicable"
                 checkbox.value = "Yes";
+                textarea.required = false;
             }
         }
 
@@ -412,36 +498,50 @@
                 if (type === 'smoker') {
                     stickInput.disabled = false;
                     packInput.disabled = false;
+                    stickInput.required = true;
+                    packInput.required = true;
                 } else if (type === 'alcoholic') {
                     frequentInput.disabled = false;
                     weekInput.disabled = false;
+                    frequentInput.required = true;
+                    weekInput.required = true;
                 } else if (type === 'medication'){
                     medicationText.disabled = false;
+                    medicationText.required = true;
                 } else if (type === 'hospitalization'){
                     hospInput.disabled = false;
+                    hospInput.required = true;
                 } else if (type === 'operation'){
                     opInput.disabled = false;
+                    opInput.required = true;
                 } 
             } else {
                 checkbox.value = "No";
                 if (type === 'smoker') {
                     stickInput.disabled = true;
                     packInput.disabled = true;
+                    stickInput.required = false;
+                    packInput.required = false;
                     stickInput.value = '';
                     packInput.value = '';
                 } else if (type === 'alcoholic') {
                     frequentInput.disabled = true;
                     weekInput.disabled = true;
+                    frequentInput.required = false;
+                    weekInput.required = false;
                     frequentInput.value = '';
                     weekInput.value = '';
                 } else if (type === 'medication'){
                     medicationText.disabled = true;
+                    medicationText.required = false;
                     medicationText.value = "";
                 } else if (type === 'hospitalization'){
                     hospInput.disabled = true;
+                    hospInput.required = false;
                     hospInput.value = "";
                 } else if (type === 'operation'){
                     opInput.disabled = true;
+                    opInput.required = false;
                     opInput.value = "";
                 } 
             }

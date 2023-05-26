@@ -32,6 +32,10 @@ class MedicalExam extends Model
     {
         return $this->hasOne(OBGyneHistory::class);
     }
+    public function review_of_system()
+    {
+        return $this->hasOne(ReviewOfSystem::class);
+    }
 
     //it belongs to
     public function record()

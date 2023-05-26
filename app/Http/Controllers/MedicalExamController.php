@@ -11,6 +11,7 @@ use App\Models\FamilyHistoryPositive;
 use App\Models\PersonalAndSocialHistory;
 use App\Models\ObGyneHistory;
 use App\Models\ObGyneHistoryPositive;
+use App\Models\ReviewOfSystem;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
@@ -182,6 +183,27 @@ class MedicalExamController extends Controller
         
         // Create OB-GYNE History
         $obGyneHistory = ObGyneHistory::create($obGyneHistoryData);
+
+        // Connect Review of System ID to the Medical Exam ID
+        $request->validate([
+            'skin',
+            'opthalmologic',
+            'ent',
+            'cardiovascular',
+            'respiratory',
+            'gastro_intestinal',
+            'neuro_psychiatric',
+            'hematology',
+            'genitourinary',
+            'musculo_skeletal',
+        ]);
+        
+        $reviewOfSystemData = $request->all();
+        $reviewOfSystemData['medical_exam_id'] = $medicalExamID;
+        
+        // Create Review of System
+        $reviewOfSystem = ReviewOfSystem::create($reviewOfSystemData);
+
         
         // Connect OB-GYNE History Positive ID to the OB-GYNE History ID
         $request->validate([
@@ -190,11 +212,23 @@ class MedicalExamController extends Controller
             '3_positive1',
             '4_positive1',
             '5_positive1',
+            '1_positive2',
+            '2_positive2',
+            '3_positive2',
+            '4_positive2',
+            '5_positive2',
+            '6_positive2',
+            '7_positive2',
+            '8_positive2',
+            '9_positive2',
+            '10_positive2',
         ]);
         
         $obGyneHistoryID = $obGyneHistory->id;
+        $reviewOfSystemID = $reviewOfSystem->id;
         $obGyneHistoryPositiveData = $request->all();
         $obGyneHistoryPositiveData['ob_gyne_history_id'] = $obGyneHistoryID;
+        $obGyneHistoryPositiveData['review_of_system_id'] = $reviewOfSystemID;
         
         // Create OB-GYNE History Positive
         ObGyneHistoryPositive::create($obGyneHistoryPositiveData);
