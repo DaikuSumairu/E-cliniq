@@ -85,7 +85,7 @@
         </div>
     </div>
 
-    <div class="container mx-auto">
+    <div class="mx-auto" style="width: 1280px;">
         <div class="row">
             <div class="col-2 border">
                 <div id="consultation-date" class="mini-date">
@@ -121,9 +121,9 @@
                             <div class="container" style="height: 288px; overflow: auto;">
                                 <div class="row row-cols-3">
                                     <!-- Past Medical History -->
-                                    <div class="col mr-2">
+                                    <div class="col">
                                         <div class="text-center">
-                                            <h5><strong>Past Medical Exam</strong></h5>
+                                            <h5><strong>A. Past Medical Exam</strong></h5>
                                         </div>
                                         <table class="table table-sm table-bordered">
 
@@ -259,7 +259,7 @@
                                     <!-- Family History -->
                                     <div class="col">
                                         <div class="text-center">
-                                            <h5><strong>Family History</strong></h5>
+                                            <h5><strong>B. Family History</strong></h5>
                                         </div>
                                         <table class="table table-sm table-bordered">
                                             <tr>
@@ -359,6 +359,143 @@
                                                 </td>
                                             </tr>
                                         </table>
+
+                                        <!-- Personal and Social History -->
+                                        <div class="text-center">
+                                            <h5><strong>C. Personal and Social History</strong></h5>
+                                        </div>
+                                        <div class="container border px-3">
+                                            <div class="row my-3">
+                                                <div class="col-0">
+                                                    <p class="mr-1"><strong>Smoker:</strong></p>
+                                                </div>
+                                                @if($record->medical_exam->personal_and_social_history->smoker == "Yes")
+                                                    <div class="col-0">
+                                                        <p class="mr-3">{{ $record->medical_exam->personal_and_social_history->stick }} sticks/day</p>
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <p>{{ $record->medical_exam->personal_and_social_history->pack }} pack year/s</p>
+                                                    </div>
+                                                @else
+                                                    <div class="col-0">
+                                                        <p>
+                                                            {{ $record->medical_exam->personal_and_social_history->smoker }}
+                                                        </p>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-0">
+                                                    <p class="mr-1"><strong>Alcoholic:</strong></p>
+                                                </div>
+                                                @if($record->medical_exam->personal_and_social_history->alcoholic == "Yes")
+                                                    <div class="col-0">
+                                                        <p class="mr-3">{{ $record->medical_exam->personal_and_social_history->frequent }} bottles/shot</p>
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <p>{{ $record->medical_exam->personal_and_social_history->week }} /week</p>
+                                                    </div>
+                                                @else
+                                                    <div class="col-0">
+                                                        <p>
+                                                            {{ $record->medical_exam->personal_and_social_history->alcoholic }}
+                                                        </p>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-0">
+                                                    <p class="mr-1"><strong>Medication:</strong></p>
+                                                </div>
+                                                @if($record->medical_exam->personal_and_social_history->medication == "Yes")
+                                                    <div class="col-0">
+                                                        <p>{{ $record->medical_exam->personal_and_social_history->take }}</p>
+                                                    </div>
+                                                @else
+                                                    <div class="col-0">
+                                                        <p>
+                                                            {{ $record->medical_exam->personal_and_social_history->medication }}
+                                                        </p>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- OB-GYNE History -->
+                                    <div class="col">
+                                        <div class="text-center">
+                                            <h5><strong>D. OB-GYNE History</strong></h6>
+                                        </div>
+                                            <table class="table table-sm table-bordered mb-2">
+                                                <tr>
+                                                    <th></th>
+                                                    <th class="text-center">(-)</th>
+                                                    <th class="text-center" width="250px">(+)</th>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>LNMP</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->ob_gyne_history->lnmp }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['1_positive1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>OB Score</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->ob_gyne_history->ob_score }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['2_positive1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Abnormal Pregnancies</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->ob_gyne_history->abnormal_pregnancies }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['3_positive1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Date of Last Delivery</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->ob_gyne_history->date_of_last_delivery }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['4_positive1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Breast/Uterus/Ovaries</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->ob_gyne_history->breast_uterus_ovaries }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['5_positive1'] }}</td>
+                                                </tr>
+                                            </table>
+
+                                            <div class="container border mt-2 pt-2">
+                                                <div class="row">
+                                                    @if($record->medical_exam->personal_and_social_history->hospitalization == "Yes")
+                                                        <div class="col-0 mb-3">
+                                                            <p class="h5 mr-1"><strong>E. Hospitalization/s:</strong> {{ $record->medical_exam->personal_and_social_history->hospitalization }}</p>
+                                                        </div>
+                                                    @else
+                                                        <div class="col-0 mb-3">
+                                                            <p class="h5 mr-1"><strong>E. Hospitalization/s:</strong> {{ $record->medical_exam->personal_and_social_history->hosp_times }}</p>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                                <div class="row">
+                                                    @if($record->medical_exam->personal_and_social_history->operation == "Yes")
+                                                        <div class="col-0">
+                                                            <p class="h5 mr-1"><strong>F. Operation/s:</strong> {{ $record->medical_exam->personal_and_social_history->operation }}</p>
+                                                        </div>
+                                                    @else
+                                                        <div class="col-0">
+                                                            <p class="h5 mr-1"><strong>F. Operation/s:</strong> {{ $record->medical_exam->personal_and_social_history->op_times }}</p>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

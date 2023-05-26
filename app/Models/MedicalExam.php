@@ -24,6 +24,14 @@ class MedicalExam extends Model
     {
         return $this->hasOne(FamilyHistory::class);
     }
+    public function personal_and_social_history()
+    {
+        return $this->hasOne(PersonalAndSocialHistory::class);
+    }
+    public function ob_gyne_history()
+    {
+        return $this->hasOne(OBGyneHistory::class);
+    }
 
     //it belongs to
     public function record()

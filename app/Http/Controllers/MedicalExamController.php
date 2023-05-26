@@ -8,6 +8,9 @@ use App\Models\PastMedicalHistory;
 use App\Models\PastMedicalHistoryFinding;
 use App\Models\FamilyHistory;
 use App\Models\FamilyHistoryPositive;
+use App\Models\PersonalAndSocialHistory;
+use App\Models\ObGyneHistory;
+use App\Models\ObGyneHistoryPositive;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
@@ -120,7 +123,7 @@ class MedicalExamController extends Controller
         // Create Family History
         $familyHistory = FamilyHistory::create($familyHistoryData);
 
-        // Connect Family History ID to the Medical Exam ID
+        // Connect Family History Positive ID to the Family History ID
         $request->validate([
             '1_positive',
             '2_positive',
@@ -142,6 +145,59 @@ class MedicalExamController extends Controller
 
         // Create Family History Positive
         FamilyHistoryPositive::create($familyHistoryPositiveData);
+
+        // Connect Personal and Social History ID to the Medical Exam ID
+        $request->validate([
+            'smoker',
+            'stick',
+            'pack',
+            'alcoholic',
+            'frequent',
+            'week',
+            'medication',
+            'take',
+            'hospitalization',
+            'hosp_times',
+            'operation',
+            'op_times',
+        ]);
+        
+        $personalAndSocialHisData = $request->all();
+        $personalAndSocialHisData['medical_exam_id'] = $medicalExamID;
+        
+        // Create Personal and Social History
+        PersonalAndSocialHistory::create($personalAndSocialHisData);
+        
+        // Connect OB-GYNE History ID to the Medical Exam ID
+        $request->validate([
+            'lnmp',
+            'ob_score',
+            'abnormal_pregnancies',
+            'date_of_last_delivery',
+            'breast_uterus_ovaries',
+        ]);
+        
+        $obGyneHistoryData = $request->all();
+        $obGyneHistoryData['medical_exam_id'] = $medicalExamID;
+        
+        // Create OB-GYNE History
+        $obGyneHistory = ObGyneHistory::create($obGyneHistoryData);
+        
+        // Connect OB-GYNE History Positive ID to the OB-GYNE History ID
+        $request->validate([
+            '1_positive1',
+            '2_positive1',
+            '3_positive1',
+            '4_positive1',
+            '5_positive1',
+        ]);
+        
+        $obGyneHistoryID = $obGyneHistory->id;
+        $obGyneHistoryPositiveData = $request->all();
+        $obGyneHistoryPositiveData['ob_gyne_history_id'] = $obGyneHistoryID;
+        
+        // Create OB-GYNE History Positive
+        ObGyneHistoryPositive::create($obGyneHistoryPositiveData);
 
         return redirect()->route('nurse.recordShow', ['record' => $recordID])->with('success', 'Record created successfully.');
     }
