@@ -259,38 +259,38 @@
                     </div>
                     <div class="container border">
                         <div class="row my-3">
-                            <input type="checkbox" id="smoker" name="smoker" value="Yes" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'smoker')" checked>
+                            <input type="checkbox" id="smoker" name="smoker" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'smoker')">
                             <div class="col-0">
                                 <p class="mr-1"><strong>Smoker:</strong></p>
                             </div>
-                            <input type="number" name="stick" class="col-0 mx-1" style="height: 25px; width: 50px;" id="stick" disable required>
+                            <input type="number" name="stick" class="col-0 mx-1" style="height: 25px; width: 50px;" id="stick" disabled>
                             <div class="col-0">
                                 <p>sticks/day</p>
                             </div>
-                            <input type="number" name="pack" class="col-0 mx-1" style="height: 25px; width: 50px;" id="pack" disable required>
+                            <input type="number" name="pack" class="col-0 mx-1" style="height: 25px; width: 50px;" id="pack" disabled>
                             <div class="col-0">
                                 <p>pack year/s</p>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <input type="checkbox" id="alcoholic" name="alcoholic" value="Yes" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'alcoholic')" checked>
+                            <input type="checkbox" id="alcoholic" name="alcoholic" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'alcoholic')">
                             <div class="col-0">
                                 <p class="mr-1"><strong>Alcoholic:</strong></p>
                             </div>
-                            <input type="number" name="frequent" class="col-0 mx-1" style="height: 25px; width: 50px;" id="frequent" disable required>
+                            <input type="number" name="frequent" class="col-0 mx-1" style="height: 25px; width: 50px;" id="frequent" disabled>
                             <div class="col-0">
                                 <p>bottles/shot</p>
                             </div>
-                            <input type="number" name="week" class="col-0 mx-1" style="height: 25px; width: 50px;" id="week" disable required>
+                            <input type="number" name="week" class="col-0 mx-1" style="height: 25px; width: 50px;" id="week" disabled>
                             <div class="col-0">
                                 <p>/week</p>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <input type="checkbox" id="medication" name="medication" value="Yes" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'medication')" checked>
+                            <input type="checkbox" id="medication" name="medication" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'medication')">
                             <div class="col">
                                 <p><strong>Medication:</strong></p>
-                                <textarea class="form-control" name="take" id="take" disable required></textarea>
+                                <textarea class="form-control" name="take" id="take" disabled></textarea>
                             </div>
                         </div>
                     </div>
@@ -348,18 +348,18 @@
                         <!-- Hospitalization and Operation -->
                         <div class="container border my-3 pt-2">
                             <div class="row">
-                                <input type="checkbox" id="hospitalization" name="hospitalization" value="Yes" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'hospitalization')" checked>
+                                <input type="checkbox" id="hospitalization" name="hospitalization" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'hospitalization')">
                                 <div class="col-0 mb-3">
                                     <p class="h5 mr-1"><strong>E. Hospitalization/s:</strong></p>
                                 </div>
-                                <input type="number" name="hosp_times" class="col-0 mx-1" style="height: 25px; width: 138px;" id="hosp_times" disable required>
+                                <input type="number" name="hosp_times" class="col-0 mx-1" style="height: 25px; width: 138px;" id="hosp_times" disabled>
                             </div>
                             <div class="row">
-                                <input type="checkbox" id="operation" name="operation" value="Yes" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'operation')" checked>
+                                <input type="checkbox" id="operation" name="operation" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'operation')">
                                 <div class="col-0">
                                     <p class="h5 mr-1"><strong>F. Operation/s:</strong></p>
                                 </div>
-                                <input type="number" name="op_times" class="col-0 mx-1" style="height: 25px; width: 185px;" id="op_times" disable required>
+                                <input type="number" name="op_times" class="col-0 mx-1" style="height: 25px; width: 185px;" id="op_times" disabled>
                             </div>
                         </div>
 

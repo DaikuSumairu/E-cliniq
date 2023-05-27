@@ -85,7 +85,7 @@
         </div>
     </div>
 
-    <div class="mx-auto" style="width: 1280px;">
+    <div class="mx-auto" style="width: 1200px;">
         <div class="row">
             <div class="col-2 border">
                 <div id="consultation-date" class="mini-date">
