@@ -63,7 +63,12 @@ return [
     |
     */
 
-    'logo' => '<b>E-Cliniq</b>',
+    'logo' => '<b>E-Cliniq</b> | Admin',
+    'logo1' => '<b>E-Cliniq</b> | Doctor',
+    'logo2' => '<b>E-Cliniq</b> | Nurse',
+    'logo3' => '<b>E-Cliniq</b> | Dentist',
+    'logo4' => '<b>E-Cliniq</b> | Faculty',
+    'logo5' => '<b>E-Cliniq</b> | Student',
     'logo_img' => 'assets/APC_Logo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
