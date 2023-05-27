@@ -7,12 +7,13 @@
 @stop
 
 @section('content')
-    <div class="container mx-auto pb-4">
+    <div class="container mx-auto pb-4" style="height: 625px; overflow: auto;">
         <form method="POST" action="{{ route('nurse.medExamStore') }}">
             @csrf
             <!-- Record ID Created (Hidden) -->
             <input type="hidden" name="record_id" value="{{ $record->id }}">
             <input type="hidden" name="date_created" value="{{ now() }}">
+            <h2><strong>I. Medical History</strong></h2>
             <div class="row row-cols-3">
                 <div class="col">
                     <!-- Past Medical History -->
@@ -447,11 +448,296 @@
                         </table>
                     </div>
                 </div>
-                
+                <h2><strong>II. Physical Examination</strong></h2>
+                <div class="row mx-auto mb-3">
+                    <div class="col border">
+                        <p class="mb-1"><strong>Height:</strong></p>
+                        <div class="row">
+                            <div class="col-0 ml-2">
+                                <input type="number" name="height" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="height" required>
+                            </div>
+                            <div class="col-0">
+                                <p>cm.</p>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col border">
+                        <p class="mb-1"><strong>Weight:</strong></p>
+                        <div class="row">
+                            <div class="col-0 ml-2">
+                                <input type="number" name="weight" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="weight" required>
+                            </div>
+                            <div class="col-0">
+                                <p>kg.</p>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col border">
+                        <p class="mb-1"><strong>BP:</strong></p>
+                        <div class="row">
+                            <div class="col-0 ml-2">
+                                <input type="number" name="bp1" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="bp1" required>
+                            </div>
+                            <div class="col-0 ml-2">
+                                <p>/</p>
+                            </div>
+                            <div class="col">
+                                <input type="number" name="bp2" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="bp2" required>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col border">
+                        <p class="mb-1"><strong>Cardiac Rate:</strong></p>
+                        <input type="number" name="cardiac_rate" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="cardiac_rate" required>
+                    </div> 
+                    <div class="col border">
+                        <p class="mb-1"><strong>Respiratory Rate</strong></p>
+                        <input type="number" name="respiratory_rate" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="respiratory_rate" required>
+                    </div> 
+                    <div class="col border">
+                        <p class="mb-1"><strong>BMI:</strong></p>
+                        <input type="number" name="bmi" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="bmi" required>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-sm table-bordered mb-2">
+                            <tr>
+                                <th></th>
+                                <th class="text-center">Normal</th>
+                                <th class="text-center" width="250px">Findings</th>
+                            </tr>
+
+                            <tr>
+                                <td>General Appearance</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="general_appearance" name="general_appearance" value="Yes" onchange="toggleTextarea('general_appearance')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="1_findings1" id="findingsTextarea_general_appearance" onchange="clearInput('general_appearance')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Skin</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="skin1" name="skin1" value="Yes" onchange="toggleTextarea('skin1')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="2_findings1" id="findingsTextarea_skin1" onchange="clearInput('skin1')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Head and Scalp</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="head_and_scalp" name="head_and_scalp" value="Yes" onchange="toggleTextarea('head_and_scalp')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="3_findings1" id="findingsTextarea_head_and_scalp" onchange="clearInput('head_and_scalp')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Eyes</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="eyes" name="eyes" value="Yes" onchange="updateCheckboxValue(this, 'eyes')" checked>
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-0">
+                                            <input type="number" name="od_findings1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_findings1" disabled>
+                                        </div>
+                                        <div class="col-0">
+                                            <p>/</p>
+                                        </div>
+                                        <div class="col-0">
+                                            <input type="number" name="od1_findings1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od1_findings1" disabled>
+                                        </div>
+                                        <div class="col-0">
+                                            <p>OD</p>
+                                        </div>
+                                        <div class="col-0">
+                                            <input type="number" name="os_findings1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os_findings1" disabled>
+                                        </div>
+                                        <div class="col-0">
+                                            <p>/</p>
+                                        </div>
+                                        <div class="col-0">
+                                            <input type="number" name="os1_findings1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os1_findings1" disabled>
+                                        </div>
+                                        <div class="col-0">
+                                            <p>OS</p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Corrected</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="corrected" name="corrected" value="Yes" onchange="updateCheckboxValue(this, 'corrected')" checked>
+                                </td>
+                                <td>
+                                <div class="row">
+                                        <div class="col-0">
+                                            <input type="number" name="od_findings2" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_findings2" disabled>
+                                        </div>
+                                        <div class="col-0">
+                                            <p>/</p>
+                                        </div>
+                                        <div class="col-0">
+                                            <input type="number" name="od1_findings2" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od1_findings2" disabled>
+                                        </div>
+                                        <div class="col-0">
+                                            <p>OD</p>
+                                        </div>
+                                        <div class="col-0">
+                                            <input type="number" name="os_findings2" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os_findings2" disabled>
+                                        </div>
+                                        <div class="col-0">
+                                            <p>/</p>
+                                        </div>
+                                        <div class="col-0">
+                                            <input type="number" name="os1_findings2" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os1_findings2" disabled>
+                                        </div>
+                                        <div class="col-0">
+                                            <p>OS</p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Pupils</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="pupils" name="pupils" value="Yes" onchange="toggleTextarea('pupils')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="6_findings1" id="findingsTextarea_pupils" onchange="clearInput('pupils')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Ear, Eardrums</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="ear_eardrums" name="ear_eardrums" value="Yes" onchange="toggleTextarea('ear_eardrums')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="7_findings1" id="findingsTextarea_ear_eardrums" onchange="clearInput('ear_eardrums')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Nose, Sinuses</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="nose_sinuses" name="nose_sinuses" value="Yes" onchange="toggleTextarea('nose_sinuses')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="8_findings1" id="findingsTextarea_nose_sinuses" onchange="clearInput('nose_sinuses')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Mouth, Throat</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="mouth_throat" name="mouth_throat" value="Yes" onchange="toggleTextarea('mouth_throat')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="9_findings1" id="findingsTextarea_mouth_throat" onchange="clearInput('mouth_throat')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Neck, Thyroid</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="neck_thyroid" name="neck_thyroid" value="Yes" onchange="toggleTextarea('neck_thyroid')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="10_findings1" id="findingsTextarea_neck_thyroid" onchange="clearInput('neck_thyroid')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Chest, Breast, Axilla</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="chest_breast_axilla" name="chest_breast_axilla" value="Yes" onchange="toggleTextarea('chest_breast_axilla')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="11_findings1" id="findingsTextarea_chest_breast_axilla" onchange="clearInput('chest_breast_axilla')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col">
+                        <table class="table table-sm table-bordered mb-2">
+                            <tr>
+                                <th></th>
+                                <th class="text-center">Normal</th>
+                                <th class="text-center" width="250px">Findings</th>
+                            </tr>
+
+                            <tr>
+                                <td>Heart-Cardiovascular</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="heart_cardiovascular" name="heart_cardiovascular" value="Yes" onchange="toggleTextarea('heart_cardiovascular')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="12_findings1" id="findingsTextarea_heart_cardiovascular" onchange="clearInput('heart_cardiovascular')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Lungs-Respiratory</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="lungs_respiratory" name="lungs_respiratory" value="Yes" onchange="toggleTextarea('lungs_respiratory')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="13_findings1" id="findingsTextarea_lungs_respiratory" onchange="clearInput('lungs_respiratory')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Abdomen</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="abdomen" name="abdomen" value="Yes" onchange="toggleTextarea('abdomen')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="14_findings1" id="findingsTextarea_abdomen" onchange="clearInput('abdomen')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Back, Flanks</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="back_flanks" name="back_flanks" value="Yes" onchange="toggleTextarea('back_flanks')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="15_findings1" id="findingsTextarea_back_flanks" onchange="clearInput('back_flanks')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Anus, Rectum</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="anus_rectum" name="anus_rectum" value="Yes" onchange="toggleTextarea('anus_rectum')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="16_findings1" id="findingsTextarea_anus_rectum" onchange="clearInput('anus_rectum')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Genito-Urinary System</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="genito_urinary_system" name="genito_urinary_system" value="Yes" onchange="toggleTextarea('genito_urinary_system')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="17_findings1" id="findingsTextarea_genito_urinary_system" onchange="clearInput('genito_urinary_system')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Inguinal, Genitals</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="inguinal_genitals" name="inguinal_genitals" value="Yes" onchange="toggleTextarea('inguinal_genitals')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="18_findings1" id="findingsTextarea_inguinal_genitals" onchange="clearInput('inguinal_genitals')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Musculo-Skeletal</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="musculo_skeletal1" name="musculo_skeletal1" value="Yes" onchange="toggleTextarea('musculo_skeletal1')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="19_findings1" id="findingsTextarea_musculo_skeletal1" onchange="clearInput('musculo_skeletal1')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Extremities</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="extremities" name="extremities" value="Yes" onchange="toggleTextarea('extremities')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="20_findings1" id="findingsTextarea_extremities" onchange="clearInput('extremities')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Reflexes</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="reflexes" name="reflexes" value="Yes" onchange="toggleTextarea('reflexes')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="21_findings1" id="findingsTextarea_reflexes" onchange="clearInput('reflexes')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Neurological</td>
+                                <td class="text-center">
+                                    <input type="checkbox" id="neurological" name="neurological" value="Yes" onchange="toggleTextarea('neurological')" checked>
+                                </td>
+                                <td><textarea class="form-control" name="22_findings1" id="findingsTextarea_neurological" onchange="clearInput('neurological')" disabled>Not Applicable</textarea></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <h4><strong>DIAGNOSIS:</strong></h4>
+                <div class="row mx-auto mb-3">
+                <textarea class="form-control" name="diagnosis" id="diagnosis"></textarea>
+                </div>
                 <div class="position-right ml-auto" style="width: 75px;">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
-            </div>
+            </div>    
         </form>
     </div>
 @stop
@@ -493,6 +779,14 @@
             const weekInput = document.getElementById("week");
             const hospInput = document.getElementById("hosp_times");
             const opInput = document.getElementById("op_times");
+            const odInput = document.getElementById("od_findings1");
+            const od1Input = document.getElementById("od1_findings1");
+            const osInput = document.getElementById("os_findings1");
+            const os1Input = document.getElementById("os1_findings1");
+            const od12Input = document.getElementById("od_findings2");
+            const od123Input = document.getElementById("od1_findings2");
+            const os12Input = document.getElementById("os_findings2");
+            const os123Input = document.getElementById("os1_findings2");
 
             if (checkbox.checked) {
                 checkbox.value = "Yes";
@@ -515,6 +809,24 @@
                 } else if (type === 'operation'){
                     opInput.disabled = false;
                     opInput.required = true;
+                } else if (type === 'eyes'){
+                    odInput.disabled = true;
+                    od1Input.disabled = true;
+                    osInput.disabled = true;
+                    os1Input.disabled = true;
+                    odInput.required = false;
+                    od1Input.required = false;
+                    osInput.required = false;
+                    os1Input.required = false;
+                } else if (type === 'corrected'){
+                    od12Input.disabled = true;
+                    od123Input.disabled = true;
+                    os12Input.disabled = true;
+                    os123Input.disabled = true;
+                    od12Input.required = false;
+                    od123Input.required = false;
+                    os12Input.required = false;
+                    os123Input.required = false;
                 } 
             } else {
                 checkbox.value = "No";
@@ -544,8 +856,43 @@
                     opInput.disabled = true;
                     opInput.required = false;
                     opInput.value = "";
+                } else if (type === 'eyes'){
+                    odInput.disabled = false;
+                    od1Input.disabled = false;
+                    osInput.disabled = false;
+                    os1Input.disabled = false;
+                    odInput.required = true;
+                    od1Input.required = true;
+                    osInput.required = true;
+                    os1Input.required = true;
+                } else if (type === 'corrected'){
+                    od12Input.disabled = false;
+                    od123Input.disabled = false;
+                    os12Input.disabled = false;
+                    os123Input.disabled = false;
+                    od12Input.required = true;
+                    od123Input.required = true;
+                    os12Input.required = true;
+                    os123Input.required = true;
                 } 
             }
         }
     </script>
+
+    <!-- No add or less button on the right side of input number type -->
+    <style>
+        /* Hide the up and down buttons */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            }
+      
+        input[type="number"] {
+            /* Adjust the padding to maintain the input's size */
+            padding-right: 0;
+            /* Optionally, you can disable resizing the input */
+            resize: none;
+        }
+    </style>
 @stop

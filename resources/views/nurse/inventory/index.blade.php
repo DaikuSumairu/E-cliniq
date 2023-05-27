@@ -31,8 +31,8 @@
             @foreach($inventoryItems as $item)
                 <tr>
                     <td>{{ $item->name }}</td>
-                    <td>{{ $item->dosage }}</td>
-                    <td>{{ $item->quantity }}</td>
+                    <td>{{ $item->dosage }} mg</td>
+                    <td>{{ $item->quantity }} pcs</td>
                     <td><a href="{{ route('nurse.InventoryCreate') }}" class="btn btn-primary">Add</a></td>
                 </tr>
             @endforeach

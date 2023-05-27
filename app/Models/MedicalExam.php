@@ -36,6 +36,10 @@ class MedicalExam extends Model
     {
         return $this->hasOne(ReviewOfSystem::class);
     }
+    public function physical_examination()
+    {
+        return $this->hasOne(PhysicalExamination::class);
+    }
 
     //it belongs to
     public function record()

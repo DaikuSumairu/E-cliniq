@@ -118,7 +118,8 @@
                 <div id="medical-exam-content" class="mini-content pt-1">
                     @if(isset($record->medical_exam))
                         @if(isset($record) && !empty($record))
-                            <div class="container" style="height: 288px; overflow: auto;">
+                            <div class="container" style="height: 275px; overflow: auto;">
+                                <h3><strong>I. Medical History</strong></h3>
                                 <div class="row row-cols-3">
                                     <!-- Past Medical History -->
                                     <div class="col">
@@ -580,6 +581,293 @@
                                                 </tr>
                                             </table>
                                         </div>
+                                    </div>
+                            
+                                    <h3><strong>II. Physical Examination</strong></h3>
+                                    <div class="row mx-auto mb-3">
+                                        <div class="col border">
+                                            <p class="mb-1"><strong>Height:</strong></p>
+                                            <div class="row">
+                                                <div class="col-0 ml-2">
+                                                    {{ $record->medical_exam->physical_examination->height }}
+                                                </div>
+                                                <div class="col-0">
+                                                    <p>cm.</p>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        <div class="col border">
+                                            <p class="mb-1"><strong>Weight:</strong></p>
+                                            <div class="row">
+                                                <div class="col-0 ml-2">
+                                                    {{ $record->medical_exam->physical_examination->weight }}
+                                                </div>
+                                                <div class="col-0">
+                                                    <p>kg.</p>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        <div class="col border">
+                                            <p class="mb-1"><strong>BP:</strong></p>
+                                            <div class="row">
+                                                <div class="col-0 ml-2">
+                                                    {{ $record->medical_exam->physical_examination['bp1'] }}
+                                                </div>
+                                                <div class="col-0 ml-2">
+                                                    <p>/</p>
+                                                </div>
+                                                <div class="col">
+                                                    {{ $record->medical_exam->physical_examination['bp2'] }}
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        <div class="col border">
+                                            <p class="mb-1"><strong>Cardiac Rate:</strong></p>
+                                            {{ $record->medical_exam->physical_examination->cardiac_rate }}
+                                        </div> 
+                                        <div class="col border">
+                                            <p class="mb-1"><strong>Respiratory Rate</strong></p>
+                                            {{ $record->medical_exam->physical_examination->respiratory_rate }}
+                                        </div> 
+                                        <div class="col border">
+                                            <p class="mb-1"><strong>BMI:</strong></p>
+                                            {{ $record->medical_exam->physical_examination->bmi }}
+                                        </div> 
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <table class="table table-sm table-bordered mb-2">
+                                                <tr>
+                                                    <th></th>
+                                                    <th class="text-center">Normal</th>
+                                                    <th class="text-center" width="250px">Findings</th>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>General Appearance</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->general_appearance }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['1_findings1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Skin</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->skin1 }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['2_findings1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Head and Scalp</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->head_and_scalp }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['3_findings1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Eyes</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->eyes }}
+                                                    </td>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-0">
+                                                                {{ $record->medical_exam->physical_examination->physical_examination_finding['od_findings1'] }}
+                                                            </div>
+                                                            <div class="col-0">
+                                                                <p>/</p>
+                                                            </div>
+                                                            <div class="col-0">
+                                                                {{ $record->medical_exam->physical_examination->physical_examination_finding['od1_findings1'] }}
+                                                            </div>
+                                                            <div class="col-0">
+                                                                <p>OD</p>
+                                                            </div>
+                                                            <div class="col-0">
+                                                                {{ $record->medical_exam->physical_examination->physical_examination_finding['os_findings1'] }}
+                                                            </div>
+                                                            <div class="col-0">
+                                                                <p>/</p>
+                                                            </div>
+                                                            <div class="col-0">
+                                                                {{ $record->medical_exam->physical_examination->physical_examination_finding['os1_findings1'] }}
+                                                            </div>
+                                                            <div class="col-0">
+                                                                <p>OS</p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-right">Corrected</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->corrected }}
+                                                    </td>
+                                                    <td>
+                                                    <div class="row">
+                                                            <div class="col-0">
+                                                                {{ $record->medical_exam->physical_examination->physical_examination_finding['od_findings2'] }}
+                                                            </div>
+                                                            <div class="col-0">
+                                                                <p>/</p>
+                                                            </div>
+                                                            <div class="col-0">
+                                                                {{ $record->medical_exam->physical_examination->physical_examination_finding['od1_findings2'] }}
+                                                            </div>
+                                                            <div class="col-0">
+                                                                <p>OD</p>
+                                                            </div>
+                                                            <div class="col-0">
+                                                                {{ $record->medical_exam->physical_examination->physical_examination_finding['os_findings2'] }}
+                                                            </div>
+                                                            <div class="col-0">
+                                                                <p>/</p>
+                                                            </div>
+                                                            <div class="col-0">
+                                                                {{ $record->medical_exam->physical_examination->physical_examination_finding['os1_findings2'] }}
+                                                            </div>
+                                                            <div class="col-0">
+                                                                <p>OS</p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Pupils</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->pupils }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['6_findings1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Ear, Eardrums</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->ear_eardrums }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['7_findings1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Nose, Sinuses</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->nose_sinuses }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['8_findings1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Mouth, Throat</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->mouth_throat }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['9_findings1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Neck, Thyroid</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->neck_thyroid }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['10_findings1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Chest, Breast, Axilla</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->chest_breast_axilla }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['11_findings1'] }}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="col">
+                                            <table class="table table-sm table-bordered mb-2">
+                                                <tr>
+                                                    <th></th>
+                                                    <th class="text-center">Normal</th>
+                                                    <th class="text-center" width="250px">Findings</th>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Heart-Cardiovascular</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->heart_cardiovascular }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['12_findings1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Lungs-Respiratory</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->lungs_respiratory }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['13_findings1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Abdomen</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->abdomen }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['14_findings1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Back, Flanks</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->back_flanks }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['15_findings1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Anus, Rectum</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->anus_rectum }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['16_findings1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Genito-Urinary System</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->urinary_system }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['17_findings1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Inguinal, Genitals</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->inguinal_genitals }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['18_findings1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Musculo-Skeletal</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->musculo_skeletal1 }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['19_findings1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Extremities</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->extremities }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['20_findings1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Reflexes</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->reflexes }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['21_findings1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Neurological</td>
+                                                    <td class="text-center">
+                                                        {{ $record->medical_exam->physical_examination->neurological }}
+                                                    </td>
+                                                    <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['22_findings1'] }}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <h4><strong>DIAGNOSIS:</strong></h4>
+                                    <div class="row mx-auto mb-3">
+                                        {{ $record->medical_exam->physical_examination->physical_examination_finding->diagnosis }}
                                     </div>
                                 </div>
                             </div>

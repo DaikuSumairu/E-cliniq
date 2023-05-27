@@ -12,6 +12,8 @@ use App\Models\PersonalAndSocialHistory;
 use App\Models\ObGyneHistory;
 use App\Models\ObGyneHistoryPositive;
 use App\Models\ReviewOfSystem;
+use App\Models\PhysicalExamination;
+use App\Models\PhysicalExaminationFinding;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
@@ -205,7 +207,7 @@ class MedicalExamController extends Controller
         $reviewOfSystem = ReviewOfSystem::create($reviewOfSystemData);
 
         
-        // Connect OB-GYNE History Positive ID to the OB-GYNE History ID
+        // Connect OB-GYNE History Positive ID to the OB-GYNE History and Review of System ID
         $request->validate([
             '1_positive1',
             '2_positive1',
@@ -232,6 +234,85 @@ class MedicalExamController extends Controller
         
         // Create OB-GYNE History Positive
         ObGyneHistoryPositive::create($obGyneHistoryPositiveData);
+
+        // Connect OB-GYNE History ID to the Medical Exam ID
+        $request->validate([
+            'height',
+            'weight',
+            'bp1',
+            'bp2',
+            'cardiac_rate',
+            'respiratory_rate',
+            'bmi',
+            'general_appearance',
+            'skin1',
+            'head_and_scalp',
+            'eyes',
+            'corrected',
+            'pupils',
+            'ear_eardrums',
+            'nose_sinuses',
+            'mouth_throat',
+            'neck_thyroid',
+            'chest_breast_axilla',
+            'heart_cardiovascular',
+            'lungs_respiratory',
+            'abdomen',
+            'back_flanks',
+            'anus_rectum',
+            'genito_urinary_system',
+            'inguinal_genitals',
+            'musculo_skeletal1',
+            'extremities',
+            'reflexes',
+            'neurological',
+        ]);
+        
+        $physicalExaminationData = $request->all();
+        $physicalExaminationData['medical_exam_id'] = $medicalExamID;
+        
+        // Create OB-GYNE History
+        $physicalExamination = PhysicalExamination::create($physicalExaminationData);
+
+        // Connect OB-GYNE History Positive ID to the OB-GYNE History ID
+        $request->validate([
+            '1_findings1',
+            '2_findings1',
+            '3_findings1',
+            'od_findings1',
+            'od1_findings1',
+            'os_findings1',
+            'os1_findings1',
+            'od_findings2',
+            'od1_findings2',
+            'os_findings2',
+            'os1_findings2',
+            '6_findings1',
+            '7_findings1',
+            '8_findings1',
+            '9_findings1',
+            '10_findings1',
+            '11_findings1',
+            '12_findings1',
+            '13_findings1',
+            '14_findings1',
+            '15_findings1',
+            '16_findings1',
+            '17_findings1',
+            '18_findings1',
+            '19_findings1',
+            '20_findings1',
+            '21_findings1',
+            '22_findings1',
+            'daignosis',
+        ]);
+        
+        $physicalExaminationID = $physicalExamination->id;
+        $physicalExaminationFindingData = $request->all();
+        $physicalExaminationFindingData['physical_examination_id'] = $physicalExaminationID;
+        
+        // Create OB-GYNE History Positive
+        PhysicalExaminationFinding::create($physicalExaminationFindingData);
 
         return redirect()->route('nurse.recordShow', ['record' => $recordID])->with('success', 'Record created successfully.');
     }
