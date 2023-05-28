@@ -1,6 +1,22 @@
-<nav class="main-header navbar
-    {{ config('adminlte.classes_topnav_nav', 'navbar-expand') }}
-    {{ config('adminlte.classes_topnav', 'navbar-white navbar-light') }}">
+@if(auth()->check())
+    <nav class="main-header navbar
+        {{ config('adminlte.classes_topnav_nav', 'navbar-expand-md') }}
+        {{ config('adminlte.classes_topnav', 'navbar-white navbar-light') }}"
+        @if(auth()->user()->role == 'admin')
+            style="background-color: #991f1f;"
+        @elseif(auth()->user()->role == 'doctor')
+            style="background-color: #991f1f;"
+        @elseif(auth()->user()->role == 'nurse')
+            style="background-color: #e7af41;"
+        @elseif(auth()->user()->role == 'dentist')
+            style="background-color: #991f1f;"
+        @elseif(auth()->user()->role == 'faculty')
+            style="background-color: #456fd5;"
+        @endif
+    >
+@else
+    style="background-color: #456fd5;"
+@endif
 
     {{-- Navbar left links --}}
     <ul class="navbar-nav">
