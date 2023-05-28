@@ -32,6 +32,16 @@ return new class extends Migration
             $table->string("course")->nullable();
             $table->string("department")->nullable();
             $table->string("section")->nullable();
+
+            //General Info of each Users
+            $table->date('birth_date')->nullable();
+            $table->integer('age')->nullable();
+            $table->string('sex')->nullable();
+            $table->string('civil_status')->nullable();
+            $table->string('address')->nullable();
+            $table->string('mobile_number')->nullable();
+            $table->string('contact_person')->nullable();
+            $table->string('contact_person_number')->nullable();
             $table->timestamps();
         });
     }
