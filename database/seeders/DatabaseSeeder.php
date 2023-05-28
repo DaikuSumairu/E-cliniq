@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             CreateUsersSeeder::class,
             CreateStudentSeeder::class,
             CreateFacultySeeder::class,
+            CreateRecordSeeder::class,
             InventoriesSeeder::class,
         ]);
     }

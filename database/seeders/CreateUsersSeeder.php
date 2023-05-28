@@ -15,24 +15,28 @@ class CreateUsersSeeder extends Seeder
     {
         $users = [
             [
+                'id' => 1,
                 'name' => 'Clinic',
                 'email' => 'apcdoctor@apc.edu.ph',
                 'role' => 2,
                 'password' => bcrypt('Sample123456'),
             ],
             [
+                'id' => 2,
                 'name' => 'Clinic',
                 'email' => 'apcdentist@apc.edu.ph',
                 'role' => 3,
                 'password' => bcrypt('Sample123456'),
             ],
             [
+                'id' => 3,
                 'name' => 'Clinic',
                 'email' => 'apcnurse@apc.edu.ph',
                 'role' => 4,
                 'password' => bcrypt('Sample123456'),
             ],
             [
+                'id' => 4,
                 'name' => 'Clinic',
                 'email' => 'clinicadmin@apc.edu.ph',
                 'role' => 5,

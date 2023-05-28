@@ -14,16 +14,14 @@ return new class extends Migration
         Schema::create('records', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->integer('user_id')->unsigned();
-            $table->date('date_created');
-            $table->date('date_updated')->nullable();
-            $table->date('birth_date');
-            $table->integer('age');
-            $table->string('sex');
-            $table->string('civil_status');
-            $table->string('address');
-            $table->string('mobile_number');
-            $table->string('contact_person');
-            $table->string('contact_person_number');
+            $table->date('birth_date')->nullable();
+            $table->integer('age')->nullable();
+            $table->string('sex')->nullable();
+            $table->string('civil_status')->nullable();
+            $table->string('address')->nullable();
+            $table->string('mobile_number')->nullable();
+            $table->string('contact_person')->nullable();
+            $table->string('contact_person_number')->nullable();
             $table->timestamps();
 
             //Foreign keys

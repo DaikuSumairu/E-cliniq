@@ -16,7 +16,7 @@ class RecordController extends Controller
         $users = User::whereNotIn('role', [2, 3, 4, 5])
             ->orderBy('school_id')
             ->paginate(10);
-        $records = Record::paginate(10);
+        $records = Record::all();
 
         if(auth()->user()->role == 'nurse')
         {

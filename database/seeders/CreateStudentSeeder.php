@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Carbon\Carbon;
 use App\Models\User;
 
 class CreateStudentSeeder extends Seeder
@@ -16,6 +15,7 @@ class CreateStudentSeeder extends Seeder
     {
         $users = [
             [
+                'id' => 5,
                 'name' => 'Juan Dela Cruz',
                 'email' => 'jdcruz@student.apc.edu.ph',
                 'role' => 0,
@@ -24,16 +24,9 @@ class CreateStudentSeeder extends Seeder
                 'grade' => 'Grade 12',
                 'course' => 'STEM - IT',
                 'section' => 'STEM231',
-                'birth_date' => Carbon::parse('2005-01-15'),
-                'age' => 18,
-                'sex' => 'Male',
-                'civil_status' => 'Single',
-                'address' => '51 Bonifacio Street, Quezon City',
-                'mobile_number' => '0974-923-4570 ',
-                'contact_person' => 'Jane Doe',
-                'contact_person_number' => '0998-765-4321',
             ],
             [
+                'id' => 6,
                 'name' => 'Ayaka Kamisato',
                 'email' => 'akamisato@student.apc.edu.ph',
                 'role' => 0,
@@ -42,16 +35,9 @@ class CreateStudentSeeder extends Seeder
                 'grade' => 'Grade 11',
                 'course' => 'STEM - Multi Media',
                 'section' => 'STEM244',
-                'birth_date' => Carbon::parse('2004-03-15'),
-                'age' => 17,
-                'sex' => 'Female',
-                'civil_status' => 'Single',
-                'address' => '2772 Roxas Boulevard, Pasay City',
-                'mobile_number' => '0927-729-4643 ',
-                'contact_person' => 'Sherwin Parker',
-                'contact_person_number' => '0987-654-321',
             ],
             [
+                'id' => 7,
                 'name' => 'Ayato Kamisato',
                 'email' => 'akamisato2@student.apc.edu.ph',
                 'role' => 0,
@@ -60,16 +46,9 @@ class CreateStudentSeeder extends Seeder
                 'year' => '1st Year',
                 'course' => 'STEM - SS',
                 'section' => 'SS231',
-                'birth_date' => Carbon::parse('1990-01-01'),
-                'age' => '33',
-                'sex' => 'Male',
-                'civil_status' => 'Single',
-                'address' => '123 Main Street, City, Country',
-                'mobile_number' => '0941-215-7765 ',
-                'contact_person' => 'John Doe',
-                'contact_person_number' => '0987-654-3210'
             ],
             [
+                'id' => 8,
                 'name' => 'Masha Scovgachn',
                 'email' => 'mscovgachn@student.apc.edu.ph',
                 'role' => 0,
@@ -78,14 +57,6 @@ class CreateStudentSeeder extends Seeder
                 'grade' => 'Grade 12',
                 'course' => 'ABM',
                 'section' => 'ABM241',
-                'birth_date' => Carbon::parse('2005-08-10'),
-                'age' => '17',
-                'sex' => 'Female',
-                'civil_status' => 'Single',
-                'address' => '123 ABC Street, Cityville',
-                'mobile_number' => '0935-765-0839 ',
-                'contact_person' => 'Ligaya Scovgachn',
-                'contact_person_number' => '0987-654-3210',
             ],
             [
                 'name' => 'Eugene Martaho',
@@ -96,14 +67,6 @@ class CreateStudentSeeder extends Seeder
                 'year' => '2nd Year',
                 'course' => 'BSCS - IT',
                 'section' => 'IT221',
-                //'birth_date' => '',
-                //'age' => '',
-                //'sex' => '',
-                //'civil_status' => '',
-                //'address' => '',
-                //'mobile_number' => '',
-                //'contact_person' => '',
-                //'contact_person_number' => '',
             ],
             [
                 'name' => 'Exia Martinez',
@@ -114,14 +77,6 @@ class CreateStudentSeeder extends Seeder
                 'year' => '3rd Year',
                 'course' => 'BSCS - SF',
                 'section' => 'SF211',
-                //'birth_date' => '',
-                //'age' => '',
-                //'sex' => '',
-                //'civil_status' => '',
-                //'address' => '',
-                //'mobile_number' => '',
-                //'contact_person' => '',
-                //'contact_person_number' => '',
             ],
             [
                 'name' => 'Anthony Tenrou',
