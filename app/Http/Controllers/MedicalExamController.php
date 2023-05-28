@@ -304,7 +304,7 @@ class MedicalExamController extends Controller
             '20_findings1',
             '21_findings1',
             '22_findings1',
-            'daignosis',
+            'diagnosis',
         ]);
         
         $physicalExaminationID = $physicalExamination->id;

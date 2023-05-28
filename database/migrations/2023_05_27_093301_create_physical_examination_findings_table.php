@@ -42,7 +42,7 @@ return new class extends Migration
             $table->text('20_findings1')->nullable();
             $table->text('21_findings1')->nullable();
             $table->text('22_findings1')->nullable();
-            $table->text('daignosis')->nullable();
+            $table->text('diagnosis')->nullable();
             $table->timestamps();
 
             //Foreign keys

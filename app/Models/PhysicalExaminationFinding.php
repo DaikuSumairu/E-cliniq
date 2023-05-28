@@ -39,7 +39,7 @@ class PhysicalExaminationFinding extends Model
         '20_findings1',
         '21_findings1',
         '22_findings1',
-        'daignosis',
+        'diagnosis',
     ];
 
     //it belongs to
