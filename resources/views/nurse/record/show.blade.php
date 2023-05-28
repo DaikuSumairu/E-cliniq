@@ -87,12 +87,17 @@
 
     <div class="mx-auto" style="width: 1200px;">
         <div class="row">
+            <!-- Date of specific item -->
             <div class="col-2 border">
                 <div id="consultation-date" class="mini-date">
                     <p>Consultation Date Here</p>
                 </div>
                 <div id="medical-exam-date" class="mini-date">
-                    <p>Medical Exam Date Here</p>
+                    @if(isset($record->medical_exam))
+                        <a><strong>Created at:</strong> {{ $record->medical_exam->date_created }}</a>
+                    @else
+                        <p>No medical exam data available.</p>
+                    @endif
                 </div>
                 <div id="dental-exam-date" class="mini-date">
                     <p>Dental Exam Date Here</p>
@@ -101,15 +106,16 @@
                     <p>Emergency Date Here</p>
                 </div>
             </div>
+
+            <!-- Content of specific item -->
             <div class="col border">
                 <!-- Consultation -->
-                <div id="consultation-content" class="mini-content">
-                    @if(isset($consultation))
-                        
+                <div id="consultation-content" class="mini-content pt-1">
+                    @if(isset($record->consultation))
+                        <!-- Consultation content -->
                     @else
-                        
                         <div class="text-center">
-                            <p>No consultation has been made.</p>
+                            <p>No consultation has been made. <a href="{{ route('nurse.medExamCreate', $record->id) }}">Create now.</a></p>
                         </div>
                     @endif
                 </div>
@@ -117,7 +123,7 @@
                 <!-- Medical Exam -->
                 <div id="medical-exam-content" class="mini-content pt-1">
                     @if(isset($record->medical_exam))
-                        @if(isset($record) && !empty($record))
+                    @if(isset($record) && !empty($record))
                             <div class="container" style="height: 275px; overflow: auto;">
                                 <h3><strong>I. Medical History</strong></h3>
                                 <div class="row row-cols-3">
@@ -705,7 +711,7 @@
                                                         {{ $record->medical_exam->physical_examination->corrected }}
                                                     </td>
                                                     <td>
-                                                    <div class="row">
+                                                        <div class="row">
                                                             <div class="col-0">
                                                                 {{ $record->medical_exam->physical_examination->physical_examination_finding['od_findings2'] }}
                                                             </div>
@@ -878,22 +884,22 @@
                         </div>
                     @endif
                 </div>
-                
+
                 <!-- Dental Exam -->
-                <div id="dental-exam-content" class="mini-content">
+                <div id="dental-exam-content" class="mini-content pt-1">
                     @if(isset($dental_exam))
-                        
+                        <!-- Dental exam content -->
                     @else
                         <div class="text-center">
                             <p>No dental exam has been made.</p>
                         </div>
                     @endif
                 </div>
-                
+
                 <!-- Emergency Report -->
-                <div id="emergency-report-content" class="mini-content">
-                    @if(isset($medical_report))
-    
+                <div id="emergency-report-content" class="mini-content pt-1">
+                    @if(isset($record->medical_report))
+                        <!-- Emergency report content -->
                     @else
                         <div class="text-center">
                             <p>No emergency report has been made.</p>
@@ -910,7 +916,7 @@
 @stop
 
 @section('js')
-<script>
+    <script>
         $(document).ready(function() {
             $('.show-content').click(function() {
                 // Hide all content divs
@@ -937,10 +943,10 @@
                 $('.show-date').removeClass('active');
                 $(this).addClass('active');
             });
-        });
 
-        // Hide all content and date divs on page load
-        $('.mini-content').hide();
-        $('.mini-date').hide();
+            // Hide all content and date divs on page load
+            $('.mini-content').hide();
+            $('.mini-date').hide();
+        });
     </script>
 @stop
