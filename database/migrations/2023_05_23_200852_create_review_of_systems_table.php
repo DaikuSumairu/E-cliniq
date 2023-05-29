@@ -14,16 +14,16 @@ return new class extends Migration
         Schema::create('review_of_systems', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->integer('medical_exam_id')->unsigned();
-            $table->string('skin');
-            $table->string('opthalmologic');
-            $table->string('ent');
-            $table->string('cardiovascular');
-            $table->string('respiratory');
-            $table->string('gastro_intestinal');
-            $table->string('neuro_psychiatric');
-            $table->string('hematology');
-            $table->string('genitourinary');
-            $table->string('musculo_skeletal');
+            $table->string('skin')->default('No');
+            $table->string('opthalmologic')->default('No');
+            $table->string('ent')->default('No');
+            $table->string('cardiovascular')->default('No');
+            $table->string('respiratory')->default('No');
+            $table->string('gastro_intestinal')->default('No');
+            $table->string('neuro_psychiatric')->default('No');
+            $table->string('hematology')->default('No');
+            $table->string('genitourinary')->default('No');
+            $table->string('musculo_skeletal')->default('No');
             $table->timestamps();
 
             //Foreign keys

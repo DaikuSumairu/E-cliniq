@@ -13,6 +13,8 @@
             <!-- Record ID Created (Hidden) -->
             <input type="hidden" name="record_id" value="{{ $record->id }}">
             <input type="hidden" name="date_created" value="{{ now() }}">
+
+            <!-- Medical History -->
             <h2><strong>I. Medical History</strong></h2>
             <div class="row row-cols-3">
                 <div class="col">
@@ -448,8 +450,10 @@
                         </table>
                     </div>
                 </div>
+
+                <!-- Physical Examination -->
                 <h2><strong>II. Physical Examination</strong></h2>
-                <div class="row mx-auto mb-3">
+                <div class="row mb-3">
                     <div class="col border">
                         <p class="mb-1"><strong>Height:</strong></p>
                         <div class="row">
@@ -754,20 +758,12 @@
             textarea.disabled = checkbox.checked;
             if (!checkbox.checked) {
                 textarea.value = ""; // Clear input text
-                checkbox.value = "No";
+                checkbox.value = "No"; // Set checkbox value to "No"
                 textarea.required = true;
             }else{
-                textarea.value = "Not Applicable"
-                checkbox.value = "Yes";
+                textarea.value = "Not Applicable";
+                checkbox.value = "Yes"; // Set checkbox value to "Yes"
                 textarea.required = false;
-            }
-        }
-
-        function clearInput(checkboxId) {
-            var textarea = document.getElementById("findingsTextarea_" + checkboxId);
-            var checkbox = document.getElementById(checkboxId);
-            if (!checkbox.checked) {
-                textarea.value = ""; // Clear input text
             }
         }
 
@@ -818,6 +814,10 @@
                     od1Input.required = false;
                     osInput.required = false;
                     os1Input.required = false;
+                    odInput.value = '';
+                    od1Input.value = '';
+                    osInput.value = '';
+                    os1Input.value = '';
                 } else if (type === 'corrected'){
                     od12Input.disabled = true;
                     od123Input.disabled = true;
@@ -827,6 +827,10 @@
                     od123Input.required = false;
                     os12Input.required = false;
                     os123Input.required = false;
+                    od12Input.value = '';
+                    od123Input.value = '';
+                    os12Input.value = '';
+                    os123Input.value = '';
                 } 
             } else {
                 checkbox.value = "No";
@@ -847,15 +851,15 @@
                 } else if (type === 'medication'){
                     medicationText.disabled = true;
                     medicationText.required = false;
-                    medicationText.value = "";
+                    medicationText.value = '';
                 } else if (type === 'hospitalization'){
                     hospInput.disabled = true;
                     hospInput.required = false;
-                    hospInput.value = "";
+                    hospInput.value = '';
                 } else if (type === 'operation'){
                     opInput.disabled = true;
                     opInput.required = false;
-                    opInput.value = "";
+                    opInput.value = '';
                 } else if (type === 'eyes'){
                     odInput.disabled = false;
                     od1Input.disabled = false;

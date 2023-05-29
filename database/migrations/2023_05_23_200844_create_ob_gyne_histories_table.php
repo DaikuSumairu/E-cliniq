@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('ob_gyne_histories', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->integer('medical_exam_id')->unsigned();
-            $table->string('lnmp');
-            $table->string('ob_score');
-            $table->string('abnormal_pregnancies');
-            $table->string('date_of_last_delivery');
-            $table->string('breast_uterus_ovaries');
+            $table->string('lnmp')->default('No');
+            $table->string('ob_score')->default('No');
+            $table->string('abnormal_pregnancies')->default('No');
+            $table->string('date_of_last_delivery')->default('No');
+            $table->string('breast_uterus_ovaries')->default('No');
             $table->timestamps();
 
             //Foreign keys

@@ -14,18 +14,18 @@ return new class extends Migration
         Schema::create('family_histories', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->integer('medical_exam_id')->unsigned();
-            $table->string('bronchial_asthma_1');
-            $table->string('diabetes_melilitus_1');
-            $table->string('thyroid_disorder_1');
-            $table->string('opthalmologic_disease');
-            $table->string('cancer');
-            $table->string('cardiac_disorder_1');
-            $table->string('hypertension_1');
-            $table->string('tuberculosis_1');
-            $table->string('nervous_disorder');
-            $table->string('musculoskeletal');
-            $table->string('liver_disease');
-            $table->string('kidney_disease');
+            $table->string('bronchial_asthma_1')->default('No');
+            $table->string('diabetes_melilitus_1')->default('No');
+            $table->string('thyroid_disorder_1')->default('No');
+            $table->string('opthalmologic_disease')->default('No');
+            $table->string('cancer')->default('No');
+            $table->string('cardiac_disorder_1')->default('No');
+            $table->string('hypertension_1')->default('No');
+            $table->string('tuberculosis_1')->default('No');
+            $table->string('nervous_disorder')->default('No');
+            $table->string('musculoskeletal')->default('No');
+            $table->string('liver_disease')->default('No');
+            $table->string('kidney_disease')->default('No');
             $table->text('others_1')->nullable();
             $table->timestamps();
 

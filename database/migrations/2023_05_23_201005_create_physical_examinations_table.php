@@ -23,28 +23,28 @@ return new class extends Migration
             $table->integer('bmi');
 
             //major table
-            $table->string('general_appearance');
-            $table->string('skin1');
-            $table->string('head_and_scalp');
-            $table->string('eyes');
-            $table->string('corrected');
-            $table->string('pupils');
-            $table->string('ear_eardrums');
-            $table->string('nose_sinuses');
-            $table->string('mouth_throat');
-            $table->string('neck_thyroid');
-            $table->string('chest_breast_axilla');
-            $table->string('heart_cardiovascular');
-            $table->string('lungs_respiratory');
-            $table->string('abdomen');
-            $table->string('back_flanks');
-            $table->string('anus_rectum');
-            $table->string('genito_urinary_system');
-            $table->string('inguinal_genitals');
-            $table->string('musculo_skeletal1');
-            $table->string('extremities');
-            $table->string('reflexes');
-            $table->string('neurological');
+            $table->string('general_appearance')->default('No');
+            $table->string('skin1')->default('No');
+            $table->string('head_and_scalp')->default('No');
+            $table->string('eyes')->default('No');
+            $table->string('corrected')->default('No');
+            $table->string('pupils')->default('No');
+            $table->string('ear_eardrums')->default('No');
+            $table->string('nose_sinuses')->default('No');
+            $table->string('mouth_throat')->default('No');
+            $table->string('neck_thyroid')->default('No');
+            $table->string('chest_breast_axilla')->default('No');
+            $table->string('heart_cardiovascular')->default('No');
+            $table->string('lungs_respiratory')->default('No');
+            $table->string('abdomen')->default('No');
+            $table->string('back_flanks')->default('No');
+            $table->string('anus_rectum')->default('No');
+            $table->string('genito_urinary_system')->default('No');
+            $table->string('inguinal_genitals')->default('No');
+            $table->string('musculo_skeletal1')->default('No');
+            $table->string('extremities')->default('No');
+            $table->string('reflexes')->default('No');
+            $table->string('neurological')->default('No');
             $table->timestamps();
 
             //Foreign keys
