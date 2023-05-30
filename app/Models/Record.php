@@ -28,6 +28,10 @@ class Record extends Model
     {
         return $this->hasOne(MedicalExam::class);
     }
+    public function consultation()
+    {
+        return $this->hasOne(Consultation::class);
+    }
 
     //it belongs to
     public function user()

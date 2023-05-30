@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\MedicalExamController;
+use App\Http\Controllers\ConsultationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -97,6 +98,17 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
     ])->except([
         'create','edit'
     ]);
+
+    //Record Item (Consultation)
+    Route::resource('nurse/records/consultation', ConsultationController::class)->names([
+        'store' => 'nurse.consultationStore',
+        'edit' => 'nurse.consultationExamEdit',
+        'update' => 'nurse.consultationUpdate',
+    ])->except([
+        'index', 'show', 'delete'
+    ]);
+    Route::get('nurse/records/consultation/{record}', [ConsultationController::class, 'create'])
+        ->name('nurse.consultationCreate');
 
     //Record Item (Medical Exam)
     Route::resource('nurse/records/medical_exam', MedicalExamController::class)->names([

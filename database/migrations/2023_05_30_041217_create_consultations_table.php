@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('medical_exams', function (Blueprint $table) {
+        Schema::create('consultations', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->integer('record_id')->unsigned();
             $table->date('date_created');
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('medical_exams');
+        Schema::dropIfExists('consultations');
     }
 };
