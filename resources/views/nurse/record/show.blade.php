@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <!-- Genral Information -->
+    <!-- General Information -->
     <div class="container shadow mt-4 px-4 py-3 mx-auto mb-3" style="border-style: solid; border-color: #bfbfbf;">
         <div class="row">
             <!-- Right Side -->
@@ -90,7 +90,11 @@
             <!-- Date of specific item -->
             <div class="col-2 border">
                 <div id="consultation-date" class="mini-date">
-                    <p>Consultation Date Here</p>
+                    @if(isset($record->consultation))
+                        <a><strong>Created at:</strong> {{ $record->consultation->date_created }}</a>
+                    @else
+                        <p>No consultation data available.</p>
+                    @endif
                 </div>
                 <div id="medical-exam-date" class="mini-date">
                     @if(isset($record->medical_exam))
@@ -930,7 +934,7 @@
                         <!-- Dental exam content -->
                     @else
                         <div class="text-center">
-                            <p>No dental exam has been made.</p>
+                            <p>No dental exam has been made. <a href="{{ route('nurse.dentalExamCreate', $record->id) }}">Create now.</a></p></p>
                         </div>
                     @endif
                 </div>

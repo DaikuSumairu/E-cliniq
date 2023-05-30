@@ -5,8 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\MedicalExamController;
 use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\MedicalExamController;
+use App\Http\Controllers\DentalExamController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -107,7 +108,7 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
     ])->except([
         'index', 'show', 'delete'
     ]);
-    Route::get('nurse/records/consultation/{record}', [ConsultationController::class, 'create'])
+    Route::get('nurse/records/consultation/create/{record}', [ConsultationController::class, 'create'])
         ->name('nurse.consultationCreate');
 
     //Record Item (Medical Exam)
@@ -118,8 +119,19 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
     ])->except([
         'index', 'show', 'delete'
     ]);
-    Route::get('nurse/records/medical_exam/{record}', [MedicalExamController::class, 'create'])
+    Route::get('nurse/records/medical_exam/create/{record}', [MedicalExamController::class, 'create'])
         ->name('nurse.medExamCreate');
+
+    //Record Item (Dental Exam)
+    Route::resource('nurse/records/dental_exam', DentalExamController::class)->names([
+        'store' => 'nurse.dentalExamStore',
+        'edit' => 'nurse.dentalExamEdit',
+        'update' => 'nurse.dentalExamUpdate',
+    ])->except([
+        'index', 'show', 'delete'
+    ]);
+    Route::get('nurse/records/dental_exam/create/{record}', [DentalExamController::class, 'create'])
+        ->name('nurse.dentalExamCreate');
 
     //Inventory
     Route::resource('inventory', InventoryController::class)->names([

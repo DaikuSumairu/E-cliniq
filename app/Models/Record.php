@@ -24,13 +24,17 @@ class Record extends Model
     ];
 
     //has relationship
+    public function consultation()
+    {
+        return $this->hasOne(Consultation::class);
+    }
     public function medical_exam()
     {
         return $this->hasOne(MedicalExam::class);
     }
-    public function consultation()
+    public function dental_exam()
     {
-        return $this->hasOne(Consultation::class);
+        return $this->hasOne(DentalExam::class);
     }
 
     //it belongs to
