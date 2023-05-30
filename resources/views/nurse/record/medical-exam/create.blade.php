@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Creating Medical Exam')
+@section('title', 'Creating Medical Examination Record')
 
 @section('content_header')
-    <h1>Creating Medical Exam</h1>
+    <h1>Creating Medical Examination Record</h1>
 @stop
 
 @section('content')
