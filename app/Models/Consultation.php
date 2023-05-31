@@ -16,7 +16,7 @@ class Consultation extends Model
     ];
     
     //has relationship
-    public function consultaion_response()
+    public function consultation_response()
     {
         return $this->hasOne(ConsultationResponse::class);
     }

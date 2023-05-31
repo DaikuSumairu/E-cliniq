@@ -30,15 +30,15 @@ class ConsultationController extends Controller
      */
     public function store(Request $request)
     {
-        // Connect Medical Exam ID to that specific Record ID
+        // Connect Consultation ID to that specific Record ID
         $recordID = $request->input('record_id');
         $consultationData = $request->all();
         $consultationData['record_id'] = $recordID;
 
-        // Create Medical Exam
+        // Create Consultation
         $consultation = Consultation::create($consultationData);
 
-        // Connect Past Medical History ID to the Medical Exam ID
+        // Connect Consultation Response ID to the Consultation ID
         $request->validate([
             'complaint',
             'pulse',
@@ -55,7 +55,7 @@ class ConsultationController extends Controller
         $consultationResponseData = $request->all();
         $consultationResponseData['consultation_id'] = $consultationID;
 
-        // Create Past Medical History
+        // Create Consultation Response
         ConsultationResponse::create($consultationResponseData);
         
         return redirect()->route('nurse.recordShow', ['record' => $recordID])->with('success', 'Record created successfully.');

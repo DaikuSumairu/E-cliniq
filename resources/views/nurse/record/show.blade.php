@@ -116,7 +116,100 @@
                 <!-- Consultation -->
                 <div id="consultation-content" class="mini-content pt-1">
                     @if(isset($record->consultation))
-                        <!-- Consultation content -->
+                        @if(isset($record) && !empty($record))
+                            <div class="container" style="height: 275px; overflow: auto;">
+                                <!-- Complaint -->
+                                <div class="row mx-auto mt-1">
+                                    <div class="col-0 ml-1">
+                                        <p class="h5"><strong>Complaint:</strong></p>
+                                    </div>
+                                    <div class="col">
+                                        {{ $record->consultation->consultation_response->complaint }}
+                                    </div>
+                                </div>
+                                <div class="row mx-auto mt-1">
+                                    <div class="col pt-2">
+                                        <h4><strong>Vital Signs:</strong></h4>
+                                    </div>
+                                </div>
+                                <div class="row mx-auto">
+                                    <div class="col border">
+                                        <div class="row">
+                                            <div class="col-0 ml-3 mt-2">
+                                                <p><strong>Pulse / Heart Rate:</strong></p>
+                                            </div>
+                                            <div class="col mt-2">
+                                                {{ $record->consultation->consultation_response->pulse }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col border">
+                                        <div class="row">
+                                            <div class="col-0 ml-3 mt-2">
+                                                <p><strong>Oxygen:</strong></p>
+                                            </div>
+                                            <div class="col mt-2">
+                                                {{ $record->consultation->consultation_response->oxygen }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col border">
+                                        <div class="row">
+                                            <div class="col-0 ml-3 mt-2">
+                                                <p><strong>Respiratory Rate:</strong></p>
+                                            </div>
+                                            <div class="col mt-2 ">
+                                                {{ $record->consultation->consultation_response->respiratory_rate }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col border">
+                                        <div class="row">
+                                            <div class="col-0 ml-3 mt-2" style="height: 25px;">
+                                                <p><strong>Blood Pressure:</strong></p>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-0" style="margin-left: 21px;">
+                                                    {{ $record->consultation->consultation_response['bp1'] }}
+                                                </div>
+                                                <div class="col-0 ml-2">
+                                                    <p>/</p>
+                                                </div>
+                                                <div class="col">
+                                                    {{ $record->consultation->consultation_response['bp2'] }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col border">
+                                        <div class="row">
+                                            <div class="col-0 ml-3 mt-2">
+                                                <p><strong>Temperature:</strong></p>
+                                            </div>
+                                            <div class="col mt-2">
+                                                {{ $record->consultation->consultation_response->temperature }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Treatment -->
+                                <div class="row mx-auto mt-3 border">
+                                    <div class="col pt-2">
+                                        <h4><strong>Treatment: </strong></h4>
+                                        {{ $record->consultation->consultation_response->treatment }}
+                                    </div>
+                                </div>
+
+                                <!-- Remarks -->
+                                <div class="row mx-auto my-3 border">
+                                    <div class="col pt-2">
+                                        <h4><strong>Nurse Remarks: </strong></h4>
+                                        {{ $record->consultation->consultation_response->remarks }}
+                                    </div>
+                                </div>
+                            </div>    
+                        @endif
                     @else
                         <div class="text-center">
                             <p>No consultation has been made. <a href="{{ route('nurse.consultationCreate', $record->id) }}">Create now.</a></p>
@@ -930,8 +1023,585 @@
 
                 <!-- Dental Exam -->
                 <div id="dental-exam-content" class="mini-content pt-1">
-                    @if(isset($dental_exam))
-                        <!-- Dental exam content -->
+                    @if(isset($record->dental_exam))
+                        @if(isset($record) && !empty($record))
+                            <div class="container" style="height: 275px; overflow: auto;">
+                                <h3 class="mt-2"><strong>INTRAORAL EXAMINATION</strong></h3>
+
+                                <!-- Oral Hygiene -->
+                                <div class="row mx-auto">
+                                    <div class="col-0" style="margin-right: 442px;margin-left: 85px;">
+                                        <p class="h5">Oral Hygiene</p>
+                                    </div>
+                                    <div class="col-1 pt-1">
+                                        {{ $record->dental_exam->dental_exam_response->oral_hygiene }}
+                                    </div>
+                                </div>
+
+                                <!-- Gingival Color -->
+                                <div class="row mx-auto">
+                                    <div class="col-0" style="margin-right: 440px;margin-left: 75px;">
+                                        <p class="h5">Gingival Color</p>
+                                    </div>
+                                    <div class="col-1 pt-1">
+                                        {{ $record->dental_exam->dental_exam_response->gingival_color }}
+                                    </div>
+                                </div>
+
+                                <!-- Consistency of the Gingival -->
+                                <div class="row mx-auto">
+                                    <div class="col-0" style="margin-right: 370px;margin-left: 25px;">
+                                        <p class="h5">Consistency of the Gingival</p>
+                                    </div>
+                                    <div class="col-1 pt-1">
+                                        {{ $record->dental_exam->dental_exam_response->consistency_of_the_gingival }}
+                                    </div>
+                                </div>
+
+                                <!-- Oral Prophylaxis -->
+                                <div class="row mx-auto">
+                                    <div class="col-0" style="margin-right: 427px;margin-left: 25px;">
+                                        <p class="ml-5 h5">Oral Prophylaxis</p>
+                                    </div>
+                                    <div class="col-1 pt-1">
+                                        {{ $record->dental_exam->dental_exam_response->oral_prophylaxis }}
+                                    </div>
+                                </div>
+
+                                <!-- Restoration of: -->
+                                <div class="row mt-1 my-2">
+                                    <div class="row" style="width: 155px; padding-top: 65px;">
+                                        <div class="col-0" style="margin-right: 370px;margin-left: 25px;">
+                                            <p class="h5" style="margin-left: 78px; width: 125px;">Restoration of:</p>
+                                        </div>
+                                    </div>
+                                    <div class="row-0">
+                                        <!-- Numbers -->
+                                        <div class="row" style="margin-left: 265px;">
+                                            <!-- Left -->
+                                            <div class="col">
+                                                <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
+                                                    <div class="col-0" style="margin-left: 15px;">
+                                                        <p>8</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 25px;">
+                                                        <p>7</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 28px;">
+                                                        <p>6</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 25px;">
+                                                        <p>5</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>4</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>3</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>2</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>1</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Right -->
+                                            <div class="col">
+                                                <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
+                                                    <div class="col-0" style="margin-left: 22px;">
+                                                        <p>1</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 25px;">
+                                                        <p>2</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 28px;">
+                                                        <p>3</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 25px;">
+                                                        <p>4</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>5</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>6</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>7</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>8</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Top -->
+                                        <div class="row" style="margin-left: 265px;">
+                                            <!-- Left -->
+                                            <div class="col">
+                                                <div class="row" style="width: 278px; padding-right: 5px; border-right: 1px solid; border-bottom: 1px solid;">
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_lt8" name="restoration_lt8" value="8" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_lt7" name="restoration_lt7" value="7" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_lt6" name="restoration_lt6" value="6" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_lt5" name="restoration_lt5" value="5" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_lt4" name="restoration_lt4" value="4" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_lt3" name="restoration_lt3" value="3" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_lt2" name="restoration_lt2" value="2" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_lt1" name="restoration_lt1" value="1" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Right -->
+                                            <div class="col">
+                                                <div class="row" style="width: 278px; padding-left: 5px; border-left: 1px solid; border-bottom: 1px solid;">
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_rt1" name="restoration_rt1" value="1" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_rt2" name="restoration_rt2" value="2" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_rt3" name="restoration_rt3" value="3" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_rt4" name="restoration_rt4" value="4" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_rt5" name="restoration_rt5" value="5" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_rt6" name="restoration_rt6" value="6" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_rt7" name="restoration_rt7" value="7" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_rt8" name="restoration_rt8" value="8" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Bottom -->
+                                        <div class="row" style="margin-left: 265px;">
+                                            <!-- Left -->
+                                            <div class="col">
+                                                <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px; border-right: 1px solid; border-top: 1px solid;">
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_lb8" name="restoration_lb8" value="8" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_lb7" name="restoration_lb7" value="7" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_lb6" name="restoration_lb6" value="6" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_lb5" name="restoration_lb5" value="5" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_lb4" name="restoration_lb4" value="4" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_lb3" name="restoration_lb3" value="3" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_lb2" name="restoration_lb2" value="2" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_lb1" name="restoration_lb1" value="1" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Right -->
+                                            <div class="col">
+                                                <div class="row" style="width: 278px; padding-left: 5px; padding-top: 5px; border-left: 1px solid; border-top: 1px solid;">
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_rb1" name="restoration_rb1" value="1" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_rb2" name="restoration_rb2" value="2" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_rb3" name="restoration_rb3" value="3" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_rb4" name="restoration_rb4" value="4" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_rb5" name="restoration_rb5" value="5" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_rb6" name="restoration_rb6" value="6" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_rb7" name="restoration_rb7" value="7" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="restoration_rb8" name="restoration_rb8" value="8" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Numbers -->
+                                        <div class="row" style="margin-left: 265px;">
+                                            <!-- Left -->
+                                            <div class="col">
+                                                <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
+                                                    <div class="col-0" style="margin-left: 15px;">
+                                                        <p>8</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 25px;">
+                                                        <p>7</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 28px;">
+                                                        <p>6</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 25px;">
+                                                        <p>5</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>4</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>3</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>2</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>1</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Right -->
+                                            <div class="col">
+                                                <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
+                                                    <div class="col-0" style="margin-left: 22px;">
+                                                        <p>1</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 25px;">
+                                                        <p>2</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 28px;">
+                                                        <p>3</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 25px;">
+                                                        <p>4</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>5</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>6</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>7</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>8</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tooth Extraction of: -->
+                                <div class="row mt-3">
+                                    <div class="row" style="width: 203px; padding-top: 65px;">
+                                        <div class="col-0" style="margin-right: 370px;margin-left: 25px;">
+                                            <p class="h5" style="margin-left: 55px; width: 165px;">Tooth Extraction of:</p>
+                                        </div>
+                                    </div>
+                                    <div class="row-0">
+                                        <!-- Numbers -->
+                                        <div class="row" style="margin-left: 217px;">
+                                            <!-- Left -->
+                                            <div class="col">
+                                                <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
+                                                    <div class="col-0" style="margin-left: 15px;">
+                                                        <p>8</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 25px;">
+                                                        <p>7</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 28px;">
+                                                        <p>6</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 25px;">
+                                                        <p>5</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>4</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>3</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>2</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>1</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Right -->
+                                            <div class="col">
+                                                <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
+                                                    <div class="col-0" style="margin-left: 22px;">
+                                                        <p>1</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 25px;">
+                                                        <p>2</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 28px;">
+                                                        <p>3</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 25px;">
+                                                        <p>4</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>5</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>6</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>7</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>8</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Top -->
+                                        <div class="row" style="margin-left: 217px;">
+                                            <!-- Left -->
+                                            <div class="col">
+                                                <div class="row" style="width: 278px; padding-right: 5px; border-right: 1px solid; border-bottom: 1px solid;">
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_lt8" name="extraction_lt8" value="8" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_lt7" name="extraction_lt7" value="7" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_lt6" name="extraction_lt6" value="6" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_lt5" name="extraction_lt5" value="5" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_lt4" name="extraction_lt4" value="4" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_lt3" name="extraction_lt3" value="3" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_lt2" name="extraction_lt2" value="2" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_lt1" name="extraction_lt1" value="1" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Right -->
+                                            <div class="col">
+                                                <div class="row" style="width: 278px; padding-left: 5px; border-left: 1px solid; border-bottom: 1px solid;">
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_rt1" name="extraction_rt1" value="1" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_rt2" name="extraction_rt2" value="2" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_rt3" name="extraction_rt3" value="3" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_rt4" name="extraction_rt4" value="4" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_rt5" name="extraction_rt5" value="5" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_rt6" name="extraction_rt6" value="6" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_rt7" name="extraction_rt7" value="7" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_rt8" name="extraction_rt8" value="8" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Bottom -->
+                                        <div class="row" style="margin-left: 217px;">
+                                            <!-- Left -->
+                                            <div class="col">
+                                                <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px; border-right: 1px solid; border-top: 1px solid;">
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_lb8" name="extraction_lb8" value="8" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_lb7" name="extraction_lb7" value="7" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_lb6" name="extraction_lb6" value="6" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_lb5" name="extraction_lb5" value="5" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_lb4" name="extraction_lb4" value="4" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_lb3" name="extraction_lb3" value="3" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_lb2" name="extraction_lb2" value="2" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_lb1" name="extraction_lb1" value="1" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Right -->
+                                            <div class="col">
+                                                <div class="row" style="width: 278px; padding-left: 5px; padding-top: 5px; border-left: 1px solid; border-top: 1px solid;">
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_rb1" name="extraction_rb1" value="1" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_rb2" name="extraction_rb2" value="2" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_rb3" name="extraction_rb3" value="3" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_rb4" name="extraction_rb4" value="4" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_rb5" name="extraction_rb5" value="5" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_rb6" name="extraction_rb6" value="6" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_rb7" name="extraction_rb7" value="7" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        <input type="checkbox" id="extraction_rb8" name="extraction_rb8" value="8" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Numbers -->
+                                        <div class="row" style="margin-left: 217px;">
+                                            <!-- Left -->
+                                            <div class="col">
+                                                <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
+                                                    <div class="col-0" style="margin-left: 15px;">
+                                                        <p>8</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 25px;">
+                                                        <p>7</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 28px;">
+                                                        <p>6</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 25px;">
+                                                        <p>5</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>4</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>3</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>2</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>1</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Right -->
+                                            <div class="col">
+                                                <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
+                                                    <div class="col-0" style="margin-left: 22px;">
+                                                        <p>1</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 25px;">
+                                                        <p>2</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 28px;">
+                                                        <p>3</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 25px;">
+                                                        <p>4</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>5</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>6</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>7</p>
+                                                    </div>
+                                                    <div class="col-0" style="margin-left: 26px;">
+                                                        <p>8</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Prosthodontic Restoration -->
+                                <div class="row mt-1">
+                                    <div class="col-0" style="margin-right: 370px;margin-left: 54px;">
+                                        <p class="h5">Prosthodontic Restoration</p>
+                                    </div>
+                                    <div class="col-1 pt-1">
+                                        {{ $record->dental_exam->dental_exam_response->prosthodontic_restoration }}
+                                    </div>
+                                </div>
+
+                                <!-- See an Orthodontist -->
+                                <div class="row mt-3">
+                                    <div class="col-0" style="margin-right: 400px;margin-left: 75px;">
+                                        <p class="h5">See an Orthodontist</p>
+                                    </div>
+                                    <div class="col-1 pt-1">
+                                        {{ $record->dental_exam->dental_exam_response->orthodontist }}
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     @else
                         <div class="text-center">
                             <p>No dental exam has been made. <a href="{{ route('nurse.dentalExamCreate', $record->id) }}">Create now.</a></p></p>

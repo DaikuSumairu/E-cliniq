@@ -17,11 +17,11 @@ return new class extends Migration
             $table->string('oral_hygiene');
             $table->string('gingival_color');
             $table->string('consistency_of_the_gingival');
-            $table->string('oral_prophylaxis');
-            $table->string('restoration');
-            $table->string('extraction');
-            $table->string('prosthodontic_restoration');
-            $table->string('orthodontist');
+            $table->string('oral_prophylaxis')->default('No');
+            $table->string('restoration')->default('No');
+            $table->string('extraction')->default('No');
+            $table->string('prosthodontic_restoration')->default('No');
+            $table->string('orthodontist')->default('No');
             $table->timestamps();
 
             //Foreign keys

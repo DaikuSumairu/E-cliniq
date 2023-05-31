@@ -109,7 +109,7 @@ class CreateStudentSeeder extends Seeder
                 'section' => 'STEM232',
             ],
             [
-                'name' => 'Mia Khalifa',
+                'name' => 'Mia Kalista',
                 'email' => 'mkhalifa@student.apc.edu.ph',
                 'role' => 0,
                 'password' => bcrypt('Sample123456'),
