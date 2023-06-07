@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('bp2');
             $table->integer('cardiac_rate');
             $table->integer('respiratory_rate');
-            $table->integer('bmi');
+            $table->float('bmi');
 
             //major table
             $table->string('general_appearance')->default('No');

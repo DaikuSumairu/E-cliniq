@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('respiratory_rate');
             $table->integer('bp1');
             $table->integer('bp2');
-            $table->integer('temperature');
+            $table->float('temperature');
             $table->text('treatment');
             $table->text('remarks');
             $table->timestamps();

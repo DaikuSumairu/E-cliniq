@@ -458,10 +458,7 @@
                         <p class="mb-1"><strong>Height:</strong></p>
                         <div class="row">
                             <div class="col-0 ml-2">
-                                <input type="number" name="height" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="height" required>
-                            </div>
-                            <div class="col-0">
-                                <p>cm.</p>
+                                <input type="number" name="height" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="height" required>cm.
                             </div>
                         </div>
                     </div> 
@@ -469,38 +466,61 @@
                         <p class="mb-1"><strong>Weight:</strong></p>
                         <div class="row">
                             <div class="col-0 ml-2">
-                                <input type="number" name="weight" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="weight" required>
-                            </div>
-                            <div class="col-0">
-                                <p>kg.</p>
+                                <input type="number" name="weight" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="weight" required>kg.
                             </div>
                         </div>
                     </div> 
                     <div class="col border">
-                        <p class="mb-1"><strong>BP:</strong></p>
+                        <p class="mb-1"><strong>BP (mm/hg):</strong></p>
                         <div class="row">
-                            <div class="col-0 ml-2">
-                                <input type="number" name="bp1" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="bp1" required>
+                            <div class="col-0" style="margin-left: 1px;">
+                                <input type="number" name="bp1" class="col-0 mx-1 mb-1" style="height: 25px; width: 50px;" id="bp1" required>
                             </div>
-                            <div class="col-0 ml-2">
+                            <div class="col-0">
                                 <p>/</p>
                             </div>
-                            <div class="col">
-                                <input type="number" name="bp2" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="bp2" required>
+                            <div class="col-0">
+                                <input type="number" name="bp2" class="col-0 mx-1 mb-1" style="height: 25px; width: 50px;" id="bp2" required>
+                            </div>
+                            <div class="col-0 mb-1 ml-1">
+                                <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpBP" style="display: none;"></i>
+                                <i class="fas fa-arrow-down mt-1 mx-1" id="arrowDownBP" style="display: none;"></i>
                             </div>
                         </div>
                     </div> 
                     <div class="col border">
                         <p class="mb-1"><strong>Cardiac Rate:</strong></p>
-                        <input type="number" name="cardiac_rate" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="cardiac_rate" required>
+                        <div class="row">
+                            <div class="col-0">
+                                <input type="number" name="cardiac_rate" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="cardiac_rate" required>
+                            </div>
+                            <div class="col-0">
+                                <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpCR" style="display: none;"></i>
+                                <i class="fas fa-arrow-down mt-1 mx-1" id="arrowDownCR" style="display: none;"></i>
+                            </div>
+                            <div class="col-0">
+                                BPM
+                            </div>
+                        </div>
                     </div> 
                     <div class="col border">
                         <p class="mb-1"><strong>Respiratory Rate</strong></p>
-                        <input type="number" name="respiratory_rate" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="respiratory_rate" required>
+                        <div class="row">
+                            <div class="col-0">
+                                <input type="number" name="respiratory_rate" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="respiratory_rate" required>
+                            </div>
+                            <div class="col-0">
+                                <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpRR" style="display: none;"></i>
+                                <i class="fas fa-arrow-down mt-1 mx-1" id="arrowDownRR" style="display: none;"></i>
+                            </div>
+                            <div class="col-0">
+                                BPM
+                            </div>
+                        </div>
                     </div> 
                     <div class="col border">
                         <p class="mb-1"><strong>BMI:</strong></p>
-                        <input type="number" name="bmi" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="bmi" required>
+                        <input type="number" name="bmi" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="bmi" readonly>
                     </div> 
                 </div>
 
@@ -902,4 +922,110 @@
             resize: none;
         }
     </style>
+
+    <!-- Restriction and Arrow determination of BP -->
+    <script>
+        const bp1Input = document.getElementById('bp1');
+        const bp2Input = document.getElementById('bp2');
+        const arrowUpBP = document.getElementById('arrowUpBP');
+        const arrowDownBP = document.getElementById('arrowDownBP');
+
+        bp1Input.addEventListener('input', validateBP);
+        bp2Input.addEventListener('input', validateBP);
+
+        function validateBP() {
+            const bp1Value = parseFloat(bp1Input.value);
+            const bp2Value = parseFloat(bp2Input.value);
+
+            if (bp1Value <= bp2Value) {
+                bp1Input.setCustomValidity("This area must be greater than hg");
+                bp2Input.setCustomValidity("This area must be smaller than mm.");
+            } else {
+                bp1Input.setCustomValidity('');
+                bp2Input.setCustomValidity('');
+            }
+
+            if (bp1Value < 90 && bp2Value < 60) {
+                arrowUpBP.style.display = 'none';
+                arrowDownBP.style.display = 'block';
+            } else if (bp1Value > 120 && bp2Value > 80) {
+                arrowUpBP.style.display = 'block';
+                arrowDownBP.style.display = 'none';
+            } else {
+                arrowUpBP.style.display = 'none';
+                arrowDownBP.style.display = 'none';
+            }
+        }
+    </script>
+
+    <!-- Restriction and Arrow determination of Cardiac Rate -->
+    <script>
+        const cardiacRateInput = document.getElementById('cardiac_rate');
+        const arrowUpCR = document.getElementById('arrowUpCR');
+        const arrowDownCR = document.getElementById('arrowDownCR');
+
+        cardiacRateInput.addEventListener('input', validateCardiacRate);
+
+        function validateCardiacRate() {
+            const cardiacRateValue = parseFloat(cardiacRateInput.value);
+
+            if (cardiacRateValue < 60) {
+                arrowUpCR.style.display = 'none';
+                arrowDownCR.style.display = 'block';
+            } else if (cardiacRateValue > 100) {
+                arrowUpCR.style.display = 'block';
+                arrowDownCR.style.display = 'none';
+            } else {
+                arrowUpCR.style.display = 'none';
+                arrowDownCR.style.display = 'none';
+            }
+        }
+    </script>
+
+    <!-- Restriction and Arrow determination of Respiratory Rate -->
+    <script>
+        const respiratoryRateInput = document.getElementById('respiratory_rate');
+        const arrowUpRR = document.getElementById('arrowUpRR');
+        const arrowDownRR = document.getElementById('arrowDownRR');
+
+        respiratoryRateInput.addEventListener('input', validateRespiratoryRate);
+
+        function validateRespiratoryRate() {
+            const respiratoryRateValue = parseFloat(respiratoryRateInput.value);
+
+            if (respiratoryRateValue < 16) {
+                arrowUpRR.style.display = 'none';
+                arrowDownRR.style.display = 'block';
+            } else if (respiratoryRateValue > 24) {
+                arrowUpRR.style.display = 'block';
+                arrowDownRR.style.display = 'none';
+            } else {
+                arrowUpRR.style.display = 'none';
+                arrowDownRR.style.display = 'none';
+            }
+        }
+    </script>
+
+    <!-- BMI Formula -->
+    <script>
+        const heightInput = document.getElementById('height');
+        const weightInput = document.getElementById('weight');
+        const bmiInput = document.getElementById('bmi');
+
+        heightInput.addEventListener('input', calculateBMI);
+        weightInput.addEventListener('input', calculateBMI);
+
+        function calculateBMI() {
+            const height = parseFloat(heightInput.value) / 100; // Convert cm to meters
+            const weight = parseFloat(weightInput.value);
+
+            if (isNaN(height) || isNaN(weight)) {
+                bmiInput.value = ''; // Clear the BMI if either height or weight is not a number
+                return;
+            }
+
+            const bmi = weight / (height * height);
+            bmiInput.value = bmi.toFixed(2); // Display BMI with two decimal places
+        }
+    </script>
 @stop

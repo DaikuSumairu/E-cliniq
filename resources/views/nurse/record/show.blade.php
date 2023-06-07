@@ -716,10 +716,7 @@
                                     <p class="mb-1"><strong>Height:</strong></p>
                                     <div class="row">
                                         <div class="col-0 ml-2">
-                                            {{ $record->medical_exam->physical_examination->height }}
-                                        </div>
-                                        <div class="col-0">
-                                            <p>cm.</p>
+                                            {{ $record->medical_exam->physical_examination->height }} cm.
                                         </div>
                                     </div>
                                 </div> 
@@ -727,10 +724,7 @@
                                     <p class="mb-1"><strong>Weight:</strong></p>
                                     <div class="row">
                                         <div class="col-0 ml-2">
-                                            {{ $record->medical_exam->physical_examination->weight }}
-                                        </div>
-                                        <div class="col-0">
-                                            <p>kg.</p>
+                                            {{ $record->medical_exam->physical_examination->weight }} kg.
                                         </div>
                                     </div>
                                 </div> 
@@ -743,18 +737,18 @@
                                         <div class="col-0 ml-2">
                                             <p>/</p>
                                         </div>
-                                        <div class="col">
-                                            {{ $record->medical_exam->physical_examination['bp2'] }}
+                                        <div class="col-0 ml-2">
+                                            {{ $record->medical_exam->physical_examination['bp2'] }} (mm/hg)
                                         </div>
                                     </div>
                                 </div> 
                                 <div class="col border">
                                     <p class="mb-1"><strong>Cardiac Rate:</strong></p>
-                                    {{ $record->medical_exam->physical_examination->cardiac_rate }}
+                                    {{ $record->medical_exam->physical_examination->cardiac_rate }} BPM
                                 </div> 
                                 <div class="col border">
                                     <p class="mb-1"><strong>Respiratory Rate</strong></p>
-                                    {{ $record->medical_exam->physical_examination->respiratory_rate }}
+                                    {{ $record->medical_exam->physical_examination->respiratory_rate }} BPM
                                 </div> 
                                 <div class="col border">
                                     <p class="mb-1"><strong>BMI:</strong></p>
@@ -1004,7 +998,7 @@
                             <div class="container border mb-3">
                                 <div class="row">
                                     <div class="col pt-3">
-                                        <textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response->diagnosis }}</textarea>
+                                        <textarea class="form-control mb-2" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response->diagnosis }}</textarea>
                                     </div>
                                 </div>
                             </div>
