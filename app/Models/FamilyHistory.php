@@ -27,9 +27,9 @@ class FamilyHistory extends Model
     ];
     
     //has relationship
-    public function family_history_positive()
+    public function medical_exam_response()
     {
-        return $this->hasOne(FamilyHistoryPositive::class);
+        return $this->hasOne(MedicalExamResponse::class);
     }
     
     //it belongs to

@@ -24,9 +24,9 @@ class ReviewOfSystem extends Model
     ];
 
     //has relationship
-    public function ob_gyne_history_positive()
+    public function medical_exam_response()
     {
-        return $this->hasOne(OBGyneHistoryPositive::class);
+        return $this->hasOne(MedicalExamResponse::class);
     }
 
     //it belongs to

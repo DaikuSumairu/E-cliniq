@@ -31,9 +31,9 @@ class PastMedicalHistory extends Model
     ];
 
     //has relationship
-    public function past_medical_history_finding()
+    public function medical_exam_response()
     {
-        return $this->hasOne(PastMedicalHistoryFinding::class);
+        return $this->hasOne(MedicalExamResponse::class);
     }
 
     //it belongs to

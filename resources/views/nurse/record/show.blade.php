@@ -81,7 +81,6 @@
             <button type="button" class="col btn btn-secondary mx-1 show-content show-date" data-content-target="#consultation-content" data-date-target="#consultation-date">Consultation</button>
             <button type="button" class="col btn btn-info mr-1 show-content show-date" data-content-target="#medical-exam-content" data-date-target="#medical-exam-date">Medical Exam</button>
             <button type="button" class="col btn btn-info mx-1 show-content show-date" data-content-target="#dental-exam-content" data-date-target="#dental-exam-date">Dental Exam</button>
-            <button type="button" class="col btn btn-danger ml-1 show-content show-date" data-content-target="#emergency-report-content" data-date-target="#emergency-report-date">Emergency Report</button>
         </div>
     </div>
 
@@ -105,9 +104,6 @@
                 </div>
                 <div id="dental-exam-date" class="mini-date">
                     <p>Dental Exam Date Here</p>
-                </div>
-                <div id="emergency-report-date" class="mini-date">
-                    <p>Emergency Date Here</p>
                 </div>
             </div>
 
@@ -242,7 +238,7 @@
                                             <td class="text-center">
                                                 {{ $record->medical_exam->past_medical_history->allergies }}
                                             </td>
-                                            <td>{{ $record->medical_exam->past_medical_history->past_medical_history_finding['1_findings'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->past_medical_history->medical_exam_response['1_pm_respond'] }}</textarea></td>
                                             </tr>
 
                                         <tr>
@@ -250,7 +246,7 @@
                                             <td class="text-center">
                                                 {{ $record->medical_exam->past_medical_history->skin_disease }}
                                             </td>
-                                            <td>{{ $record->medical_exam->past_medical_history->past_medical_history_finding['2_findings'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->past_medical_history->medical_exam_response['2_pm_respond'] }}</textarea></td>
                                             </tr>
 
                                         <tr>
@@ -258,104 +254,104 @@
                                             <td class="text-center">
                                                 {{ $record->medical_exam->past_medical_history->opthalmologic_disorder }}
                                             </td>
-                                            <td>{{ $record->medical_exam->past_medical_history->past_medical_history_finding['3_findings'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->past_medical_history->medical_exam_response['3_pm_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>ENT Disorder</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->past_medical_history->ent_disorder }}
                                             </td>
-                                            <td>{{ $record->medical_exam->past_medical_history->past_medical_history_finding['4_findings'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->past_medical_history->medical_exam_response['4_pm_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Bronchial Asthma</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->past_medical_history->bronchial_asthma }}
                                             </td>
-                                            <td>{{ $record->medical_exam->past_medical_history->past_medical_history_finding['5_findings'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->past_medical_history->medical_exam_response['5_pm_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Cardiac Disorder</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->past_medical_history->cardiac_disorder }}
                                             </td>
-                                            <td>{{ $record->medical_exam->past_medical_history->past_medical_history_finding['6_findings'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->past_medical_history->medical_exam_response['6_pm_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Diabetes Melilitus</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->past_medical_history->diabetes_melilitus }}
                                             </td>
-                                            <td>{{ $record->medical_exam->past_medical_history->past_medical_history_finding['7_findings'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->past_medical_history->medical_exam_response['7_pm_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Chronic Headache/Migraine</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->past_medical_history->chronic_headache_or_migraine }}
                                             </td>
-                                            <td>{{ $record->medical_exam->past_medical_history->past_medical_history_finding['8_findings'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->past_medical_history->medical_exam_response['8_pm_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Hepatitis</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->past_medical_history->hepatitis }}
                                             </td>
-                                            <td>{{ $record->medical_exam->past_medical_history->past_medical_history_finding['9_findings'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->past_medical_history->medical_exam_response['9_pm_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Hypertension</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->past_medical_history->hypertension }}
                                             </td>
-                                            <td>{{ $record->medical_exam->past_medical_history->past_medical_history_finding['10_findings'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->past_medical_history->medical_exam_response['10_pm_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Thyroid Disorder</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->past_medical_history->thyroid_disorder }}
                                             </td>
-                                            <td>{{ $record->medical_exam->past_medical_history->past_medical_history_finding['11_findings'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->past_medical_history->medical_exam_response['11_pm_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Blood Disorder</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->past_medical_history->blood_disorder }}
                                             </td>
-                                            <td>{{ $record->medical_exam->past_medical_history->past_medical_history_finding['12_findings'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->past_medical_history->medical_exam_response['12_pm_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Tuberculosis</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->past_medical_history->tuberculosis }}
                                             </td>
-                                            <td>{{ $record->medical_exam->past_medical_history->past_medical_history_finding['13_findings'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->past_medical_history->medical_exam_response['13_pm_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Peptic Ulcer</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->past_medical_history->peptic_ulcer }}
                                             </td>
-                                            <td>{{ $record->medical_exam->past_medical_history->past_medical_history_finding['14_findings'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->past_medical_history->medical_exam_response['14_pm_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Musculoskeletal Disorder</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->past_medical_history->musculoskeletal_disorder }}
                                             </td>
-                                            <td>{{ $record->medical_exam->past_medical_history->past_medical_history_finding['15_findings'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->past_medical_history->medical_exam_response['15_pm_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Infectious Disease</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->past_medical_history->infectious_disease }}
                                             </td>
-                                            <td>{{ $record->medical_exam->past_medical_history->past_medical_history_finding['16_findings'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->past_medical_history->medical_exam_response['16_pm_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td >Others</td>
                                             <td colspan="2">
-                                                {{ $record->medical_exam->past_medical_history->others }}
-                                            </td>
+                                                {{ $record->medical_exam->past_medical_history->medical_exam_response->others_pm_respond }}
+</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -377,90 +373,90 @@
                                             <td class="text-center">
                                                 {{ $record->medical_exam->family_history['bronchial_asthma_1'] }}
                                             </td>
-                                            <td>{{ $record->medical_exam->family_history->family_history_positive['1_positive'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->family_history->medical_exam_response['1_fh_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Diabetes Melilitus</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->family_history['diabetes_melilitus_1'] }}
                                             </td>
-                                            <td>{{ $record->medical_exam->family_history->family_history_positive['2_positive'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->family_history->medical_exam_response['2_fh_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Thyroid Disorder</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->family_history['thyroid_disorder_1'] }}
                                             </td>
-                                            <td>{{ $record->medical_exam->family_history->family_history_positive['3_positive'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->family_history->medical_exam_response['3_fh_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Opthalmologic Disease</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->family_history->opthalmologic_disease }}
                                             </td>
-                                            <td>{{ $record->medical_exam->family_history->family_history_positive['4_positive'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->family_history->medical_exam_response['4_fh_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Cancer</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->family_history->cancer }}
                                             </td>
-                                            <td>{{ $record->medical_exam->family_history->family_history_positive['5_positive'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->family_history->medical_exam_response['5_fh_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Cardiac Disorder</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->family_history['cardiac_disorder_1'] }}
                                             </td>
-                                            <td>{{ $record->medical_exam->family_history->family_history_positive['6_positive'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->family_history->medical_exam_response['6_fh_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Hypertension</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->family_history['hypertension_1'] }}
                                             </td>
-                                            <td>{{ $record->medical_exam->family_history->family_history_positive['7_positive'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->family_history->medical_exam_response['7_fh_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Tuberculosis</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->family_history['tuberculosis_1'] }}
                                             </td>
-                                            <td>{{ $record->medical_exam->family_history->family_history_positive['8_positive'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->family_history->medical_exam_response['8_fh_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Nervous Disorder</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->family_history->nervous_disorder }}
                                             </td>
-                                            <td>{{ $record->medical_exam->family_history->family_history_positive['9_positive'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->family_history->medical_exam_response['9_fh_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Musculoskeletal</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->family_history->musculoskeletal }}
                                             </td>
-                                            <td>{{ $record->medical_exam->family_history->family_history_positive['10_positive'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->family_history->medical_exam_response['10_fh_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Liver Disease</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->family_history->liver_disease }}
                                             </td>
-                                            <td>{{ $record->medical_exam->family_history->family_history_positive['11_positive'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->family_history->medical_exam_response['11_fh_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Kidney Disease</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->family_history->kidney_disease }}
                                             </td>
-                                            <td>{{ $record->medical_exam->family_history->family_history_positive['12_positive'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->family_history->medical_exam_response['12_fh_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td >Others</td>
                                             <td colspan="2">
-                                                {{ $record->medical_exam->family_history->others_1 }}
-                                            </td>
+                                                {{ $record->medical_exam->family_history->medical_exam_response->others_fh_respond }}
+</td>
                                         </tr>
                                     </table>
 
@@ -558,35 +554,35 @@
                                             <td class="text-center">
                                                 {{ $record->medical_exam->ob_gyne_history->lnmp }}
                                             </td>
-                                            <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['1_positive1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->ob_gyne_history->medical_exam_response['1_ob_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>OB Score</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->ob_gyne_history->ob_score }}
                                             </td>
-                                            <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['2_positive1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->ob_gyne_history->medical_exam_response['2_ob_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Abnormal Pregnancies</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->ob_gyne_history->abnormal_pregnancies }}
                                             </td>
-                                            <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['3_positive1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->ob_gyne_history->medical_exam_response['3_ob_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Date of Last Delivery</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->ob_gyne_history->date_of_last_delivery }}
                                             </td>
-                                            <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['4_positive1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->ob_gyne_history->medical_exam_response['4_ob_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Breast/Uterus/Ovaries</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->ob_gyne_history->breast_uterus_ovaries }}
                                             </td>
-                                            <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['5_positive1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->ob_gyne_history->medical_exam_response['5_ob_respond'] }}</textarea></td>
                                         </tr>
                                     </table>
 
@@ -644,70 +640,70 @@
                                             <td class="text-center">
                                                 {{ $record->medical_exam->review_of_system->skin }}
                                             </td>
-                                            <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['1_positive2'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->ob_gyne_history->medical_exam_response['1_rs_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Opthalmologic</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->review_of_system->opthalmologic }}
                                             </td>
-                                            <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['2_positive2'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->ob_gyne_history->medical_exam_response['2_rs_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>ENT</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->review_of_system->ent }}
                                             </td>
-                                            <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['3_positive2'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->ob_gyne_history->medical_exam_response['3_rs_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Cardiovascular</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->review_of_system->cardiovascular }}
                                             </td>
-                                            <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['4_positive2'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->ob_gyne_history->medical_exam_response['4_rs_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Respiratory</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->review_of_system->respiratory }}
                                             </td>
-                                            <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['5_positive2'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->ob_gyne_history->medical_exam_response['5_rs_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Gastro Intestinal</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->review_of_system->gastro_intestinal }}
                                             </td>
-                                            <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['6_positive2'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->ob_gyne_history->medical_exam_response['6_rs_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Neuro-Psychiatric</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->review_of_system->neuro_psychiatric }}
                                             </td>
-                                            <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['7_positive2'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->ob_gyne_history->medical_exam_response['7_rs_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Hematology</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->review_of_system->hematology }}
                                             </td>
-                                            <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['8_positive2'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->ob_gyne_history->medical_exam_response['8_rs_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Genitourinary</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->review_of_system->genitourinary }}
                                             </td>
-                                            <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['9_positive2'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->ob_gyne_history->medical_exam_response['9_rs_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Musculo-Skeletal</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->review_of_system->musculo_skeletal }}
                                             </td>
-                                            <td>{{ $record->medical_exam->ob_gyne_history->ob_gyne_history_positive['10_positive2'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->ob_gyne_history->medical_exam_response['10_rs_respond'] }}</textarea></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -781,21 +777,21 @@
                                             <td class="text-center">
                                                 {{ $record->medical_exam->physical_examination->general_appearance }}
                                             </td>
-                                            <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['1_findings1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response['1_pe_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Skin</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->physical_examination['skin1'] }}
                                             </td>
-                                            <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['2_findings1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response['2_pe_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Head and Scalp</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->physical_examination->head_and_scalp }}
                                             </td>
-                                            <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['3_findings1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response['3_pe_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Eyes</td>
@@ -807,25 +803,25 @@
                                                 @else
                                                     <div class="row">
                                                         <div class="col-0 ml-4 mr-1">
-                                                            {{ $record->medical_exam->physical_examination->physical_examination_finding['od_findings1'] ?? '' }}
+                                                            {{ $record->medical_exam->physical_examination->medical_exam_response['od_pe_respond'] }}
                                                         </div>
                                                         <div class="col-0">
                                                             <p>/</p>
                                                         </div>
                                                         <div class="col-0 mx-1">
-                                                            {{ $record->medical_exam->physical_examination->physical_examination_finding['od1_findings1'] ?? '' }}
+                                                            {{ $record->medical_exam->physical_examination->medical_exam_response['od1_pe_respond'] }}
                                                         </div>
                                                         <div class="col-0">
                                                             <p>OD</p>
                                                         </div>
                                                         <div class="col-0 ml-4 mr-1">
-                                                            {{ $record->medical_exam->physical_examination->physical_examination_finding['os_findings1'] ?? '' }}
+                                                            {{ $record->medical_exam->physical_examination->medical_exam_response['os_pe_respond'] }}
                                                         </div>
                                                         <div class="col-0">
                                                             <p>/</p>
                                                         </div>
                                                         <div class="col-0 mx-1">
-                                                            {{ $record->medical_exam->physical_examination->physical_examination_finding['os1_findings1'] ?? '' }}
+                                                            {{ $record->medical_exam->physical_examination->medical_exam_response['os1_pe_respond'] }}
                                                         </div>
                                                         <div class="col-0">
                                                             <p>OS</p>
@@ -844,25 +840,25 @@
                                                 @else
                                                     <div class="row">
                                                         <div class="col-0 ml-4 mr-1">
-                                                            {{ $record->medical_exam->physical_examination->physical_examination_finding['od_findings2'] }}
+                                                            {{ $record->medical_exam->physical_examination->medical_exam_response['od_pe_respond1'] }}
                                                         </div>
                                                         <div class="col-0">
                                                             <p>/</p>
                                                         </div>
                                                         <div class="col-0 mx-1">
-                                                            {{ $record->medical_exam->physical_examination->physical_examination_finding['od1_findings2'] }}
+                                                            {{ $record->medical_exam->physical_examination->medical_exam_response['od1_pe_respond1'] }}
                                                         </div>
                                                         <div class="col-0">
                                                             <p>OD</p>
                                                         </div>
                                                         <div class="col-0 ml-4 mr-1">
-                                                            {{ $record->medical_exam->physical_examination->physical_examination_finding['os_findings2'] }}
+                                                            {{ $record->medical_exam->physical_examination->medical_exam_response['os_pe_respond1'] }}
                                                         </div>
                                                         <div class="col-0">
                                                             <p>/</p>
                                                         </div>
                                                         <div class="col-0 mx-1">
-                                                            {{ $record->medical_exam->physical_examination->physical_examination_finding['os1_findings2'] }}
+                                                            {{ $record->medical_exam->physical_examination->medical_exam_response['os1_pe_respond1'] }}
                                                         </div>
                                                         <div class="col-0">
                                                             <p>OS</p>
@@ -876,42 +872,42 @@
                                             <td class="text-center">
                                                 {{ $record->medical_exam->physical_examination->pupils }}
                                             </td>
-                                            <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['6_findings1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response['6_pe_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Ear, Eardrums</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->physical_examination->ear_eardrums }}
                                             </td>
-                                            <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['7_findings1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response['7_pe_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Nose, Sinuses</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->physical_examination->nose_sinuses }}
                                             </td>
-                                            <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['8_findings1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response['8_pe_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Mouth, Throat</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->physical_examination->mouth_throat }}
                                             </td>
-                                            <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['9_findings1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response['9_pe_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Neck, Thyroid</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->physical_examination->neck_thyroid }}
                                             </td>
-                                            <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['10_findings1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response['10_pe_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Chest, Breast, Axilla</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->physical_examination->chest_breast_axilla }}
                                             </td>
-                                            <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['11_findings1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response['11_pe_respond'] }}</textarea></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -928,77 +924,77 @@
                                             <td class="text-center">
                                                 {{ $record->medical_exam->physical_examination->heart_cardiovascular }}
                                             </td>
-                                            <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['12_findings1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response['12_pe_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Lungs-Respiratory</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->physical_examination->lungs_respiratory }}
                                             </td>
-                                            <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['13_findings1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response['13_pe_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Abdomen</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->physical_examination->abdomen }}
                                             </td>
-                                            <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['14_findings1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response['14_pe_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Back, Flanks</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->physical_examination->back_flanks }}
                                             </td>
-                                            <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['15_findings1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response['15_pe_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Anus, Rectum</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->physical_examination->anus_rectum }}
                                             </td>
-                                            <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['16_findings1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response['16_pe_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Genito-Urinary System</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->physical_examination->genito_urinary_system }}
                                             </td>
-                                            <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['17_findings1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response['17_pe_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Inguinal, Genitals</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->physical_examination->inguinal_genitals }}
                                             </td>
-                                            <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['18_findings1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response['18_pe_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Musculo-Skeletal</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->physical_examination['musculo_skeletal1'] }}
                                             </td>
-                                            <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['19_findings1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response['19_pe_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Extremities</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->physical_examination->extremities }}
                                             </td>
-                                            <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['20_findings1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response['20_pe_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Reflexes</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->physical_examination->reflexes }}
                                             </td>
-                                            <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['21_findings1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response['21_pe_respond'] }}</textarea></td>
                                         </tr>
                                         <tr>
                                             <td>Neurological</td>
                                             <td class="text-center">
                                                 {{ $record->medical_exam->physical_examination->neurological }}
                                             </td>
-                                            <td>{{ $record->medical_exam->physical_examination->physical_examination_finding['22_findings1'] }}</td>
+                                            <td><textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response['22_pe_respond'] }}</textarea></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -1008,7 +1004,7 @@
                             <div class="container border mb-3">
                                 <div class="row">
                                     <div class="col pt-3">
-                                        <p>{{ $record->medical_exam->physical_examination->physical_examination_finding->diagnosis }}</p>
+                                        <textarea class="form-control" readonly>{{ $record->medical_exam->physical_examination->medical_exam_response->diagnosis }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -1605,17 +1601,6 @@
                     @else
                         <div class="text-center">
                             <p>No dental exam has been made. <a href="{{ route('nurse.dentalExamCreate', $record->id) }}">Create now.</a></p></p>
-                        </div>
-                    @endif
-                </div>
-
-                <!-- Emergency Report -->
-                <div id="emergency-report-content" class="mini-content pt-1">
-                    @if(isset($record->medical_report))
-                        <!-- Emergency report content -->
-                    @else
-                        <div class="text-center">
-                            <p>No emergency report has been made.</p>
                         </div>
                     @endif
                 </div>

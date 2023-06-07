@@ -5,15 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Record;
 use App\Models\MedicalExam;
 use App\Models\PastMedicalHistory;
-use App\Models\PastMedicalHistoryFinding;
 use App\Models\FamilyHistory;
-use App\Models\FamilyHistoryPositive;
 use App\Models\PersonalAndSocialHistory;
 use App\Models\ObGyneHistory;
-use App\Models\ObGyneHistoryPositive;
 use App\Models\ReviewOfSystem;
 use App\Models\PhysicalExamination;
-use App\Models\PhysicalExaminationFinding;
+use App\Models\MedicalExamResponse;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
@@ -76,33 +73,6 @@ class MedicalExamController extends Controller
         // Create Past Medical History
         $pastMedicalHistory = PastMedicalHistory::create($pastMedicalHistoryData);
 
-        // Connect Past Medical History Finding ID to the Past Medical History ID
-        $request->validate([
-            '1_findings',
-            '2_findings',
-            '3_findings',
-            '4_findings',
-            '5_findings',
-            '6_findings',
-            '7_findings',
-            '8_findings',
-            '9_findings',
-            '10_findings',
-            '11_findings',
-            '12_findings',
-            '13_findings',
-            '14_findings',
-            '15_findings',
-            '16_findings',
-        ]);
-
-        $pastMedicalHistoryID = $pastMedicalHistory->id;
-        $pastMedicalHistoryFindingData = $request->all();
-        $pastMedicalHistoryFindingData['past_medical_history_id'] = $pastMedicalHistoryID;
-
-        // Create Past Medical History Finding
-        PastMedicalHistoryFinding::create($pastMedicalHistoryFindingData);
-
         // Connect Family History ID to the Medical Exam ID
         $request->validate([
             'bronchial_asthma_1',
@@ -125,29 +95,6 @@ class MedicalExamController extends Controller
 
         // Create Family History
         $familyHistory = FamilyHistory::create($familyHistoryData);
-
-        // Connect Family History Positive ID to the Family History ID
-        $request->validate([
-            '1_positive',
-            '2_positive',
-            '3_positive',
-            '4_positive',
-            '5_positive',
-            '6_positive',
-            '7_positive',
-            '8_positive',
-            '9_positive',
-            '10_positive',
-            '11_positive',
-            '12_positive',
-        ]);
-
-        $familyHistoryID = $familyHistory->id;
-        $familyHistoryPositiveData = $request->all();
-        $familyHistoryPositiveData['family_history_id'] = $familyHistoryID;
-
-        // Create Family History Positive
-        FamilyHistoryPositive::create($familyHistoryPositiveData);
 
         // Connect Personal and Social History ID to the Medical Exam ID
         $request->validate([
@@ -206,35 +153,6 @@ class MedicalExamController extends Controller
         // Create Review of System
         $reviewOfSystem = ReviewOfSystem::create($reviewOfSystemData);
 
-        
-        // Connect OB-GYNE History Positive ID to the OB-GYNE History and Review of System ID
-        $request->validate([
-            '1_positive1',
-            '2_positive1',
-            '3_positive1',
-            '4_positive1',
-            '5_positive1',
-            '1_positive2',
-            '2_positive2',
-            '3_positive2',
-            '4_positive2',
-            '5_positive2',
-            '6_positive2',
-            '7_positive2',
-            '8_positive2',
-            '9_positive2',
-            '10_positive2',
-        ]);
-        
-        $obGyneHistoryID = $obGyneHistory->id;
-        $reviewOfSystemID = $reviewOfSystem->id;
-        $obGyneHistoryPositiveData = $request->all();
-        $obGyneHistoryPositiveData['ob_gyne_history_id'] = $obGyneHistoryID;
-        $obGyneHistoryPositiveData['review_of_system_id'] = $reviewOfSystemID;
-        
-        // Create OB-GYNE History Positive
-        ObGyneHistoryPositive::create($obGyneHistoryPositiveData);
-
         // Connect OB-GYNE History ID to the Medical Exam ID
         $request->validate([
             'height',
@@ -274,45 +192,107 @@ class MedicalExamController extends Controller
         // Create OB-GYNE History
         $physicalExamination = PhysicalExamination::create($physicalExaminationData);
 
-        // Connect OB-GYNE History Positive ID to the OB-GYNE History ID
+        // Connect Medical Exam Response ID to the 5 table that connect to the Medical Exam ID
         $request->validate([
-            '1_findings1',
-            '2_findings1',
-            '3_findings1',
-            'od_findings1',
-            'od1_findings1',
-            'os_findings1',
-            'os1_findings1',
-            'od_findings2',
-            'od1_findings2',
-            'os_findings2',
-            'os1_findings2',
-            '6_findings1',
-            '7_findings1',
-            '8_findings1',
-            '9_findings1',
-            '10_findings1',
-            '11_findings1',
-            '12_findings1',
-            '13_findings1',
-            '14_findings1',
-            '15_findings1',
-            '16_findings1',
-            '17_findings1',
-            '18_findings1',
-            '19_findings1',
-            '20_findings1',
-            '21_findings1',
-            '22_findings1',
+            //Past Medical History
+            '1_pm_respond',
+            '2_pm_respond',
+            '3_pm_respond',
+            '4_pm_respond',
+            '5_pm_respond',
+            '6_pm_respond',
+            '7_pm_respond',
+            '8_pm_respond',
+            '9_pm_respond',
+            '10_pm_respond',
+            '11_pm_respond',
+            '12_pm_respond',
+            '13_pm_respond',
+            '14_pm_respond',
+            '15_pm_respond',
+            '16_pm_respond',
+            'others_pm_respond',
+
+            //Family History
+            '1_fh_respond',
+            '2_fh_respond',
+            '3_fh_respond',
+            '4_fh_respond',
+            '5_fh_respond',
+            '6_fh_respond',
+            '7_fh_respond',
+            '8_fh_respond',
+            '9_fh_respond',
+            '10_fh_respond',
+            '11_fh_respond',
+            '12_fh_respond',
+            'others_fh_respond',
+
+            //OB-GYNE History
+            '1_ob_respond',
+            '2_ob_respond',
+            '3_ob_respond',
+            '4_ob_respond',
+            '5_ob_respond',
+
+            //Review of System
+            '1_rs_respond',
+            '2_rs_respond',
+            '3_rs_respond',
+            '4_rs_respond',
+            '5_rs_respond',
+            '6_rs_respond',
+            '7_rs_respond',
+            '8_rs_respond',
+            '9_rs_respond',
+            '10_rs_respond',
+
+            //Physical Examination
+            '1_pe_respond',
+            '2_pe_respond',
+            '3_pe_respond',
+            'od_pe_respond',
+            'od1_pe_respond',
+            'os_pe_respond',
+            'os1_pe_respond',
+            'od_pe_respond1',
+            'od1_pe_respond1',
+            'os_pe_respond1',
+            'os1_pe_respond1',
+            '6_pe_respond',
+            '7_pe_respond',
+            '8_pe_respond',
+            '9_pe_respond',
+            '10_pe_respond',
+            '11_pe_respond',
+            '12_pe_respond',
+            '13_pe_respond',
+            '14_pe_respond',
+            '15_pe_respond',
+            '16_pe_respond',
+            '17_pe_respond',
+            '18_pe_respond',
+            '19_pe_respond',
+            '20_pe_respond',
+            '21_pe_respond',
+            '22_pe_respond',
             'diagnosis',
         ]);
         
+        $pastMedicalHistoryID = $pastMedicalHistory->id;
+        $familyHistoryID = $familyHistory->id;
+        $obGyneHistoryID = $obGyneHistory->id;
+        $reviewOfSystemID = $reviewOfSystem->id;
         $physicalExaminationID = $physicalExamination->id;
-        $physicalExaminationFindingData = $request->all();
-        $physicalExaminationFindingData['physical_examination_id'] = $physicalExaminationID;
+        $MedicalExamResponseData = $request->all();
+        $MedicalExamResponseData['past_medical_history_id'] = $pastMedicalHistoryID;
+        $MedicalExamResponseData['family_history_id'] = $familyHistoryID;
+        $MedicalExamResponseData['ob_gyne_history_id'] = $obGyneHistoryID;
+        $MedicalExamResponseData['review_of_system_id'] = $reviewOfSystemID;
+        $MedicalExamResponseData['physical_examination_id'] = $physicalExaminationID;
         
-        // Create OB-GYNE History Positive
-        PhysicalExaminationFinding::create($physicalExaminationFindingData);
+        // Create OB-GYNE History
+        MedicalExamResponse::create($MedicalExamResponseData);
 
         return redirect()->route('nurse.recordShow', ['record' => $recordID])->with('success', 'Record created successfully.');
     }

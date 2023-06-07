@@ -43,9 +43,9 @@ class PhysicalExamination extends Model
     ];
 
     //has relationship
-    public function physical_examination_finding()
+    public function medical_exam_response()
     {
-        return $this->hasOne(PhysicalExaminationFinding::class);
+        return $this->hasOne(MedicalExamResponse::class);
     }
 
     //it belongs to
