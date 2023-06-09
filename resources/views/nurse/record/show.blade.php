@@ -752,7 +752,16 @@
                                 </div> 
                                 <div class="col border">
                                     <p class="mb-1"><strong>BMI:</strong></p>
-                                    {{ $record->medical_exam->physical_examination->bmi }}
+                                    @if ($record->medical_exam->physical_examination->bmi < 18.5)
+                                        {{ $record->medical_exam->physical_examination->bmi }} Underweight
+                                    @elseif ($record->medical_exam->physical_examination->bmi >= 18.5 && $record->medical_exam->physical_examination->bmi <= 24.9)
+                                        {{ $record->medical_exam->physical_examination->bmi }} Normal weight
+                                    @elseif ($record->medical_exam->physical_examination->bmi >= 25 && $record->medical_exam->physical_examination->bmi <= 29.9)
+                                        {{ $record->medical_exam->physical_examination->bmi }} Overweight
+                                    @else 
+                                        {{ $record->medical_exam->physical_examination->bmi }} Obesity
+                                     
+                                    @endif
                                 </div> 
                             </div>
 

@@ -491,7 +491,7 @@
                     <div class="col border">
                         <p class="mb-1"><strong>Cardiac Rate:</strong></p>
                         <div class="row">
-                            <div class="col-0">
+                            <div class="col-0 ml-1">
                                 <input type="number" name="cardiac_rate" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="cardiac_rate" required>
                             </div>
                             <div class="col-0">
@@ -506,7 +506,7 @@
                     <div class="col border">
                         <p class="mb-1"><strong>Respiratory Rate</strong></p>
                         <div class="row">
-                            <div class="col-0">
+                            <div class="col-0 ml-1">
                                 <input type="number" name="respiratory_rate" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="respiratory_rate" required>
                             </div>
                             <div class="col-0">
@@ -520,7 +520,14 @@
                     </div> 
                     <div class="col border">
                         <p class="mb-1"><strong>BMI:</strong></p>
-                        <input type="number" name="bmi" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="bmi" readonly>
+                        <div class="row">
+                            <div class="col-0 ml-1">
+                                <input type="number" name="bmi" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="bmi" readonly>
+                            </div>
+                            <div class="col-0">
+                                <p id="weightCategory"></p>
+                            </div>
+                        </div>
                     </div> 
                 </div>
 
@@ -1011,6 +1018,7 @@
         const heightInput = document.getElementById('height');
         const weightInput = document.getElementById('weight');
         const bmiInput = document.getElementById('bmi');
+        const weightCategory = document.getElementById('weightCategory');
 
         heightInput.addEventListener('input', calculateBMI);
         weightInput.addEventListener('input', calculateBMI);
@@ -1018,14 +1026,25 @@
         function calculateBMI() {
             const height = parseFloat(heightInput.value) / 100; // Convert cm to meters
             const weight = parseFloat(weightInput.value);
-
+        
             if (isNaN(height) || isNaN(weight)) {
                 bmiInput.value = ''; // Clear the BMI if either height or weight is not a number
+                weightCategory.textContent = '';
                 return;
             }
-
+        
             const bmi = weight / (height * height);
             bmiInput.value = bmi.toFixed(2); // Display BMI with two decimal places
+        
+            if (bmi < 18.5) {
+                weightCategory.textContent = 'Underweight';
+            } else if (bmi >= 18.5 && bmi <= 24.99) {
+                weightCategory.textContent = 'Normal weight';
+            } else if (bmi >= 25 && bmi <= 29.9) {
+                weightCategory.textContent = 'Overweight';
+            } else {
+                weightCategory.textContent = 'Obesity';
+            }
         }
     </script>
 @stop
