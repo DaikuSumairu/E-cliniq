@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <div class="container border mx-auto pb-4" style="height: 625px; overflow: auto;">
+    <div class="container border mx-auto pb-4" style="height: 525px; overflow: auto;">
         <form method="POST" action="{{ route('nurse.consultationStore') }}">
             @csrf
             <!-- Date -->
@@ -40,37 +40,55 @@
                 <div class="col border">
                     <div class="row">
                         <div class="col-0 ml-3 mt-2">
-                            <p><strong>Pulse / Heart Rate:</strong></p>
+                            <p class="mb-1"><strong>Pulse / Heart Rate:</strong></p>
                         </div>
-                        <div class="col mt-2">
-                            <input type="number" id="pulse" name="pulse" style="height: 25px; width: 50px;" required>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-0 ml-3">
+                            <input type="number" id="pulse" name="pulse" style="height: 25px; width: 50px;" required> BPM
+                        </div>
+                        <div class="col-0">
+                            <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpCR" style="display: none;"></i>
+                            <i class="fas fa-arrow-down mt-1 mx-1" id="arrowDownCR" style="display: none;"></i>
                         </div>
                     </div>
                 </div>
                 <div class="col border">
                     <div class="row">
                         <div class="col-0 ml-3 mt-2">
-                            <p><strong>Oxygen:</strong></p>
+                            <p><strong>02 Stat:</strong></p>
                         </div>
-                        <div class="col mt-2">
-                            <input type="number" id="oxygen" name="oxygen" style="height: 25px; width: 50px;" required>
+                        <div class="row mt-2">
+                            <div class="col-0 mx-3 ">
+                                <input type="number" id="oxygen" name="oxygen" style="height: 25px; width: 50px;" required> %
+                            </div>
+                        <div class="col-0">
+                            <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpOS" style="display: none;"></i>
+                            <i class="fas fa-arrow-down mt-1 mx-1" id="arrowDownOS" style="display: none;"></i>
                         </div>
+                    </div>
                     </div>
                 </div>
                 <div class="col border">
                     <div class="row">
                         <div class="col-0 ml-3 mt-2">
-                            <p><strong>Respiratory Rate:</strong></p>
+                            <p class="mb-1"><strong>Respiratory Rate:</strong></p>
                         </div>
-                        <div class="col mt-2 ">
-                            <input type="number" id="respiratory_rate" name="respiratory_rate" style="height: 25px; width: 50px;" required>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-0 ml-3">
+                            <input type="number" id="respiratory_rate" name="respiratory_rate" style="height: 25px; width: 50px;" required> BPM
+                        </div>
+                        <div class="col-0">
+                            <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpRR" style="display: none;"></i>
+                            <i class="fas fa-arrow-down mt-1 mx-1" id="arrowDownRR" style="display: none;"></i>
                         </div>
                     </div>
                 </div>
                 <div class="col border">
                     <div class="row">
                         <div class="col-0 ml-3 mt-2" style="height: 25px;">
-                            <p><strong>Blood Pressure:</strong></p>
+                            <p><strong>Blood Pressure (mm/hg):</strong></p>
                         </div>
                         <div class="row">
                             <div class="col-0" style="margin-left: 21px;">
@@ -79,8 +97,12 @@
                             <div class="col-0 ml-2">
                                 <p>/</p>
                             </div>
-                            <div class="col">
+                            <div class="col-0 mr-1">
                                 <input type="number" name="bp2" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="bp2" required>
+                            </div>
+                            <div class="col-0">
+                                <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpBP" style="display: none;"></i>
+                                <i class="fas fa-arrow-down mt-1 mx-1" id="arrowDownBP" style="display: none;"></i>
                             </div>
                         </div>
                     </div>
@@ -90,8 +112,14 @@
                         <div class="col-0 ml-3 mt-2">
                             <p><strong>Temperature:</strong></p>
                         </div>
-                        <div class="col mt-2">
-                            <input type="number" id="temperature" name="temperature" style="height: 25px; width: 50px;" required>
+                        <div class="row">
+                            <div class="col-0 ml-3 mt-2">
+                                <input type="number" id="temperature" name="temperature" style="height: 25px; width: 50px;" required> °C
+                            </div>
+                            <div class="col-0 mt-2">
+                                <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpT" style="display: none;"></i>
+                                <i class="fas fa-arrow-down mt-1 mx-1" id="arrowDownT" style="display: none;"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -108,8 +136,17 @@
             <!-- Remarks -->
             <div class="row mx-auto mt-3 border">
                 <div class="col pt-2">
-                    <h4><strong>Nurse Remarks: </strong></h4>
-                    <textarea class="form-control mb-3" name="remarks" id="remarks" style="height: 85px;" required></textarea>
+                    <div class="row">
+                        <div class="col-2">
+                            <h4><strong>Nurse Remarks: </strong></h4>
+                        </div>
+                        <div class="col-0" style="padding-top: 3px;">
+                            <select name="remarks"> <!-- Add name attribute -->
+                                <option value="Monitoring Case">Monitoring Case</option>
+                                <option value="Resolved Case">Resolved Case</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -156,4 +193,135 @@
             resize: none;
         }
     </style>
+
+    <!-- Restriction and Arrow determination of BP -->
+    <script>
+        const bp1Input = document.getElementById('bp1');
+        const bp2Input = document.getElementById('bp2');
+        const arrowUpBP = document.getElementById('arrowUpBP');
+        const arrowDownBP = document.getElementById('arrowDownBP');
+
+        bp1Input.addEventListener('input', validateBP);
+        bp2Input.addEventListener('input', validateBP);
+
+        function validateBP() {
+            const bp1Value = parseFloat(bp1Input.value);
+            const bp2Value = parseFloat(bp2Input.value);
+
+            if (bp1Value <= bp2Value) {
+                bp1Input.setCustomValidity("This area must be greater than hg");
+                bp2Input.setCustomValidity("This area must be smaller than mm.");
+            } else {
+                bp1Input.setCustomValidity('');
+                bp2Input.setCustomValidity('');
+            }
+
+            if (bp1Value < 90 && bp2Value < 60) {
+                arrowUpBP.style.display = 'none';
+                arrowDownBP.style.display = 'block';
+            } else if (bp1Value > 120 && bp2Value > 80) {
+                arrowUpBP.style.display = 'block';
+                arrowDownBP.style.display = 'none';
+            } else {
+                arrowUpBP.style.display = 'none';
+                arrowDownBP.style.display = 'none';
+            }
+        }
+    </script>
+
+    <!-- Restriction and Arrow determination of Cardiac Rate -->
+    <script>
+        const cardiacRateInput = document.getElementById('pulse');
+        const arrowUpCR = document.getElementById('arrowUpCR');
+        const arrowDownCR = document.getElementById('arrowDownCR');
+
+        cardiacRateInput.addEventListener('input', validateCardiacRate);
+
+        function validateCardiacRate() {
+            const cardiacRateValue = parseFloat(cardiacRateInput.value);
+
+            if (cardiacRateValue < 60) {
+                arrowUpCR.style.display = 'none';
+                arrowDownCR.style.display = 'block';
+            } else if (cardiacRateValue > 100) {
+                arrowUpCR.style.display = 'block';
+                arrowDownCR.style.display = 'none';
+            } else {
+                arrowUpCR.style.display = 'none';
+                arrowDownCR.style.display = 'none';
+            }
+        }
+    </script>
+
+    <!-- Restriction and Arrow determination of O2 Stat -->
+    <script>
+        const oxygenInput = document.getElementById('oxygen');
+        const arrowUpOS = document.getElementById('arrowUpOS');
+        const arrowDownOS = document.getElementById('arrowDownOS');
+
+        oxygenInput.addEventListener('input', validateOxygen);
+
+        function validateOxygen() {
+            const oxygenValue = parseFloat(oxygenInput.value);
+
+            if (oxygenValue < 95) {
+                arrowUpOS.style.display = 'none';
+                arrowDownOS.style.display = 'block';
+            } else if (oxygenValue > 100) {
+                arrowUpOS.style.display = 'block';
+                arrowDownOS.style.display = 'none';
+            } else {
+                arrowUpOS.style.display = 'none';
+                arrowDownOS.style.display = 'none';
+            }
+        }
+    </script>
+
+    <!-- Restriction and Arrow determination of Respiratory Rate -->
+    <script>
+        const respiratoryRateInput = document.getElementById('respiratory_rate');
+        const arrowUpRR = document.getElementById('arrowUpRR');
+        const arrowDownRR = document.getElementById('arrowDownRR');
+
+        respiratoryRateInput.addEventListener('input', validateRespiratoryRate);
+
+        function validateRespiratoryRate() {
+            const respiratoryRateValue = parseFloat(respiratoryRateInput.value);
+
+            if (respiratoryRateValue < 16) {
+                arrowUpRR.style.display = 'none';
+                arrowDownRR.style.display = 'block';
+            } else if (respiratoryRateValue > 24) {
+                arrowUpRR.style.display = 'block';
+                arrowDownRR.style.display = 'none';
+            } else {
+                arrowUpRR.style.display = 'none';
+                arrowDownRR.style.display = 'none';
+            }
+        }
+    </script>
+
+    <!-- Restriction and Arrow determination of Temperature -->
+    <script>
+        const temperatureInput = document.getElementById('temperature');
+        const arrowUpT = document.getElementById('arrowUpT');
+        const arrowDownT = document.getElementById('arrowDownT');
+
+        temperatureInput.addEventListener('input', validateTemperature);
+
+        function validateTemperature() {
+            const temperatureValue = parseFloat(temperatureInput.value);
+
+            if (temperatureValue < 36.5) {
+                arrowUpT.style.display = 'none';
+                arrowDownT.style.display = 'block';
+            } else if (temperatureValue > 37.5) {
+                arrowUpT.style.display = 'block';
+                arrowDownT.style.display = 'none';
+            } else {
+                arrowUpT.style.display = 'none';
+                arrowDownT.style.display = 'none';
+            }
+        }
+    </script>
 @stop

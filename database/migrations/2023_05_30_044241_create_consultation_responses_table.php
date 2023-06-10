@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('bp2');
             $table->float('temperature');
             $table->text('treatment');
-            $table->text('remarks');
+            $table->string('remarks');
             $table->timestamps();
 
             //Foreign keys

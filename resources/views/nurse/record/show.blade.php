@@ -132,10 +132,12 @@
                                     <div class="col border">
                                         <div class="row">
                                             <div class="col-0 ml-3 mt-2">
-                                                <p><strong>Pulse / Heart Rate:</strong></p>
+                                                <p class="mb-1"><strong>Pulse / Heart Rate:</strong></p>
                                             </div>
-                                            <div class="col mt-2">
-                                                {{ $record->consultation->consultation_response->pulse }}
+                                            <div class="row">
+                                                <div class="col-0 ml-4 mB-2">
+                                                    {{ $record->consultation->consultation_response->pulse }} BPM
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -145,17 +147,19 @@
                                                 <p><strong>Oxygen:</strong></p>
                                             </div>
                                             <div class="col mt-2">
-                                                {{ $record->consultation->consultation_response->oxygen }}
+                                                {{ $record->consultation->consultation_response->oxygen }}%
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col border">
                                         <div class="row">
                                             <div class="col-0 ml-3 mt-2">
-                                                <p><strong>Respiratory Rate:</strong></p>
+                                                <p class="mb-1"><strong>Respiratory Rate:</strong></p>
                                             </div>
-                                            <div class="col mt-2 ">
-                                                {{ $record->consultation->consultation_response->respiratory_rate }}
+                                            <div class="row">
+                                                <div class="col-0 ml-4 mB-2">
+                                                    {{ $record->consultation->consultation_response->respiratory_rate }} BPM
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -172,7 +176,7 @@
                                                     <p>/</p>
                                                 </div>
                                                 <div class="col">
-                                                    {{ $record->consultation->consultation_response['bp2'] }}
+                                                    {{ $record->consultation->consultation_response['bp2'] }} (mm/hg)
                                                 </div>
                                             </div>
                                         </div>
@@ -183,7 +187,7 @@
                                                 <p><strong>Temperature:</strong></p>
                                             </div>
                                             <div class="col mt-2">
-                                                {{ $record->consultation->consultation_response->temperature }}
+                                                {{ $record->consultation->consultation_response->temperature }}°C
                                             </div>
                                         </div>
                                     </div>

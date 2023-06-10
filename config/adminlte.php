@@ -431,16 +431,7 @@ return [
         [
             'text' => 'Reports',
             'icon' => 'fas fa-doutone fa-memo',
-            'submenu' => [
-                [
-                    'text' => 'Emergency Report',
-                    'url'  => '#',
-                ],
-                [
-                    'text' => 'Admin Report',
-                    'url'  => '#',
-                ],
-            ],
+            'url' => '#',
             'can' => 'nurse',
         ],
         
