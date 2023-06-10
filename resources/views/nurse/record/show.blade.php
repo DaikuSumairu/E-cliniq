@@ -87,23 +87,27 @@
     <div class="mx-auto" style="width: 1200px;">
         <div class="row">
             <!-- Date of specific item -->
-            <div class="col-2 border">
-                <div id="consultation-date" class="mini-date">
+            <div class="col-2 pt-2 border">
+                <div id="consultation-date" class="text-center mini-date">
                     @if(isset($record->consultation))
                         <a><strong>Created at:</strong> {{ $record->consultation->date_created }}</a>
                     @else
-                        <p>No consultation data available.</p>
+                        <p>No consultation has been made.</p>
                     @endif
                 </div>
-                <div id="medical-exam-date" class="mini-date">
+                <div id="medical-exam-date" class="text-center mini-date">
                     @if(isset($record->medical_exam))
                         <a><strong>Created at:</strong> {{ $record->medical_exam->date_created }}</a>
                     @else
-                        <p>No medical exam data available.</p>
+                        <p>No medical exam has been made.</p>
                     @endif
                 </div>
-                <div id="dental-exam-date" class="mini-date">
-                    <p>Dental Exam Date Here</p>
+                <div id="dental-exam-date" class="text-center mini-date">
+                    @if(isset($record->dental_exam))
+                        <a><strong>Created at:</strong> {{ $record->dental_exam->date_created }}</a>
+                    @else
+                        <p>No dental exam has been made.</p>
+                    @endif
                 </div>
             </div>
 
