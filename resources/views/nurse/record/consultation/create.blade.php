@@ -114,7 +114,7 @@
                         </div>
                         <div class="row">
                             <div class="col-0 ml-3 mt-2">
-                                <input type="number" id="temperature" name="temperature" style="height: 25px; width: 50px;" required> °C
+                                <input type="number" id="temperature" name="temperature" style="height: 25px; width: 50px;" step="any" required> °C
                             </div>
                             <div class="col-0 mt-2">
                                 <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpT" style="display: none;"></i>

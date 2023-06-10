@@ -26,7 +26,7 @@ class DentalExamResponse extends Model
     {
         return $this->hasOne(DentalExamRestoration::class);
     }
-    public function dental_exam_extration()
+    public function dental_exam_extraction()
     {
         return $this->hasOne(DentalExamExtraction::class);
     }

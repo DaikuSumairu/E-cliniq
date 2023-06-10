@@ -157,28 +157,28 @@
                         <div class="col">
                             <div class="row" style="width: 278px; padding-right: 5px; border-right: 1px solid; border-bottom: 1px solid;">
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_lt8" name="restoration_lt8" value="8" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_lt8" name="restoration_lt8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_lt7" name="restoration_lt7" value="7" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_lt7" name="restoration_lt7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_lt6" name="restoration_lt6" value="6" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_lt6" name="restoration_lt6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_lt5" name="restoration_lt5" value="5" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_lt5" name="restoration_lt5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_lt4" name="restoration_lt4" value="4" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_lt4" name="restoration_lt4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_lt3" name="restoration_lt3" value="3" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_lt3" name="restoration_lt3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_lt2" name="restoration_lt2" value="2" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_lt2" name="restoration_lt2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_lt1" name="restoration_lt1" value="1" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_lt1" name="restoration_lt1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                             </div>
                         </div>
@@ -186,28 +186,28 @@
                         <div class="col">
                             <div class="row" style="width: 278px; padding-left: 5px; border-left: 1px solid; border-bottom: 1px solid;">
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_rt1" name="restoration_rt1" value="1" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_rt1" name="restoration_rt1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_rt2" name="restoration_rt2" value="2" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_rt2" name="restoration_rt2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_rt3" name="restoration_rt3" value="3" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_rt3" name="restoration_rt3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_rt4" name="restoration_rt4" value="4" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_rt4" name="restoration_rt4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_rt5" name="restoration_rt5" value="5" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_rt5" name="restoration_rt5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_rt6" name="restoration_rt6" value="6" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_rt6" name="restoration_rt6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_rt7" name="restoration_rt7" value="7" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_rt7" name="restoration_rt7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_rt8" name="restoration_rt8" value="8" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_rt8" name="restoration_rt8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                             </div>
                         </div>
@@ -219,28 +219,28 @@
                         <div class="col">
                             <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px; border-right: 1px solid; border-top: 1px solid;">
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_lb8" name="restoration_lb8" value="8" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_lb8" name="restoration_lb8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_lb7" name="restoration_lb7" value="7" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_lb7" name="restoration_lb7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_lb6" name="restoration_lb6" value="6" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_lb6" name="restoration_lb6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_lb5" name="restoration_lb5" value="5" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_lb5" name="restoration_lb5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_lb4" name="restoration_lb4" value="4" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_lb4" name="restoration_lb4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_lb3" name="restoration_lb3" value="3" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_lb3" name="restoration_lb3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_lb2" name="restoration_lb2" value="2" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_lb2" name="restoration_lb2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_lb1" name="restoration_lb1" value="1" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_lb1" name="restoration_lb1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                             </div>
                         </div>
@@ -248,28 +248,28 @@
                         <div class="col">
                             <div class="row" style="width: 278px; padding-left: 5px; padding-top: 5px; border-left: 1px solid; border-top: 1px solid;">
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_rb1" name="restoration_rb1" value="1" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_rb1" name="restoration_rb1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_rb2" name="restoration_rb2" value="2" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_rb2" name="restoration_rb2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_rb3" name="restoration_rb3" value="3" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_rb3" name="restoration_rb3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_rb4" name="restoration_rb4" value="4" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_rb4" name="restoration_rb4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_rb5" name="restoration_rb5" value="5" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_rb5" name="restoration_rb5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_rb6" name="restoration_rb6" value="6" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_rb6" name="restoration_rb6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_rb7" name="restoration_rb7" value="7" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_rb7" name="restoration_rb7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="restoration_rb8" name="restoration_rb8" value="8" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="restoration_rb8" name="restoration_rb8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                             </div>
                         </div>
@@ -415,28 +415,28 @@
                         <div class="col">
                             <div class="row" style="width: 278px; padding-right: 5px; border-right: 1px solid; border-bottom: 1px solid;">
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_lt8" name="extraction_lt8" value="8" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_lt8" name="extraction_lt8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_lt7" name="extraction_lt7" value="7" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_lt7" name="extraction_lt7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_lt6" name="extraction_lt6" value="6" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_lt6" name="extraction_lt6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_lt5" name="extraction_lt5" value="5" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_lt5" name="extraction_lt5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_lt4" name="extraction_lt4" value="4" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_lt4" name="extraction_lt4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_lt3" name="extraction_lt3" value="3" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_lt3" name="extraction_lt3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_lt2" name="extraction_lt2" value="2" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_lt2" name="extraction_lt2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_lt1" name="extraction_lt1" value="1" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_lt1" name="extraction_lt1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                             </div>
                         </div>
@@ -444,28 +444,28 @@
                         <div class="col">
                             <div class="row" style="width: 278px; padding-left: 5px; border-left: 1px solid; border-bottom: 1px solid;">
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_rt1" name="extraction_rt1" value="1" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_rt1" name="extraction_rt1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_rt2" name="extraction_rt2" value="2" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_rt2" name="extraction_rt2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_rt3" name="extraction_rt3" value="3" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_rt3" name="extraction_rt3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_rt4" name="extraction_rt4" value="4" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_rt4" name="extraction_rt4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_rt5" name="extraction_rt5" value="5" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_rt5" name="extraction_rt5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_rt6" name="extraction_rt6" value="6" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_rt6" name="extraction_rt6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_rt7" name="extraction_rt7" value="7" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_rt7" name="extraction_rt7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_rt8" name="extraction_rt8" value="8" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_rt8" name="extraction_rt8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                             </div>
                         </div>
@@ -477,28 +477,28 @@
                         <div class="col">
                             <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px; border-right: 1px solid; border-top: 1px solid;">
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_lb8" name="extraction_lb8" value="8" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_lb8" name="extraction_lb8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_lb7" name="extraction_lb7" value="7" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_lb7" name="extraction_lb7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_lb6" name="extraction_lb6" value="6" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_lb6" name="extraction_lb6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_lb5" name="extraction_lb5" value="5" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_lb5" name="extraction_lb5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_lb4" name="extraction_lb4" value="4" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_lb4" name="extraction_lb4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_lb3" name="extraction_lb3" value="3" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_lb3" name="extraction_lb3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_lb2" name="extraction_lb2" value="2" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_lb2" name="extraction_lb2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_lb1" name="extraction_lb1" value="1" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_lb1" name="extraction_lb1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                             </div>
                         </div>
@@ -506,28 +506,28 @@
                         <div class="col">
                             <div class="row" style="width: 278px; padding-left: 5px; padding-top: 5px; border-left: 1px solid; border-top: 1px solid;">
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_rb1" name="extraction_rb1" value="1" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_rb1" name="extraction_rb1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_rb2" name="extraction_rb2" value="2" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_rb2" name="extraction_rb2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_rb3" name="extraction_rb3" value="3" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_rb3" name="extraction_rb3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_rb4" name="extraction_rb4" value="4" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_rb4" name="extraction_rb4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_rb5" name="extraction_rb5" value="5" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_rb5" name="extraction_rb5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_rb6" name="extraction_rb6" value="6" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_rb6" name="extraction_rb6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_rb7" name="extraction_rb7" value="7" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_rb7" name="extraction_rb7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                                 <div class="col-0">
-                                    <input type="checkbox" id="extraction_rb8" name="extraction_rb8" value="8" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
+                                    <input type="checkbox" id="extraction_rb8" name="extraction_rb8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
                                 </div>
                             </div>
                         </div>
