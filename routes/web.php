@@ -103,7 +103,7 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
     //Record Item (Consultation)
     Route::resource('nurse/records/consultation', ConsultationController::class)->names([
         'store' => 'nurse.consultationStore',
-        'edit' => 'nurse.consultationExamEdit',
+        'edit' => 'nurse.consultationEdit',
         'update' => 'nurse.consultationUpdate',
     ])->except([
         'index', 'show', 'delete'

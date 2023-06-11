@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Edit Dental Examination Record')
+@section('title', 'Update Dental Examination Record')
 
 @section('content_header')
     <h1>Updating Dental Examination Record</h1>
