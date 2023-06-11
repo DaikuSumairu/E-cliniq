@@ -117,7 +117,7 @@
                 <div id="consultation-content" class="mini-content pt-1">
                     @if(isset($record->consultation))
                         @if(isset($record) && !empty($record))
-                            <div class="container" style="height: 275px; overflow: auto;">
+                            <div class="container" style="height: 265px; overflow: auto;">
                                 <!-- Complaint -->
                                 <div class="row mx-auto mt-1">
                                     <div class="col-0 ml-1">
@@ -225,7 +225,7 @@
                 <div id="medical-exam-content" class="mini-content pt-1">
                     @if(isset($record->medical_exam))
                         @if(isset($record) && !empty($record))
-                        <div class="container" style="height: 275px; overflow: auto;">
+                        <div class="container" style="height: 265px; overflow: auto;">
                             <!-- Medical History -->
                             <h3 class="my-2"><strong>I. Medical History</strong></h3>
                             <div class="row row-cols-3">
@@ -1031,8 +1031,15 @@
                 <div id="dental-exam-content" class="mini-content pt-1">
                     @if(isset($record->dental_exam))
                         @if(isset($record) && !empty($record))
-                            <div class="container" style="height: 275px; overflow: auto;">
-                                <h3 class="mt-2"><strong>INTRAORAL EXAMINATION</strong></h3>
+                            <div class="container" style="height: 265px; overflow: auto;">
+                            <div class="row">
+                                <div class="col">
+                                    <h3 class="mt-2"><strong>INTRAORAL EXAMINATION</strong></h3>
+                                </div>
+                                <div class="col text-right">
+                                    <a class="btn btn-primary px-4" href="{{ route('nurse.dentalExamEdit', $record->dental_exam->id) }}">Edit</a>
+                                </div>
+                            </div>
 
                                 <!-- Oral Hygiene -->
                                 <div class="row mx-auto">
