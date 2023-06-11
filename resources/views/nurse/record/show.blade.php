@@ -126,6 +126,9 @@
                                     <div class="col">
                                         {{ $record->consultation->consultation_response->complaint }}
                                     </div>
+                                    <div class="col text-right">
+                                        <a class="btn btn-primary px-4" href="{{ route('nurse.consultationExamEdit', $record->consultation->id) }}">Update</a>
+                                    </div>
                                 </div>
                                 <div class="row mx-auto mt-1">
                                     <div class="col pt-2">

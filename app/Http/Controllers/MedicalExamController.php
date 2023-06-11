@@ -294,7 +294,7 @@ class MedicalExamController extends Controller
         // Create OB-GYNE History
         MedicalExamResponse::create($MedicalExamResponseData);
 
-        return redirect()->route('nurse.recordShow', ['record' => $recordID])->with('success', 'Record created successfully.');
+        return redirect()->route('nurse.recordShow', ['record' => $recordID])->with('success', 'Medical examination created successfully.');
     }
 
     /**

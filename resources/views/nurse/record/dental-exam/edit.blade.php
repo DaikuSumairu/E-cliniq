@@ -3,7 +3,7 @@
 @section('title', 'Edit Dental Examination Record')
 
 @section('content_header')
-    <h1>Editing Dental Examination Record</h1>
+    <h1>Updating Dental Examination Record</h1>
 @stop
 
 @section('content')

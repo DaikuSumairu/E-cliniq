@@ -58,7 +58,7 @@ class ConsultationController extends Controller
         // Create Consultation Response
         ConsultationResponse::create($consultationResponseData);
         
-        return redirect()->route('nurse.recordShow', ['record' => $recordID])->with('success', 'Record created successfully.');
+        return redirect()->route('nurse.recordShow', ['record' => $recordID])->with('success', 'Consultation created successfully.');
     }
 
     /**
@@ -74,7 +74,7 @@ class ConsultationController extends Controller
      */
     public function edit(Consultation $consultation)
     {
-        //
+        return view('nurse.record.consultation.edit',compact('consultation'));
     }
 
     /**
@@ -82,7 +82,32 @@ class ConsultationController extends Controller
      */
     public function update(Request $request, Consultation $consultation)
     {
-        //
+        // Connect Consultation ID to that specific Record ID
+        $recordID = $request->input('record_id');
+        $consultationData = $request->all();
+
+        $consultation->update($consultationData);
+
+        // Connect Consultation Response ID to the Consultation ID
+        $request->validate([
+            'complaint',
+            'pulse',
+            'oxygen',
+            'respiratory_rate',
+            'bp1',
+            'bp2',
+            'temperature',
+            'treatment',
+            'remarks',
+        ]);
+
+        $consultationResponseData = $request->all();
+
+        $consultationResponse = $consultation->consultation_response;
+
+        $consultationResponse->update($consultationResponseData);
+        
+        return redirect()->route('nurse.recordShow', ['record' => $recordID])->with('success', 'Consultation updated successfully.');
     }
 
     /**
