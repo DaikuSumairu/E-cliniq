@@ -1037,13 +1037,13 @@
                                     <h3 class="mt-2"><strong>INTRAORAL EXAMINATION</strong></h3>
                                 </div>
                                 <div class="col text-right">
-                                    <a class="btn btn-primary px-4" href="{{ route('nurse.dentalExamEdit', $record->dental_exam->id) }}">Edit</a>
+                                    <a class="btn btn-primary px-4" href="{{ route('nurse.dentalExamEdit', $record->dental_exam->id) }}">Update</a>
                                 </div>
                             </div>
 
                                 <!-- Oral Hygiene -->
                                 <div class="row mx-auto">
-                                    <div class="col-0" style="margin-right: 442px;margin-left: 85px;">
+                                    <div class="col-0" style="margin-right: 387px;margin-left: 85px;">
                                         <p class="h5">Oral Hygiene</p>
                                     </div>
                                     <div class="col-2 mx-auto text-center pt-1">
@@ -1053,7 +1053,7 @@
 
                                 <!-- Gingival Color -->
                                 <div class="row mx-auto">
-                                    <div class="col-0" style="margin-right: 440px;margin-left: 75px;">
+                                    <div class="col-0" style="margin-right: 387px;margin-left: 75px;">
                                         <p class="h5">Gingival Color</p>
                                     </div>
                                     <div class="col-2 mx-auto text-center pt-1">
@@ -1063,7 +1063,7 @@
 
                                 <!-- Consistency of the Gingival -->
                                 <div class="row mx-auto">
-                                    <div class="col-0" style="margin-right: 370px;margin-left: 25px;">
+                                    <div class="col-0" style="margin-right: 335px;margin-left: 25px;">
                                         <p class="h5">Consistency of the Gingival</p>
                                     </div>
                                     <div class="col-2 mx-auto text-center pt-1">
@@ -1073,7 +1073,7 @@
 
                                 <!-- Oral Prophylaxis -->
                                 <div class="row mx-auto">
-                                    <div class="col-0" style="margin-right: 427px;margin-left: 25px;">
+                                    <div class="col-0" style="margin-right: 387px;margin-left: 25px;">
                                         <p class="ml-5 h5">Oral Prophylaxis</p>
                                     </div>
                                     <div class="col-2 mx-auto text-center pt-1">
@@ -1083,771 +1083,794 @@
 
                                 <!-- Restoration of: -->
                                 <div class="row mt-1 my-2">
-                                    <div class="row" style="width: 155px; padding-top: 65px;">
-                                        <div class="col-0" style="margin-right: 370px;margin-left: 25px;">
-                                            <p class="h5" style="margin-left: 78px; width: 125px;">Restoration of:</p>
+                                    @if($record->dental_exam->dental_exam_response->restoration == 'No')
+                                        <div class="row">
+                                            <div class="col-0" style="margin-left: 25px;">
+                                                <p class="h5" style="margin-left: 55px; width: 165px;">Restoration of:</p>
+                                            </div>
+                                            <div class="col-0" style="margin-left: 485px;">
+                                                <p class="h5" style="margin-left: 55px; width: 165px;">{{ $record->dental_exam->dental_exam_response->restoration }}</p>
+                                            </div>
                                         </div>
+                                    @else
+                                        <div class="row" style="width: 155px; padding-top: 65px;">
+                                            <div class="col-0" style="margin-right: 370px;margin-left: 25px;">
+                                                <p class="h5" style="margin-left: 78px; width: 125px;">Restoration of:</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row-0">
+                                            <!-- Numbers -->
+                                            <div class="row" style="margin-left: 265px;">
+                                                <!-- Left -->
+                                                <div class="col">
+                                                    <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
+                                                        <div class="col-0" style="margin-left: 15px;">
+                                                            <p>8</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 25px;">
+                                                            <p>7</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 28px;">
+                                                            <p>6</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 25px;">
+                                                            <p>5</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>4</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>3</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>2</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>1</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Right -->
+                                                <div class="col">
+                                                    <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
+                                                        <div class="col-0" style="margin-left: 22px;">
+                                                            <p>1</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 25px;">
+                                                            <p>2</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 28px;">
+                                                            <p>3</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 25px;">
+                                                            <p>4</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>5</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>6</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>7</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>8</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Top -->
+                                            <div class="row" style="margin-left: 265px;">
+                                                <!-- Left -->
+                                                <div class="col">
+                                                    <div class="row" style="width: 278px; padding-right: 5px; border-right: 1px solid; border-bottom: 1px solid;">
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lt8'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lt7'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lt6'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lt5'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lt4'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lt3'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lt2'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lt1'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Right -->
+                                                <div class="col">
+                                                    <div class="row" style="width: 278px; padding-left: 5px; border-left: 1px solid; border-bottom: 1px solid;">
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rt1'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rt2'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rt3'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rt4'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rt5'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rt6'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rt7'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rt8'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Bottom -->
+                                            <div class="row" style="margin-left: 265px;">
+                                                <!-- Left -->
+                                                <div class="col">
+                                                    <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px; border-right: 1px solid; border-top: 1px solid;">
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lb8'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lb7'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lb6'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lb5'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lb4'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lb3'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lb2'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lb1'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Right -->
+                                                <div class="col">
+                                                    <div class="row" style="width: 278px; padding-left: 5px; padding-top: 5px; border-left: 1px solid; border-top: 1px solid;">
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rb1'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rb2'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rb3'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rb4'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rb5'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rb6'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rb7'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rb8'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif    
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Numbers -->
+                                            <div class="row" style="margin-left: 265px;">
+                                                <!-- Left -->
+                                                <div class="col">
+                                                    <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
+                                                        <div class="col-0" style="margin-left: 15px;">
+                                                            <p>8</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 25px;">
+                                                            <p>7</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 28px;">
+                                                            <p>6</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 25px;">
+                                                            <p>5</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>4</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>3</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>2</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>1</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Right -->
+                                                <div class="col">
+                                                    <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
+                                                        <div class="col-0" style="margin-left: 22px;">
+                                                            <p>1</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 25px;">
+                                                            <p>2</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 28px;">
+                                                            <p>3</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 25px;">
+                                                            <p>4</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>5</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>6</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>7</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>8</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endif
                                     </div>
-                                    <div class="row-0">
-                                        <!-- Numbers -->
-                                        <div class="row" style="margin-left: 265px;">
-                                            <!-- Left -->
-                                            <div class="col">
-                                                <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
-                                                    <div class="col-0" style="margin-left: 15px;">
-                                                        <p>8</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 25px;">
-                                                        <p>7</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 28px;">
-                                                        <p>6</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 25px;">
-                                                        <p>5</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>4</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>3</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>2</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>1</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Right -->
-                                            <div class="col">
-                                                <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
-                                                    <div class="col-0" style="margin-left: 22px;">
-                                                        <p>1</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 25px;">
-                                                        <p>2</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 28px;">
-                                                        <p>3</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 25px;">
-                                                        <p>4</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>5</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>6</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>7</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>8</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Top -->
-                                        <div class="row" style="margin-left: 265px;">
-                                            <!-- Left -->
-                                            <div class="col">
-                                                <div class="row" style="width: 278px; padding-right: 5px; border-right: 1px solid; border-bottom: 1px solid;">
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lt8'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lt7'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lt6'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lt5'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lt4'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lt3'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lt2'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lt1'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Right -->
-                                            <div class="col">
-                                                <div class="row" style="width: 278px; padding-left: 5px; border-left: 1px solid; border-bottom: 1px solid;">
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rt1'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rt2'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rt3'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rt4'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rt5'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rt6'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rt7'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rt8'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Bottom -->
-                                        <div class="row" style="margin-left: 265px;">
-                                            <!-- Left -->
-                                            <div class="col">
-                                                <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px; border-right: 1px solid; border-top: 1px solid;">
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lb8'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lb7'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lb6'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lb5'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lb4'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lb3'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lb2'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_lb1'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Right -->
-                                            <div class="col">
-                                                <div class="row" style="width: 278px; padding-left: 5px; padding-top: 5px; border-left: 1px solid; border-top: 1px solid;">
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rb1'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rb2'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rb3'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rb4'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rb5'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rb6'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rb7'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_restoration['restoration_rb8'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif    
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Numbers -->
-                                        <div class="row" style="margin-left: 265px;">
-                                            <!-- Left -->
-                                            <div class="col">
-                                                <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
-                                                    <div class="col-0" style="margin-left: 15px;">
-                                                        <p>8</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 25px;">
-                                                        <p>7</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 28px;">
-                                                        <p>6</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 25px;">
-                                                        <p>5</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>4</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>3</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>2</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>1</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Right -->
-                                            <div class="col">
-                                                <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
-                                                    <div class="col-0" style="margin-left: 22px;">
-                                                        <p>1</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 25px;">
-                                                        <p>2</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 28px;">
-                                                        <p>3</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 25px;">
-                                                        <p>4</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>5</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>6</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>7</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>8</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <!-- Tooth Extraction of: -->
                                 <div class="row mt-3">
-                                    <div class="row" style="width: 203px; padding-top: 65px;">
-                                        <div class="col-0" style="margin-right: 370px;margin-left: 25px;">
-                                            <p class="h5" style="margin-left: 55px; width: 165px;">Tooth Extraction of:</p>
-                                        </div>
-                                    </div>
-                                    <div class="row-0">
-                                        <!-- Numbers -->
-                                        <div class="row" style="margin-left: 217px;">
-                                            <!-- Left -->
-                                            <div class="col">
-                                                <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
-                                                    <div class="col-0" style="margin-left: 15px;">
-                                                        <p>8</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 25px;">
-                                                        <p>7</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 28px;">
-                                                        <p>6</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 25px;">
-                                                        <p>5</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>4</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>3</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>2</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>1</p>
-                                                    </div>
-                                                </div>
+                                    @if($record->dental_exam->dental_exam_response->extraction == 'No')
+                                        <div class="row">
+                                            <div class="col-0" style="margin-left: 25px;">
+                                                <p class="h5" style="margin-left: 55px; width: 165px;">Tooth Extraction of:</p>
                                             </div>
-                                            <!-- Right -->
-                                            <div class="col">
-                                                <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
-                                                    <div class="col-0" style="margin-left: 22px;">
-                                                        <p>1</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 25px;">
-                                                        <p>2</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 28px;">
-                                                        <p>3</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 25px;">
-                                                        <p>4</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>5</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>6</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>7</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>8</p>
-                                                    </div>
-                                                </div>
+                                            <div class="col-0" style="margin-left: 485px;">
+                                                <p class="h5" style="margin-left: 55px; width: 165px;">{{ $record->dental_exam->dental_exam_response->extraction }}</p>
                                             </div>
                                         </div>
-                                        <!-- Top -->
-                                        <div class="row" style="margin-left: 217px;">
-                                            <!-- Left -->
-                                            <div class="col">
-                                                <div class="row" style="width: 278px; padding-right: 5px; border-right: 1px solid; border-bottom: 1px solid;">
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lt8'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lt7'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lt6'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lt5'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lt4'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lt3'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lt2'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lt1'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Right -->
-                                            <div class="col">
-                                                <div class="row" style="width: 278px; padding-left: 5px; border-left: 1px solid; border-bottom: 1px solid;">
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rt1'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rt2'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rt3'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rt4'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rt5'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rt6'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rt7'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rt8'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                </div>
+                                    @else
+                                        <div class="row" style="width: 203px; padding-top: 65px;">
+                                            <div class="col-0" style="margin-right: 370px;margin-left: 25px;">
+                                                <p class="h5" style="margin-left: 55px; width: 165px;">Tooth Extraction of:</p>
                                             </div>
                                         </div>
+                                        
+                                        <div class="row-0">
+                                            <!-- Numbers -->
+                                            <div class="row" style="margin-left: 217px;">
+                                                <!-- Left -->
+                                                <div class="col">
+                                                    <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
+                                                        <div class="col-0" style="margin-left: 15px;">
+                                                            <p>8</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 25px;">
+                                                            <p>7</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 28px;">
+                                                            <p>6</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 25px;">
+                                                            <p>5</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>4</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>3</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>2</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>1</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Right -->
+                                                <div class="col">
+                                                    <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
+                                                        <div class="col-0" style="margin-left: 22px;">
+                                                            <p>1</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 25px;">
+                                                            <p>2</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 28px;">
+                                                            <p>3</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 25px;">
+                                                            <p>4</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>5</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>6</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>7</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>8</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Top -->
+                                            <div class="row" style="margin-left: 217px;">
+                                                <!-- Left -->
+                                                <div class="col">
+                                                    <div class="row" style="width: 278px; padding-right: 5px; border-right: 1px solid; border-bottom: 1px solid;">
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lt8'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lt7'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lt6'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lt5'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lt4'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lt3'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lt2'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lt1'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Right -->
+                                                <div class="col">
+                                                    <div class="row" style="width: 278px; padding-left: 5px; border-left: 1px solid; border-bottom: 1px solid;">
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rt1'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rt2'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rt3'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rt4'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rt5'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rt6'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rt7'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rt8'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                        <!-- Bottom -->
-                                        <div class="row" style="margin-left: 217px;">
-                                            <!-- Left -->
-                                            <div class="col">
-                                                <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px; border-right: 1px solid; border-top: 1px solid;">
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lb8'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
+                                            <!-- Bottom -->
+                                            <div class="row" style="margin-left: 217px;">
+                                                <!-- Left -->
+                                                <div class="col">
+                                                    <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px; border-right: 1px solid; border-top: 1px solid;">
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lb8'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lb7'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lb6'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lb5'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lb4'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lb3'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lb2'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lb1'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
                                                     </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lb7'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lb6'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lb5'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lb4'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lb3'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lb2'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_lb1'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
+                                                </div>
+                                                <!-- Right -->
+                                                <div class="col">
+                                                    <div class="row" style="width: 278px; padding-left: 5px; padding-top: 5px; border-left: 1px solid; border-top: 1px solid;">
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rb1'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rb2'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rb3'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rb4'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rb5'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rb6'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rb7'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-0">
+                                                            @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rb8'] == 'Yes')
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
+                                                            @else
+                                                                <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
+                                                            @endif
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- Right -->
-                                            <div class="col">
-                                                <div class="row" style="width: 278px; padding-left: 5px; padding-top: 5px; border-left: 1px solid; border-top: 1px solid;">
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rb1'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
+                                            <!-- Numbers -->
+                                            <div class="row" style="margin-left: 217px;">
+                                                <!-- Left -->
+                                                <div class="col">
+                                                    <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
+                                                        <div class="col-0" style="margin-left: 15px;">
+                                                            <p>8</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 25px;">
+                                                            <p>7</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 28px;">
+                                                            <p>6</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 25px;">
+                                                            <p>5</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>4</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>3</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>2</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>1</p>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rb2'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rb3'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rb4'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rb5'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rb6'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rb7'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-0">
-                                                        @if($record->dental_exam->dental_exam_response->dental_exam_extraction['extraction_rb8'] == 'Yes')
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" checked disabled>
-                                                        @else
-                                                            <input type="checkbox" class="custom-checkbox col-0 ml-1" disabled>
-                                                        @endif
+                                                </div>
+                                                <!-- Right -->
+                                                <div class="col">
+                                                    <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
+                                                        <div class="col-0" style="margin-left: 22px;">
+                                                            <p>1</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 25px;">
+                                                            <p>2</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 28px;">
+                                                            <p>3</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 25px;">
+                                                            <p>4</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>5</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>6</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>7</p>
+                                                        </div>
+                                                        <div class="col-0" style="margin-left: 26px;">
+                                                            <p>8</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Numbers -->
-                                        <div class="row" style="margin-left: 217px;">
-                                            <!-- Left -->
-                                            <div class="col">
-                                                <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
-                                                    <div class="col-0" style="margin-left: 15px;">
-                                                        <p>8</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 25px;">
-                                                        <p>7</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 28px;">
-                                                        <p>6</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 25px;">
-                                                        <p>5</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>4</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>3</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>2</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>1</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Right -->
-                                            <div class="col">
-                                                <div class="row" style="width: 278px; padding-right: 5px; padding-top: 5px;">
-                                                    <div class="col-0" style="margin-left: 22px;">
-                                                        <p>1</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 25px;">
-                                                        <p>2</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 28px;">
-                                                        <p>3</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 25px;">
-                                                        <p>4</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>5</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>6</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>7</p>
-                                                    </div>
-                                                    <div class="col-0" style="margin-left: 26px;">
-                                                        <p>8</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endif
                                 </div>
 
                                 <!-- Prosthodontic Restoration -->

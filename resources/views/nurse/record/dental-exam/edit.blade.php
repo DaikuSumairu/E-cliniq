@@ -87,8 +87,9 @@
             <div class="row mt-1">
                 @if($dentalExam->dental_exam_response->oral_prophylaxis == 'Yes')
                     <input type="checkbox" id="oral_prophylaxis" name="oral_prophylaxis" value="Yes" class="col-0 ml-3" style="height: 25px; width: 30px;" onclick="toggleCheckbox('oral_prophylaxis')" checked>
+                    <input type="hidden" id="oral_prophylaxisHidden" name="oral_prophylaxis" value="Yes">
                 @else
-                    <input type="checkbox" id="oral_prophylaxis" name="oral_prophylaxis" value="No" class="col-0 ml-3" style="height: 25px; width: 30px;" onclick="toggleCheckbox('oral_prophylaxis')">
+                    <input type="checkbox" id="oral_prophylaxis" name="oral_prophylaxis" value="Yes" class="col-0 ml-3" style="height: 25px; width: 30px;" onclick="toggleCheckbox('oral_prophylaxis')">
                 @endif    
                 <div class="col-0">
                     <p class="ml-3 h4">Oral Prophylaxis</p>
@@ -100,8 +101,9 @@
                 <div class="row" style="width: 232px; padding-top: 65px;">
                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                         <input type="checkbox" id="restoration" name="restoration" value="Yes" class="col-0 ml-4" style="height: 25px; width: 30px;" onclick="toggleRestorationCheckbox()" checked>
+                        <input type="hidden" id="restorationHidden" name="restoration" value="Yes">
                     @else
-                        <input type="checkbox" id="restoration" name="restoration" value="No" class="col-0 ml-4" style="height: 25px; width: 30px;" onclick="toggleRestorationCheckbox()">
+                        <input type="checkbox" id="restoration" name="restoration" value="Yes" class="col-0 ml-4" style="height: 25px; width: 30px;" onclick="toggleRestorationCheckbox()">
                     @endif    
                     <div class="col-0">
                         <p class="ml-3 h4">Restoration of:</p>
@@ -177,9 +179,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_lt8'] == 'Yes')
-                                            <input type="checkbox" id="restoration_lt8" name="restoration_lt8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_lt8" name="restoration_lt8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_lt8')" checked>
+                                            <input type="hidden" id="restoration_lt8Hidden" name="restoration_lt8" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_lt8" name="restoration_lt8" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_lt8" name="restoration_lt8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_lt8" name="restoration_lt8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -188,9 +191,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_lt7'] == 'Yes')
-                                            <input type="checkbox" id="restoration_lt7" name="restoration_lt7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_lt7" name="restoration_lt7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_lt7')" checked>
+                                            <input type="hidden" id="restoration_lt7Hidden" name="restoration_lt7" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_lt7" name="restoration_lt7" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_lt7" name="restoration_lt7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_lt7" name="restoration_lt7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -199,9 +203,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_lt6'] == 'Yes')
-                                            <input type="checkbox" id="restoration_lt6" name="restoration_lt6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_lt6" name="restoration_lt6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_lt6')" checked>
+                                            <input type="hidden" id="restoration_lt6Hidden" name="restoration_lt6" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_lt6" name="restoration_lt6" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_lt6" name="restoration_lt6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_lt6" name="restoration_lt6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -210,9 +215,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_lt5'] == 'Yes')
-                                            <input type="checkbox" id="restoration_lt5" name="restoration_lt5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_lt5" name="restoration_lt5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_lt5')" checked>
+                                            <input type="hidden" id="restoration_lt5Hidden" name="restoration_lt5" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_lt5" name="restoration_lt5" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_lt5" name="restoration_lt5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_lt5" name="restoration_lt5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -221,9 +227,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_lt4'] == 'Yes')
-                                            <input type="checkbox" id="restoration_lt4" name="restoration_lt4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_lt4" name="restoration_lt4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_lt4')" checked>
+                                            <input type="hidden" id="restoration_lt4Hidden" name="restoration_lt4" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_lt4" name="restoration_lt4" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_lt4" name="restoration_lt4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_lt4" name="restoration_lt4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -232,9 +239,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_lt3'] == 'Yes')
-                                            <input type="checkbox" id="restoration_lt3" name="restoration_lt3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_lt3" name="restoration_lt3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_lt3')" checked>
+                                            <input type="hidden" id="restoration_lt3Hidden" name="restoration_lt3" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_lt3" name="restoration_lt3" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_lt3" name="restoration_lt3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_lt3" name="restoration_lt3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -243,9 +251,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_lt2'] == 'Yes')
-                                            <input type="checkbox" id="restoration_lt2" name="restoration_lt2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_lt2" name="restoration_lt2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_lt2')" checked>
+                                            <input type="hidden" id="restoration_lt2Hidden" name="restoration_lt2" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_lt2" name="restoration_lt2" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_lt2" name="restoration_lt2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_lt2" name="restoration_lt2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -254,9 +263,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_lt1'] == 'Yes')
-                                            <input type="checkbox" id="restoration_lt1" name="restoration_lt1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_lt1" name="restoration_lt1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_lt1')" checked>
+                                            <input type="hidden" id="restoration_lt1Hidden" name="restoration_lt1" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_lt1" name="restoration_lt1" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_lt1" name="restoration_lt1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_lt1" name="restoration_lt1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -270,9 +280,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_rt1'] == 'Yes')
-                                            <input type="checkbox" id="restoration_rt1" name="restoration_rt1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_rt1" name="restoration_rt1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_rt1')" checked>
+                                            <input type="hidden" id="restoration_rt1Hidden" name="restoration_rt1" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_rt1" name="restoration_rt1" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_rt1" name="restoration_rt1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_rt1" name="restoration_rt1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -281,9 +292,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_rt2'] == 'Yes')
-                                            <input type="checkbox" id="restoration_rt2" name="restoration_rt2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_rt2" name="restoration_rt2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_rt2')" checked>
+                                            <input type="hidden" id="restoration_rt2Hidden" name="restoration_rt2" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_rt2" name="restoration_rt2" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_rt2" name="restoration_rt2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_rt2" name="restoration_rt2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -292,9 +304,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_rt3'] == 'Yes')
-                                            <input type="checkbox" id="restoration_rt3" name="restoration_rt3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_rt3" name="restoration_rt3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_rt3')" checked>
+                                            <input type="hidden" id="restoration_rt3Hidden" name="restoration_rt3" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_rt3" name="restoration_rt3" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_rt3" name="restoration_rt3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_rt3" name="restoration_rt3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -303,9 +316,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_rt4'] == 'Yes')
-                                            <input type="checkbox" id="restoration_rt4" name="restoration_rt4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_rt4" name="restoration_rt4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_rt4')" checked>
+                                            <input type="hidden" id="restoration_rt4Hidden" name="restoration_rt4" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_rt4" name="restoration_rt4" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_rt4" name="restoration_rt4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_rt4" name="restoration_rt4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -314,9 +328,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_rt5'] == 'Yes')
-                                            <input type="checkbox" id="restoration_rt5" name="restoration_rt5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_rt5" name="restoration_rt5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_rt5')" checked>
+                                            <input type="hidden" id="restoration_rt5Hidden" name="restoration_rt5" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_rt5" name="restoration_rt5" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_rt5" name="restoration_rt5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_rt5" name="restoration_rt5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -325,9 +340,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_rt6'] == 'Yes')
-                                            <input type="checkbox" id="restoration_rt6" name="restoration_rt6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_rt6" name="restoration_rt6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_rt6')" checked>
+                                            <input type="hidden" id="restoration_rt6Hidden" name="restoration_rt6" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_rt6" name="restoration_rt6" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_rt6" name="restoration_rt6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_rt6" name="restoration_rt6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -336,9 +352,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_rt7'] == 'Yes')
-                                            <input type="checkbox" id="restoration_rt7" name="restoration_rt7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_rt7" name="restoration_rt7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_rt7')" checked>
+                                            <input type="hidden" id="restoration_rt7Hidden" name="restoration_rt7" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_rt7" name="restoration_rt7" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_rt7" name="restoration_rt7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_rt7" name="restoration_rt7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -347,9 +364,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_rt8'] == 'Yes')
-                                            <input type="checkbox" id="restoration_rt8" name="restoration_rt8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_rt8" name="restoration_rt8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_rt8')" checked>
+                                            <input type="hidden" id="restoration_rt8Hidden" name="restoration_rt8" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_rt8" name="restoration_rt8" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_rt8" name="restoration_rt8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_rt8" name="restoration_rt8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -367,9 +385,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_lb8'] == 'Yes')
-                                            <input type="checkbox" id="restoration_lb8" name="restoration_lb8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_lb8" name="restoration_lb8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_lb8')" checked>
+                                            <input type="hidden" id="restoration_lb8Hidden" name="restoration_lb8" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_lb8" name="restoration_lb8" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_lb8" name="restoration_lb8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_lb8" name="restoration_lb8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -378,9 +397,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_lb7'] == 'Yes')
-                                            <input type="checkbox" id="restoration_lb7" name="restoration_lb7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_lb7" name="restoration_lb7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_lb7')" checked>
+                                            <input type="hidden" id="restoration_lb7Hidden" name="restoration_lb7" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_lb7" name="restoration_lb7" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_lb7" name="restoration_lb7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_lb7" name="restoration_lb7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -389,9 +409,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_lb6'] == 'Yes')
-                                            <input type="checkbox" id="restoration_lb6" name="restoration_lb6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_lb6" name="restoration_lb6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_lb6')" checked>
+                                            <input type="hidden" id="restoration_lb6Hidden" name="restoration_lb6" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_lb6" name="restoration_lb6" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_lb6" name="restoration_lb6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_lb6" name="restoration_lb6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -400,9 +421,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_lb5'] == 'Yes')
-                                            <input type="checkbox" id="restoration_lb5" name="restoration_lb5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_lb5" name="restoration_lb5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_lb5')" checked>
+                                            <input type="hidden" id="restoration_lb5Hidden" name="restoration_lb5" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_lb5" name="restoration_lb5" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_lb5" name="restoration_lb5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_lb5" name="restoration_lb5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -411,9 +433,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_lb4'] == 'Yes')
-                                            <input type="checkbox" id="restoration_lb4" name="restoration_lb4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_lb4" name="restoration_lb4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_lb4')" checked>
+                                            <input type="hidden" id="restoration_lb4Hidden" name="restoration_lb4" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_lb4" name="restoration_lb4" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_lb4" name="restoration_lb4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_lb4" name="restoration_lb4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -422,9 +445,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_lb3'] == 'Yes')
-                                            <input type="checkbox" id="restoration_lb3" name="restoration_lb3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_lb3" name="restoration_lb3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_lb3')" checked>
+                                            <input type="hidden" id="restoration_lb3Hidden" name="restoration_lb3" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_lb3" name="restoration_lb3" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_lb3" name="restoration_lb3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_lb3" name="restoration_lb3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -433,9 +457,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_lb2'] == 'Yes')
-                                            <input type="checkbox" id="restoration_lb2" name="restoration_lb2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_lb2" name="restoration_lb2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_lb2')" checked>
+                                            <input type="hidden" id="restoration_lb2Hidden" name="restoration_lb2" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_lb2" name="restoration_lb2" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_lb2" name="restoration_lb2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_lb2" name="restoration_lb2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -444,9 +469,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_lb1'] == 'Yes')
-                                            <input type="checkbox" id="restoration_lb1" name="restoration_lb1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_lb1" name="restoration_lb1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_lb1')" checked>
+                                            <input type="hidden" id="restoration_lb1Hidden" name="restoration_lb1" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_lb1" name="restoration_lb1" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_lb1" name="restoration_lb1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_lb1" name="restoration_lb1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -460,9 +486,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_rb1'] == 'Yes')
-                                            <input type="checkbox" id="restoration_rb1" name="restoration_rb1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_rb1" name="restoration_rb1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_rb1')" checked>
+                                            <input type="hidden" id="restoration_rb1Hidden" name="restoration_rb1" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_rb1" name="restoration_rb1" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_rb1" name="restoration_rb1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_rb1" name="restoration_rb1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -471,9 +498,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_rb2'] == 'Yes')
-                                            <input type="checkbox" id="restoration_rb2" name="restoration_rb2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_rb2" name="restoration_rb2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_rb2')" checked>
+                                            <input type="hidden" id="restoration_rb2Hidden" name="restoration_rb2" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_rb2" name="restoration_rb2" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_rb2" name="restoration_rb2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_rb2" name="restoration_rb2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -482,9 +510,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_rb3'] == 'Yes')
-                                            <input type="checkbox" id="restoration_rb3" name="restoration_rb3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_rb3" name="restoration_rb3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_rb3')" checked>
+                                            <input type="hidden" id="restoration_rb3Hidden" name="restoration_rb3" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_rb3" name="restoration_rb3" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_rb3" name="restoration_rb3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_rb3" name="restoration_rb3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -493,9 +522,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_rb4'] == 'Yes')
-                                            <input type="checkbox" id="restoration_rb4" name="restoration_rb4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_rb4" name="restoration_rb4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_rb4')" checked>
+                                            <input type="hidden" id="restoration_rb4Hidden" name="restoration_rb4" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_rb4" name="restoration_rb4" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_rb4" name="restoration_rb4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_rb4" name="restoration_rb4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -504,9 +534,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_rb5'] == 'Yes')
-                                            <input type="checkbox" id="restoration_rb5" name="restoration_rb5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_rb5" name="restoration_rb5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_rb5')" checked>
+                                            <input type="hidden" id="restoration_rb5Hidden" name="restoration_rb5" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_rb5" name="restoration_rb5" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_rb5" name="restoration_rb5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_rb5" name="restoration_rb5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -515,9 +546,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_rb6'] == 'Yes')
-                                            <input type="checkbox" id="restoration_rb6" name="restoration_rb6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_rb6" name="restoration_rb6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_rb6')" checked>
+                                            <input type="hidden" id="restoration_rb6Hidden" name="restoration_rb6" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_rb6" name="restoration_rb6" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_rb6" name="restoration_rb6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_rb6" name="restoration_rb6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -526,9 +558,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_rb7'] == 'Yes')
-                                            <input type="checkbox" id="restoration_rb7" name="restoration_rb7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_rb7" name="restoration_rb7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_rb7')" checked>
+                                            <input type="hidden" id="restoration_rb7Hidden" name="restoration_rb7" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_rb7" name="restoration_rb7" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_rb7" name="restoration_rb7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_rb7" name="restoration_rb7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -537,9 +570,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->restoration == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_restoration['restoration_rb8'] == 'Yes')
-                                            <input type="checkbox" id="restoration_rb8" name="restoration_rb8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="restoration_rb8" name="restoration_rb8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleRestorCheckbox('restoration_rb8')" checked>
+                                            <input type="hidden" id="restoration_rb8Hidden" name="restoration_rb8" value="Yes">
                                         @else
-                                            <input type="checkbox" id="restoration_rb8" name="restoration_rb8" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="restoration_rb8" name="restoration_rb8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="restoration_rb8" name="restoration_rb8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -618,8 +652,9 @@
                 <div class="row" style="width: 279px; padding-top: 65px;">
                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                         <input type="checkbox" id="extraction" name="extraction" value="Yes" class="col-0 ml-4" style="height: 25px; width: 30px;" onclick="toggleExtractionCheckbox()" checked>
+                        <input type="hidden" id="extractionHidden" name="extraction" value="Yes">
                     @else    
-                        <input type="checkbox" id="extraction" name="extraction" value="No" class="col-0 ml-4" style="height: 25px; width: 30px;" onclick="toggleExtractionCheckbox()">
+                        <input type="checkbox" id="extraction" name="extraction" value="Yes" class="col-0 ml-4" style="height: 25px; width: 30px;" onclick="toggleExtractionCheckbox()">
                     @endif
                     <div class="col-0">
                         <p class="ml-3 h4">Tooth Extraction of:</p>
@@ -695,9 +730,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_lt8'] == 'Yes')
-                                            <input type="checkbox" id="extraction_lt8" name="extraction_lt8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_lt8" name="extraction_lt8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_lt8')" checked>
+                                            <input type="hidden" id="extraction_lt8Hidden" name="extraction_lt8" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_lt8" name="extraction_lt8" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_lt8" name="extraction_lt8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_lt8" name="extraction_lt8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -706,9 +742,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_lt7'] == 'Yes')
-                                            <input type="checkbox" id="extraction_lt7" name="extraction_lt7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_lt7" name="extraction_lt7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_lt7')" checked>
+                                            <input type="hidden" id="extraction_lt7Hidden" name="extraction_lt7" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_lt7" name="extraction_lt7" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_lt7" name="extraction_lt7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_lt7" name="extraction_lt7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -717,9 +754,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_lt6'] == 'Yes')
-                                            <input type="checkbox" id="extraction_lt6" name="extraction_lt6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_lt6" name="extraction_lt6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_lt6')" checked>
+                                            <input type="hidden" id="extraction_lt6Hidden" name="extraction_lt6" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_lt6" name="extraction_lt6" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_lt6" name="extraction_lt6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_lt6" name="extraction_lt6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -728,9 +766,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_lt5'] == 'Yes')
-                                            <input type="checkbox" id="extraction_lt5" name="extraction_lt5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_lt5" name="extraction_lt5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_lt5')" checked>
+                                            <input type="hidden" id="extraction_lt5Hidden" name="extraction_lt5" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_lt5" name="extraction_lt5" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_lt5" name="extraction_lt5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_lt5" name="extraction_lt5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -739,9 +778,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_lt4'] == 'Yes')
-                                            <input type="checkbox" id="extraction_lt4" name="extraction_lt4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_lt4" name="extraction_lt4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_lt4')" checked>
+                                            <input type="hidden" id="extraction_lt4Hidden" name="extraction_lt4" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_lt4" name="extraction_lt4" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_lt4" name="extraction_lt4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_lt4" name="extraction_lt4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -750,9 +790,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_lt3'] == 'Yes')
-                                            <input type="checkbox" id="extraction_lt3" name="extraction_lt3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_lt3" name="extraction_lt3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_lt3')" checked>
+                                            <input type="hidden" id="extraction_lt3Hidden" name="extraction_lt3" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_lt3" name="extraction_lt3" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_lt3" name="extraction_lt3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_lt3" name="extraction_lt3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -761,9 +802,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_lt2'] == 'Yes')
-                                            <input type="checkbox" id="extraction_lt2" name="extraction_lt2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_lt2" name="extraction_lt2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_lt2')" checked>
+                                            <input type="hidden" id="extraction_lt2Hidden" name="extraction_lt2" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_lt2" name="extraction_lt2" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_lt2" name="extraction_lt2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_lt2" name="extraction_lt2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -772,9 +814,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_lt1'] == 'Yes')
-                                            <input type="checkbox" id="extraction_lt1" name="extraction_lt1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_lt1" name="extraction_lt1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_lt1')" checked>
+                                            <input type="hidden" id="extraction_lt1Hidden" name="extraction_lt1" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_lt1" name="extraction_lt1" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_lt1" name="extraction_lt1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_lt1" name="extraction_lt1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -788,9 +831,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_rt1'] == 'Yes')
-                                            <input type="checkbox" id="extraction_rt1" name="extraction_rt1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_rt1" name="extraction_rt1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_rt1')" checked>
+                                            <input type="hidden" id="extraction_rt1Hidden" name="extraction_rt1" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_rt1" name="extraction_rt1" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_rt1" name="extraction_rt1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_rt1" name="extraction_rt1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -799,9 +843,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_rt2'] == 'Yes')
-                                            <input type="checkbox" id="extraction_rt2" name="extraction_rt2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_rt2" name="extraction_rt2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_rt2')" checked>
+                                            <input type="hidden" id="extraction_rt2Hidden" name="extraction_rt2" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_rt2" name="extraction_rt2" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_rt2" name="extraction_rt2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_rt2" name="extraction_rt2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -810,9 +855,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_rt3'] == 'Yes')
-                                            <input type="checkbox" id="extraction_rt3" name="extraction_rt3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_rt3" name="extraction_rt3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_rt3')" checked>
+                                            <input type="hidden" id="extraction_rt3Hidden" name="extraction_rt3" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_rt3" name="extraction_rt3" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_rt3" name="extraction_rt3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_rt3" name="extraction_rt3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -821,9 +867,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_rt4'] == 'Yes')
-                                            <input type="checkbox" id="extraction_rt4" name="extraction_rt4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_rt4" name="extraction_rt4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_rt4')" checked>
+                                            <input type="hidden" id="extraction_rt4Hidden" name="extraction_rt4" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_rt4" name="extraction_rt4" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_rt4" name="extraction_rt4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_rt4" name="extraction_rt4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -832,9 +879,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_rt5'] == 'Yes')
-                                            <input type="checkbox" id="extraction_rt5" name="extraction_rt5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_rt5" name="extraction_rt5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_rt5')" checked>
+                                            <input type="hidden" id="extraction_rt5Hidden" name="extraction_rt5" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_rt5" name="extraction_rt5" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_rt5" name="extraction_rt5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_rt5" name="extraction_rt5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -843,9 +891,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_rt6'] == 'Yes')
-                                            <input type="checkbox" id="extraction_rt6" name="extraction_rt6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_rt6" name="extraction_rt6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_rt6')" checked>
+                                            <input type="hidden" id="extraction_rt6Hidden" name="extraction_rt6" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_rt6" name="extraction_rt6" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_rt6" name="extraction_rt6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_rt6" name="extraction_rt6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -854,9 +903,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_rt7'] == 'Yes')
-                                            <input type="checkbox" id="extraction_rt7" name="extraction_rt7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_rt7" name="extraction_rt7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_rt7')" checked>
+                                            <input type="hidden" id="extraction_rt7Hidden" name="extraction_rt7" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_rt7" name="extraction_rt7" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_rt7" name="extraction_rt7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_rt7" name="extraction_rt7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -865,9 +915,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_rt8'] == 'Yes')
-                                            <input type="checkbox" id="extraction_rt8" name="extraction_rt8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_rt8" name="extraction_rt8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_rt8')" checked>
+                                            <input type="hidden" id="extraction_rt8Hidden" name="extraction_rt8" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_rt8" name="extraction_rt8" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_rt8" name="extraction_rt8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_rt8" name="extraction_rt8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -885,9 +936,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_lb8'] == 'Yes')
-                                            <input type="checkbox" id="extraction_lb8" name="extraction_lb8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_lb8" name="extraction_lb8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_lb8')" checked>
+                                            <input type="hidden" id="extraction_lb8Hidden" name="extraction_lb8" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_lb8" name="extraction_lb8" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_lb8" name="extraction_lb8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_lb8" name="extraction_lb8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -896,9 +948,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_lb7'] == 'Yes')
-                                            <input type="checkbox" id="extraction_lb7" name="extraction_lb7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_lb7" name="extraction_lb7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_lb7')" checked>
+                                            <input type="hidden" id="extraction_lb7Hidden" name="extraction_lb7" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_lb7" name="extraction_lb7" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_lb7" name="extraction_lb7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_lb7" name="extraction_lb7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -907,9 +960,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_lb6'] == 'Yes')
-                                            <input type="checkbox" id="extraction_lb6" name="extraction_lb6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_lb6" name="extraction_lb6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_lb6')" checked>
+                                            <input type="hidden" id="extraction_lb6Hidden" name="extraction_lb6" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_lb6" name="extraction_lb6" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_lb6" name="extraction_lb6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_lb6" name="extraction_lb6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -918,9 +972,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_lb5'] == 'Yes')
-                                            <input type="checkbox" id="extraction_lb5" name="extraction_lb5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_lb5" name="extraction_lb5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_lb5')" checked>
+                                            <input type="hidden" id="extraction_lb5Hidden" name="extraction_lb5" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_lb5" name="extraction_lb5" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_lb5" name="extraction_lb5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_lb5" name="extraction_lb5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -929,9 +984,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_lb4'] == 'Yes')
-                                            <input type="checkbox" id="extraction_lb4" name="extraction_lb4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_lb4" name="extraction_lb4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_lb4')" checked>
+                                            <input type="hidden" id="extraction_lb4Hidden" name="extraction_lb4" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_lb4" name="extraction_lb4" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_lb4" name="extraction_lb4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_lb4" name="extraction_lb4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -940,9 +996,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_lb3'] == 'Yes')
-                                            <input type="checkbox" id="extraction_lb3" name="extraction_lb3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_lb3" name="extraction_lb3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_lb3')" checked>
+                                            <input type="hidden" id="extraction_lb3Hidden" name="extraction_lb3" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_lb3" name="extraction_lb3" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_lb3" name="extraction_lb3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_lb3" name="extraction_lb3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -951,9 +1008,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_lb2'] == 'Yes')
-                                            <input type="checkbox" id="extraction_lb2" name="extraction_lb2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_lb2" name="extraction_lb2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_lb2')" checked>
+                                            <input type="hidden" id="extraction_lb2Hidden" name="extraction_lb2" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_lb2" name="extraction_lb2" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_lb2" name="extraction_lb2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_lb2" name="extraction_lb2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -962,9 +1020,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_lb1'] == 'Yes')
-                                            <input type="checkbox" id="extraction_lb1" name="extraction_lb1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_lb1" name="extraction_lb1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_lb1')" checked>
+                                            <input type="hidden" id="extraction_lb1Hidden" name="extraction_lb1" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_lb1" name="extraction_lb1" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_lb1" name="extraction_lb1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_lb1" name="extraction_lb1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -978,9 +1037,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_rb1'] == 'Yes')
-                                            <input type="checkbox" id="extraction_rb1" name="extraction_rb1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_rb1" name="extraction_rb1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_rb1')" checked>
+                                            <input type="hidden" id="extraction_rb1Hidden" name="extraction_rb1" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_rb1" name="extraction_rb1" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_rb1" name="extraction_rb1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_rb1" name="extraction_rb1" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -989,9 +1049,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_rb2'] == 'Yes')
-                                            <input type="checkbox" id="extraction_rb2" name="extraction_rb2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_rb2" name="extraction_rb2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_rb2')" checked>
+                                            <input type="hidden" id="extraction_rb2Hidden" name="extraction_rb2" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_rb2" name="extraction_rb2" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_rb2" name="extraction_rb2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_rb2" name="extraction_rb2" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -1000,9 +1061,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_rb3'] == 'Yes')
-                                            <input type="checkbox" id="extraction_rb3" name="extraction_rb3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_rb3" name="extraction_rb3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_rb3')" checked>
+                                            <input type="hidden" id="extraction_rb3Hidden" name="extraction_rb3" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_rb3" name="extraction_rb3" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_rb3" name="extraction_rb3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_rb3" name="extraction_rb3" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -1011,9 +1073,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_rb4'] == 'Yes')
-                                            <input type="checkbox" id="extraction_rb4" name="extraction_rb4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_rb4" name="extraction_rb4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_rb4')" checked>
+                                            <input type="hidden" id="extraction_rb4Hidden" name="extraction_rb4" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_rb4" name="extraction_rb4" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_rb4" name="extraction_rb4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_rb4" name="extraction_rb4" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -1022,9 +1085,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_rb5'] == 'Yes')
-                                            <input type="checkbox" id="extraction_rb5" name="extraction_rb5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_rb5" name="extraction_rb5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_rb5')" checked>
+                                            <input type="hidden" id="extraction_rb5Hidden" name="extraction_rb5" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_rb5" name="extraction_rb5" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_rb5" name="extraction_rb5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_rb5" name="extraction_rb5" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -1033,9 +1097,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_rb6'] == 'Yes')
-                                            <input type="checkbox" id="extraction_rb6" name="extraction_rb6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_rb6" name="extraction_rb6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_rb6')" checked>
+                                            <input type="hidden" id="extraction_rb6Hidden" name="extraction_rb6" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_rb6" name="extraction_rb6" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_rb6" name="extraction_rb6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_rb6" name="extraction_rb6" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -1044,9 +1109,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_rb7'] == 'Yes')
-                                            <input type="checkbox" id="extraction_rb7" name="extraction_rb7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_rb7" name="extraction_rb7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_rb7')" checked>
+                                            <input type="hidden" id="extraction_rb7Hidden" name="extraction_rb7" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_rb7" name="extraction_rb7" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_rb7" name="extraction_rb7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_rb7" name="extraction_rb7" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -1055,9 +1121,10 @@
                                 <div class="col-0">
                                     @if($dentalExam->dental_exam_response->extraction == 'Yes')
                                         @if($dentalExam->dental_exam_response->dental_exam_extraction['extraction_rb8'] == 'Yes')
-                                            <input type="checkbox" id="extraction_rb8" name="extraction_rb8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" checked>
+                                            <input type="checkbox" id="extraction_rb8" name="extraction_rb8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onclick="toggleExtractCheckbox('extraction_rb8')" checked>
+                                            <input type="hidden" id="extraction_rb8Hidden" name="extraction_rb8" value="Yes">
                                         @else
-                                            <input type="checkbox" id="extraction_rb8" name="extraction_rb8" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;">
+                                            <input type="checkbox" id="extraction_rb8" name="extraction_rb8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;">
                                         @endif
                                     @else
                                         <input type="checkbox" id="extraction_rb8" name="extraction_rb8" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" disabled>
@@ -1134,8 +1201,9 @@
             <div class="row mt-1">
                 @if($dentalExam->dental_exam_response->prosthodontic_restoration == 'Yes')
                     <input type="checkbox" id="prosthodontic_restoration" name="prosthodontic_restoration" value="Yes" class="col-0 ml-3" style="height: 25px; width: 30px;" onclick="toggleCheckbox('prosthodontic_restoration')" checked>
+                    <input type="hidden" id="prosthodontic_restorationHidden" name="prosthodontic_restoration" value="Yes">    
                 @else
-                    <input type="checkbox" id="prosthodontic_restoration" name="prosthodontic_restoration" value="No" class="col-0 ml-3" style="height: 25px; width: 30px;" onclick="toggleCheckbox('prosthodontic_restoration')">
+                    <input type="checkbox" id="prosthodontic_restoration" name="prosthodontic_restoration" value="Yes" class="col-0 ml-3" style="height: 25px; width: 30px;" onclick="toggleCheckbox('prosthodontic_restoration')">
                 @endif
                 <div class="col-0">
                     <p class="ml-3 h4">Prosthodontic Restoration</p>
@@ -1146,8 +1214,9 @@
             <div class="row mt-3">
                 @if($dentalExam->dental_exam_response->orthodontist == 'Yes')
                     <input type="checkbox" id="orthodontist" name="orthodontist" value="Yes" class="col-0 ml-3" style="height: 25px; width: 30px;" onclick="toggleCheckbox('orthodontist')" checked>
+                    <input type="hidden" id="orthodontistHidden" name="orthodontist" value="Yes">    
                 @else
-                    <input type="checkbox" id="orthodontist" name="orthodontist" value="No" class="col-0 ml-3" style="height: 25px; width: 30px;" onclick="toggleCheckbox('orthodontist')">
+                    <input type="checkbox" id="orthodontist" name="orthodontist" value="Yes" class="col-0 ml-3" style="height: 25px; width: 30px;" onclick="toggleCheckbox('orthodontist')">
                 @endif    
                 <div class="col-0">
                     <p class="ml-3 h4">See an Orthodontist</p>
@@ -1169,130 +1238,88 @@
 @section('js')
     <script>
         function toggleCheckbox(checkboxId) {
-        var checkbox = document.getElementById(checkboxId);
+            var checkbox = document.getElementById(checkboxId);
+            var hiddenInput = document.getElementById(checkboxId + 'Hidden');
+            
             if (checkbox.checked) {
-                checkbox.value = "Yes";
+                hiddenInput.value = "Yes";
             } else {
-                checkbox.value = "No";
+                hiddenInput.value = "No";
             }
         }
 
         function toggleExtractionCheckbox() {
             var extractionCheckbox = document.getElementById('extraction');
-            var extractionLt8Checkbox = document.getElementById('extraction_lt8');
-            var extractionLt7Checkbox = document.getElementById('extraction_lt7');
-            var extractionLt6Checkbox = document.getElementById('extraction_lt6');
-            var extractionLt5Checkbox = document.getElementById('extraction_lt5');
-            var extractionLt4Checkbox = document.getElementById('extraction_lt4');
-            var extractionLt3Checkbox = document.getElementById('extraction_lt3');
-            var extractionLt2Checkbox = document.getElementById('extraction_lt2');
-            var extractionLt1Checkbox = document.getElementById('extraction_lt1');
-            var extractionRt1Checkbox = document.getElementById('extraction_rt1');
-            var extractionRt2Checkbox = document.getElementById('extraction_rt2');
-            var extractionRt3Checkbox = document.getElementById('extraction_rt3');
-            var extractionRt4Checkbox = document.getElementById('extraction_rt4');
-            var extractionRt5Checkbox = document.getElementById('extraction_rt5');
-            var extractionRt6Checkbox = document.getElementById('extraction_rt6');
-            var extractionRt7Checkbox = document.getElementById('extraction_rt7');
-            var extractionRt8Checkbox = document.getElementById('extraction_rt8');
-            var extractionLb1Checkbox = document.getElementById('extraction_lb1');
-            var extractionLb2Checkbox = document.getElementById('extraction_lb2');
-            var extractionLb3Checkbox = document.getElementById('extraction_lb3');
-            var extractionLb4Checkbox = document.getElementById('extraction_lb4');
-            var extractionLb5Checkbox = document.getElementById('extraction_lb5');
-            var extractionLb6Checkbox = document.getElementById('extraction_lb6');
-            var extractionLb7Checkbox = document.getElementById('extraction_lb7');
-            var extractionLb8Checkbox = document.getElementById('extraction_lb8');
-            var extractionRb1Checkbox = document.getElementById('extraction_rb1');
-            var extractionRb2Checkbox = document.getElementById('extraction_rb2');
-            var extractionRb3Checkbox = document.getElementById('extraction_rb3');
-            var extractionRb4Checkbox = document.getElementById('extraction_rb4');
-            var extractionRb5Checkbox = document.getElementById('extraction_rb5');
-            var extractionRb6Checkbox = document.getElementById('extraction_rb6');
-            var extractionRb7Checkbox = document.getElementById('extraction_rb7');
-            var extractionRb8Checkbox = document.getElementById('extraction_rb8');
-
-            var extractionCheckboxes = [
-                extractionLt8Checkbox, extractionLt7Checkbox, extractionLt6Checkbox, extractionLt5Checkbox,
-                extractionLt4Checkbox, extractionLt3Checkbox, extractionLt2Checkbox, extractionLt1Checkbox,
-                extractionRt1Checkbox, extractionRt2Checkbox, extractionRt3Checkbox, extractionRt4Checkbox,
-                extractionRt5Checkbox, extractionRt6Checkbox, extractionRt7Checkbox, extractionRt8Checkbox,
-                extractionLb1Checkbox, extractionLb2Checkbox, extractionLb3Checkbox, extractionLb4Checkbox,
-                extractionLb5Checkbox, extractionLb6Checkbox, extractionLb7Checkbox, extractionLb8Checkbox,
-                extractionRb1Checkbox, extractionRb2Checkbox, extractionRb3Checkbox, extractionRb4Checkbox,
-                extractionRb5Checkbox, extractionRb6Checkbox, extractionRb7Checkbox, extractionRb8Checkbox
-            ];
-          
+            var extractionHidden = document.getElementById('extractionHidden');
+            var extractionHiddens = document.querySelectorAll('[id^="extraction_"][id$="Hidden"]');
+                
             var isChecked = !extractionCheckbox.checked;
-          
+                
+            extractionHiddens.forEach(function (hiddenField) {
+                hiddenField.value = isChecked ? "No" : "Yes";
+            });
+        
+            if (extractionHidden) {
+                extractionHidden.value = isChecked ? "No" : "Yes";
+            }
+        
+            var extractionCheckboxes = document.querySelectorAll('[id^="extraction_"]:not([id$="Hidden"])');
             extractionCheckboxes.forEach(function (checkbox) {
-                checkbox.disabled = isChecked;
+                checkbox.disabled = false; // Enable the checkboxes
+                checkbox.checked = false; // Uncheck all checkboxes
+            
                 if (isChecked) {
-                    checkbox.checked = false;
-                    extractionCheckbox.value = "No";
-                } else {
-                    extractionCheckbox.value = "Yes";
+                    checkbox.disabled = true; // Disable the checkboxes if extraction is "No"
                 }
             });
         }
 
+        function toggleExtractCheckbox(checkboxId) {
+            var checkbox = document.getElementById(checkboxId);
+            var hiddenInput = document.getElementById(checkboxId + 'Hidden');
+            
+            if (checkbox.checked) {
+                hiddenInput.value = "Yes";
+            } else {
+                hiddenInput.value = "No";
+            }
+        }
+
         function toggleRestorationCheckbox() {
             var restorationCheckbox = document.getElementById('restoration');
-            var restorationLt8Checkbox = document.getElementById('restoration_lt8');
-            var restorationLt7Checkbox = document.getElementById('restoration_lt7');
-            var restorationLt6Checkbox = document.getElementById('restoration_lt6');
-            var restorationLt5Checkbox = document.getElementById('restoration_lt5');
-            var restorationLt4Checkbox = document.getElementById('restoration_lt4');
-            var restorationLt3Checkbox = document.getElementById('restoration_lt3');
-            var restorationLt2Checkbox = document.getElementById('restoration_lt2');
-            var restorationLt1Checkbox = document.getElementById('restoration_lt1');
-            var restorationRt1Checkbox = document.getElementById('restoration_rt1');
-            var restorationRt2Checkbox = document.getElementById('restoration_rt2');
-            var restorationRt3Checkbox = document.getElementById('restoration_rt3');
-            var restorationRt4Checkbox = document.getElementById('restoration_rt4');
-            var restorationRt5Checkbox = document.getElementById('restoration_rt5');
-            var restorationRt6Checkbox = document.getElementById('restoration_rt6');
-            var restorationRt7Checkbox = document.getElementById('restoration_rt7');
-            var restorationRt8Checkbox = document.getElementById('restoration_rt8');
-            var restorationLb1Checkbox = document.getElementById('restoration_lb1');
-            var restorationLb2Checkbox = document.getElementById('restoration_lb2');
-            var restorationLb3Checkbox = document.getElementById('restoration_lb3');
-            var restorationLb4Checkbox = document.getElementById('restoration_lb4');
-            var restorationLb5Checkbox = document.getElementById('restoration_lb5');
-            var restorationLb6Checkbox = document.getElementById('restoration_lb6');
-            var restorationLb7Checkbox = document.getElementById('restoration_lb7');
-            var restorationLb8Checkbox = document.getElementById('restoration_lb8');
-            var restorationRb1Checkbox = document.getElementById('restoration_rb1');
-            var restorationRb2Checkbox = document.getElementById('restoration_rb2');
-            var restorationRb3Checkbox = document.getElementById('restoration_rb3');
-            var restorationRb4Checkbox = document.getElementById('restoration_rb4');
-            var restorationRb5Checkbox = document.getElementById('restoration_rb5');
-            var restorationRb6Checkbox = document.getElementById('restoration_rb6');
-            var restorationRb7Checkbox = document.getElementById('restoration_rb7');
-            var restorationRb8Checkbox = document.getElementById('restoration_rb8');
-            
-            var restorationCheckboxes = [
-                restorationLt8Checkbox, restorationLt7Checkbox, restorationLt6Checkbox, restorationLt5Checkbox,
-                restorationLt4Checkbox, restorationLt3Checkbox, restorationLt2Checkbox, restorationLt1Checkbox,
-                restorationRt1Checkbox, restorationRt2Checkbox, restorationRt3Checkbox, restorationRt4Checkbox,
-                restorationRt5Checkbox, restorationRt6Checkbox, restorationRt7Checkbox, restorationRt8Checkbox,
-                restorationLb1Checkbox, restorationLb2Checkbox, restorationLb3Checkbox, restorationLb4Checkbox,
-                restorationLb5Checkbox, restorationLb6Checkbox, restorationLb7Checkbox, restorationLb8Checkbox,
-                restorationRb1Checkbox, restorationRb2Checkbox, restorationRb3Checkbox, restorationRb4Checkbox,
-                restorationRb5Checkbox, restorationRb6Checkbox, restorationRb7Checkbox, restorationRb8Checkbox
-            ];
-        
+            var restorationHidden = document.getElementById('restorationHidden');
+            var restorationHiddens = document.querySelectorAll('[id^="restoration_"][id$="Hidden"]');
+                
             var isChecked = !restorationCheckbox.checked;
+                
+            restorationHiddens.forEach(function (hiddenField) {
+                hiddenField.value = isChecked ? "No" : "Yes";
+            });
         
+            if (restorationHidden) {
+                restorationHidden.value = isChecked ? "No" : "Yes";
+            }
+        
+            var restorationCheckboxes = document.querySelectorAll('[id^="restoration_"]:not([id$="Hidden"])');
             restorationCheckboxes.forEach(function (checkbox) {
-                checkbox.disabled = isChecked;
+                checkbox.disabled = false; // Enable the checkboxes
+                checkbox.checked = false; // Uncheck all checkboxes
+            
                 if (isChecked) {
-                    checkbox.checked = false;
-                    restorationCheckbox.value = "No";
-                } else {
-                    restorationCheckbox.value = "Yes";
+                    checkbox.disabled = true; // Disable the checkboxes if restoration is "No"
                 }
             });
+        }
+
+        function toggleRestorCheckbox(checkboxId) {
+            var checkbox = document.getElementById(checkboxId);
+            var hiddenInput = document.getElementById(checkboxId + 'Hidden');
+            
+            if (checkbox.checked) {
+                hiddenInput.value = "Yes";
+            } else {
+                hiddenInput.value = "No";
+            }
         }
     </script>
 @stop
