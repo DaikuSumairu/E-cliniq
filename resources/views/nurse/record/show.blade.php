@@ -127,7 +127,7 @@
                                         {{ $record->consultation->consultation_response->complaint }}
                                     </div>
                                     <div class="col text-right">
-                                        <a class="btn btn-primary px-4" href="{{ route('nurse.consultationExamEdit', $record->consultation->id) }}">Update</a>
+                                        <a class="btn btn-primary px-4" href="{{ route('nurse.consultationEdit', $record->consultation->id) }}">Update</a>
                                     </div>
                                 </div>
                                 <div class="row mx-auto mt-1">
@@ -204,15 +204,14 @@
                                 <div class="row mx-auto mt-3 border">
                                     <div class="col pt-2">
                                         <h4><strong>Treatment: </strong></h4>
-                                        {{ $record->consultation->consultation_response->treatment }}
+                                        <textarea class="form-control mb-2" readonly>{{ $record->consultation->consultation_response->treatment }}</textarea>
                                     </div>
                                 </div>
 
                                 <!-- Remarks -->
                                 <div class="row mx-auto my-3 border">
                                     <div class="col pt-2">
-                                        <h4><strong>Nurse Remarks: </strong></h4>
-                                        {{ $record->consultation->consultation_response->remarks }}
+                                        <h4><strong>Nurse Remarks: </strong> {{ $record->consultation->consultation_response->remarks }}</h4>
                                     </div>
                                 </div>
                             </div>    
@@ -229,8 +228,15 @@
                     @if(isset($record->medical_exam))
                         @if(isset($record) && !empty($record))
                         <div class="container" style="height: 265px; overflow: auto;">
-                            <!-- Medical History -->
-                            <h3 class="my-2"><strong>I. Medical History</strong></h3>
+                            <div class="row mx-auto mt-1">
+                                <!-- Medical History -->
+                                <div class="col-0 ml-1">                    
+                                    <h3 class="my-2"><strong>I. Medical History</strong></h3>
+                                </div>
+                                <div class="col text-right">
+                                    <a class="btn btn-primary px-4" href="{{ route('nurse.medExamEdit', $record->medical_exam->id) }}">Update</a>
+                                </div>
+                            </div>
                             <div class="row row-cols-3">
                                 <!-- Past Medical History -->
                                 <div class="col">
