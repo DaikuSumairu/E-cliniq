@@ -788,18 +788,38 @@
                     <!-- Hospitalization and Operation -->
                     <div class="container border my-3 pt-2">
                         <div class="row">
-                            <input type="checkbox" id="hospitalization" name="hospitalization" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'hospitalization')">
+                            @if($medical_exam->personal_and_social_history->hospitalization == "Yes")
+                                <input type="checkbox" id="hospitalization" name="hospitalization" value="Yes" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'hospitalization')" checked>
+                                <input type="hidden" id="hospitalizationHidden" name="hospitalization" value="Yes">
+                            @else
+                                <input type="checkbox" id="hospitalization" name="hospitalization" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'hospitalization')">
+                            @endif
                             <div class="col-0 mb-3">
                                 <p class="h5 mr-1"><strong>E. Hospitalization/s:</strong></p>
                             </div>
-                            <input type="number" name="hosp_times" class="col-0 mx-1" style="height: 25px; width: 138px;" id="hosp_times" disabled>
+                            @if($medical_exam->personal_and_social_history->hospitalization == "Yes")
+                                <input type="number" name="hosp_times" class="col-0 mx-1" style="height: 25px; width: 138px;" id="hosp_times" value="{{ $medical_exam->personal_and_social_history->hosp_times }}" required>
+                                <input type="hidden" id="hospitalizationValHidden" name="hosp_times" value=" " disabled>
+                            @else
+                                <input type="number" name="hosp_times" class="col-0 mx-1" style="height: 25px; width: 138px;" id="hosp_times" disabled>
+                            @endif
                         </div>
                         <div class="row">
-                            <input type="checkbox" id="operation" name="operation" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'operation')">
+                            @if($medical_exam->personal_and_social_history->operation == "Yes")
+                                <input type="checkbox" id="operation" name="operation" value="Yes" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'operation')" checked>
+                                <input type="hidden" id="operationHidden" name="operation" value="Yes">
+                            @else
+                                <input type="checkbox" id="operation" name="operation" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'operation')">
+                            @endif
                             <div class="col-0">
                                 <p class="h5 mr-1"><strong>F. Operation/s:</strong></p>
                             </div>
-                            <input type="number" name="op_times" class="col-0 mx-1" style="height: 25px; width: 185px;" id="op_times" disabled>
+                            @if($medical_exam->personal_and_social_history->operation == "Yes")
+                                <input type="number" name="op_times" class="col-0 mx-1" style="height: 25px; width: 185px;" id="op_times" value="{{ $medical_exam->personal_and_social_history->op_times }}" required>
+                                <input type="hidden" id="operationValHidden" name="op_times" value=" " disabled>
+                            @else
+                                <input type="number" name="op_times" class="col-0 mx-1" style="height: 25px; width: 185px;" id="op_times" disabled>
+                            @endif
                         </div>
                     </div>
 
@@ -1614,7 +1634,7 @@
 
                 <h4><strong>DIAGNOSIS:</strong></h4>
                 <div class="row mx-auto mb-3">
-                    <textarea class="form-control" name="diagnosis" id="diagnosis"></textarea>
+                    <textarea class="form-control" name="diagnosis" id="diagnosis">{{ $medical_exam->physical_examination->medical_exam_response->diagnosis }}</textarea>
                 </div>
 
                 <div class="position-right ml-auto" style="width: 75px;">
@@ -1675,6 +1695,10 @@
             var medicationValHidden = document.getElementById("medicationValHidden");
             var eyesHidden = document.getElementById("eyesHidden")
             var correctedHidden = document.getElementById("correctedHidden")
+            var hospitalizationHidden = document.getElementById("hospitalizationHidden")
+            var hospitalizationValHidden = document.getElementById("hospitalizationValHidden")
+            var operationHidden = document.getElementById("operationHidden")
+            var operationValHidden = document.getElementById("operationValHidden")
             const smokerHidden = document.getElementById("smokerHidden")
             const smokerValHidden1 = document.getElementById("smokerValHidden1")
             const smokerValHidden2 = document.getElementById("smokerValHidden2")
@@ -1731,9 +1755,13 @@
                 } else if (type === 'hospitalization'){
                     hospInput.disabled = false;
                     hospInput.required = true;
+                    hospitalizationHidden.value = "Yes";
+                    hospitalizationValHidden.disabled = true;
                 } else if (type === 'operation'){
                     opInput.disabled = false;
                     opInput.required = true;
+                    operationHidden.value = "Yes";
+                    operationValHidden.disabled = true;
                 } else if (type === 'eyes'){
                     odInput.disabled = true;
                     od1Input.disabled = true;
@@ -1803,10 +1831,14 @@
                     hospInput.disabled = true;
                     hospInput.required = false;
                     hospInput.value = '';
+                    hospitalizationHidden.value = "No";
+                    hospitalizationValHidden.disabled = false;
                 } else if (type === 'operation'){
                     opInput.disabled = true;
                     opInput.required = false;
                     opInput.value = '';
+                    operationHidden.value = "No";
+                    operationValHidden.disabled = false;
                 } else if (type === 'eyes'){
                     odInput.disabled = false;
                     od1Input.disabled = false;
