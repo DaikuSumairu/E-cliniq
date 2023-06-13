@@ -42,7 +42,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->past_medical_history->allergies == "No")
-                                    <textarea class="form-control" name="1_pm_respond" id="findingsTextarea_allergies">{{ $medical_exam->past_medical_history->medical_exam_response['1_pm_respond'] }}</textarea>
+                                    <textarea class="form-control" name="1_pm_respond" id="findingsTextarea_allergies" required>{{ $medical_exam->past_medical_history->medical_exam_response['1_pm_respond'] }}</textarea>
                                     <input type="hidden" id="allergiesRepHidden" name="1_pm_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="1_pm_respond" id="findingsTextarea_allergies" disabled>Not Applicable</textarea>
@@ -62,7 +62,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->past_medical_history->skin_disease == "No")
-                                    <textarea class="form-control" name="2_pm_respond" id="findingsTextarea_skin_disease">{{ $medical_exam->past_medical_history->medical_exam_response['2_pm_respond'] }}</textarea>
+                                    <textarea class="form-control" name="2_pm_respond" id="findingsTextarea_skin_disease" required>{{ $medical_exam->past_medical_history->medical_exam_response['2_pm_respond'] }}</textarea>
                                     <input type="hidden" id="skin_diseaseRepHidden" name="2_pm_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="2_pm_respond" id="findingsTextarea_skin_disease" disabled>Not Applicable</textarea>
@@ -82,7 +82,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->past_medical_history->opthalmologic_disorder == "No")
-                                    <textarea class="form-control" name="3_pm_respond" id="findingsTextarea_opthalmologic_disorder">{{ $medical_exam->past_medical_history->medical_exam_response['3_pm_respond'] }}</textarea>
+                                    <textarea class="form-control" name="3_pm_respond" id="findingsTextarea_opthalmologic_disorder" required>{{ $medical_exam->past_medical_history->medical_exam_response['3_pm_respond'] }}</textarea>
                                     <input type="hidden" id="opthalmologic_disorderRepHidden" name="3_pm_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="3_pm_respond" id="findingsTextarea_opthalmologic_disorder" disabled>Not Applicable</textarea>
@@ -101,7 +101,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->past_medical_history->ent_disorder == "No")
-                                    <textarea class="form-control" name="4_pm_respond" id="findingsTextarea_ent_disorder">{{ $medical_exam->past_medical_history->medical_exam_response['4_pm_respond'] }}</textarea>
+                                    <textarea class="form-control" name="4_pm_respond" id="findingsTextarea_ent_disorder" required>{{ $medical_exam->past_medical_history->medical_exam_response['4_pm_respond'] }}</textarea>
                                     <input type="hidden" id="ent_disorderRepHidden" name="4_pm_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="4_pm_respond" id="findingsTextarea_ent_disorder" disabled>Not Applicable</textarea>
@@ -120,7 +120,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->past_medical_history->bronchial_asthma == "No")
-                                    <textarea class="form-control" name="5_pm_respond" id="findingsTextarea_bronchial_asthma">{{ $medical_exam->past_medical_history->medical_exam_response['5_pm_respond'] }}</textarea>
+                                    <textarea class="form-control" name="5_pm_respond" id="findingsTextarea_bronchial_asthma" required>{{ $medical_exam->past_medical_history->medical_exam_response['5_pm_respond'] }}</textarea>
                                     <input type="hidden" id="bronchial_asthmaRepHidden" name="5_pm_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="5_pm_respond" id="findingsTextarea_bronchial_asthma" disabled>Not Applicable</textarea>
@@ -139,7 +139,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->past_medical_history->cardiac_disorder == "No")
-                                    <textarea class="form-control" name="6_pm_respond" id="findingsTextarea_cardiac_disorder">{{ $medical_exam->past_medical_history->medical_exam_response['6_pm_respond'] }}</textarea>
+                                    <textarea class="form-control" name="6_pm_respond" id="findingsTextarea_cardiac_disorder" required>{{ $medical_exam->past_medical_history->medical_exam_response['6_pm_respond'] }}</textarea>
                                     <input type="hidden" id="cardiac_disorderRepHidden" name="6_pm_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="6_pm_respond" id="findingsTextarea_cardiac_disorder" disabled>Not Applicable</textarea>
@@ -158,7 +158,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->past_medical_history->diabetes_melilitus == "No")
-                                    <textarea class="form-control" name="7_pm_respond" id="findingsTextarea_diabetes_melilitus">{{ $medical_exam->past_medical_history->medical_exam_response['7_pm_respond'] }}</textarea>
+                                    <textarea class="form-control" name="7_pm_respond" id="findingsTextarea_diabetes_melilitus" required>{{ $medical_exam->past_medical_history->medical_exam_response['7_pm_respond'] }}</textarea>
                                     <input type="hidden" id="diabetes_melilitusRepHidden" name="7_pm_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="7_pm_respond" id="findingsTextarea_diabetes_melilitus" disabled>Not Applicable</textarea>
@@ -177,7 +177,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->past_medical_history->chronic_headache_or_migraine == "No")
-                                    <textarea class="form-control" name="8_pm_respond" id="findingsTextarea_chronic_headache_or_migraine">{{ $medical_exam->past_medical_history->medical_exam_response['8_pm_respond'] }}</textarea>
+                                    <textarea class="form-control" name="8_pm_respond" id="findingsTextarea_chronic_headache_or_migraine" required>{{ $medical_exam->past_medical_history->medical_exam_response['8_pm_respond'] }}</textarea>
                                     <input type="hidden" id="chronic_headache_or_migraineRepHidden" name="8_pm_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="8_pm_respond" id="findingsTextarea_chronic_headache_or_migraine" disabled>Not Applicable</textarea>
@@ -196,7 +196,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->past_medical_history->hepatitis == "No")
-                                    <textarea class="form-control" name="9_pm_respond" id="findingsTextarea_hepatitis">{{ $medical_exam->past_medical_history->medical_exam_response['9_pm_respond'] }}</textarea>
+                                    <textarea class="form-control" name="9_pm_respond" id="findingsTextarea_hepatitis" required>{{ $medical_exam->past_medical_history->medical_exam_response['9_pm_respond'] }}</textarea>
                                     <input type="hidden" id="hepatitisRepHidden" name="9_pm_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="9_pm_respond" id="findingsTextarea_hepatitis" disabled>Not Applicable</textarea>
@@ -215,7 +215,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->past_medical_history->hypertension == "No")
-                                    <textarea class="form-control" name="10_pm_respond" id="findingsTextarea_hypertension">{{ $medical_exam->past_medical_history->medical_exam_response['10_pm_respond'] }}</textarea>
+                                    <textarea class="form-control" name="10_pm_respond" id="findingsTextarea_hypertension" required>{{ $medical_exam->past_medical_history->medical_exam_response['10_pm_respond'] }}</textarea>
                                     <input type="hidden" id="hypertensionRepHidden" name="10_pm_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="10_pm_respond" id="findingsTextarea_hypertension" disabled>Not Applicable</textarea>
@@ -234,7 +234,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->past_medical_history->thyroid_disorder == "No")
-                                    <textarea class="form-control" name="11_pm_respond" id="findingsTextarea_thyroid_disorder">{{ $medical_exam->past_medical_history->medical_exam_response['11_pm_respond'] }}</textarea>
+                                    <textarea class="form-control" name="11_pm_respond" id="findingsTextarea_thyroid_disorder" required>{{ $medical_exam->past_medical_history->medical_exam_response['11_pm_respond'] }}</textarea>
                                     <input type="hidden" id="thyroid_disorderRepHidden" name="11_pm_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="11_pm_respond" id="findingsTextarea_thyroid_disorder" disabled>Not Applicable</textarea>
@@ -253,7 +253,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->past_medical_history->blood_disorder == "No")
-                                    <textarea class="form-control" name="12_pm_respond" id="findingsTextarea_blood_disorder">{{ $medical_exam->past_medical_history->medical_exam_response['12_pm_respond'] }}</textarea>
+                                    <textarea class="form-control" name="12_pm_respond" id="findingsTextarea_blood_disorder" required>{{ $medical_exam->past_medical_history->medical_exam_response['12_pm_respond'] }}</textarea>
                                     <input type="hidden" id="blood_disorderRepHidden" name="12_pm_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="12_pm_respond" id="findingsTextarea_blood_disorder" disabled>Not Applicable</textarea>
@@ -272,7 +272,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->past_medical_history->tuberculosis == "No")
-                                    <textarea class="form-control" name="13_pm_respond" id="findingsTextarea_tuberculosis">{{ $medical_exam->past_medical_history->medical_exam_response['13_pm_respond'] }}</textarea>
+                                    <textarea class="form-control" name="13_pm_respond" id="findingsTextarea_tuberculosis" required>{{ $medical_exam->past_medical_history->medical_exam_response['13_pm_respond'] }}</textarea>
                                     <input type="hidden" id="tuberculosisRepHidden" name="13_pm_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="13_pm_respond" id="findingsTextarea_tuberculosis" disabled>Not Applicable</textarea>
@@ -291,7 +291,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->past_medical_history->peptic_ulcer == "No")
-                                    <textarea class="form-control" name="14_pm_respond" id="findingsTextarea_peptic_ulcer">{{ $medical_exam->past_medical_history->medical_exam_response['14_pm_respond'] }}</textarea>
+                                    <textarea class="form-control" name="14_pm_respond" id="findingsTextarea_peptic_ulcer" required>{{ $medical_exam->past_medical_history->medical_exam_response['14_pm_respond'] }}</textarea>
                                     <input type="hidden" id="peptic_ulcerRepHidden" name="14_pm_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="14_pm_respond" id="findingsTextarea_peptic_ulcer" disabled>Not Applicable</textarea>
@@ -310,7 +310,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->past_medical_history->musculoskeletal_disorder == "No")
-                                    <textarea class="form-control" name="15_pm_respond" id="findingsTextarea_musculoskeletal_disorder">{{ $medical_exam->past_medical_history->medical_exam_response['15_pm_respond'] }}</textarea>
+                                    <textarea class="form-control" name="15_pm_respond" id="findingsTextarea_musculoskeletal_disorder" required>{{ $medical_exam->past_medical_history->medical_exam_response['15_pm_respond'] }}</textarea>
                                     <input type="hidden" id="musculoskeletal_disorderRepHidden" name="15_pm_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="15_pm_respond" id="findingsTextarea_musculoskeletal_disorder" disabled>Not Applicable</textarea>
@@ -329,7 +329,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->past_medical_history->infectious_disease == "No")
-                                    <textarea class="form-control" name="16_pm_respond" id="findingsTextarea_infectious_disease">{{ $medical_exam->past_medical_history->medical_exam_response['16_pm_respond'] }}</textarea>
+                                    <textarea class="form-control" name="16_pm_respond" id="findingsTextarea_infectious_disease" required>{{ $medical_exam->past_medical_history->medical_exam_response['16_pm_respond'] }}</textarea>
                                     <input type="hidden" id="infectious_diseaseRepHidden" name="16_pm_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="16_pm_respond" id="findingsTextarea_infectious_disease" disabled>Not Applicable</textarea>
@@ -369,7 +369,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->family_history['bronchial_asthma_1'] == "No")
-                                    <textarea class="form-control" name="1_fh_respond" id="findingsTextarea_bronchial_asthma_1">{{ $medical_exam->family_history->medical_exam_response['1_fh_respond'] }}</textarea>
+                                    <textarea class="form-control" name="1_fh_respond" id="findingsTextarea_bronchial_asthma_1" required>{{ $medical_exam->family_history->medical_exam_response['1_fh_respond'] }}</textarea>
                                     <input type="hidden" id="bronchial_asthma_1RepHidden" name="1_fh_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="1_fh_respond" id="findingsTextarea_bronchial_asthma_1" disabled>Not Applicable</textarea>
@@ -388,7 +388,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->family_history['diabetes_melilitus_1'] == "No")
-                                    <textarea class="form-control" name="2_fh_respond" id="findingsTextarea_diabetes_melilitus_1">{{ $medical_exam->family_history->medical_exam_response['2_fh_respond'] }}</textarea>
+                                    <textarea class="form-control" name="2_fh_respond" id="findingsTextarea_diabetes_melilitus_1" required>{{ $medical_exam->family_history->medical_exam_response['2_fh_respond'] }}</textarea>
                                     <input type="hidden" id="diabetes_melilitus_1RepHidden" name="2_fh_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="2_fh_respond" id="findingsTextarea_diabetes_melilitus_1" disabled>Not Applicable</textarea>
@@ -407,7 +407,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->family_history['thyroid_disorder_1'] == "No")
-                                    <textarea class="form-control" name="3_fh_respond" id="findingsTextarea_thyroid_disorder_1">{{ $medical_exam->family_history->medical_exam_response['3_fh_respond'] }}</textarea>
+                                    <textarea class="form-control" name="3_fh_respond" id="findingsTextarea_thyroid_disorder_1" required>{{ $medical_exam->family_history->medical_exam_response['3_fh_respond'] }}</textarea>
                                     <input type="hidden" id="thyroid_disorder_1RepHidden" name="3_fh_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="3_fh_respond" id="findingsTextarea_thyroid_disorder_1" disabled>Not Applicable</textarea>
@@ -426,7 +426,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->family_history->opthalmologic_disease == "No")
-                                    <textarea class="form-control" name="4_fh_respond" id="findingsTextarea_opthalmologic_disease">{{ $medical_exam->family_history->medical_exam_response['4_fh_respond'] }}</textarea>
+                                    <textarea class="form-control" name="4_fh_respond" id="findingsTextarea_opthalmologic_disease" required>{{ $medical_exam->family_history->medical_exam_response['4_fh_respond'] }}</textarea>
                                     <input type="hidden" id="opthalmologic_diseaseRepHidden" name="4_fh_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="4_fh_respond" id="findingsTextarea_opthalmologic_disease" disabled>Not Applicable</textarea>
@@ -445,7 +445,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->family_history->cancer == "No")
-                                    <textarea class="form-control" name="5_fh_respond" id="findingsTextarea_cancer">{{ $medical_exam->family_history->medical_exam_response['5_fh_respond'] }}</textarea>
+                                    <textarea class="form-control" name="5_fh_respond" id="findingsTextarea_cancer" required>{{ $medical_exam->family_history->medical_exam_response['5_fh_respond'] }}</textarea>
                                     <input type="hidden" id="cancerRepHidden" name="5_fh_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="5_fh_respond" id="findingsTextarea_cancer" disabled>Not Applicable</textarea>
@@ -464,7 +464,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->family_history['cardiac_disorder_1'] == "No")
-                                    <textarea class="form-control" name="6_fh_respond" id="findingsTextarea_cardiac_disorder_1">{{ $medical_exam->family_history->medical_exam_response['6_fh_respond'] }}</textarea>
+                                    <textarea class="form-control" name="6_fh_respond" id="findingsTextarea_cardiac_disorder_1" required>{{ $medical_exam->family_history->medical_exam_response['6_fh_respond'] }}</textarea>
                                     <input type="hidden" id="cardiac_disorder_1RepHidden" name="6_fh_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="6_fh_respond" id="findingsTextarea_cardiac_disorder_1" disabled>Not Applicable</textarea>
@@ -483,7 +483,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->family_history['hypertension_1'] == "No")
-                                    <textarea class="form-control" name="7_fh_respond" id="findingsTextarea_hypertension_1">{{ $medical_exam->family_history->medical_exam_response['7_fh_respond'] }}</textarea>
+                                    <textarea class="form-control" name="7_fh_respond" id="findingsTextarea_hypertension_1" required>{{ $medical_exam->family_history->medical_exam_response['7_fh_respond'] }}</textarea>
                                     <input type="hidden" id="hypertension_1RepHidden" name="7_fh_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="7_fh_respond" id="findingsTextarea_hypertension_1" disabled>Not Applicable</textarea>
@@ -502,7 +502,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->family_history['tuberculosis_1'] == "No")
-                                    <textarea class="form-control" name="8_fh_respond" id="findingsTextarea_tuberculosis_1">{{ $medical_exam->family_history->medical_exam_response['8_fh_respond'] }}</textarea>
+                                    <textarea class="form-control" name="8_fh_respond" id="findingsTextarea_tuberculosis_1" required>{{ $medical_exam->family_history->medical_exam_response['8_fh_respond'] }}</textarea>
                                     <input type="hidden" id="tuberculosis_1RepHidden" name="8_fh_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="8_fh_respond" id="findingsTextarea_tuberculosis_1" disabled>Not Applicable</textarea>
@@ -521,7 +521,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->family_history->nervous_disorder == "No")
-                                    <textarea class="form-control" name="9_fh_respond" id="findingsTextarea_nervous_disorder">{{ $medical_exam->family_history->medical_exam_response['9_fh_respond'] }}</textarea>
+                                    <textarea class="form-control" name="9_fh_respond" id="findingsTextarea_nervous_disorder" required>{{ $medical_exam->family_history->medical_exam_response['9_fh_respond'] }}</textarea>
                                     <input type="hidden" id="nervous_disorderRepHidden" name="9_fh_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="9_fh_respond" id="findingsTextarea_nervous_disorder" disabled>Not Applicable</textarea>
@@ -540,7 +540,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->family_history->musculoskeletal == "No")
-                                    <textarea class="form-control" name="10_fh_respond" id="findingsTextarea_musculoskeletal">{{ $medical_exam->family_history->medical_exam_response['10_fh_respond'] }}</textarea>
+                                    <textarea class="form-control" name="10_fh_respond" id="findingsTextarea_musculoskeletal" required>{{ $medical_exam->family_history->medical_exam_response['10_fh_respond'] }}</textarea>
                                     <input type="hidden" id="musculoskeletalRepHidden" name="10_fh_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="10_fh_respond" id="findingsTextarea_musculoskeletal" disabled>Not Applicable</textarea>
@@ -559,7 +559,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->family_history->liver_disease == "No")
-                                    <textarea class="form-control" name="11_fh_respond" id="findingsTextarea_liver_disease">{{ $medical_exam->family_history->medical_exam_response['11_fh_respond'] }}</textarea>
+                                    <textarea class="form-control" name="11_fh_respond" id="findingsTextarea_liver_disease" required>{{ $medical_exam->family_history->medical_exam_response['11_fh_respond'] }}</textarea>
                                     <input type="hidden" id="liver_diseaseRepHidden" name="11_fh_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="11_fh_respond" id="findingsTextarea_liver_disease" disabled>Not Applicable</textarea>
@@ -578,7 +578,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->family_history->kidney_disease == "No")
-                                    <textarea class="form-control" name="12_fh_respond" id="findingsTextarea_kidney_disease">{{ $medical_exam->family_history->medical_exam_response['12_fh_respond'] }}</textarea>
+                                    <textarea class="form-control" name="12_fh_respond" id="findingsTextarea_kidney_disease" required>{{ $medical_exam->family_history->medical_exam_response['12_fh_respond'] }}</textarea>
                                     <input type="hidden" id="kidney_diseaseRepHidden" name="12_fh_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="12_fh_respond" id="findingsTextarea_kidney_disease" disabled>Not Applicable</textarea>
@@ -599,38 +599,78 @@
                     </div>
                     <div class="container border">
                         <div class="row my-3">
-                            <input type="checkbox" id="smoker" name="smoker" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'smoker')">
+                            @if($medical_exam->personal_and_social_history->smoker == "Yes")
+                                <input type="checkbox" id="smoker" name="smoker" value="Yes" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'smoker')" checked>
+                                <input type="hidden" id="smokerHidden" name="smoker" value="Yes">
+                            @else
+                                <input type="checkbox" id="smoker" name="smoker" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'smoker')">
+                            @endif    
                             <div class="col-0">
                                 <p class="mr-1"><strong>Smoker:</strong></p>
                             </div>
-                            <input type="number" name="stick" class="col-0 mx-1" style="height: 25px; width: 50px;" id="stick" disabled>
+                            @if($medical_exam->personal_and_social_history->smoker == "Yes")
+                                <input type="number" name="stick" class="col-0 mx-1" style="height: 25px; width: 50px;" id="stick" value="{{ $medical_exam->personal_and_social_history->stick }}" required>
+                                <input type="hidden" id="smokerValHidden1" name="stick" value=" " disabled>
+                            @else
+                                <input type="number" name="stick" class="col-0 mx-1" style="height: 25px; width: 50px;" id="stick" disabled>
+                            @endif
                             <div class="col-0">
                                 <p>sticks/day</p>
                             </div>
-                            <input type="number" name="pack" class="col-0 mx-1" style="height: 25px; width: 50px;" id="pack" disabled>
+                            @if($medical_exam->personal_and_social_history->smoker == "Yes")
+                                <input type="number" name="pack" class="col-0 mx-1" style="height: 25px; width: 50px;" id="pack" value="{{ $medical_exam->personal_and_social_history->pack }}" required>
+                                <input type="hidden" id="smokerValHidden2" name="pack" value=" " disabled>    
+                            @else
+                                <input type="number" name="pack" class="col-0 mx-1" style="height: 25px; width: 50px;" id="pack" disabled>
+                            @endif
                             <div class="col-0">
                                 <p>pack year/s</p>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <input type="checkbox" id="alcoholic" name="alcoholic" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'alcoholic')">
+                            @if($medical_exam->personal_and_social_history->alcoholic == "Yes")
+                                <input type="checkbox" id="alcoholic" name="alcoholic" value="Yes" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'alcoholic')" checked>
+                                <input type="hidden" id="alcoholicHidden" name="alcoholic" value="Yes">
+                            @else
+                                <input type="checkbox" id="alcoholic" name="alcoholic" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'alcoholic')">
+                            @endif
                             <div class="col-0">
                                 <p class="mr-1"><strong>Alcoholic:</strong></p>
                             </div>
-                            <input type="number" name="frequent" class="col-0 mx-1" style="height: 25px; width: 50px;" id="frequent" disabled>
+                            @if($medical_exam->personal_and_social_history->alcoholic == "Yes")
+                                <input type="number" name="frequent" class="col-0 mx-1" style="height: 25px; width: 50px;" id="frequent" value="{{ $medical_exam->personal_and_social_history->frequent }}" required>
+                                <input type="hidden" id="alcoholicValHidden1" name="frequent" value=" " disabled>    
+                            @else
+                                <input type="number" name="frequent" class="col-0 mx-1" style="height: 25px; width: 50px;" id="frequent" disabled>
+                            @endif
                             <div class="col-0">
                                 <p>bottles/shot</p>
                             </div>
-                            <input type="number" name="week" class="col-0 mx-1" style="height: 25px; width: 50px;" id="week" disabled>
+                            @if($medical_exam->personal_and_social_history->alcoholic == "Yes")
+                                <input type="number" name="week" class="col-0 mx-1" style="height: 25px; width: 50px;" id="week" value="{{ $medical_exam->personal_and_social_history->week }}" required>
+                                <input type="hidden" id="alcoholicValHidden2" name="week" value=" " disabled>    
+                            @else
+                                <input type="number" name="week" class="col-0 mx-1" style="height: 25px; width: 50px;" id="week" disabled>
+                            @endif
                             <div class="col-0">
                                 <p>/week</p>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <input type="checkbox" id="medication" name="medication" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'medication')">
+                            @if($medical_exam->personal_and_social_history->medication == "Yes")
+                                <input type="checkbox" id="medication" name="medication" value="Yes" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'medication')" checked>
+                                <input type="hidden" id="medicationHidden" name="medication" value="Yes">   
+                            @else
+                                <input type="checkbox" id="medication" name="medication" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'medication')">
+                            @endif
                             <div class="col">
                                 <p><strong>Medication:</strong></p>
-                                <textarea class="form-control" name="take" id="take" disabled></textarea>
+                                @if($medical_exam->personal_and_social_history->medication == "Yes")
+                                    <textarea class="form-control" name="take" id="take" required>{{ $medical_exam->personal_and_social_history->take }}</textarea>
+                                    <input type="hidden" id="medicationValHidden" name="take" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="take" id="take" disabled>Not Applicable</textarea>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -660,7 +700,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->ob_gyne_history->lnmp == "No")
-                                    <textarea class="form-control" name="1_ob_respond" id="findingsTextarea_lnmp">{{ $medical_exam->ob_gyne_history->medical_exam_response['1_ob_respond'] }}</textarea>
+                                    <textarea class="form-control" name="1_ob_respond" id="findingsTextarea_lnmp" required>{{ $medical_exam->ob_gyne_history->medical_exam_response['1_ob_respond'] }}</textarea>
                                     <input type="hidden" id="lnmpRepHidden" name="1_ob_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="1_ob_respond" id="findingsTextarea_lnmp" disabled>Not Applicable</textarea>
@@ -679,7 +719,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->ob_gyne_history->ob_score == "No")
-                                    <textarea class="form-control" name="2_ob_respond" id="findingsTextarea_ob_score">{{ $medical_exam->ob_gyne_history->medical_exam_response['2_ob_respond'] }}</textarea>
+                                    <textarea class="form-control" name="2_ob_respond" id="findingsTextarea_ob_score" required>{{ $medical_exam->ob_gyne_history->medical_exam_response['2_ob_respond'] }}</textarea>
                                     <input type="hidden" id="ob_scoreRepHidden" name="2_ob_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="2_ob_respond" id="findingsTextarea_ob_score" disabled>Not Applicable</textarea>
@@ -698,7 +738,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->ob_gyne_history->abnormal_pregnancies == "No")
-                                    <textarea class="form-control" name="3_ob_respond" id="findingsTextarea_abnormal_pregnancies">{{ $medical_exam->ob_gyne_history->medical_exam_response['3_ob_respond'] }}</textarea>
+                                    <textarea class="form-control" name="3_ob_respond" id="findingsTextarea_abnormal_pregnancies" required>{{ $medical_exam->ob_gyne_history->medical_exam_response['3_ob_respond'] }}</textarea>
                                     <input type="hidden" id="abnormal_pregnanciesRepHidden" name="3_ob_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="3_ob_respond" id="findingsTextarea_abnormal_pregnancies" disabled>Not Applicable</textarea>
@@ -717,7 +757,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->ob_gyne_history->date_of_last_delivery == "No")
-                                    <textarea class="form-control" name="4_ob_respond" id="findingsTextarea_date_of_last_delivery">{{ $medical_exam->ob_gyne_history->medical_exam_response['4_ob_respond'] }}</textarea>
+                                    <textarea class="form-control" name="4_ob_respond" id="findingsTextarea_date_of_last_delivery" required>{{ $medical_exam->ob_gyne_history->medical_exam_response['4_ob_respond'] }}</textarea>
                                     <input type="hidden" id="date_of_last_deliveryRepHidden" name="4_ob_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="4_ob_respond" id="findingsTextarea_date_of_last_delivery" disabled>Not Applicable</textarea>
@@ -736,7 +776,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->ob_gyne_history->breast_uterus_ovaries == "No")
-                                    <textarea class="form-control" name="5_ob_respond" id="findingsTextarea_breast_uterus_ovaries">{{ $medical_exam->ob_gyne_history->medical_exam_response['5_ob_respond'] }}</textarea>
+                                    <textarea class="form-control" name="5_ob_respond" id="findingsTextarea_breast_uterus_ovaries" required>{{ $medical_exam->ob_gyne_history->medical_exam_response['5_ob_respond'] }}</textarea>
                                     <input type="hidden" id="breast_uterus_ovariesRepHidden" name="5_ob_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="5_ob_respond" id="findingsTextarea_breast_uterus_ovaries" disabled>Not Applicable</textarea>
@@ -786,7 +826,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->review_of_system->skin == "No")
-                                    <textarea class="form-control" name="1_rs_respond" id="findingsTextarea_skin">{{ $medical_exam->review_of_system->medical_exam_response['1_rs_respond'] }}</textarea>
+                                    <textarea class="form-control" name="1_rs_respond" id="findingsTextarea_skin" required>{{ $medical_exam->review_of_system->medical_exam_response['1_rs_respond'] }}</textarea>
                                     <input type="hidden" id="skinRepHidden" name="1_rs_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="1_rs_respond" id="findingsTextarea_skin" disabled>Not Applicable</textarea>
@@ -805,7 +845,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->review_of_system->opthalmologic == "No")
-                                    <textarea class="form-control" name="2_rs_respond" id="findingsTextarea_opthalmologic">{{ $medical_exam->review_of_system->medical_exam_response['2_rs_respond'] }}</textarea>
+                                    <textarea class="form-control" name="2_rs_respond" id="findingsTextarea_opthalmologic" required>{{ $medical_exam->review_of_system->medical_exam_response['2_rs_respond'] }}</textarea>
                                     <input type="hidden" id="opthalmologicRepHidden" name="2_rs_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="2_rs_respond" id="findingsTextarea_opthalmologic" disabled>Not Applicable</textarea>
@@ -824,7 +864,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->review_of_system->ent == "No")
-                                    <textarea class="form-control" name="3_rs_respond" id="findingsTextarea_ent">{{ $medical_exam->review_of_system->medical_exam_response['3_rs_respond'] }}</textarea>
+                                    <textarea class="form-control" name="3_rs_respond" id="findingsTextarea_ent" required>{{ $medical_exam->review_of_system->medical_exam_response['3_rs_respond'] }}</textarea>
                                     <input type="hidden" id="entRepHidden" name="3_rs_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="3_rs_respond" id="findingsTextarea_ent" disabled>Not Applicable</textarea>
@@ -843,7 +883,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->review_of_system->cardiovascular == "No")
-                                    <textarea class="form-control" name="4_rs_respond" id="findingsTextarea_cardiovascular">{{ $medical_exam->review_of_system->medical_exam_response['4_rs_respond'] }}</textarea>
+                                    <textarea class="form-control" name="4_rs_respond" id="findingsTextarea_cardiovascular" required>{{ $medical_exam->review_of_system->medical_exam_response['4_rs_respond'] }}</textarea>
                                     <input type="hidden" id="cardiovascularRepHidden" name="4_rs_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="4_rs_respond" id="findingsTextarea_cardiovascular" disabled>Not Applicable</textarea>
@@ -862,7 +902,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->review_of_system->respiratory == "No")
-                                    <textarea class="form-control" name="5_rs_respond" id="findingsTextarea_respiratory">{{ $medical_exam->review_of_system->medical_exam_response['5_rs_respond'] }}</textarea>
+                                    <textarea class="form-control" name="5_rs_respond" id="findingsTextarea_respiratory" required>{{ $medical_exam->review_of_system->medical_exam_response['5_rs_respond'] }}</textarea>
                                     <input type="hidden" id="respiratoryRepHidden" name="5_rs_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="5_rs_respond" id="findingsTextarea_respiratory" disabled>Not Applicable</textarea>
@@ -881,7 +921,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->review_of_system->gastro_intestinal == "No")
-                                    <textarea class="form-control" name="6_rs_respond" id="findingsTextarea_gastro_intestinal">{{ $medical_exam->review_of_system->medical_exam_response['6_rs_respond'] }}</textarea>
+                                    <textarea class="form-control" name="6_rs_respond" id="findingsTextarea_gastro_intestinal" required>{{ $medical_exam->review_of_system->medical_exam_response['6_rs_respond'] }}</textarea>
                                     <input type="hidden" id="gastro_intestinalRepHidden" name="6_rs_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="6_rs_respond" id="findingsTextarea_gastro_intestinal" disabled>Not Applicable</textarea>
@@ -900,7 +940,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->review_of_system->neuro_psychiatric == "No")
-                                    <textarea class="form-control" name="7_rs_respond" id="findingsTextarea_neuro_psychiatric">{{ $medical_exam->review_of_system->medical_exam_response['7_rs_respond'] }}</textarea>
+                                    <textarea class="form-control" name="7_rs_respond" id="findingsTextarea_neuro_psychiatric" required>{{ $medical_exam->review_of_system->medical_exam_response['7_rs_respond'] }}</textarea>
                                     <input type="hidden" id="neuro_psychiatricRepHidden" name="7_rs_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="7_rs_respond" id="findingsTextarea_neuro_psychiatric" disabled>Not Applicable</textarea>
@@ -919,7 +959,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->review_of_system->hematology == "No")
-                                    <textarea class="form-control" name="8_rs_respond" id="findingsTextarea_hematology">{{ $medical_exam->review_of_system->medical_exam_response['8_rs_respond'] }}</textarea>
+                                    <textarea class="form-control" name="8_rs_respond" id="findingsTextarea_hematology" required>{{ $medical_exam->review_of_system->medical_exam_response['8_rs_respond'] }}</textarea>
                                     <input type="hidden" id="hematologyRepHidden" name="8_rs_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="8_rs_respond" id="findingsTextarea_hematology" disabled>Not Applicable</textarea>
@@ -938,7 +978,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->review_of_system->genitourinary == "No")
-                                    <textarea class="form-control" name="9_rs_respond" id="findingsTextarea_genitourinary">{{ $medical_exam->review_of_system->medical_exam_response['9_rs_respond'] }}</textarea>
+                                    <textarea class="form-control" name="9_rs_respond" id="findingsTextarea_genitourinary" required>{{ $medical_exam->review_of_system->medical_exam_response['9_rs_respond'] }}</textarea>
                                     <input type="hidden" id="genitourinaryRepHidden" name="9_rs_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="9_rs_respond" id="findingsTextarea_genitourinary" disabled>Not Applicable</textarea>
@@ -957,7 +997,7 @@
                             </td>
                             <td>
                                 @if($medical_exam->review_of_system->musculo_skeletal == "No")
-                                    <textarea class="form-control" name="10_rs_respond" id="findingsTextarea_musculo_skeletal">{{ $medical_exam->review_of_system->medical_exam_response['10_rs_respond'] }}</textarea>
+                                    <textarea class="form-control" name="10_rs_respond" id="findingsTextarea_musculo_skeletal" required>{{ $medical_exam->review_of_system->medical_exam_response['10_rs_respond'] }}</textarea>
                                     <input type="hidden" id="musculo_skeletalRepHidden" name="10_rs_respond" value=" " disabled>
                                 @else
                                     <textarea class="form-control" name="10_rs_respond" id="findingsTextarea_musculo_skeletal" disabled>Not Applicable</textarea>
@@ -1069,7 +1109,7 @@
                                 </td>
                                 <td>
                                     @if($medical_exam->physical_examination->general_appearance == "No")
-                                        <textarea class="form-control" name="1_pe_respond" id="findingsTextarea_general_appearance">{{ $medical_exam->physical_examination->medical_exam_response['1_pe_respond'] }}</textarea>
+                                        <textarea class="form-control" name="1_pe_respond" id="findingsTextarea_general_appearance" required>{{ $medical_exam->physical_examination->medical_exam_response['1_pe_respond'] }}</textarea>
                                         <input type="hidden" id="general_appearanceRepHidden" name="1_pe_respond" value=" " disabled>
                                     @else
                                         <textarea class="form-control" name="1_pe_respond" id="findingsTextarea_general_appearance" disabled>Not Applicable</textarea>
@@ -1088,7 +1128,7 @@
                                 </td>
                                 <td>
                                     @if($medical_exam->physical_examination['skin1'] == "No")
-                                        <textarea class="form-control" name="2_pe_respond" id="findingsTextarea_skin1">{{ $medical_exam->physical_examination->medical_exam_response['2_pe_respond'] }}</textarea>
+                                        <textarea class="form-control" name="2_pe_respond" id="findingsTextarea_skin1" required>{{ $medical_exam->physical_examination->medical_exam_response['2_pe_respond'] }}</textarea>
                                         <input type="hidden" id="skin1RepHidden" name="2_pe_respond" value=" " disabled>
                                     @else
                                         <textarea class="form-control" name="2_pe_respond" id="findingsTextarea_skin1" disabled>Not Applicable</textarea>
@@ -1107,7 +1147,7 @@
                                 </td>
                                 <td>
                                     @if($medical_exam->physical_examination->head_and_scalp == "No")
-                                        <textarea class="form-control" name="3_pe_respond" id="findingsTextarea_head_and_scalp">{{ $medical_exam->physical_examination->medical_exam_response['3_pe_respond'] }}</textarea>
+                                        <textarea class="form-control" name="3_pe_respond" id="findingsTextarea_head_and_scalp" required>{{ $medical_exam->physical_examination->medical_exam_response['3_pe_respond'] }}</textarea>
                                         <input type="hidden" id="head_and_scalpRepHidden" name="3_pe_respond" value=" " disabled>
                                     @else
                                         <textarea class="form-control" name="3_pe_respond" id="findingsTextarea_head_and_scalp" disabled>Not Applicable</textarea>
@@ -1117,30 +1157,56 @@
                             <tr>
                                 <td>Eyes</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="eyes" name="eyes" value="Yes" onchange="updateCheckboxValue(this, 'eyes')" checked>
+                                    @if($medical_exam->physical_examination->eyes == "Yes")
+                                        <input type="checkbox" id="eyes" name="eyes" value="Yes" onchange="updateCheckboxValue(this, 'eyes')" checked>
+                                        <input type="hidden" id="eyesHidden" name="eyes" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="eyes" name="eyes" value="Yes" onchange="updateCheckboxValue(this, 'eyes')">
+                                        <input type="hidden" id="eyesHidden" name="eyes" value="No">
+                                    @endif
                                 </td>
                                 <td>
                                     <div class="row">
                                         <div class="col-0">
-                                            <input type="number" name="od_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_pe_respond" disabled>
+                                            @if($medical_exam->physical_examination->eyes == "No")
+                                                <input type="number" name="od_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_pe_respond" value="{{ $medical_exam->physical_examination->medical_exam_response->od_pe_respond }}">
+                                                <input type="hidden" id="eyesValHidden1" name="od_pe_respond" value=" " disabled>
+                                            @else
+                                                <input type="number" name="od_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_pe_respond" disabled>
+                                            @endif
                                         </div>
                                         <div class="col-0">
                                             <p>/</p>
                                         </div>
                                         <div class="col-0">
-                                            <input type="number" name="od1_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od1_pe_respond" disabled>
+                                            @if($medical_exam->physical_examination->eyes == "No")
+                                                <input type="number" name="od1_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od1_pe_respond" value="{{ $medical_exam->physical_examination->medical_exam_response['od1_pe_respond'] }}">
+                                                <input type="hidden" id="eyesValHidden2" name="od1_pe_respond" value=" " disabled>    
+                                            @else
+                                                <input type="number" name="od1_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od1_pe_respond" disabled>
+                                            @endif
                                         </div>
                                         <div class="col-0">
                                             <p>OD</p>
                                         </div>
                                         <div class="col-0">
-                                            <input type="number" name="os_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os_pe_respond" disabled>
+                                            @if($medical_exam->physical_examination->eyes == "No")
+                                                <input type="number" name="os_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os_pe_respond" value="{{ $medical_exam->physical_examination->medical_exam_response->os_pe_respond }}">
+                                                <input type="hidden" id="eyesValHidden3" name="os_pe_respond" value=" " disabled>    
+                                            @else
+                                                <input type="number" name="os_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os_pe_respond" disabled>
+                                            @endif
                                         </div>
                                         <div class="col-0">
                                             <p>/</p>
                                         </div>
                                         <div class="col-0">
-                                            <input type="number" name="os1_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os1_pe_respond" disabled>
+                                            @if($medical_exam->physical_examination->eyes == "No")
+                                                <input type="number" name="os1_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os1_pe_respond" value="{{ $medical_exam->physical_examination->medical_exam_response['os1_pe_respond'] }}">
+                                                <input type="hidden" id="eyesValHidden4" name="os1_pe_respond" value=" " disabled>
+                                            @else
+                                                <input type="number" name="os1_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os1_pe_respond" disabled>
+                                            @endif
                                         </div>
                                         <div class="col-0">
                                             <p>OS</p>
@@ -1151,30 +1217,56 @@
                             <tr>
                                 <td class="text-right">Corrected</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="corrected" name="corrected" value="Yes" onchange="updateCheckboxValue(this, 'corrected')" checked>
+                                    @if($medical_exam->physical_examination->corrected == "Yes")
+                                        <input type="checkbox" id="corrected" name="corrected" value="Yes" onchange="updateCheckboxValue(this, 'corrected')" checked>
+                                        <input type="hidden" id="correctedHidden" name="corrected" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="corrected" name="corrected" value="Yes" onchange="updateCheckboxValue(this, 'corrected')">
+                                        <input type="hidden" id="correctedHidden" name="corrected" value="No">
+                                    @endif
                                 </td>
                                 <td>
                                 <div class="row">
                                         <div class="col-0">
-                                            <input type="number" name="od_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_pe_respond1" disabled>
+                                            @if($medical_exam->physical_examination->corrected == "No")
+                                                <input type="number" name="od_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_pe_respond1" value="{{ $medical_exam->physical_examination->medical_exam_response['od_pe_respond1'] }}">
+                                                <input type="hidden" id="correctedValHidden1" name="od_pe_respond1" value=" " disabled>
+                                            @else
+                                                <input type="number" name="od_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_pe_respond1" disabled>
+                                            @endif
                                         </div>
                                         <div class="col-0">
                                             <p>/</p>
                                         </div>
                                         <div class="col-0">
-                                            <input type="number" name="od1__pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od__pe_respond1" disabled>
+                                            @if($medical_exam->physical_examination->corrected == "No")
+                                                <input type="number" name="od1_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od1_pe_respond1" value="{{ $medical_exam->physical_examination->medical_exam_response['od1_pe_respond1'] }}">
+                                                <input type="hidden" id="correctedValHidden2" name="od1_pe_respond1" value=" " disabled>    
+                                            @else
+                                                <input type="number" name="od1_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od1_pe_respond1" disabled>
+                                            @endif
                                         </div>
                                         <div class="col-0">
                                             <p>OD</p>
                                         </div>
                                         <div class="col-0">
-                                            <input type="number" name="os_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os_pe_respond1" disabled>
+                                            @if($medical_exam->physical_examination->corrected == "No")
+                                                <input type="number" name="os_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os_pe_respond1" value="{{ $medical_exam->physical_examination->medical_exam_response['os_pe_respond1'] }}">
+                                                <input type="hidden" id="correctedValHidden3" name="os_pe_respond1" value=" " disabled>    
+                                            @else
+                                                <input type="number" name="os_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os_pe_respond1" disabled>
+                                            @endif
                                         </div>
                                         <div class="col-0">
                                             <p>/</p>
                                         </div>
                                         <div class="col-0">
-                                            <input type="number" name="os1__pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os__pe_respond1" disabled>
+                                            @if($medical_exam->physical_examination->corrected == "No")
+                                                <input type="number" name="os1_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os1_pe_respond1" value="{{ $medical_exam->physical_examination->medical_exam_response['os1_pe_respond1'] }}">
+                                                <input type="hidden" id="correctedValHidden4" name="os1_pe_respond1" value=" " disabled>
+                                            @else
+                                                <input type="number" name="os1_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os1_pe_respond1" disabled>
+                                            @endif
                                         </div>
                                         <div class="col-0">
                                             <p>OS</p>
@@ -1194,7 +1286,7 @@
                                 </td>
                                 <td>
                                     @if($medical_exam->physical_examination->pupils == "No")
-                                        <textarea class="form-control" name="6_pe_respond" id="findingsTextarea_pupils">{{ $medical_exam->physical_examination->medical_exam_response['6_pe_respond'] }}</textarea>
+                                        <textarea class="form-control" name="6_pe_respond" id="findingsTextarea_pupils" required>{{ $medical_exam->physical_examination->medical_exam_response['6_pe_respond'] }}</textarea>
                                         <input type="hidden" id="pupilsRepHidden" name="6_pe_respond" value=" " disabled>
                                     @else
                                         <textarea class="form-control" name="6_pe_respond" id="findingsTextarea_pupils" disabled>Not Applicable</textarea>
@@ -1213,7 +1305,7 @@
                                 </td>
                                 <td>
                                     @if($medical_exam->physical_examination->ear_eardrums == "No")
-                                        <textarea class="form-control" name="7_pe_respond" id="findingsTextarea_ear_eardrums">{{ $medical_exam->physical_examination->medical_exam_response['7_pe_respond'] }}</textarea>
+                                        <textarea class="form-control" name="7_pe_respond" id="findingsTextarea_ear_eardrums" required>{{ $medical_exam->physical_examination->medical_exam_response['7_pe_respond'] }}</textarea>
                                         <input type="hidden" id="ear_eardrumsRepHidden" name="7_pe_respond" value=" " disabled>
                                     @else
                                         <textarea class="form-control" name="7_pe_respond" id="findingsTextarea_ear_eardrums" disabled>Not Applicable</textarea>
@@ -1232,7 +1324,7 @@
                                 </td>
                                 <td>
                                     @if($medical_exam->physical_examination->nose_sinuses == "No")
-                                        <textarea class="form-control" name="8_pe_respond" id="findingsTextarea_nose_sinuses">{{ $medical_exam->physical_examination->medical_exam_response['8_pe_respond'] }}</textarea>
+                                        <textarea class="form-control" name="8_pe_respond" id="findingsTextarea_nose_sinuses" required>{{ $medical_exam->physical_examination->medical_exam_response['8_pe_respond'] }}</textarea>
                                         <input type="hidden" id="nose_sinusesRepHidden" name="8_pe_respond" value=" " disabled>
                                     @else
                                         <textarea class="form-control" name="8_pe_respond" id="findingsTextarea_nose_sinuses" disabled>Not Applicable</textarea>
@@ -1251,7 +1343,7 @@
                                 </td>
                                 <td>
                                     @if($medical_exam->physical_examination->mouth_throat == "No")
-                                        <textarea class="form-control" name="9_pe_respond" id="findingsTextarea_mouth_throat">{{ $medical_exam->physical_examination->medical_exam_response['9_pe_respond'] }}</textarea>
+                                        <textarea class="form-control" name="9_pe_respond" id="findingsTextarea_mouth_throat" required>{{ $medical_exam->physical_examination->medical_exam_response['9_pe_respond'] }}</textarea>
                                         <input type="hidden" id="mouth_throatRepHidden" name="9_pe_respond" value=" " disabled>
                                     @else
                                         <textarea class="form-control" name="9_pe_respond" id="findingsTextarea_mouth_throat" disabled>Not Applicable</textarea>
@@ -1270,7 +1362,7 @@
                                 </td>
                                 <td>
                                     @if($medical_exam->physical_examination->neck_thyroid == "No")
-                                        <textarea class="form-control" name="10_pe_respond" id="findingsTextarea_neck_thyroid">{{ $medical_exam->physical_examination->medical_exam_response['10_pe_respond'] }}</textarea>
+                                        <textarea class="form-control" name="10_pe_respond" id="findingsTextarea_neck_thyroid" required>{{ $medical_exam->physical_examination->medical_exam_response['10_pe_respond'] }}</textarea>
                                         <input type="hidden" id="neck_thyroidRepHidden" name="10_pe_respond" value=" " disabled>
                                     @else
                                         <textarea class="form-control" name="10_pe_respond" id="findingsTextarea_neck_thyroid" disabled>Not Applicable</textarea>
@@ -1289,7 +1381,7 @@
                                 </td>
                                 <td>
                                     @if($medical_exam->physical_examination->chest_breast_axilla == "No")
-                                        <textarea class="form-control" name="11_pe_respond" id="findingsTextarea_chest_breast_axilla">{{ $medical_exam->physical_examination->medical_exam_response['11_pe_respond'] }}</textarea>
+                                        <textarea class="form-control" name="11_pe_respond" id="findingsTextarea_chest_breast_axilla" required>{{ $medical_exam->physical_examination->medical_exam_response['11_pe_respond'] }}</textarea>
                                         <input type="hidden" id="chest_breast_axillaRepHidden" name="11_pe_respond" value=" " disabled>
                                     @else
                                         <textarea class="form-control" name="11_pe_respond" id="findingsTextarea_chest_breast_axilla" disabled>Not Applicable</textarea>
@@ -1319,7 +1411,7 @@
                                 </td>
                                 <td>
                                     @if($medical_exam->physical_examination->heart_cardiovascular == "No")
-                                        <textarea class="form-control" name="12_pe_respond" id="findingsTextarea_heart_cardiovascular">{{ $medical_exam->physical_examination->medical_exam_response['12_pe_respond'] }}</textarea>
+                                        <textarea class="form-control" name="12_pe_respond" id="findingsTextarea_heart_cardiovascular" required>{{ $medical_exam->physical_examination->medical_exam_response['12_pe_respond'] }}</textarea>
                                         <input type="hidden" id="heart_cardiovascularRepHidden" name="12_pe_respond" value=" " disabled>
                                     @else
                                         <textarea class="form-control" name="12_pe_respond" id="findingsTextarea_heart_cardiovascular" disabled>Not Applicable</textarea>
@@ -1338,7 +1430,7 @@
                                 </td>
                                 <td>
                                     @if($medical_exam->physical_examination->lungs_respiratory == "No")
-                                        <textarea class="form-control" name="13_pe_respond" id="findingsTextarea_lungs_respiratory">{{ $medical_exam->physical_examination->medical_exam_response['13_pe_respond'] }}</textarea>
+                                        <textarea class="form-control" name="13_pe_respond" id="findingsTextarea_lungs_respiratory" required>{{ $medical_exam->physical_examination->medical_exam_response['13_pe_respond'] }}</textarea>
                                         <input type="hidden" id="lungs_respiratoryRepHidden" name="13_pe_respond" value=" " disabled>
                                     @else
                                         <textarea class="form-control" name="13_pe_respond" id="findingsTextarea_lungs_respiratory" disabled>Not Applicable</textarea>
@@ -1357,7 +1449,7 @@
                                 </td>
                                 <td>
                                     @if($medical_exam->physical_examination->abdomen == "No")
-                                        <textarea class="form-control" name="14_pe_respond" id="findingsTextarea_abdomen">{{ $medical_exam->physical_examination->medical_exam_response['14_pe_respond'] }}</textarea>
+                                        <textarea class="form-control" name="14_pe_respond" id="findingsTextarea_abdomen" required>{{ $medical_exam->physical_examination->medical_exam_response['14_pe_respond'] }}</textarea>
                                         <input type="hidden" id="abdomenRepHidden" name="14_pe_respond" value=" " disabled>
                                     @else
                                         <textarea class="form-control" name="14_pe_respond" id="findingsTextarea_abdomen" disabled>Not Applicable</textarea>
@@ -1376,7 +1468,7 @@
                                 </td>
                                 <td>
                                     @if($medical_exam->physical_examination->back_flanks == "No")
-                                        <textarea class="form-control" name="15_pe_respond" id="findingsTextarea_back_flanks">{{ $medical_exam->physical_examination->medical_exam_response['15_pe_respond'] }}</textarea>
+                                        <textarea class="form-control" name="15_pe_respond" id="findingsTextarea_back_flanks" required>{{ $medical_exam->physical_examination->medical_exam_response['15_pe_respond'] }}</textarea>
                                         <input type="hidden" id="back_flanksRepHidden" name="15_pe_respond" value=" " disabled>
                                     @else
                                         <textarea class="form-control" name="15_pe_respond" id="findingsTextarea_back_flanks" disabled>Not Applicable</textarea>
@@ -1395,7 +1487,7 @@
                                 </td>
                                 <td>
                                     @if($medical_exam->physical_examination->anus_rectum == "No")
-                                        <textarea class="form-control" name="16_pe_respond" id="findingsTextarea_anus_rectum">{{ $medical_exam->physical_examination->medical_exam_response['16_pe_respond'] }}</textarea>
+                                        <textarea class="form-control" name="16_pe_respond" id="findingsTextarea_anus_rectum" required>{{ $medical_exam->physical_examination->medical_exam_response['16_pe_respond'] }}</textarea>
                                         <input type="hidden" id="anus_rectumRepHidden" name="16_pe_respond" value=" " disabled>
                                     @else
                                         <textarea class="form-control" name="16_pe_respond" id="findingsTextarea_anus_rectum" disabled>Not Applicable</textarea>
@@ -1414,7 +1506,7 @@
                                 </td>
                                 <td>
                                     @if($medical_exam->physical_examination->genito_urinary_system == "No")
-                                        <textarea class="form-control" name="17_pe_respond" id="findingsTextarea_genito_urinary_system">{{ $medical_exam->physical_examination->medical_exam_response['17_pe_respond'] }}</textarea>
+                                        <textarea class="form-control" name="17_pe_respond" id="findingsTextarea_genito_urinary_system" required>{{ $medical_exam->physical_examination->medical_exam_response['17_pe_respond'] }}</textarea>
                                         <input type="hidden" id="genito_urinary_systemRepHidden" name="17_pe_respond" value=" " disabled>
                                     @else
                                         <textarea class="form-control" name="17_pe_respond" id="findingsTextarea_genito_urinary_system" disabled>Not Applicable</textarea>
@@ -1433,7 +1525,7 @@
                                 </td>
                                 <td>
                                     @if($medical_exam->physical_examination->inguinal_genitals == "No")
-                                        <textarea class="form-control" name="18_pe_respond" id="findingsTextarea_inguinal_genitals">{{ $medical_exam->physical_examination->medical_exam_response['18_pe_respond'] }}</textarea>
+                                        <textarea class="form-control" name="18_pe_respond" id="findingsTextarea_inguinal_genitals" required>{{ $medical_exam->physical_examination->medical_exam_response['18_pe_respond'] }}</textarea>
                                         <input type="hidden" id="inguinal_genitalsRepHidden" name="18_pe_respond" value=" " disabled>
                                     @else
                                         <textarea class="form-control" name="18_pe_respond" id="findingsTextarea_inguinal_genitals" disabled>Not Applicable</textarea>
@@ -1452,7 +1544,7 @@
                                 </td>
                                 <td>
                                     @if($medical_exam->physical_examination['musculo_skeletal1'] == "No")
-                                        <textarea class="form-control" name="19_pe_respond" id="findingsTextarea_musculo_skeletal1">{{ $medical_exam->physical_examination->medical_exam_response['19_pe_respond'] }}</textarea>
+                                        <textarea class="form-control" name="19_pe_respond" id="findingsTextarea_musculo_skeletal1" required>{{ $medical_exam->physical_examination->medical_exam_response['19_pe_respond'] }}</textarea>
                                         <input type="hidden" id="musculo_skeletal1RepHidden" name="19_pe_respond" value=" " disabled>
                                     @else
                                         <textarea class="form-control" name="19_pe_respond" id="findingsTextarea_musculo_skeletal1" disabled>Not Applicable</textarea>
@@ -1471,7 +1563,7 @@
                                 </td>
                                 <td>
                                     @if($medical_exam->physical_examination->extremities == "No")
-                                        <textarea class="form-control" name="20_pe_respond" id="findingsTextarea_extremities">{{ $medical_exam->physical_examination->medical_exam_response['20_pe_respond'] }}</textarea>
+                                        <textarea class="form-control" name="20_pe_respond" id="findingsTextarea_extremities" required>{{ $medical_exam->physical_examination->medical_exam_response['20_pe_respond'] }}</textarea>
                                         <input type="hidden" id="extremitiesRepHidden" name="20_pe_respond" value=" " disabled>
                                     @else
                                         <textarea class="form-control" name="20_pe_respond" id="findingsTextarea_extremities" disabled>Not Applicable</textarea>
@@ -1490,7 +1582,7 @@
                                 </td>
                                 <td>
                                     @if($medical_exam->physical_examination->reflexes == "No")
-                                        <textarea class="form-control" name="21_pe_respond" id="findingsTextarea_reflexes">{{ $medical_exam->physical_examination->medical_exam_response['21_pe_respond'] }}</textarea>
+                                        <textarea class="form-control" name="21_pe_respond" id="findingsTextarea_reflexes" required>{{ $medical_exam->physical_examination->medical_exam_response['21_pe_respond'] }}</textarea>
                                         <input type="hidden" id="reflexesRepHidden" name="21_pe_respond" value=" " disabled>
                                     @else
                                         <textarea class="form-control" name="21_pe_respond" id="findingsTextarea_reflexes" disabled>Not Applicable</textarea>
@@ -1509,7 +1601,7 @@
                                 </td>
                                 <td>
                                     @if($medical_exam->physical_examination->neurological == "No")
-                                        <textarea class="form-control" name="22_pe_respond" id="findingsTextarea_neurological">{{ $medical_exam->physical_examination->medical_exam_response['22_pe_respond'] }}</textarea>
+                                        <textarea class="form-control" name="22_pe_respond" id="findingsTextarea_neurological" required>{{ $medical_exam->physical_examination->medical_exam_response['22_pe_respond'] }}</textarea>
                                         <input type="hidden" id="neurologicalRepHidden" name="22_pe_respond" value=" " disabled>
                                     @else
                                         <textarea class="form-control" name="22_pe_respond" id="findingsTextarea_neurological" disabled>Not Applicable</textarea>
@@ -1579,6 +1671,24 @@
 
         function updateCheckboxValue(checkbox, type) {
             var medicationText = document.getElementById("take");
+            var medicationHidden = document.getElementById("medicationHidden");
+            var medicationValHidden = document.getElementById("medicationValHidden");
+            var eyesHidden = document.getElementById("eyesHidden")
+            var correctedHidden = document.getElementById("correctedHidden")
+            const smokerHidden = document.getElementById("smokerHidden")
+            const smokerValHidden1 = document.getElementById("smokerValHidden1")
+            const smokerValHidden2 = document.getElementById("smokerValHidden2")
+            const alcoholicHidden = document.getElementById("alcoholicHidden")
+            const alcoholicValHidden1 = document.getElementById("alcoholicValHidden1")
+            const alcoholicValHidden2 = document.getElementById("alcoholicValHidden2")
+            const eyesValHidden1 = document.getElementById("eyesValHidden1")
+            const eyesValHidden2 = document.getElementById("eyesValHidden2")
+            const eyesValHidden3 = document.getElementById("eyesValHidden3")
+            const eyesValHidden4 = document.getElementById("eyesValHidden4")
+            const correctedValHidden1 = document.getElementById("correctedValHidden1")
+            const correctedValHidden2 = document.getElementById("correctedValHidden2")
+            const correctedValHidden3 = document.getElementById("correctedValHidden3")
+            const correctedValHidden4 = document.getElementById("correctedValHidden4")
             const stickInput = document.getElementById("stick");
             const packInput = document.getElementById("pack");
             const frequentInput = document.getElementById("frequent");
@@ -1590,9 +1700,9 @@
             const osInput = document.getElementById("os_pe_respond");
             const os1Input = document.getElementById("os1_pe_respond");
             const od12Input = document.getElementById("od_pe_respond1");
-            const od123Input = document.getElementById("od__pe_respond1");
+            const od123Input = document.getElementById("od1_pe_respond1");
             const os12Input = document.getElementById("os_pe_respond1");
-            const os123Input = document.getElementById("os__pe_respond1");
+            const os123Input = document.getElementById("os1_pe_respond1");
 
             if (checkbox.checked) {
                 checkbox.value = "Yes";
@@ -1601,14 +1711,23 @@
                     packInput.disabled = false;
                     stickInput.required = true;
                     packInput.required = true;
+                    smokerHidden.value = 'Yes';
+                    smokerValHidden1.disabled = true;
+                    smokerValHidden2.disabled = true;
                 } else if (type === 'alcoholic') {
                     frequentInput.disabled = false;
                     weekInput.disabled = false;
                     frequentInput.required = true;
                     weekInput.required = true;
+                    alcoholicHidden.value = 'Yes';
+                    alcoholicValHidden1.disabled = true;
+                    alcoholicValHidden2.disabled = true;
                 } else if (type === 'medication'){
                     medicationText.disabled = false;
                     medicationText.required = true;
+                    medicationText.value = "";
+                    medicationHidden.value = 'Yes';
+                    medicationValHidden.disabled = true;
                 } else if (type === 'hospitalization'){
                     hospInput.disabled = false;
                     hospInput.required = true;
@@ -1628,6 +1747,11 @@
                     od1Input.value = '';
                     osInput.value = '';
                     os1Input.value = '';
+                    eyesHidden.value = 'Yes';
+                    eyesValHidden1.disabled = false;
+                    eyesValHidden2.disabled = false;
+                    eyesValHidden3.disabled = false;
+                    eyesValHidden4.disabled = false;
                 } else if (type === 'corrected'){
                     od12Input.disabled = true;
                     od123Input.disabled = true;
@@ -1641,6 +1765,11 @@
                     od123Input.value = '';
                     os12Input.value = '';
                     os123Input.value = '';
+                    correctedHidden.value = 'Yes';
+                    correctedValHidden1.disabled = false;
+                    correctedValHidden2.disabled = false;
+                    correctedValHidden3.disabled = false;
+                    correctedValHidden4.disabled = false;
                 } 
             } else {
                 checkbox.value = "No";
@@ -1651,6 +1780,9 @@
                     packInput.required = false;
                     stickInput.value = '';
                     packInput.value = '';
+                    smokerHidden.value = 'No';
+                    smokerValHidden1.disabled = false;
+                    smokerValHidden2.disabled = false;
                 } else if (type === 'alcoholic') {
                     frequentInput.disabled = true;
                     weekInput.disabled = true;
@@ -1658,10 +1790,15 @@
                     weekInput.required = false;
                     frequentInput.value = '';
                     weekInput.value = '';
+                    alcoholicHidden.value = 'No';
+                    alcoholicValHidden1.disabled = false;
+                    alcoholicValHidden2.disabled = false;
                 } else if (type === 'medication'){
                     medicationText.disabled = true;
                     medicationText.required = false;
-                    medicationText.value = '';
+                    medicationText.value = 'Not Applicable';
+                    medicationHidden.value = 'No';
+                    medicationValHidden.disabled = false;
                 } else if (type === 'hospitalization'){
                     hospInput.disabled = true;
                     hospInput.required = false;
@@ -1679,6 +1816,11 @@
                     od1Input.required = true;
                     osInput.required = true;
                     os1Input.required = true;
+                    eyesHidden.value = 'No';
+                    eyesValHidden1.disabled = true;
+                    eyesValHidden2.disabled = true;
+                    eyesValHidden3.disabled = true;
+                    eyesValHidden4.disabled = true;
                 } else if (type === 'corrected'){
                     od12Input.disabled = false;
                     od123Input.disabled = false;
@@ -1688,6 +1830,11 @@
                     od123Input.required = true;
                     os12Input.required = true;
                     os123Input.required = true;
+                    correctedHidden.value = 'No';
+                    correctedValHidden1.disabled = true;
+                    correctedValHidden2.disabled = true;
+                    correctedValHidden3.disabled = true;
+                    correctedValHidden4.disabled = true;
                 } 
             }
         }

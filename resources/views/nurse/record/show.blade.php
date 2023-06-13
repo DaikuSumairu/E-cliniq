@@ -818,7 +818,7 @@
                                                 {{ $record->medical_exam->physical_examination->eyes }}
                                             </td>
                                             <td>
-                                                @if($record->medical_exam->physical_examination->corrected == 'Yes')
+                                                @if($record->medical_exam->physical_examination->eyes == 'Yes')
                                                 @else
                                                     <div class="row">
                                                         <div class="col-0 ml-4 mr-1">
