@@ -1122,7 +1122,7 @@
                                 <td>
                                     <div class="row">
                                         <div class="col-0">
-                                            
+                                            <input type="number" name="od_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_pe_respond" disabled>
                                         </div>
                                         <div class="col-0">
                                             <p>/</p>
