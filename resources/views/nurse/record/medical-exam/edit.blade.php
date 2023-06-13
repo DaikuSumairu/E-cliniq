@@ -8,11 +8,12 @@
 
 @section('content')
     <div class="container mx-auto pb-4" style="height: 625px; overflow: auto;">
-        <form method="POST" action="{{ route('nurse.medExamStore') }}">
+        <form method="POST" action="{{ route('nurse.medExamUpdate', $medical_exam->id) }}">
             @csrf
+            @method('PUT')
             <!-- Record ID Created (Hidden) -->
             <input type="hidden" name="record_id" value="{{ $medical_exam->record->id }}">
-            <input type="hidden" name="date_created" value="{{ now() }}">
+            <input type="hidden" name="date_updated" value="{{ now() }}">
 
             <!-- Medical History -->
             <h2><strong>I. Medical History</strong></h2>
@@ -32,153 +33,313 @@
                         <tr>
                             <td>Allergies</td>
                             <td class="text-center">
-                                <input type="checkbox" id="allergies" name="allergies" value="Yes" onchange="toggleTextarea('allergies')" checked>
+                                @if($medical_exam->past_medical_history->allergies == "Yes")
+                                    <input type="checkbox" id="allergies" name="allergies" value="Yes" onchange="toggleTextareaAndHidden('allergies', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="allergiesHidden" name="allergies" value="Yes">
+                                @else
+                                    <input type="checkbox" id="allergies" name="allergies" value="Yes" onchange="toggleTextareaAndHidden('allergies', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="1_pm_respond" id="findingsTextarea_allergies" disabled>Not Applicable</textarea>
+                                @if($medical_exam->past_medical_history->allergies == "No")
+                                    <textarea class="form-control" name="1_pm_respond" id="findingsTextarea_allergies">{{ $medical_exam->past_medical_history->medical_exam_response['1_pm_respond'] }}</textarea>
+                                    <input type="hidden" id="allergiesRepHidden" name="1_pm_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="1_pm_respond" id="findingsTextarea_allergies" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
 
                         <tr>
                             <td>Skin Disease</td>
                             <td class="text-center">
-                                <input type="checkbox" id="skin_disease" name="skin_disease" value="Yes" onchange="toggleTextarea('skin_disease')" checked>
+                                @if($medical_exam->past_medical_history->skin_disease == "Yes")
+                                    <input type="checkbox" id="skin_disease" name="skin_disease" value="Yes" onchange="toggleTextareaAndHidden('skin_disease', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="skin_diseaseHidden" name="skin_disease" value="Yes">
+                                @else
+                                    <input type="checkbox" id="skin_disease" name="skin_disease" value="Yes" onchange="toggleTextareaAndHidden('skin_disease', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="2_pm_respond" id="findingsTextarea_skin_disease" disabled>Not Applicable</textarea>
+                                @if($medical_exam->past_medical_history->skin_disease == "No")
+                                    <textarea class="form-control" name="2_pm_respond" id="findingsTextarea_skin_disease">{{ $medical_exam->past_medical_history->medical_exam_response['2_pm_respond'] }}</textarea>
+                                    <input type="hidden" id="skin_diseaseRepHidden" name="2_pm_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="2_pm_respond" id="findingsTextarea_skin_disease" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
 
                         <tr>
                             <td>Opthalmologic Disorder</td>
                             <td class="text-center">
-                                <input type="checkbox" id="opthalmologic_disorder" name="opthalmologic_disorder" value="Yes" onchange="toggleTextarea('opthalmologic_disorder')" checked>
+                                @if($medical_exam->past_medical_history->opthalmologic_disorder == "Yes")
+                                    <input type="checkbox" id="opthalmologic_disorder" name="opthalmologic_disorder" value="Yes" onchange="toggleTextareaAndHidden('opthalmologic_disorder', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="opthalmologic_disorderHidden" name="opthalmologic_disorder" value="Yes">
+                                @else
+                                    <input type="checkbox" id="opthalmologic_disorder" name="opthalmologic_disorder" value="Yes" onchange="toggleTextareaAndHidden('opthalmologic_disorder', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="3_pm_respond" id="findingsTextarea_opthalmologic_disorder" disabled>Not Applicable</textarea>
+                                @if($medical_exam->past_medical_history->opthalmologic_disorder == "No")
+                                    <textarea class="form-control" name="3_pm_respond" id="findingsTextarea_opthalmologic_disorder">{{ $medical_exam->past_medical_history->medical_exam_response['3_pm_respond'] }}</textarea>
+                                    <input type="hidden" id="opthalmologic_disorderRepHidden" name="3_pm_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="3_pm_respond" id="findingsTextarea_opthalmologic_disorder" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>ENT Disorder</td>
                             <td class="text-center">
-                                <input type="checkbox" id="ent_disorder" name="ent_disorder" value="Yes" onchange="toggleTextarea('ent_disorder')" checked>
+                                @if($medical_exam->past_medical_history->ent_disorder == "Yes")
+                                    <input type="checkbox" id="ent_disorder" name="ent_disorder" value="Yes" onchange="toggleTextareaAndHidden('ent_disorder', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="ent_disorderHidden" name="ent_disorder" value="Yes">
+                                @else
+                                    <input type="checkbox" id="ent_disorder" name="ent_disorder" value="Yes" onchange="toggleTextareaAndHidden('ent_disorder', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="4_pm_respond" id="findingsTextarea_ent_disorder" disabled>Not Applicable</textarea>
+                                @if($medical_exam->past_medical_history->ent_disorder == "No")
+                                    <textarea class="form-control" name="4_pm_respond" id="findingsTextarea_ent_disorder">{{ $medical_exam->past_medical_history->medical_exam_response['4_pm_respond'] }}</textarea>
+                                    <input type="hidden" id="ent_disorderRepHidden" name="4_pm_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="4_pm_respond" id="findingsTextarea_ent_disorder" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Bronchial Asthma</td>
                             <td class="text-center">
-                                <input type="checkbox" id="bronchial_asthma" name="bronchial_asthma" value="Yes" onchange="toggleTextarea('bronchial_asthma')" checked>
+                                @if($medical_exam->past_medical_history->bronchial_asthma == "Yes")
+                                    <input type="checkbox" id="bronchial_asthma" name="bronchial_asthma" value="Yes" onchange="toggleTextareaAndHidden('bronchial_asthma', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="bronchial_asthmaHidden" name="bronchial_asthma" value="Yes">
+                                @else
+                                    <input type="checkbox" id="bronchial_asthma" name="bronchial_asthma" value="Yes" onchange="toggleTextareaAndHidden('bronchial_asthma', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="5_pm_respond" id="findingsTextarea_bronchial_asthma" disabled>Not Applicable</textarea>
+                                @if($medical_exam->past_medical_history->bronchial_asthma == "No")
+                                    <textarea class="form-control" name="5_pm_respond" id="findingsTextarea_bronchial_asthma">{{ $medical_exam->past_medical_history->medical_exam_response['5_pm_respond'] }}</textarea>
+                                    <input type="hidden" id="bronchial_asthmaRepHidden" name="5_pm_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="5_pm_respond" id="findingsTextarea_bronchial_asthma" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Cardiac Disorder</td>
                             <td class="text-center">
-                                <input type="checkbox" id="cardiac_disorder" name="cardiac_disorder" value="Yes" onchange="toggleTextarea('cardiac_disorder')" checked>
+                                @if($medical_exam->past_medical_history->cardiac_disorder == "Yes")
+                                    <input type="checkbox" id="cardiac_disorder" name="cardiac_disorder" value="Yes" onchange="toggleTextareaAndHidden('cardiac_disorder', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="cardiac_disorderHidden" name="cardiac_disorder" value="Yes">
+                                @else
+                                    <input type="checkbox" id="cardiac_disorder" name="cardiac_disorder" value="Yes" onchange="toggleTextareaAndHidden('cardiac_disorder', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="6_pm_respond" id="findingsTextarea_cardiac_disorder" disabled>Not Applicable</textarea>
+                                @if($medical_exam->past_medical_history->cardiac_disorder == "No")
+                                    <textarea class="form-control" name="6_pm_respond" id="findingsTextarea_cardiac_disorder">{{ $medical_exam->past_medical_history->medical_exam_response['6_pm_respond'] }}</textarea>
+                                    <input type="hidden" id="cardiac_disorderRepHidden" name="6_pm_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="6_pm_respond" id="findingsTextarea_cardiac_disorder" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Diabetes Melilitus</td>
                             <td class="text-center">
-                                <input type="checkbox" id="diabetes_melilitus" name="diabetes_melilitus" value="Yes" onchange="toggleTextarea('diabetes_melilitus')" checked>
+                                @if($medical_exam->past_medical_history->diabetes_melilitus == "Yes")
+                                    <input type="checkbox" id="diabetes_melilitus" name="diabetes_melilitus" value="Yes" onchange="toggleTextareaAndHidden('diabetes_melilitus', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="diabetes_melilitusHidden" name="diabetes_melilitus" value="Yes">
+                                @else
+                                    <input type="checkbox" id="diabetes_melilitus" name="diabetes_melilitus" value="Yes" onchange="toggleTextareaAndHidden('diabetes_melilitus', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="7_pm_respond" id="findingsTextarea_diabetes_melilitus" disabled>Not Applicable</textarea>
+                                @if($medical_exam->past_medical_history->diabetes_melilitus == "No")
+                                    <textarea class="form-control" name="7_pm_respond" id="findingsTextarea_diabetes_melilitus">{{ $medical_exam->past_medical_history->medical_exam_response['7_pm_respond'] }}</textarea>
+                                    <input type="hidden" id="diabetes_melilitusRepHidden" name="7_pm_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="7_pm_respond" id="findingsTextarea_diabetes_melilitus" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Chronic Headache/Migraine</td>
                             <td class="text-center">
-                                <input type="checkbox" id="chronic_headache_or_migraine" name="chronic_headache_or_migraine" value="Yes" onchange="toggleTextarea('chronic_headache_or_migraine')" checked>
+                                @if($medical_exam->past_medical_history->chronic_headache_or_migraine == "Yes")
+                                    <input type="checkbox" id="chronic_headache_or_migraine" name="chronic_headache_or_migraine" value="Yes" onchange="toggleTextareaAndHidden('chronic_headache_or_migraine', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="chronic_headache_or_migraineHidden" name="chronic_headache_or_migraine" value="Yes">
+                                @else
+                                    <input type="checkbox" id="chronic_headache_or_migraine" name="chronic_headache_or_migraine" value="Yes" onchange="toggleTextareaAndHidden('chronic_headache_or_migraine', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="8_pm_respond" id="findingsTextarea_chronic_headache_or_migraine" disabled>Not Applicable</textarea>
+                                @if($medical_exam->past_medical_history->chronic_headache_or_migraine == "No")
+                                    <textarea class="form-control" name="8_pm_respond" id="findingsTextarea_chronic_headache_or_migraine">{{ $medical_exam->past_medical_history->medical_exam_response['8_pm_respond'] }}</textarea>
+                                    <input type="hidden" id="chronic_headache_or_migraineRepHidden" name="8_pm_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="8_pm_respond" id="findingsTextarea_chronic_headache_or_migraine" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Hepatitis</td>
                             <td class="text-center">
-                                <input type="checkbox" id="hepatitis" name="hepatitis" value="Yes" onchange="toggleTextarea('hepatitis')" checked>
+                                @if($medical_exam->past_medical_history->hepatitis == "Yes")
+                                    <input type="checkbox" id="hepatitis" name="hepatitis" value="Yes" onchange="toggleTextareaAndHidden('hepatitis', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="hepatitisHidden" name="hepatitis" value="Yes">
+                                @else
+                                    <input type="checkbox" id="hepatitis" name="hepatitis" value="Yes" onchange="toggleTextareaAndHidden('hepatitis', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="9_pm_respond" id="findingsTextarea_hepatitis" disabled>Not Applicable</textarea>
+                                @if($medical_exam->past_medical_history->hepatitis == "No")
+                                    <textarea class="form-control" name="9_pm_respond" id="findingsTextarea_hepatitis">{{ $medical_exam->past_medical_history->medical_exam_response['9_pm_respond'] }}</textarea>
+                                    <input type="hidden" id="hepatitisRepHidden" name="9_pm_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="9_pm_respond" id="findingsTextarea_hepatitis" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Hypertension</td>
                             <td class="text-center">
-                                <input type="checkbox" id="hypertension" name="hypertension" value="Yes" onchange="toggleTextarea('hypertension')" checked>
+                                @if($medical_exam->past_medical_history->hypertension == "Yes")
+                                    <input type="checkbox" id="hypertension" name="hypertension" value="Yes" onchange="toggleTextareaAndHidden('hypertension', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="hypertensionHidden" name="hypertension" value="Yes">
+                                @else
+                                    <input type="checkbox" id="hypertension" name="hypertension" value="Yes" onchange="toggleTextareaAndHidden('hypertension', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="10_pm_respond" id="findingsTextarea_hypertension" disabled>Not Applicable</textarea>
+                                @if($medical_exam->past_medical_history->hypertension == "No")
+                                    <textarea class="form-control" name="10_pm_respond" id="findingsTextarea_hypertension">{{ $medical_exam->past_medical_history->medical_exam_response['10_pm_respond'] }}</textarea>
+                                    <input type="hidden" id="hypertensionRepHidden" name="10_pm_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="10_pm_respond" id="findingsTextarea_hypertension" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Thyroid Disorder</td>
                             <td class="text-center">
-                                <input type="checkbox" id="thyroid_disorder" name="thyroid_disorder" value="Yes" onchange="toggleTextarea('thyroid_disorder')" checked>
+                                @if($medical_exam->past_medical_history->thyroid_disorder == "Yes")
+                                    <input type="checkbox" id="thyroid_disorder" name="thyroid_disorder" value="Yes" onchange="toggleTextareaAndHidden('thyroid_disorder', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="thyroid_disorderHidden" name="thyroid_disorder" value="Yes">
+                                @else
+                                    <input type="checkbox" id="thyroid_disorder" name="thyroid_disorder" value="Yes" onchange="toggleTextareaAndHidden('thyroid_disorder', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="11_pm_respond" id="findingsTextarea_thyroid_disorder" disabled>Not Applicable</textarea>
+                                @if($medical_exam->past_medical_history->thyroid_disorder == "No")
+                                    <textarea class="form-control" name="11_pm_respond" id="findingsTextarea_thyroid_disorder">{{ $medical_exam->past_medical_history->medical_exam_response['11_pm_respond'] }}</textarea>
+                                    <input type="hidden" id="thyroid_disorderRepHidden" name="11_pm_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="11_pm_respond" id="findingsTextarea_thyroid_disorder" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Blood Disorder</td>
                             <td class="text-center">
-                                <input type="checkbox" id="blood_disorder" name="blood_disorder" value="Yes" onchange="toggleTextarea('blood_disorder')" checked>
+                                @if($medical_exam->past_medical_history->blood_disorder == "Yes")
+                                    <input type="checkbox" id="blood_disorder" name="blood_disorder" value="Yes" onchange="toggleTextareaAndHidden('blood_disorder', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="blood_disorderHidden" name="blood_disorder" value="Yes">
+                                @else
+                                    <input type="checkbox" id="blood_disorder" name="blood_disorder" value="Yes" onchange="toggleTextareaAndHidden('blood_disorder', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="12_pm_respond" id="findingsTextarea_blood_disorder" disabled>Not Applicable</textarea>
+                                @if($medical_exam->past_medical_history->blood_disorder == "No")
+                                    <textarea class="form-control" name="12_pm_respond" id="findingsTextarea_blood_disorder">{{ $medical_exam->past_medical_history->medical_exam_response['12_pm_respond'] }}</textarea>
+                                    <input type="hidden" id="blood_disorderRepHidden" name="12_pm_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="12_pm_respond" id="findingsTextarea_blood_disorder" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Tuberculosis</td>
                             <td class="text-center">
-                                <input type="checkbox" id="tuberculosis" name="tuberculosis" value="Yes" onchange="toggleTextarea('tuberculosis')" checked>
+                                @if($medical_exam->past_medical_history->tuberculosis == "Yes")
+                                    <input type="checkbox" id="tuberculosis" name="tuberculosis" value="Yes" onchange="toggleTextareaAndHidden('tuberculosis', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="tuberculosisHidden" name="tuberculosis" value="Yes">
+                                @else
+                                    <input type="checkbox" id="tuberculosis" name="tuberculosis" value="Yes" onchange="toggleTextareaAndHidden('tuberculosis', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="13_pm_respond" id="findingsTextarea_tuberculosis" disabled>Not Applicable</textarea>
+                                @if($medical_exam->past_medical_history->tuberculosis == "No")
+                                    <textarea class="form-control" name="13_pm_respond" id="findingsTextarea_tuberculosis">{{ $medical_exam->past_medical_history->medical_exam_response['13_pm_respond'] }}</textarea>
+                                    <input type="hidden" id="tuberculosisRepHidden" name="13_pm_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="13_pm_respond" id="findingsTextarea_tuberculosis" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Peptic Ulcer</td>
                             <td class="text-center">
-                                <input type="checkbox" id="peptic_ulcer" name="peptic_ulcer" value="Yes" onchange="toggleTextarea('peptic_ulcer')" checked>
+                                @if($medical_exam->past_medical_history->peptic_ulcer == "Yes")
+                                    <input type="checkbox" id="peptic_ulcer" name="peptic_ulcer" value="Yes" onchange="toggleTextareaAndHidden('peptic_ulcer', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="peptic_ulcerHidden" name="peptic_ulcer" value="Yes">
+                                @else
+                                    <input type="checkbox" id="peptic_ulcer" name="peptic_ulcer" value="Yes" onchange="toggleTextareaAndHidden('peptic_ulcer', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="14_pm_respond" id="findingsTextarea_peptic_ulcer" disabled>Not Applicable</textarea>
+                                @if($medical_exam->past_medical_history->peptic_ulcer == "No")
+                                    <textarea class="form-control" name="14_pm_respond" id="findingsTextarea_peptic_ulcer">{{ $medical_exam->past_medical_history->medical_exam_response['14_pm_respond'] }}</textarea>
+                                    <input type="hidden" id="peptic_ulcerRepHidden" name="14_pm_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="14_pm_respond" id="findingsTextarea_peptic_ulcer" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Musculoskeletal Disorder</td>
                             <td class="text-center">
-                                <input type="checkbox" id="musculoskeletal_disorder" name="musculoskeletal_disorder" value="Yes" onchange="toggleTextarea('musculoskeletal_disorder')" checked>
+                                @if($medical_exam->past_medical_history->musculoskeletal_disorder == "Yes")
+                                    <input type="checkbox" id="musculoskeletal_disorder" name="musculoskeletal_disorder" value="Yes" onchange="toggleTextareaAndHidden('musculoskeletal_disorder', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="musculoskeletal_disorderHidden" name="musculoskeletal_disorder" value="Yes">
+                                @else
+                                    <input type="checkbox" id="musculoskeletal_disorder" name="musculoskeletal_disorder" value="Yes" onchange="toggleTextareaAndHidden('musculoskeletal_disorder', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="15_pm_respond" id="findingsTextarea_musculoskeletal_disorder" disabled>Not Applicable</textarea>
+                                @if($medical_exam->past_medical_history->musculoskeletal_disorder == "No")
+                                    <textarea class="form-control" name="15_pm_respond" id="findingsTextarea_musculoskeletal_disorder">{{ $medical_exam->past_medical_history->medical_exam_response['15_pm_respond'] }}</textarea>
+                                    <input type="hidden" id="musculoskeletal_disorderRepHidden" name="15_pm_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="15_pm_respond" id="findingsTextarea_musculoskeletal_disorder" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Infectious Disease</td>
                             <td class="text-center">
-                                <input type="checkbox" id="infectious_disease" name="infectious_disease" value="Yes" onchange="toggleTextarea('infectious_disease')" checked>
+                                @if($medical_exam->past_medical_history->infectious_disease == "Yes")
+                                    <input type="checkbox" id="infectious_disease" name="infectious_disease" value="Yes" onchange="toggleTextareaAndHidden('infectious_disease', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="infectious_diseaseHidden" name="infectious_disease" value="Yes">
+                                @else
+                                    <input type="checkbox" id="infectious_disease" name="infectious_disease" value="Yes" onchange="toggleTextareaAndHidden('infectious_disease', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="16_pm_respond" id="findingsTextarea_infectious_disease" disabled>Not Applicable</textarea>
+                                @if($medical_exam->past_medical_history->infectious_disease == "No")
+                                    <textarea class="form-control" name="16_pm_respond" id="findingsTextarea_infectious_disease">{{ $medical_exam->past_medical_history->medical_exam_response['16_pm_respond'] }}</textarea>
+                                    <input type="hidden" id="infectious_diseaseRepHidden" name="16_pm_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="16_pm_respond" id="findingsTextarea_infectious_disease" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td >Others</td>
                             <td colspan="2">
-                                <textarea class="form-control" name="others_pm_respond"></textarea>
+                                <textarea class="form-control" name="others_pm_respond">{{ $medical_exam->past_medical_history->medical_exam_response['others_pm_respond'] }}</textarea>
                             </td>
                         </tr>
                     </table>
@@ -199,115 +360,235 @@
                         <tr>
                             <td>Bronchial Asthma</td>
                             <td class="text-center">
-                                <input type="checkbox" id="bronchial_asthma_1" name="bronchial_asthma_1" value="Yes" onchange="toggleTextarea('bronchial_asthma_1')" checked>
+                                @if($medical_exam->family_history['bronchial_asthma_1'] == "Yes")
+                                    <input type="checkbox" id="bronchial_asthma_1" name="bronchial_asthma_1" value="Yes" onchange="toggleTextareaAndHidden('bronchial_asthma_1', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="bronchial_asthma_1Hidden" name="bronchial_asthma_1" value="Yes">
+                                @else
+                                    <input type="checkbox" id="bronchial_asthma_1" name="bronchial_asthma_1" value="Yes" onchange="toggleTextareaAndHidden('bronchial_asthma_1', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="1_fh_respond" id="findingsTextarea_bronchial_asthma_1" disabled>Not Applicable</textarea>
+                                @if($medical_exam->family_history['bronchial_asthma_1'] == "No")
+                                    <textarea class="form-control" name="1_fh_respond" id="findingsTextarea_bronchial_asthma_1">{{ $medical_exam->family_history->medical_exam_response['1_fh_respond'] }}</textarea>
+                                    <input type="hidden" id="bronchial_asthma_1RepHidden" name="1_fh_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="1_fh_respond" id="findingsTextarea_bronchial_asthma_1" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Diabetes Melilitus</td>
                             <td class="text-center">
-                                <input type="checkbox" id="diabetes_melilitus_1" name="diabetes_melilitus_1" value="Yes" onchange="toggleTextarea('diabetes_melilitus_1')" checked>
+                                @if($medical_exam->family_history['diabetes_melilitus_1'] == "Yes")
+                                    <input type="checkbox" id="diabetes_melilitus_1" name="diabetes_melilitus_1" value="Yes" onchange="toggleTextareaAndHidden('diabetes_melilitus_1', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="diabetes_melilitus_1Hidden" name="diabetes_melilitus_1" value="Yes">
+                                @else
+                                    <input type="checkbox" id="diabetes_melilitus_1" name="diabetes_melilitus_1" value="Yes" onchange="toggleTextareaAndHidden('diabetes_melilitus_1', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="2_fh_respond" id="findingsTextarea_diabetes_melilitus_1" disabled>Not Applicable</textarea>
+                                @if($medical_exam->family_history['diabetes_melilitus_1'] == "No")
+                                    <textarea class="form-control" name="2_fh_respond" id="findingsTextarea_diabetes_melilitus_1">{{ $medical_exam->family_history->medical_exam_response['2_fh_respond'] }}</textarea>
+                                    <input type="hidden" id="diabetes_melilitus_1RepHidden" name="2_fh_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="2_fh_respond" id="findingsTextarea_diabetes_melilitus_1" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Thyroid Disorder</td>
                             <td class="text-center">
-                                <input type="checkbox" id="thyroid_disorder_1" name="thyroid_disorder_1" value="Yes" onchange="toggleTextarea('thyroid_disorder_1')" checked>
+                                @if($medical_exam->family_history['thyroid_disorder_1'] == "Yes")
+                                    <input type="checkbox" id="thyroid_disorder_1" name="thyroid_disorder_1" value="Yes" onchange="toggleTextareaAndHidden('thyroid_disorder_1', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="thyroid_disorder_1Hidden" name="thyroid_disorder_1" value="Yes">
+                                @else
+                                    <input type="checkbox" id="thyroid_disorder_1" name="thyroid_disorder_1" value="Yes" onchange="toggleTextareaAndHidden('thyroid_disorder_1', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="3_fh_respond" id="findingsTextarea_thyroid_disorder_1" disabled>Not Applicable</textarea>
+                                @if($medical_exam->family_history['thyroid_disorder_1'] == "No")
+                                    <textarea class="form-control" name="3_fh_respond" id="findingsTextarea_thyroid_disorder_1">{{ $medical_exam->family_history->medical_exam_response['3_fh_respond'] }}</textarea>
+                                    <input type="hidden" id="thyroid_disorder_1RepHidden" name="3_fh_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="3_fh_respond" id="findingsTextarea_thyroid_disorder_1" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Opthalmologic Disease</td>
                             <td class="text-center">
-                                <input type="checkbox" id="opthalmologic_disease" name="opthalmologic_disease" value="Yes" onchange="toggleTextarea('opthalmologic_disease')" checked>
+                                @if($medical_exam->family_history->opthalmologic_disease == "Yes")
+                                    <input type="checkbox" id="opthalmologic_disease" name="opthalmologic_disease" value="Yes" onchange="toggleTextareaAndHidden('opthalmologic_disease', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="opthalmologic_diseaseHidden" name="opthalmologic_disease" value="Yes">
+                                @else
+                                    <input type="checkbox" id="opthalmologic_disease" name="opthalmologic_disease" value="Yes" onchange="toggleTextareaAndHidden('opthalmologic_disease', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="4_fh_respond" id="findingsTextarea_opthalmologic_disease" disabled>Not Applicable</textarea>
+                                @if($medical_exam->family_history->opthalmologic_disease == "No")
+                                    <textarea class="form-control" name="4_fh_respond" id="findingsTextarea_opthalmologic_disease">{{ $medical_exam->family_history->medical_exam_response['4_fh_respond'] }}</textarea>
+                                    <input type="hidden" id="opthalmologic_diseaseRepHidden" name="4_fh_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="4_fh_respond" id="findingsTextarea_opthalmologic_disease" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Cancer</td>
                             <td class="text-center">
-                                <input type="checkbox" id="cancer" name="cancer" value="Yes" onchange="toggleTextarea('cancer')" checked>
+                                @if($medical_exam->family_history->cancer == "Yes")
+                                    <input type="checkbox" id="cancer" name="cancer" value="Yes" onchange="toggleTextareaAndHidden('cancer', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="cancerHidden" name="cancer" value="Yes">
+                                @else
+                                    <input type="checkbox" id="cancer" name="cancer" value="Yes" onchange="toggleTextareaAndHidden('cancer', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="5_fh_respond" id="findingsTextarea_cancer" disabled>Not Applicable</textarea>
+                                @if($medical_exam->family_history->cancer == "No")
+                                    <textarea class="form-control" name="5_fh_respond" id="findingsTextarea_cancer">{{ $medical_exam->family_history->medical_exam_response['5_fh_respond'] }}</textarea>
+                                    <input type="hidden" id="cancerRepHidden" name="5_fh_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="5_fh_respond" id="findingsTextarea_cancer" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Cardiac Disorder</td>
                             <td class="text-center">
-                                <input type="checkbox" id="cardiac_disorder_1" name="cardiac_disorder_1" value="Yes" onchange="toggleTextarea('cardiac_disorder_1')" checked>
+                                @if($medical_exam->family_history['cardiac_disorder_1'] == "Yes")
+                                    <input type="checkbox" id="cardiac_disorder_1" name="cardiac_disorder_1" value="Yes" onchange="toggleTextareaAndHidden('cardiac_disorder_1', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="cardiac_disorder_1Hidden" name="cardiac_disorder_1" value="Yes">
+                                @else
+                                    <input type="checkbox" id="cardiac_disorder_1" name="cardiac_disorder_1" value="Yes" onchange="toggleTextareaAndHidden('cardiac_disorder_1', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="6_fh_respond" id="findingsTextarea_cardiac_disorder_1" disabled>Not Applicable</textarea>
+                                @if($medical_exam->family_history['cardiac_disorder_1'] == "No")
+                                    <textarea class="form-control" name="6_fh_respond" id="findingsTextarea_cardiac_disorder_1">{{ $medical_exam->family_history->medical_exam_response['6_fh_respond'] }}</textarea>
+                                    <input type="hidden" id="cardiac_disorder_1RepHidden" name="6_fh_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="6_fh_respond" id="findingsTextarea_cardiac_disorder_1" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Hypertension</td>
                             <td class="text-center">
-                                <input type="checkbox" id="hypertension_1" name="hypertension_1" value="Yes" onchange="toggleTextarea('hypertension_1')" checked>
+                                @if($medical_exam->family_history['hypertension_1'] == "Yes")
+                                    <input type="checkbox" id="hypertension_1" name="hypertension_1" value="Yes" onchange="toggleTextareaAndHidden('hypertension_1', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="hypertension_1Hidden" name="hypertension_1" value="Yes">
+                                @else
+                                    <input type="checkbox" id="hypertension_1" name="hypertension_1" value="Yes" onchange="toggleTextareaAndHidden('hypertension_1', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="7_fh_respond" id="findingsTextarea_hypertension_1" disabled>Not Applicable</textarea>
+                                @if($medical_exam->family_history['hypertension_1'] == "No")
+                                    <textarea class="form-control" name="7_fh_respond" id="findingsTextarea_hypertension_1">{{ $medical_exam->family_history->medical_exam_response['7_fh_respond'] }}</textarea>
+                                    <input type="hidden" id="hypertension_1RepHidden" name="7_fh_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="7_fh_respond" id="findingsTextarea_hypertension_1" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Tuberculosis</td>
                             <td class="text-center">
-                                <input type="checkbox" id="tuberculosis_1" name="tuberculosis_1" value="Yes" onchange="toggleTextarea('tuberculosis_1')" checked>
+                                @if($medical_exam->family_history['tuberculosis_1'] == "Yes")
+                                    <input type="checkbox" id="tuberculosis_1" name="tuberculosis_1" value="Yes" onchange="toggleTextareaAndHidden('tuberculosis_1', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="tuberculosis_1Hidden" name="tuberculosis_1" value="Yes">
+                                @else
+                                    <input type="checkbox" id="tuberculosis_1" name="tuberculosis_1" value="Yes" onchange="toggleTextareaAndHidden('tuberculosis_1', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="8_fh_respond" id="findingsTextarea_tuberculosis_1" disabled>Not Applicable</textarea>
+                                @if($medical_exam->family_history['tuberculosis_1'] == "No")
+                                    <textarea class="form-control" name="8_fh_respond" id="findingsTextarea_tuberculosis_1">{{ $medical_exam->family_history->medical_exam_response['8_fh_respond'] }}</textarea>
+                                    <input type="hidden" id="tuberculosis_1RepHidden" name="8_fh_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="8_fh_respond" id="findingsTextarea_tuberculosis_1" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Nervous Disorder</td>
                             <td class="text-center">
-                                <input type="checkbox" id="nervous_disorder" name="nervous_disorder" value="Yes" onchange="toggleTextarea('nervous_disorder')" checked>
+                                @if($medical_exam->family_history->nervous_disorder == "Yes")
+                                    <input type="checkbox" id="nervous_disorder" name="nervous_disorder" value="Yes" onchange="toggleTextareaAndHidden('nervous_disorder', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="nervous_disorderHidden" name="nervous_disorder" value="Yes">
+                                @else
+                                    <input type="checkbox" id="nervous_disorder" name="nervous_disorder" value="Yes" onchange="toggleTextareaAndHidden('nervous_disorder', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="9_fh_respond" id="findingsTextarea_nervous_disorder" disabled>Not Applicable</textarea>
+                                @if($medical_exam->family_history->nervous_disorder == "No")
+                                    <textarea class="form-control" name="9_fh_respond" id="findingsTextarea_nervous_disorder">{{ $medical_exam->family_history->medical_exam_response['9_fh_respond'] }}</textarea>
+                                    <input type="hidden" id="nervous_disorderRepHidden" name="9_fh_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="9_fh_respond" id="findingsTextarea_nervous_disorder" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Musculoskeletal</td>
                             <td class="text-center">
-                                <input type="checkbox" id="musculoskeletal" name="musculoskeletal" value="Yes" onchange="toggleTextarea('musculoskeletal')" checked>
+                                @if($medical_exam->family_history->musculoskeletal == "Yes")
+                                    <input type="checkbox" id="musculoskeletal" name="musculoskeletal" value="Yes" onchange="toggleTextareaAndHidden('musculoskeletal', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="musculoskeletalHidden" name="musculoskeletal" value="Yes">
+                                @else
+                                    <input type="checkbox" id="musculoskeletal" name="musculoskeletal" value="Yes" onchange="toggleTextareaAndHidden('musculoskeletal', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="10_fh_respond" id="findingsTextarea_musculoskeletal" disabled>Not Applicable</textarea>
+                                @if($medical_exam->family_history->musculoskeletal == "No")
+                                    <textarea class="form-control" name="10_fh_respond" id="findingsTextarea_musculoskeletal">{{ $medical_exam->family_history->medical_exam_response['10_fh_respond'] }}</textarea>
+                                    <input type="hidden" id="musculoskeletalRepHidden" name="10_fh_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="10_fh_respond" id="findingsTextarea_musculoskeletal" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Liver Disease</td>
                             <td class="text-center">
-                                <input type="checkbox" id="liver_disease" name="liver_disease" value="Yes" onchange="toggleTextarea('liver_disease')" checked>
+                                @if($medical_exam->family_history->liver_disease == "Yes")
+                                    <input type="checkbox" id="liver_disease" name="liver_disease" value="Yes" onchange="toggleTextareaAndHidden('liver_disease', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="liver_diseaseHidden" name="liver_disease" value="Yes">
+                                @else
+                                    <input type="checkbox" id="liver_disease" name="liver_disease" value="Yes" onchange="toggleTextareaAndHidden('liver_disease', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="11_fh_respond" id="findingsTextarea_liver_disease" disabled>Not Applicable</textarea>
+                                @if($medical_exam->family_history->liver_disease == "No")
+                                    <textarea class="form-control" name="11_fh_respond" id="findingsTextarea_liver_disease">{{ $medical_exam->family_history->medical_exam_response['11_fh_respond'] }}</textarea>
+                                    <input type="hidden" id="liver_diseaseRepHidden" name="11_fh_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="11_fh_respond" id="findingsTextarea_liver_disease" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Kidney Disease</td>
                             <td class="text-center">
-                                <input type="checkbox" id="kidney_disease" name="kidney_disease" value="Yes" onchange="toggleTextarea('kidney_disease')" checked>
+                                @if($medical_exam->family_history->kidney_disease == "Yes")
+                                    <input type="checkbox" id="kidney_disease" name="kidney_disease" value="Yes" onchange="toggleTextareaAndHidden('kidney_disease', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="kidney_diseaseHidden" name="kidney_disease" value="Yes">
+                                @else
+                                    <input type="checkbox" id="kidney_disease" name="kidney_disease" value="Yes" onchange="toggleTextareaAndHidden('kidney_disease', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="12_fh_respond" id="findingsTextarea_kidney_disease" disabled>Not Applicable</textarea>
+                                @if($medical_exam->family_history->kidney_disease == "No")
+                                    <textarea class="form-control" name="12_fh_respond" id="findingsTextarea_kidney_disease">{{ $medical_exam->family_history->medical_exam_response['12_fh_respond'] }}</textarea>
+                                    <input type="hidden" id="kidney_diseaseRepHidden" name="12_fh_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="12_fh_respond" id="findingsTextarea_kidney_disease" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td >Others</td>
                             <td colspan="2">
-                                <textarea class="form-control" name="others_fh_respond"></textarea>
+                                <textarea class="form-control" name="others_fh_respond">{{ $medical_exam->family_history->medical_exam_response->others_fh_respond }}</textarea>
                             </td>
                         </tr>
                     </table>
@@ -370,46 +651,96 @@
                         <tr>
                             <td>LNMP</td>
                             <td class="text-center">
-                                <input type="checkbox" id="lnmp" name="lnmp" value="Yes" onchange="toggleTextarea('lnmp')" checked>
+                                @if($medical_exam->ob_gyne_history->lnmp == "Yes")
+                                    <input type="checkbox" id="lnmp" name="lnmp" value="Yes" onchange="toggleTextareaAndHidden('lnmp', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="lnmpHidden" name="lnmp" value="Yes">    
+                                @else
+                                    <input type="checkbox" id="lnmp" name="lnmp" value="Yes" onchange="toggleTextareaAndHidden('lnmp', 'toggleTextarea', 'toggleHidden')">
+                                @endif    
                             </td>
                             <td>
-                                <textarea class="form-control" name="1_ob_respond" id="findingsTextarea_lnmp" disabled>Not Applicable</textarea>
+                                @if($medical_exam->ob_gyne_history->lnmp == "No")
+                                    <textarea class="form-control" name="1_ob_respond" id="findingsTextarea_lnmp">{{ $medical_exam->ob_gyne_history->medical_exam_response['1_ob_respond'] }}</textarea>
+                                    <input type="hidden" id="lnmpRepHidden" name="1_ob_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="1_ob_respond" id="findingsTextarea_lnmp" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>OB Score</td>
                             <td class="text-center">
-                                <input type="checkbox" id="ob_score" name="ob_score" value="Yes" onchange="toggleTextarea('ob_score')" checked>
+                                @if($medical_exam->ob_gyne_history->ob_score == "Yes")
+                                    <input type="checkbox" id="ob_score" name="ob_score" value="Yes" onchange="toggleTextareaAndHidden('ob_score', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="ob_scoreHidden" name="ob_score" value="Yes">    
+                                @else
+                                    <input type="checkbox" id="ob_score" name="ob_score" value="Yes" onchange="toggleTextareaAndHidden('ob_score', 'toggleTextarea', 'toggleHidden')">
+                                @endif    
                             </td>
                             <td>
-                                <textarea class="form-control" name="2_ob_respond" id="findingsTextarea_ob_score" disabled>Not Applicable</textarea>
+                                @if($medical_exam->ob_gyne_history->ob_score == "No")
+                                    <textarea class="form-control" name="2_ob_respond" id="findingsTextarea_ob_score">{{ $medical_exam->ob_gyne_history->medical_exam_response['2_ob_respond'] }}</textarea>
+                                    <input type="hidden" id="ob_scoreRepHidden" name="2_ob_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="2_ob_respond" id="findingsTextarea_ob_score" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Abnormal Pregnancies</td>
                             <td class="text-center">
-                                <input type="checkbox" id="abnormal_pregnancies" name="abnormal_pregnancies" value="Yes" onchange="toggleTextarea('abnormal_pregnancies')" checked>
+                                @if($medical_exam->ob_gyne_history->abnormal_pregnancies == "Yes")
+                                    <input type="checkbox" id="abnormal_pregnancies" name="abnormal_pregnancies" value="Yes" onchange="toggleTextareaAndHidden('abnormal_pregnancies', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="abnormal_pregnanciesHidden" name="abnormal_pregnancies" value="Yes">    
+                                @else
+                                    <input type="checkbox" id="abnormal_pregnancies" name="abnormal_pregnancies" value="Yes" onchange="toggleTextareaAndHidden('abnormal_pregnancies', 'toggleTextarea', 'toggleHidden')">
+                                @endif    
                             </td>
                             <td>
-                                <textarea class="form-control" name="3_ob_respond" id="findingsTextarea_abnormal_pregnancies" disabled>Not Applicable</textarea>
+                                @if($medical_exam->ob_gyne_history->abnormal_pregnancies == "No")
+                                    <textarea class="form-control" name="3_ob_respond" id="findingsTextarea_abnormal_pregnancies">{{ $medical_exam->ob_gyne_history->medical_exam_response['3_ob_respond'] }}</textarea>
+                                    <input type="hidden" id="abnormal_pregnanciesRepHidden" name="3_ob_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="3_ob_respond" id="findingsTextarea_abnormal_pregnancies" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Date of Last Delivery</td>
                             <td class="text-center">
-                                <input type="checkbox" id="date_of_last_delivery" name="date_of_last_delivery" value="Yes" onchange="toggleTextarea('date_of_last_delivery')" checked>
+                                @if($medical_exam->ob_gyne_history->date_of_last_delivery == "Yes")
+                                    <input type="checkbox" id="date_of_last_delivery" name="date_of_last_delivery" value="Yes" onchange="toggleTextareaAndHidden('date_of_last_delivery', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="date_of_last_deliveryHidden" name="date_of_last_delivery" value="Yes">    
+                                @else
+                                    <input type="checkbox" id="date_of_last_delivery" name="date_of_last_delivery" value="Yes" onchange="toggleTextareaAndHidden('date_of_last_delivery', 'toggleTextarea', 'toggleHidden')">
+                                @endif    
                             </td>
                             <td>
-                                <textarea class="form-control" name="4_ob_respond" id="findingsTextarea_date_of_last_delivery" disabled>Not Applicable</textarea>
+                                @if($medical_exam->ob_gyne_history->date_of_last_delivery == "No")
+                                    <textarea class="form-control" name="4_ob_respond" id="findingsTextarea_date_of_last_delivery">{{ $medical_exam->ob_gyne_history->medical_exam_response['4_ob_respond'] }}</textarea>
+                                    <input type="hidden" id="date_of_last_deliveryRepHidden" name="4_ob_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="4_ob_respond" id="findingsTextarea_date_of_last_delivery" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Breast/Uterus/Ovaries</td>
                             <td class="text-center">
-                                <input type="checkbox" id="breast_uterus_ovaries" name="breast_uterus_ovaries" value="Yes" onchange="toggleTextarea('breast_uterus_ovaries')" checked>
+                                @if($medical_exam->ob_gyne_history->breast_uterus_ovaries == "Yes")
+                                    <input type="checkbox" id="breast_uterus_ovaries" name="breast_uterus_ovaries" value="Yes" onchange="toggleTextareaAndHidden('breast_uterus_ovaries', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="breast_uterus_ovariesHidden" name="breast_uterus_ovaries" value="Yes">    
+                                @else
+                                    <input type="checkbox" id="breast_uterus_ovaries" name="breast_uterus_ovaries" value="Yes" onchange="toggleTextareaAndHidden('breast_uterus_ovaries', 'toggleTextarea', 'toggleHidden')">
+                                @endif    
                             </td>
                             <td>
-                                <textarea class="form-control" name="5_ob_respond" id="findingsTextarea_breast_uterus_ovaries" disabled>Not Applicable</textarea>
+                                @if($medical_exam->ob_gyne_history->breast_uterus_ovaries == "No")
+                                    <textarea class="form-control" name="5_ob_respond" id="findingsTextarea_breast_uterus_ovaries">{{ $medical_exam->ob_gyne_history->medical_exam_response['5_ob_respond'] }}</textarea>
+                                    <input type="hidden" id="breast_uterus_ovariesRepHidden" name="5_ob_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="5_ob_respond" id="findingsTextarea_breast_uterus_ovaries" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                     </table>
@@ -446,91 +777,191 @@
                         <tr>
                             <td>Skin</td>
                             <td class="text-center">
-                                <input type="checkbox" id="skin" name="skin" value="Yes" onchange="toggleTextarea('skin')" checked>
+                                @if($medical_exam->review_of_system->skin == "Yes")
+                                    <input type="checkbox" id="skin" name="skin" value="Yes" onchange="toggleTextareaAndHidden('skin', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="skinHidden" name="skin" value="Yes">
+                                @else
+                                    <input type="checkbox" id="skin" name="skin" value="Yes" onchange="toggleTextareaAndHidden('skin', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="1_rs_respond" id="findingsTextarea_skin" disabled>Not Applicable</textarea>
+                                @if($medical_exam->review_of_system->skin == "No")
+                                    <textarea class="form-control" name="1_rs_respond" id="findingsTextarea_skin">{{ $medical_exam->review_of_system->medical_exam_response['1_rs_respond'] }}</textarea>
+                                    <input type="hidden" id="skinRepHidden" name="1_rs_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="1_rs_respond" id="findingsTextarea_skin" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Opthalmologic</td>
                             <td class="text-center">
-                                <input type="checkbox" id="opthalmologic" name="opthalmologic" value="Yes" onchange="toggleTextarea('opthalmologic')" checked>
+                                @if($medical_exam->review_of_system->opthalmologic == "Yes")
+                                    <input type="checkbox" id="opthalmologic" name="opthalmologic" value="Yes" onchange="toggleTextareaAndHidden('opthalmologic', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="opthalmologicHidden" name="opthalmologic" value="Yes">
+                                @else
+                                    <input type="checkbox" id="opthalmologic" name="opthalmologic" value="Yes" onchange="toggleTextareaAndHidden('opthalmologic', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="2_rs_respond" id="findingsTextarea_opthalmologic" disabled>Not Applicable</textarea>
+                                @if($medical_exam->review_of_system->opthalmologic == "No")
+                                    <textarea class="form-control" name="2_rs_respond" id="findingsTextarea_opthalmologic">{{ $medical_exam->review_of_system->medical_exam_response['2_rs_respond'] }}</textarea>
+                                    <input type="hidden" id="opthalmologicRepHidden" name="2_rs_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="2_rs_respond" id="findingsTextarea_opthalmologic" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>ENT</td>
                             <td class="text-center">
-                                <input type="checkbox" id="ent" name="ent" value="Yes" onchange="toggleTextarea('ent')" checked>
+                                @if($medical_exam->review_of_system->ent == "Yes")
+                                    <input type="checkbox" id="ent" name="ent" value="Yes" onchange="toggleTextareaAndHidden('ent', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="entHidden" name="ent" value="Yes">
+                                @else
+                                    <input type="checkbox" id="ent" name="ent" value="Yes" onchange="toggleTextareaAndHidden('ent', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="3_rs_respond" id="findingsTextarea_ent" disabled>Not Applicable</textarea>
+                                @if($medical_exam->review_of_system->ent == "No")
+                                    <textarea class="form-control" name="3_rs_respond" id="findingsTextarea_ent">{{ $medical_exam->review_of_system->medical_exam_response['3_rs_respond'] }}</textarea>
+                                    <input type="hidden" id="entRepHidden" name="3_rs_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="3_rs_respond" id="findingsTextarea_ent" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Cardiovascular</td>
                             <td class="text-center">
-                                <input type="checkbox" id="cardiovascular" name="cardiovascular" value="Yes" onchange="toggleTextarea('cardiovascular')" checked>
+                                @if($medical_exam->review_of_system->cardiovascular == "Yes")
+                                    <input type="checkbox" id="cardiovascular" name="cardiovascular" value="Yes" onchange="toggleTextareaAndHidden('cardiovascular', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="cardiovascularHidden" name="cardiovascular" value="Yes">
+                                @else
+                                    <input type="checkbox" id="cardiovascular" name="cardiovascular" value="Yes" onchange="toggleTextareaAndHidden('cardiovascular', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="4_rs_respond" id="findingsTextarea_cardiovascular" disabled>Not Applicable</textarea>
+                                @if($medical_exam->review_of_system->cardiovascular == "No")
+                                    <textarea class="form-control" name="4_rs_respond" id="findingsTextarea_cardiovascular">{{ $medical_exam->review_of_system->medical_exam_response['4_rs_respond'] }}</textarea>
+                                    <input type="hidden" id="cardiovascularRepHidden" name="4_rs_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="4_rs_respond" id="findingsTextarea_cardiovascular" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Respiratory</td>
                             <td class="text-center">
-                                <input type="checkbox" id="respiratory" name="respiratory" value="Yes" onchange="toggleTextarea('respiratory')" checked>
+                                @if($medical_exam->review_of_system->respiratory == "Yes")
+                                    <input type="checkbox" id="respiratory" name="respiratory" value="Yes" onchange="toggleTextareaAndHidden('respiratory', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="respiratoryHidden" name="respiratory" value="Yes">
+                                @else
+                                    <input type="checkbox" id="respiratory" name="respiratory" value="Yes" onchange="toggleTextareaAndHidden('respiratory', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="5_rs_respond" id="findingsTextarea_respiratory" disabled>Not Applicable</textarea>
+                                @if($medical_exam->review_of_system->respiratory == "No")
+                                    <textarea class="form-control" name="5_rs_respond" id="findingsTextarea_respiratory">{{ $medical_exam->review_of_system->medical_exam_response['5_rs_respond'] }}</textarea>
+                                    <input type="hidden" id="respiratoryRepHidden" name="5_rs_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="5_rs_respond" id="findingsTextarea_respiratory" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Gastro Intestinal</td>
                             <td class="text-center">
-                                <input type="checkbox" id="gastro_intestinal" name="gastro_intestinal" value="Yes" onchange="toggleTextarea('gastro_intestinal')" checked>
+                                @if($medical_exam->review_of_system->gastro_intestinal == "Yes")
+                                    <input type="checkbox" id="gastro_intestinal" name="gastro_intestinal" value="Yes" onchange="toggleTextareaAndHidden('gastro_intestinal', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="gastro_intestinalHidden" name="gastro_intestinal" value="Yes">
+                                @else
+                                    <input type="checkbox" id="gastro_intestinal" name="gastro_intestinal" value="Yes" onchange="toggleTextareaAndHidden('gastro_intestinal', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="6_rs_respond" id="findingsTextarea_gastro_intestinal" disabled>Not Applicable</textarea>
+                                @if($medical_exam->review_of_system->gastro_intestinal == "No")
+                                    <textarea class="form-control" name="6_rs_respond" id="findingsTextarea_gastro_intestinal">{{ $medical_exam->review_of_system->medical_exam_response['6_rs_respond'] }}</textarea>
+                                    <input type="hidden" id="gastro_intestinalRepHidden" name="6_rs_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="6_rs_respond" id="findingsTextarea_gastro_intestinal" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Neuro-Psychiatric</td>
                             <td class="text-center">
-                                <input type="checkbox" id="neuro_psychiatric" name="neuro_psychiatric" value="Yes" onchange="toggleTextarea('neuro_psychiatric')" checked>
+                                @if($medical_exam->review_of_system->neuro_psychiatric == "Yes")
+                                    <input type="checkbox" id="neuro_psychiatric" name="neuro_psychiatric" value="Yes" onchange="toggleTextareaAndHidden('neuro_psychiatric', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="neuro_psychiatricHidden" name="neuro_psychiatric" value="Yes">
+                                @else
+                                    <input type="checkbox" id="neuro_psychiatric" name="neuro_psychiatric" value="Yes" onchange="toggleTextareaAndHidden('neuro_psychiatric', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="7_rs_respond" id="findingsTextarea_neuro_psychiatric" disabled>Not Applicable</textarea>
+                                @if($medical_exam->review_of_system->neuro_psychiatric == "No")
+                                    <textarea class="form-control" name="7_rs_respond" id="findingsTextarea_neuro_psychiatric">{{ $medical_exam->review_of_system->medical_exam_response['7_rs_respond'] }}</textarea>
+                                    <input type="hidden" id="neuro_psychiatricRepHidden" name="7_rs_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="7_rs_respond" id="findingsTextarea_neuro_psychiatric" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Hematology</td>
                             <td class="text-center">
-                                <input type="checkbox" id="hematology" name="hematology" value="Yes" onchange="toggleTextarea('hematology')" checked>
+                                @if($medical_exam->review_of_system->hematology == "Yes")
+                                    <input type="checkbox" id="hematology" name="hematology" value="Yes" onchange="toggleTextareaAndHidden('hematology', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="hematologyHidden" name="hematology" value="Yes">
+                                @else
+                                    <input type="checkbox" id="hematology" name="hematology" value="Yes" onchange="toggleTextareaAndHidden('hematology', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="8_rs_respond" id="findingsTextarea_hematology" disabled>Not Applicable</textarea>
+                                @if($medical_exam->review_of_system->hematology == "No")
+                                    <textarea class="form-control" name="8_rs_respond" id="findingsTextarea_hematology">{{ $medical_exam->review_of_system->medical_exam_response['8_rs_respond'] }}</textarea>
+                                    <input type="hidden" id="hematologyRepHidden" name="8_rs_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="8_rs_respond" id="findingsTextarea_hematology" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Genitourinary</td>
                             <td class="text-center">
-                                <input type="checkbox" id="genitourinary" name="genitourinary" value="Yes" onchange="toggleTextarea('genitourinary')" checked>
+                                @if($medical_exam->review_of_system->genitourinary == "Yes")
+                                    <input type="checkbox" id="genitourinary" name="genitourinary" value="Yes" onchange="toggleTextareaAndHidden('genitourinary', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="genitourinaryHidden" name="genitourinary" value="Yes">
+                                @else
+                                    <input type="checkbox" id="genitourinary" name="genitourinary" value="Yes" onchange="toggleTextareaAndHidden('genitourinary', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="9_rs_respond" id="findingsTextarea_genitourinary" disabled>Not Applicable</textarea>
+                                @if($medical_exam->review_of_system->genitourinary == "No")
+                                    <textarea class="form-control" name="9_rs_respond" id="findingsTextarea_genitourinary">{{ $medical_exam->review_of_system->medical_exam_response['9_rs_respond'] }}</textarea>
+                                    <input type="hidden" id="genitourinaryRepHidden" name="9_rs_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="9_rs_respond" id="findingsTextarea_genitourinary" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <td>Musculo-Skeletal</td>
                             <td class="text-center">
-                                <input type="checkbox" id="musculo_skeletal" name="musculo_skeletal" value="Yes" onchange="toggleTextarea('musculo_skeletal')" checked>
+                                @if($medical_exam->review_of_system->musculo_skeletal == "Yes")
+                                    <input type="checkbox" id="musculo_skeletal" name="musculo_skeletal" value="Yes" onchange="toggleTextareaAndHidden('musculo_skeletal', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="musculo_skeletalHidden" name="musculo_skeletal" value="Yes">
+                                @else
+                                    <input type="checkbox" id="musculo_skeletal" name="musculo_skeletal" value="Yes" onchange="toggleTextareaAndHidden('musculo_skeletal', 'toggleTextarea', 'toggleHidden')">
+                                @endif
                             </td>
                             <td>
-                                <textarea class="form-control" name="10_rs_respond" id="findingsTextarea_musculo_skeletal" disabled>Not Applicable</textarea>
+                                @if($medical_exam->review_of_system->musculo_skeletal == "No")
+                                    <textarea class="form-control" name="10_rs_respond" id="findingsTextarea_musculo_skeletal">{{ $medical_exam->review_of_system->medical_exam_response['10_rs_respond'] }}</textarea>
+                                    <input type="hidden" id="musculo_skeletalRepHidden" name="10_rs_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="10_rs_respond" id="findingsTextarea_musculo_skeletal" disabled>Not Applicable</textarea>
+                                @endif
                             </td>
                         </tr>
                     </table>
@@ -544,7 +975,7 @@
                         <p class="mb-1"><strong>Height:</strong></p>
                         <div class="row">
                             <div class="col-0 ml-2">
-                                <input type="number" name="height" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="height" required>cm.
+                                <input type="number" name="height" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="height" value="{{ $medical_exam->physical_examination->height }}" required>cm.
                             </div>
                         </div>
                     </div> 
@@ -552,7 +983,7 @@
                         <p class="mb-1"><strong>Weight:</strong></p>
                         <div class="row">
                             <div class="col-0 ml-2">
-                                <input type="number" name="weight" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="weight" required>kg.
+                                <input type="number" name="weight" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="weight" value="{{ $medical_exam->physical_examination->weight }}" required>kg.
                             </div>
                         </div>
                     </div> 
@@ -560,13 +991,13 @@
                         <p class="mb-1"><strong>BP (mm/hg):</strong></p>
                         <div class="row">
                             <div class="col-0" style="margin-left: 1px;">
-                                <input type="number" name="bp1" class="col-0 mx-1 mb-1" style="height: 25px; width: 50px;" id="bp1" required>
+                                <input type="number" name="bp1" class="col-0 mx-1 mb-1" style="height: 25px; width: 50px;" id="bp1" value="{{ $medical_exam->physical_examination['bp1'] }}" required>
                             </div>
                             <div class="col-0">
                                 <p>/</p>
                             </div>
                             <div class="col-0">
-                                <input type="number" name="bp2" class="col-0 mx-1 mb-1" style="height: 25px; width: 50px;" id="bp2" required>
+                                <input type="number" name="bp2" class="col-0 mx-1 mb-1" style="height: 25px; width: 50px;" id="bp2" value="{{ $medical_exam->physical_examination['bp2'] }}" required>
                             </div>
                             <div class="col-0 mb-1 ml-1">
                                 <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpBP" style="display: none;"></i>
@@ -578,7 +1009,7 @@
                         <p class="mb-1"><strong>Cardiac Rate:</strong></p>
                         <div class="row">
                             <div class="col-0 ml-1">
-                                <input type="number" name="cardiac_rate" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="cardiac_rate" required>
+                                <input type="number" name="cardiac_rate" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="cardiac_rate" value="{{ $medical_exam->physical_examination->cardiac_rate }}" required>
                             </div>
                             <div class="col-0">
                                 <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpCR" style="display: none;"></i>
@@ -593,7 +1024,7 @@
                         <p class="mb-1"><strong>Respiratory Rate</strong></p>
                         <div class="row">
                             <div class="col-0 ml-1">
-                                <input type="number" name="respiratory_rate" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="respiratory_rate" required>
+                                <input type="number" name="respiratory_rate" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="respiratory_rate" value="{{ $medical_exam->physical_examination->respiratory_rate }}" required>
                             </div>
                             <div class="col-0">
                                 <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpRR" style="display: none;"></i>
@@ -608,7 +1039,7 @@
                         <p class="mb-1"><strong>BMI:</strong></p>
                         <div class="row">
                             <div class="col-0 ml-1">
-                                <input type="number" name="bmi" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="bmi" readonly>
+                                <input type="number" name="bmi" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="bmi" value="{{ $medical_exam->physical_examination->bmi }}" readonly>
                             </div>
                             <div class="col-0">
                                 <p id="weightCategory"></p>
@@ -629,28 +1060,58 @@
                             <tr>
                                 <td>General Appearance</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="general_appearance" name="general_appearance" value="Yes" onchange="toggleTextarea('general_appearance')" checked>
+                                    @if($medical_exam->physical_examination->general_appearance == "Yes")
+                                        <input type="checkbox" id="general_appearance" name="general_appearance" value="Yes" onchange="toggleTextareaAndHidden('general_appearance', 'toggleTextarea', 'toggleHidden')" checked>
+                                        <input type="hidden" id="general_appearanceHidden" name="general_appearance" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="general_appearance" name="general_appearance" value="Yes" onchange="toggleTextareaAndHidden('general_appearance', 'toggleTextarea', 'toggleHidden')">
+                                    @endif
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="1_pe_respond" id="findingsTextarea_general_appearance" disabled>Not Applicable</textarea>
+                                    @if($medical_exam->physical_examination->general_appearance == "No")
+                                        <textarea class="form-control" name="1_pe_respond" id="findingsTextarea_general_appearance">{{ $medical_exam->physical_examination->medical_exam_response['1_pe_respond'] }}</textarea>
+                                        <input type="hidden" id="general_appearanceRepHidden" name="1_pe_respond" value=" " disabled>
+                                    @else
+                                        <textarea class="form-control" name="1_pe_respond" id="findingsTextarea_general_appearance" disabled>Not Applicable</textarea>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
                                 <td>Skin</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="skin1" name="skin1" value="Yes" onchange="toggleTextarea('skin1')" checked>
+                                    @if($medical_exam->physical_examination['skin1'] == "Yes")
+                                        <input type="checkbox" id="skin1" name="skin1" value="Yes" onchange="toggleTextareaAndHidden('skin1', 'toggleTextarea', 'toggleHidden')" checked>
+                                        <input type="hidden" id="skin1Hidden" name="skin1" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="skin1" name="skin1" value="Yes" onchange="toggleTextareaAndHidden('skin1', 'toggleTextarea', 'toggleHidden')">
+                                    @endif
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="2_pe_respond" id="findingsTextarea_skin1" disabled>Not Applicable</textarea>
+                                    @if($medical_exam->physical_examination['skin1'] == "No")
+                                        <textarea class="form-control" name="2_pe_respond" id="findingsTextarea_skin1">{{ $medical_exam->physical_examination->medical_exam_response['2_pe_respond'] }}</textarea>
+                                        <input type="hidden" id="skin1RepHidden" name="2_pe_respond" value=" " disabled>
+                                    @else
+                                        <textarea class="form-control" name="2_pe_respond" id="findingsTextarea_skin1" disabled>Not Applicable</textarea>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
                                 <td>Head and Scalp</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="head_and_scalp" name="head_and_scalp" value="Yes" onchange="toggleTextarea('head_and_scalp')" checked>
+                                    @if($medical_exam->physical_examination->head_and_scalp == "Yes")
+                                        <input type="checkbox" id="head_and_scalp" name="head_and_scalp" value="Yes" onchange="toggleTextareaAndHidden('head_and_scalp', 'toggleTextarea', 'toggleHidden')" checked>
+                                        <input type="hidden" id="head_and_scalpHidden" name="head_and_scalp" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="head_and_scalp" name="head_and_scalp" value="Yes" onchange="toggleTextareaAndHidden('head_and_scalp', 'toggleTextarea', 'toggleHidden')">
+                                    @endif
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="3_pe_respond" id="findingsTextarea_head_and_scalp" disabled>Not Applicable</textarea>
+                                    @if($medical_exam->physical_examination->head_and_scalp == "No")
+                                        <textarea class="form-control" name="3_pe_respond" id="findingsTextarea_head_and_scalp">{{ $medical_exam->physical_examination->medical_exam_response['3_pe_respond'] }}</textarea>
+                                        <input type="hidden" id="head_and_scalpRepHidden" name="3_pe_respond" value=" " disabled>
+                                    @else
+                                        <textarea class="form-control" name="3_pe_respond" id="findingsTextarea_head_and_scalp" disabled>Not Applicable</textarea>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
@@ -661,7 +1122,7 @@
                                 <td>
                                     <div class="row">
                                         <div class="col-0">
-                                            <input type="number" name="od_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_pe_respond" disabled>
+                                            
                                         </div>
                                         <div class="col-0">
                                             <p>/</p>
@@ -724,55 +1185,115 @@
                             <tr>
                                 <td>Pupils</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="pupils" name="pupils" value="Yes" onchange="toggleTextarea('pupils')" checked>
+                                    @if($medical_exam->physical_examination->pupils == "Yes")
+                                        <input type="checkbox" id="pupils" name="pupils" value="Yes" onchange="toggleTextareaAndHidden('pupils', 'toggleTextarea', 'toggleHidden')" checked>
+                                        <input type="hidden" id="pupilsHidden" name="pupils" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="pupils" name="pupils" value="Yes" onchange="toggleTextareaAndHidden('pupils', 'toggleTextarea', 'toggleHidden')">
+                                    @endif
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="6_pe_respond" id="findingsTextarea_pupils" disabled>Not Applicable</textarea>
+                                    @if($medical_exam->physical_examination->pupils == "No")
+                                        <textarea class="form-control" name="6_pe_respond" id="findingsTextarea_pupils">{{ $medical_exam->physical_examination->medical_exam_response['6_pe_respond'] }}</textarea>
+                                        <input type="hidden" id="pupilsRepHidden" name="6_pe_respond" value=" " disabled>
+                                    @else
+                                        <textarea class="form-control" name="6_pe_respond" id="findingsTextarea_pupils" disabled>Not Applicable</textarea>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
                                 <td>Ear, Eardrums</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="ear_eardrums" name="ear_eardrums" value="Yes" onchange="toggleTextarea('ear_eardrums')" checked>
+                                    @if($medical_exam->physical_examination->ear_eardrums == "Yes")
+                                        <input type="checkbox" id="ear_eardrums" name="ear_eardrums" value="Yes" onchange="toggleTextareaAndHidden('ear_eardrums', 'toggleTextarea', 'toggleHidden')" checked>
+                                        <input type="hidden" id="ear_eardrumsHidden" name="ear_eardrums" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="ear_eardrums" name="ear_eardrums" value="Yes" onchange="toggleTextareaAndHidden('ear_eardrums', 'toggleTextarea', 'toggleHidden')">
+                                    @endif
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="7_pe_respond" id="findingsTextarea_ear_eardrums" disabled>Not Applicable</textarea>
+                                    @if($medical_exam->physical_examination->ear_eardrums == "No")
+                                        <textarea class="form-control" name="7_pe_respond" id="findingsTextarea_ear_eardrums">{{ $medical_exam->physical_examination->medical_exam_response['7_pe_respond'] }}</textarea>
+                                        <input type="hidden" id="ear_eardrumsRepHidden" name="7_pe_respond" value=" " disabled>
+                                    @else
+                                        <textarea class="form-control" name="7_pe_respond" id="findingsTextarea_ear_eardrums" disabled>Not Applicable</textarea>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
                                 <td>Nose, Sinuses</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="nose_sinuses" name="nose_sinuses" value="Yes" onchange="toggleTextarea('nose_sinuses')" checked>
+                                    @if($medical_exam->physical_examination->nose_sinuses == "Yes")
+                                        <input type="checkbox" id="nose_sinuses" name="nose_sinuses" value="Yes" onchange="toggleTextareaAndHidden('nose_sinuses', 'toggleTextarea', 'toggleHidden')" checked>
+                                        <input type="hidden" id="nose_sinusesHidden" name="nose_sinuses" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="nose_sinuses" name="nose_sinuses" value="Yes" onchange="toggleTextareaAndHidden('nose_sinuses', 'toggleTextarea', 'toggleHidden')">
+                                    @endif
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="8_pe_respond" id="findingsTextarea_nose_sinuses" disabled>Not Applicable</textarea>
+                                    @if($medical_exam->physical_examination->nose_sinuses == "No")
+                                        <textarea class="form-control" name="8_pe_respond" id="findingsTextarea_nose_sinuses">{{ $medical_exam->physical_examination->medical_exam_response['8_pe_respond'] }}</textarea>
+                                        <input type="hidden" id="nose_sinusesRepHidden" name="8_pe_respond" value=" " disabled>
+                                    @else
+                                        <textarea class="form-control" name="8_pe_respond" id="findingsTextarea_nose_sinuses" disabled>Not Applicable</textarea>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
                                 <td>Mouth, Throat</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="mouth_throat" name="mouth_throat" value="Yes" onchange="toggleTextarea('mouth_throat')" checked>
+                                    @if($medical_exam->physical_examination->mouth_throat == "Yes")
+                                        <input type="checkbox" id="mouth_throat" name="mouth_throat" value="Yes" onchange="toggleTextareaAndHidden('mouth_throat', 'toggleTextarea', 'toggleHidden')" checked>
+                                        <input type="hidden" id="mouth_throatHidden" name="mouth_throat" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="mouth_throat" name="mouth_throat" value="Yes" onchange="toggleTextareaAndHidden('mouth_throat', 'toggleTextarea', 'toggleHidden')">
+                                    @endif
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="9_pe_respond" id="findingsTextarea_mouth_throat" disabled>Not Applicable</textarea>
+                                    @if($medical_exam->physical_examination->mouth_throat == "No")
+                                        <textarea class="form-control" name="9_pe_respond" id="findingsTextarea_mouth_throat">{{ $medical_exam->physical_examination->medical_exam_response['9_pe_respond'] }}</textarea>
+                                        <input type="hidden" id="mouth_throatRepHidden" name="9_pe_respond" value=" " disabled>
+                                    @else
+                                        <textarea class="form-control" name="9_pe_respond" id="findingsTextarea_mouth_throat" disabled>Not Applicable</textarea>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
                                 <td>Neck, Thyroid</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="neck_thyroid" name="neck_thyroid" value="Yes" onchange="toggleTextarea('neck_thyroid')" checked>
+                                    @if($medical_exam->physical_examination->neck_thyroid == "Yes")
+                                        <input type="checkbox" id="neck_thyroid" name="neck_thyroid" value="Yes" onchange="toggleTextareaAndHidden('neck_thyroid', 'toggleTextarea', 'toggleHidden')" checked>
+                                        <input type="hidden" id="neck_thyroidHidden" name="neck_thyroid" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="neck_thyroid" name="neck_thyroid" value="Yes" onchange="toggleTextareaAndHidden('neck_thyroid', 'toggleTextarea', 'toggleHidden')">
+                                    @endif
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="10_pe_respond" id="findingsTextarea_neck_thyroid" disabled>Not Applicable</textarea>
+                                    @if($medical_exam->physical_examination->neck_thyroid == "No")
+                                        <textarea class="form-control" name="10_pe_respond" id="findingsTextarea_neck_thyroid">{{ $medical_exam->physical_examination->medical_exam_response['10_pe_respond'] }}</textarea>
+                                        <input type="hidden" id="neck_thyroidRepHidden" name="10_pe_respond" value=" " disabled>
+                                    @else
+                                        <textarea class="form-control" name="10_pe_respond" id="findingsTextarea_neck_thyroid" disabled>Not Applicable</textarea>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
                                 <td>Chest, Breast, Axilla</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="chest_breast_axilla" name="chest_breast_axilla" value="Yes" onchange="toggleTextarea('chest_breast_axilla')" checked>
+                                    @if($medical_exam->physical_examination->chest_breast_axilla == "Yes")
+                                        <input type="checkbox" id="chest_breast_axilla" name="chest_breast_axilla" value="Yes" onchange="toggleTextareaAndHidden('chest_breast_axilla', 'toggleTextarea', 'toggleHidden')" checked>
+                                        <input type="hidden" id="chest_breast_axillaHidden" name="chest_breast_axilla" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="chest_breast_axilla" name="chest_breast_axilla" value="Yes" onchange="toggleTextareaAndHidden('chest_breast_axilla', 'toggleTextarea', 'toggleHidden')">
+                                    @endif
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="11_pe_respond" id="findingsTextarea_chest_breast_axilla" disabled>Not Applicable</textarea>
+                                    @if($medical_exam->physical_examination->chest_breast_axilla == "No")
+                                        <textarea class="form-control" name="11_pe_respond" id="findingsTextarea_chest_breast_axilla">{{ $medical_exam->physical_examination->medical_exam_response['11_pe_respond'] }}</textarea>
+                                        <input type="hidden" id="chest_breast_axillaRepHidden" name="11_pe_respond" value=" " disabled>
+                                    @else
+                                        <textarea class="form-control" name="11_pe_respond" id="findingsTextarea_chest_breast_axilla" disabled>Not Applicable</textarea>
+                                    @endif
                                 </td>
                             </tr>
                         </table>
@@ -789,100 +1310,210 @@
                             <tr>
                                 <td>Heart-Cardiovascular</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="heart_cardiovascular" name="heart_cardiovascular" value="Yes" onchange="toggleTextarea('heart_cardiovascular')" checked>
+                                    @if($medical_exam->physical_examination->heart_cardiovascular == "Yes")
+                                        <input type="checkbox" id="heart_cardiovascular" name="heart_cardiovascular" value="Yes" onchange="toggleTextareaAndHidden('heart_cardiovascular', 'toggleTextarea', 'toggleHidden')" checked>
+                                        <input type="hidden" id="heart_cardiovascularHidden" name="heart_cardiovascular" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="heart_cardiovascular" name="heart_cardiovascular" value="Yes" onchange="toggleTextareaAndHidden('heart_cardiovascular', 'toggleTextarea', 'toggleHidden')">
+                                    @endif
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="12_pe_respond" id="findingsTextarea_heart_cardiovascular" disabled>Not Applicable</textarea>
+                                    @if($medical_exam->physical_examination->heart_cardiovascular == "No")
+                                        <textarea class="form-control" name="12_pe_respond" id="findingsTextarea_heart_cardiovascular">{{ $medical_exam->physical_examination->medical_exam_response['12_pe_respond'] }}</textarea>
+                                        <input type="hidden" id="heart_cardiovascularRepHidden" name="12_pe_respond" value=" " disabled>
+                                    @else
+                                        <textarea class="form-control" name="12_pe_respond" id="findingsTextarea_heart_cardiovascular" disabled>Not Applicable</textarea>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
                                 <td>Lungs-Respiratory</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="lungs_respiratory" name="lungs_respiratory" value="Yes" onchange="toggleTextarea('lungs_respiratory')" checked>
+                                    @if($medical_exam->physical_examination->lungs_respiratory == "Yes")
+                                        <input type="checkbox" id="lungs_respiratory" name="lungs_respiratory" value="Yes" onchange="toggleTextareaAndHidden('lungs_respiratory', 'toggleTextarea', 'toggleHidden')" checked>
+                                        <input type="hidden" id="lungs_respiratoryHidden" name="lungs_respiratory" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="lungs_respiratory" name="lungs_respiratory" value="Yes" onchange="toggleTextareaAndHidden('lungs_respiratory', 'toggleTextarea', 'toggleHidden')">
+                                    @endif
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="13_pe_respond" id="findingsTextarea_lungs_respiratory" disabled>Not Applicable</textarea>
+                                    @if($medical_exam->physical_examination->lungs_respiratory == "No")
+                                        <textarea class="form-control" name="13_pe_respond" id="findingsTextarea_lungs_respiratory">{{ $medical_exam->physical_examination->medical_exam_response['13_pe_respond'] }}</textarea>
+                                        <input type="hidden" id="lungs_respiratoryRepHidden" name="13_pe_respond" value=" " disabled>
+                                    @else
+                                        <textarea class="form-control" name="13_pe_respond" id="findingsTextarea_lungs_respiratory" disabled>Not Applicable</textarea>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
                                 <td>Abdomen</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="abdomen" name="abdomen" value="Yes" onchange="toggleTextarea('abdomen')" checked>
+                                    @if($medical_exam->physical_examination->abdomen == "Yes")
+                                        <input type="checkbox" id="abdomen" name="abdomen" value="Yes" onchange="toggleTextareaAndHidden('abdomen', 'toggleTextarea', 'toggleHidden')" checked>
+                                        <input type="hidden" id="abdomenHidden" name="abdomen" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="abdomen" name="abdomen" value="Yes" onchange="toggleTextareaAndHidden('abdomen', 'toggleTextarea', 'toggleHidden')">
+                                    @endif
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="14_pe_respond" id="findingsTextarea_abdomen" disabled>Not Applicable</textarea>
+                                    @if($medical_exam->physical_examination->abdomen == "No")
+                                        <textarea class="form-control" name="14_pe_respond" id="findingsTextarea_abdomen">{{ $medical_exam->physical_examination->medical_exam_response['14_pe_respond'] }}</textarea>
+                                        <input type="hidden" id="abdomenRepHidden" name="14_pe_respond" value=" " disabled>
+                                    @else
+                                        <textarea class="form-control" name="14_pe_respond" id="findingsTextarea_abdomen" disabled>Not Applicable</textarea>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
                                 <td>Back, Flanks</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="back_flanks" name="back_flanks" value="Yes" onchange="toggleTextarea('back_flanks')" checked>
+                                    @if($medical_exam->physical_examination->back_flanks == "Yes")
+                                        <input type="checkbox" id="back_flanks" name="back_flanks" value="Yes" onchange="toggleTextareaAndHidden('back_flanks', 'toggleTextarea', 'toggleHidden')" checked>
+                                        <input type="hidden" id="back_flanksHidden" name="back_flanks" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="back_flanks" name="back_flanks" value="Yes" onchange="toggleTextareaAndHidden('back_flanks', 'toggleTextarea', 'toggleHidden')">
+                                    @endif
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="15_pe_respond" id="findingsTextarea_back_flanks" disabled>Not Applicable</textarea>
+                                    @if($medical_exam->physical_examination->back_flanks == "No")
+                                        <textarea class="form-control" name="15_pe_respond" id="findingsTextarea_back_flanks">{{ $medical_exam->physical_examination->medical_exam_response['15_pe_respond'] }}</textarea>
+                                        <input type="hidden" id="back_flanksRepHidden" name="15_pe_respond" value=" " disabled>
+                                    @else
+                                        <textarea class="form-control" name="15_pe_respond" id="findingsTextarea_back_flanks" disabled>Not Applicable</textarea>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
                                 <td>Anus, Rectum</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="anus_rectum" name="anus_rectum" value="Yes" onchange="toggleTextarea('anus_rectum')" checked>
+                                    @if($medical_exam->physical_examination->anus_rectum == "Yes")
+                                        <input type="checkbox" id="anus_rectum" name="anus_rectum" value="Yes" onchange="toggleTextareaAndHidden('anus_rectum', 'toggleTextarea', 'toggleHidden')" checked>
+                                        <input type="hidden" id="anus_rectumHidden" name="anus_rectum" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="anus_rectum" name="anus_rectum" value="Yes" onchange="toggleTextareaAndHidden('anus_rectum', 'toggleTextarea', 'toggleHidden')">
+                                    @endif
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="16_pe_respond" id="findingsTextarea_anus_rectum" disabled>Not Applicable</textarea>
+                                    @if($medical_exam->physical_examination->anus_rectum == "No")
+                                        <textarea class="form-control" name="16_pe_respond" id="findingsTextarea_anus_rectum">{{ $medical_exam->physical_examination->medical_exam_response['16_pe_respond'] }}</textarea>
+                                        <input type="hidden" id="anus_rectumRepHidden" name="16_pe_respond" value=" " disabled>
+                                    @else
+                                        <textarea class="form-control" name="16_pe_respond" id="findingsTextarea_anus_rectum" disabled>Not Applicable</textarea>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
                                 <td>Genito-Urinary System</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="genito_urinary_system" name="genito_urinary_system" value="Yes" onchange="toggleTextarea('genito_urinary_system')" checked>
+                                    @if($medical_exam->physical_examination->genito_urinary_system == "Yes")
+                                        <input type="checkbox" id="genito_urinary_system" name="genito_urinary_system" value="Yes" onchange="toggleTextareaAndHidden('genito_urinary_system', 'toggleTextarea', 'toggleHidden')" checked>
+                                        <input type="hidden" id="genito_urinary_systemHidden" name="genito_urinary_system" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="genito_urinary_system" name="genito_urinary_system" value="Yes" onchange="toggleTextareaAndHidden('genito_urinary_system', 'toggleTextarea', 'toggleHidden')">
+                                    @endif
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="17_pe_respond" id="findingsTextarea_genito_urinary_system" disabled>Not Applicable</textarea>
+                                    @if($medical_exam->physical_examination->genito_urinary_system == "No")
+                                        <textarea class="form-control" name="17_pe_respond" id="findingsTextarea_genito_urinary_system">{{ $medical_exam->physical_examination->medical_exam_response['17_pe_respond'] }}</textarea>
+                                        <input type="hidden" id="genito_urinary_systemRepHidden" name="17_pe_respond" value=" " disabled>
+                                    @else
+                                        <textarea class="form-control" name="17_pe_respond" id="findingsTextarea_genito_urinary_system" disabled>Not Applicable</textarea>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
                                 <td>Inguinal, Genitals</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="inguinal_genitals" name="inguinal_genitals" value="Yes" onchange="toggleTextarea('inguinal_genitals')" checked>
+                                    @if($medical_exam->physical_examination->inguinal_genitals == "Yes")
+                                        <input type="checkbox" id="inguinal_genitals" name="inguinal_genitals" value="Yes" onchange="toggleTextareaAndHidden('inguinal_genitals', 'toggleTextarea', 'toggleHidden')" checked>
+                                        <input type="hidden" id="inguinal_genitalsHidden" name="inguinal_genitals" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="inguinal_genitals" name="inguinal_genitals" value="Yes" onchange="toggleTextareaAndHidden('inguinal_genitals', 'toggleTextarea', 'toggleHidden')">
+                                    @endif
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="18_pe_respond" id="findingsTextarea_inguinal_genitals" disabled>Not Applicable</textarea>
+                                    @if($medical_exam->physical_examination->inguinal_genitals == "No")
+                                        <textarea class="form-control" name="18_pe_respond" id="findingsTextarea_inguinal_genitals">{{ $medical_exam->physical_examination->medical_exam_response['18_pe_respond'] }}</textarea>
+                                        <input type="hidden" id="inguinal_genitalsRepHidden" name="18_pe_respond" value=" " disabled>
+                                    @else
+                                        <textarea class="form-control" name="18_pe_respond" id="findingsTextarea_inguinal_genitals" disabled>Not Applicable</textarea>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
                                 <td>Musculo-Skeletal</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="musculo_skeletal1" name="musculo_skeletal1" value="Yes" onchange="toggleTextarea('musculo_skeletal1')" checked>
+                                    @if($medical_exam->physical_examination['musculo_skeletal1'] == "Yes")
+                                        <input type="checkbox" id="musculo_skeletal1" name="musculo_skeletal1" value="Yes" onchange="toggleTextareaAndHidden('musculo_skeletal1', 'toggleTextarea', 'toggleHidden')" checked>
+                                        <input type="hidden" id="musculo_skeletal1Hidden" name="musculo_skeletal1" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="musculo_skeletal1" name="musculo_skeletal1" value="Yes" onchange="toggleTextareaAndHidden('musculo_skeletal1', 'toggleTextarea', 'toggleHidden')">
+                                    @endif
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="19_pe_respond" id="findingsTextarea_musculo_skeletal1" disabled>Not Applicable</textarea>
+                                    @if($medical_exam->physical_examination['musculo_skeletal1'] == "No")
+                                        <textarea class="form-control" name="19_pe_respond" id="findingsTextarea_musculo_skeletal1">{{ $medical_exam->physical_examination->medical_exam_response['19_pe_respond'] }}</textarea>
+                                        <input type="hidden" id="musculo_skeletal1RepHidden" name="19_pe_respond" value=" " disabled>
+                                    @else
+                                        <textarea class="form-control" name="19_pe_respond" id="findingsTextarea_musculo_skeletal1" disabled>Not Applicable</textarea>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
                                 <td>Extremities</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="extremities" name="extremities" value="Yes" onchange="toggleTextarea('extremities')" checked>
+                                    @if($medical_exam->physical_examination->extremities == "Yes")
+                                        <input type="checkbox" id="extremities" name="extremities" value="Yes" onchange="toggleTextareaAndHidden('extremities', 'toggleTextarea', 'toggleHidden')" checked>
+                                        <input type="hidden" id="extremitiesHidden" name="extremities" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="extremities" name="extremities" value="Yes" onchange="toggleTextareaAndHidden('extremities', 'toggleTextarea', 'toggleHidden')">
+                                    @endif
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="20_pe_respond" id="findingsTextarea_extremities" disabled>Not Applicable</textarea>
+                                    @if($medical_exam->physical_examination->extremities == "No")
+                                        <textarea class="form-control" name="20_pe_respond" id="findingsTextarea_extremities">{{ $medical_exam->physical_examination->medical_exam_response['20_pe_respond'] }}</textarea>
+                                        <input type="hidden" id="extremitiesRepHidden" name="20_pe_respond" value=" " disabled>
+                                    @else
+                                        <textarea class="form-control" name="20_pe_respond" id="findingsTextarea_extremities" disabled>Not Applicable</textarea>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
                                 <td>Reflexes</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="reflexes" name="reflexes" value="Yes" onchange="toggleTextarea('reflexes')" checked>
+                                    @if($medical_exam->physical_examination->reflexes == "Yes")
+                                        <input type="checkbox" id="reflexes" name="reflexes" value="Yes" onchange="toggleTextareaAndHidden('reflexes', 'toggleTextarea', 'toggleHidden')" checked>
+                                        <input type="hidden" id="reflexesHidden" name="reflexes" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="reflexes" name="reflexes" value="Yes" onchange="toggleTextareaAndHidden('reflexes', 'toggleTextarea', 'toggleHidden')">
+                                    @endif
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="21_pe_respond" id="findingsTextarea_reflexes" disabled>Not Applicable</textarea>
+                                    @if($medical_exam->physical_examination->reflexes == "No")
+                                        <textarea class="form-control" name="21_pe_respond" id="findingsTextarea_reflexes">{{ $medical_exam->physical_examination->medical_exam_response['21_pe_respond'] }}</textarea>
+                                        <input type="hidden" id="reflexesRepHidden" name="21_pe_respond" value=" " disabled>
+                                    @else
+                                        <textarea class="form-control" name="21_pe_respond" id="findingsTextarea_reflexes" disabled>Not Applicable</textarea>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
                                 <td>Neurological</td>
                                 <td class="text-center">
-                                    <input type="checkbox" id="neurological" name="neurological" value="Yes" onchange="toggleTextarea('neurological')" checked>
+                                    @if($medical_exam->physical_examination->neurological == "Yes")
+                                        <input type="checkbox" id="neurological" name="neurological" value="Yes" onchange="toggleTextareaAndHidden('neurological', 'toggleTextarea', 'toggleHidden')" checked>
+                                        <input type="hidden" id="neurologicalHidden" name="neurological" value="Yes">
+                                    @else
+                                        <input type="checkbox" id="neurological" name="neurological" value="Yes" onchange="toggleTextareaAndHidden('neurological', 'toggleTextarea', 'toggleHidden')">
+                                    @endif
                                 </td>
                                 <td>
-                                    <textarea class="form-control" name="22_pe_respond" id="findingsTextarea_neurological" disabled>Not Applicable</textarea>
+                                    @if($medical_exam->physical_examination->neurological == "No")
+                                        <textarea class="form-control" name="22_pe_respond" id="findingsTextarea_neurological">{{ $medical_exam->physical_examination->medical_exam_response['22_pe_respond'] }}</textarea>
+                                        <input type="hidden" id="neurologicalRepHidden" name="22_pe_respond" value=" " disabled>
+                                    @else
+                                        <textarea class="form-control" name="22_pe_respond" id="findingsTextarea_neurological" disabled>Not Applicable</textarea>
+                                    @endif
                                 </td>
                             </tr>
                         </table>
@@ -908,18 +1539,41 @@
 
 @section('js')
     <script>
+        function toggleTextareaAndHidden(checkboxId, function1, function2) {
+            window[function1](checkboxId); // Call the first function dynamically
+            window[function2](checkboxId); // Call the second function dynamically
+        }
+
         function toggleTextarea(checkboxId) {
             var textarea = document.getElementById("findingsTextarea_" + checkboxId);
+            var hidden = document.getElementById(checkboxId + "Hidden");
             var checkbox = document.getElementById(checkboxId);
-            textarea.disabled = checkbox.checked;
+
+            if (textarea) {
+                textarea.disabled = checkbox.checked;
+                if (!checkbox.checked) {
+                    textarea.value = ""; // Clear input text
+                    textarea.required = true;
+                } else {
+                    textarea.value = "Not Applicable";
+                    textarea.required = false;
+                }
+            }
+
+            if (hidden) {
+                hidden.value = checkbox.checked ? "Yes" : "No";
+            }
+        }
+
+
+        function toggleHidden(checkboxId) {
+            var checkbox = document.getElementById(checkboxId);
+            var repHidden = document.getElementById(checkboxId + "RepHidden");
+                
             if (!checkbox.checked) {
-                textarea.value = ""; // Clear input text
-                checkbox.value = "No"; // Set checkbox value to "No"
-                textarea.required = true;
-            }else{
-                textarea.value = "Not Applicable";
-                checkbox.value = "Yes"; // Set checkbox value to "Yes"
-                textarea.required = false;
+                repHidden.disabled = true;
+            } else {
+                repHidden.disabled = false;
             }
         }
 
