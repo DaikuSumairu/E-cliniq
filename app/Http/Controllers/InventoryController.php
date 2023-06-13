@@ -22,8 +22,9 @@ class InventoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('nurse.inventory.create');
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -55,7 +56,9 @@ class InventoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $item = Inventory::findOrFail($id);
+
+        return view('nurse.inventory.edit', compact('item'));
     }
 
     /**
@@ -80,7 +83,10 @@ class InventoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = Inventory::findOrFail($id);
+        $item->delete();
+    
+        return redirect()->back();
     }
 
 

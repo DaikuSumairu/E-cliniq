@@ -143,6 +143,16 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
         'update' => 'nurse.InventoryUpdate',
         'delete' => 'nurse.InventoryDelete',
     ]);
+    Route::get('/nurse/inventory/create', [InventoryController::class, 'create'])->name('nurse.InventoryCreate');
+    Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory.index');
+    Route::get('/nurse/inventory', [InventoryController::class, 'index'])->name('nurse.InventoryIndex');
+    Route::post('/inventory', [InventoryController::class, 'store'])->name('inventory.store');
+    Route::delete('/inventory/{id}', [InventoryController::class, 'destroy'])->name('inventory.destroy');
+    Route::get('/inventory/{id}/edit', function ($id) {
+        $inventoryItem = Inventory::findOrFail($id);
+        return view('nurse.inventory.edit', compact('inventoryItem'));
+    })->name('inventory.edit');
+    Route::put('/inventory/{id}', 'InventoryController@update')->name('inventory.update');
 });
 
 ///////////
