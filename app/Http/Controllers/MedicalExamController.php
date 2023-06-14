@@ -29,7 +29,14 @@ class MedicalExamController extends Controller
      */
     public function create(Record $record)
     {
-        return view('nurse.record.medical-exam.create',compact('record'));
+        if(auth()->user()->role == 'nurse')
+        {
+            return view('nurse.record.medical-exam.create',compact('record'));
+        }
+        elseif(auth()->user()->role == 'doctor')
+        {
+            return view('nurse.doctor.medical-exam.create',compact('record'));
+        }
     }
 
     /**
@@ -294,7 +301,14 @@ class MedicalExamController extends Controller
         // Create OB-GYNE History
         MedicalExamResponse::create($MedicalExamResponseData);
 
-        return redirect()->route('nurse.recordShow', ['record' => $recordID])->with('success', 'Medical examination created successfully.');
+        if(auth()->user()->role == 'nurse')
+        {
+            return redirect()->route('nurse.recordShow', ['record' => $recordID])->with('success', 'Medical examination created successfully.');
+        }
+        elseif(auth()->user()->role == 'doctor')
+        {
+            return redirect()->route('doctor.recordShow', ['record' => $recordID])->with('success', 'Medical examination created successfully.');
+        }
     }
 
     /**
@@ -575,7 +589,14 @@ class MedicalExamController extends Controller
         // Create OB-GYNE History
         $MedicalExamResponse->update($MedicalExamResponseData);
 
-        return redirect()->route('nurse.recordShow', ['record' => $recordID])->with('success', 'Medical examination updated successfully.');
+        if(auth()->user()->role == 'nurse')
+        {
+            return redirect()->route('nurse.recordShow', ['record' => $recordID])->with('success', 'Medical examination updated successfully.');
+        }
+        elseif(auth()->user()->role == 'doctor')
+        {
+            return redirect()->route('doctor.recordShow', ['record' => $recordID])->with('success', 'Medical examination updated successfully.');
+        }
     }
 
     /**

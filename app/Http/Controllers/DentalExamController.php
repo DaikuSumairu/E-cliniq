@@ -24,7 +24,7 @@ class DentalExamController extends Controller
      */
     public function create(Record $record)
     {
-        return view('nurse.record.dental-exam.create',compact('record'));
+        return view('dentist.record.dental-exam.create',compact('record'));
     }
 
     /**
@@ -145,7 +145,7 @@ class DentalExamController extends Controller
         // Create Dental Exam Extraction
         DentalExamExtraction::create($dentalExamExtractionData);
         
-        return redirect()->route('nurse.recordShow', ['record' => $recordID])->with('success', 'Dental examination created successfully.');
+        return redirect()->route('dentist.recordShow', ['record' => $recordID])->with('success', 'Dental examination created successfully.');
     }
 
     /**
@@ -282,7 +282,7 @@ class DentalExamController extends Controller
         $dentalExamExtraction->update($dentalExamExtractionData);
 
     
-        return redirect()->route('nurse.recordShow', ['record' => $recordID])->with('success', 'Dental examination updated successfully.');    
+        return redirect()->route('dentist.recordShow', ['record' => $recordID])->with('success', 'Dental examination updated successfully.');    
     }
 
     /**

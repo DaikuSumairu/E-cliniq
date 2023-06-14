@@ -31,7 +31,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('inventory.store') }}">
+                <form method="POST" action="{{ route('inventory.store') }}" onsubmit="return confirm('Are you sure you want to Add this item?');">
                     @csrf
                     <div class="form-group">
                         <label for="name">Name</label>
@@ -70,13 +70,18 @@
                     <td>{{ $item->dosage }} mg</td>
                     <td>{{ $item->quantity }} pcs</td>
                     <td>
-                    <button type="button" class="btn btn-primary" onclick="openEditForm({{ $item->id }})">Edit</button>
-                    <form method="POST" action="{{ route('inventory.destroy', $item->id) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-                         @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger ml-2">Delete</button>
-                        </form>
-
+                        <div class="row">
+                            <div class="col-2">
+                                <button type="button" class="btn btn-primary" onclick="openEditForm({{ $item->id }})">Edit</button>
+                            </div>
+                            <div class="col-2">
+                            <form method="POST" action="{{ route('inventory.destroy', $item->id) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger ml-2">Delete</button>
+                            </form>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             @endforeach
@@ -88,13 +93,9 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
-    
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
-@stop
-
 <!--Pop-up Form-->
 <script>
     $(document).ready(function() {
@@ -104,17 +105,9 @@
     });
 </script>
 
-<!--Deletion Confirmation Pop-up-->
-<script>
-    $(document).ready(function() {
-        $('form').submit(function() {
-            return confirm('Are you sure you want to delete this item?');
-        });
-    });
-</script>
-
 <script>
 function openEditForm(id) {
     window.open('{{ url('inventory') }}/' + id + '/edit', 'Edit Item', 'width=600,height=400');
 }
 </script>
+@stop

@@ -67,6 +67,28 @@ Route::middleware(['auth', 'user-access:doctor'])->group(function () {
     ])->except([
         'create','store', 'edit', 'update', 'delete'
     ]);
+
+    //Record Item (Consultation)
+    Route::resource('doctor/records/consultation', ConsultationController::class)->names([
+        'store' => 'doctor.consultationStore',
+        'edit' => 'doctor.consultationEdit',
+        'update' => 'doctor.consultationUpdate',
+    ])->except([
+        'index', 'show', 'delete'
+    ]);
+    Route::get('doctor/records/consultation/create/{record}', [ConsultationController::class, 'create'])
+        ->name('doctor.consultationCreate');
+
+    //Record Item (Medical Exam)
+    Route::resource('doctor/records/medical_exam', MedicalExamController::class)->names([
+        'store' => 'doctor.medExamStore',
+        'edit' => 'doctor.medExamEdit',
+        'update' => 'doctor.medExamUpdate',
+    ])->except([
+        'index', 'show', 'delete'
+    ]);
+    Route::get('doctor/records/medical_exam/create/{record}', [MedicalExamController::class, 'create'])
+        ->name('doctor.medExamCreate');
 });
 
 /////////////
@@ -82,6 +104,17 @@ Route::middleware(['auth', 'user-access:dentist'])->group(function () {
     ])->except([
         'create','store', 'edit', 'update', 'delete'
     ]);
+
+    //Record Item (Dental Exam)
+    Route::resource('dentist/records/dental_exam', DentalExamController::class)->names([
+        'store' => 'dentist.dentalExamStore',
+        'edit' => 'dentist.dentalExamEdit',
+        'update' => 'dentist.dentalExamUpdate',
+    ])->except([
+        'index', 'show', 'delete'
+    ]);
+    Route::get('dentist/records/dental_exam/create/{record}', [DentalExamController::class, 'create'])
+        ->name('dentist.dentalExamCreate');
 });
 
 ///////////
@@ -121,17 +154,6 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
     ]);
     Route::get('nurse/records/medical_exam/create/{record}', [MedicalExamController::class, 'create'])
         ->name('nurse.medExamCreate');
-
-    //Record Item (Dental Exam)
-    Route::resource('nurse/records/dental_exam', DentalExamController::class)->names([
-        'store' => 'nurse.dentalExamStore',
-        'edit' => 'nurse.dentalExamEdit',
-        'update' => 'nurse.dentalExamUpdate',
-    ])->except([
-        'index', 'show', 'delete'
-    ]);
-    Route::get('nurse/records/dental_exam/create/{record}', [DentalExamController::class, 'create'])
-        ->name('nurse.dentalExamCreate');
 
     //Inventory
     Route::resource('inventory', InventoryController::class)->names([

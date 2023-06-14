@@ -1905,7 +1905,7 @@
                         @endif
                     @else
                         <div class="text-center">
-                            <p>No dental exam has been made. <a href="{{ route('nurse.dentalExamCreate', $record->id) }}">Create now.</a></p></p>
+                            <p>No dental exam has been made. <a href="{{ route('nurse.dentalExamCreate', $record->id) }}">Create now.</a></p>
                         </div>
                     @endif
                 </div>

@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <p>Content of Daily Visit</p>
+
 @stop
 
 @section('css')

@@ -22,7 +22,14 @@ class ConsultationController extends Controller
      */
     public function create(Record $record)
     {
-        return view('nurse.record.consultation.create',compact('record'));
+        if(auth()->user()->role == 'nurse')
+        {
+            return view('nurse.record.consultation.create',compact('record'));
+        }
+        elseif(auth()->user()->role == 'doctor')
+        {
+            return view('doctor.record.consultation.create',compact('record'));
+        }
     }
 
     /**
@@ -58,7 +65,14 @@ class ConsultationController extends Controller
         // Create Consultation Response
         ConsultationResponse::create($consultationResponseData);
         
-        return redirect()->route('nurse.recordShow', ['record' => $recordID])->with('success', 'Consultation created successfully.');
+        if(auth()->user()->role == 'nurse')
+        {
+            return redirect()->route('nurse.recordShow', ['record' => $recordID])->with('success', 'Consultation created successfully.');
+        }
+        elseif(auth()->user()->role == 'doctor')
+        {
+            return redirect()->route('doctor.recordShow', ['record' => $recordID])->with('success', 'Consultation created successfully.');
+        }
     }
 
     /**
@@ -106,8 +120,15 @@ class ConsultationController extends Controller
         $consultationResponse = $consultation->consultation_response;
 
         $consultationResponse->update($consultationResponseData);
-        
-        return redirect()->route('nurse.recordShow', ['record' => $recordID])->with('success', 'Consultation updated successfully.');
+
+        if(auth()->user()->role == 'nurse')
+        {
+            return redirect()->route('nurse.recordShow', ['record' => $recordID])->with('success', 'Consultation updated successfully.');
+        }
+        elseif(auth()->user()->role == 'doctor')
+        {
+            return redirect()->route('doctor.recordShow', ['record' => $recordID])->with('success', 'Consultation updated successfully.');
+        }
     }
 
     /**
