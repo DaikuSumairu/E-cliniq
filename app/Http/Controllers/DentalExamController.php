@@ -161,7 +161,7 @@ class DentalExamController extends Controller
      */
     public function edit(DentalExam $dentalExam)
     {
-        return view('nurse.record.dental-exam.edit',compact('dentalExam'));
+        return view('dentist.record.dental-exam.edit',compact('dentalExam'));
     }
 
     /**

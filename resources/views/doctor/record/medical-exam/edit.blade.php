@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="container mx-auto pb-4" style="height: 625px; overflow: auto;">
-        <form method="POST" action="{{ route('nurse.medExamUpdate', $medical_exam->id) }}">
+        <form method="POST" action="{{ route('doctor.medExamUpdate', $medical_exam->id) }}">
             @csrf
             @method('PUT')
             <!-- Record ID Created (Hidden) -->

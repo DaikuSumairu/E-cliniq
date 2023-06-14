@@ -35,7 +35,7 @@ class MedicalExamController extends Controller
         }
         elseif(auth()->user()->role == 'doctor')
         {
-            return view('nurse.doctor.medical-exam.create',compact('record'));
+            return view('doctor.record.medical-exam.create',compact('record'));
         }
     }
 
@@ -324,7 +324,14 @@ class MedicalExamController extends Controller
      */
     public function edit(MedicalExam $medical_exam)
     {
-        return view('nurse.record.medical-exam.edit',compact('medical_exam'));
+        if(auth()->user()->role == 'nurse')
+        {
+            return view('nurse.record.medical-exam.edit',compact('medical_exam'));
+        }
+        elseif(auth()->user()->role == 'doctor')
+        {
+            return view('doctor.record.medical-exam.edit',compact('medical_exam'));
+        }
     }
 
     /**

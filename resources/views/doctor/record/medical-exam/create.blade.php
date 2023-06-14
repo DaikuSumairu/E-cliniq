@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="container mx-auto pb-4" style="height: 625px; overflow: auto;">
-        <form method="POST" action="{{ route('nurse.medExamStore') }}">
+        <form method="POST" action="{{ route('doctor.medExamStore') }}">
             @csrf
             <!-- Record ID Created (Hidden) -->
             <input type="hidden" name="record_id" value="{{ $record->id }}">

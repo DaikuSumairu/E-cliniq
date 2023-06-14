@@ -88,7 +88,14 @@ class ConsultationController extends Controller
      */
     public function edit(Consultation $consultation)
     {
-        return view('nurse.record.consultation.edit',compact('consultation'));
+        if(auth()->user()->role == 'nurse')
+        {
+            return view('nurse.record.consultation.edit',compact('consultation'));
+        }
+        elseif(auth()->user()->role == 'doctor')
+        {
+            return view('doctor.record.consultation.edit',compact('consultation'));
+        }
     }
 
     /**

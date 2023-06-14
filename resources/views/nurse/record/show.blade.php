@@ -1045,9 +1045,6 @@
                                 <div class="col">
                                     <h3 class="mt-2"><strong>INTRAORAL EXAMINATION</strong></h3>
                                 </div>
-                                <div class="col text-right">
-                                    <a class="btn btn-primary px-4" href="{{ route('nurse.dentalExamEdit', $record->dental_exam->id) }}">Update</a>
-                                </div>
                             </div>
 
                                 <!-- Oral Hygiene -->
@@ -1905,7 +1902,7 @@
                         @endif
                     @else
                         <div class="text-center">
-                            <p>No dental exam has been made. <a href="{{ route('nurse.dentalExamCreate', $record->id) }}">Create now.</a></p>
+                            <p>No dental exam has been made.</p>
                         </div>
                     @endif
                 </div>

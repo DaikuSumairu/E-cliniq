@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="container border mx-auto pb-4" style="height: 525px; overflow: auto;">
-        <form method="POST" action="{{ route('nurse.consultationUpdate', $consultation->id) }}">
+        <form method="POST" action="{{ route('doctor.consultationUpdate', $consultation->id) }}">
             @csrf
             @method('PUT')
 
@@ -140,7 +140,7 @@
                 <div class="col pt-2">
                     <div class="row">
                         <div class="col-2">
-                            <h4><strong>Nurse Remarks: </strong></h4>
+                            <h4><strong>doctorNurse Remarks: </strong></h4>
                         </div>
                         <div class="col-0" style="padding-top: 3px;">
                             <select name="remarks">

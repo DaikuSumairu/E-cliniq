@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="container border mx-auto pb-4" style="height: 525px; overflow: auto;">
-        <form method="POST" action="{{ route('nurse.consultationStore') }}">
+        <form method="POST" action="{{ route('doctor.consultationStore') }}">
             @csrf
             <!-- Date -->
             <div class="row position-right ml-auto mt-3" style="width: 175px;">
