@@ -23,18 +23,20 @@
 
     {{-- Brand text --}}
     <span class="brand-text font-weight-light {{ config('adminlte.classes_brand_text') }}">
+        {!! config('adminlte.logo', '<b>Admin</b>LTE') !!}
+
         @if(auth()->user()->role == 'admin')
-            {!! config('adminlte.logo', '<b>Admin</b>LTE') !!}
-        @elseif(auth()->user()->role == 'doctor')
             {!! config('adminlte.logo1', '<b>Admin</b>LTE') !!}
-        @elseif(auth()->user()->role == 'nurse')
+        @elseif(auth()->user()->role == 'doctor')
             {!! config('adminlte.logo2', '<b>Admin</b>LTE') !!}
-        @elseif(auth()->user()->role == 'dentist')
+        @elseif(auth()->user()->role == 'nurse')
             {!! config('adminlte.logo3', '<b>Admin</b>LTE') !!}
-        @elseif(auth()->user()->role == 'faculty')
+        @elseif(auth()->user()->role == 'dentist')
             {!! config('adminlte.logo4', '<b>Admin</b>LTE') !!}
-        @elseif(auth()->user()->role == 'student')
+        @elseif(auth()->user()->role == 'faculty')
             {!! config('adminlte.logo5', '<b>Admin</b>LTE') !!}
+        @elseif(auth()->user()->role == 'student')
+            {!! config('adminlte.logo6', '<b>Admin</b>LTE') !!}
         @endif
     </span>
 

@@ -14,6 +14,7 @@
             <th>Grade / Year</th>
             <th>Section</th>
             <th>ID</th>
+            <th>Roles</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($users as $user)
@@ -35,6 +36,7 @@
                     @endif
                 </td>
                 <td>{{ $user->school_id }}</td>
+                <td>{{ $user->role }}</td>
                 <td>
                     @foreach ($records->where('user_id', $user->id) as $record)
                         <a class="btn btn-info" href="{{ route('nurse.recordShow', $record->id) }}">Show</a>

@@ -14,6 +14,7 @@
             <th>Grade / Year</th>
             <th>Section</th>
             <th>ID</th>
+            <th>Roles</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($users as $user)
@@ -35,6 +36,7 @@
                     @endif
                 </td>
                 <td>{{ $user->school_id }}</td>
+                <td>{{ $user->role }}</td>
                 <td>
                     <!-- 
                         If User have record then 'show' and 'edit' will appear, 

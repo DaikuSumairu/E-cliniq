@@ -63,12 +63,13 @@ return [
     |
     */
 
-    'logo' => '<b>E-Cliniq</b> | Admin',
-    'logo1' => '<b>E-Cliniq</b> | Doctor',
-    'logo2' => '<b>E-Cliniq</b> | Nurse',
-    'logo3' => '<b>E-Cliniq</b> | Dentist',
-    'logo4' => '<b>E-Cliniq</b> | Faculty',
-    'logo5' => '<b>E-Cliniq</b> | Student',
+    'logo' => '<b>E-Cliniq</b>',
+    'logo1' => '<b>E-Cliniq</b> | Admin',
+    'logo2' => '<b>E-Cliniq</b> | Doctor',
+    'logo3' => '<b>E-Cliniq</b> | Nurse',
+    'logo4' => '<b>E-Cliniq</b> | Dentist',
+    'logo5' => '<b>E-Cliniq</b> | Faculty',
+    'logo6' => '<b>E-Cliniq</b> | Student',
     'logo_img' => 'assets/APC_Logo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -430,7 +431,7 @@ return [
         ],
         [
             'text' => 'Reports',
-            'icon' => 'fas fa-doutone fa-memo',
+            'icon' => 'fas fa-sharp fa-regular fa-folder',
             'url' => '#',
             'can' => 'nurse',
         ],

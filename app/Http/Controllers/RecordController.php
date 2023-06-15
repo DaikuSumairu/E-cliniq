@@ -13,6 +13,7 @@ class RecordController extends Controller
      */
     public function index()
     {
+        
         $users = User::whereNotIn('role', [2, 3, 4, 5])
             ->orderBy('school_id')
             ->paginate(10);
