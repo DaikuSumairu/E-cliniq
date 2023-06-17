@@ -3,7 +3,7 @@
         {{ config('adminlte.classes_topnav_nav', 'navbar-expand-md') }}
         {{ config('adminlte.classes_topnav', 'navbar-white navbar-light') }}"
         @if(auth()->user()->role == 'admin')
-            style="background-color: #991f1f;"
+            style="background-color: #ff4d4d;"
         @elseif(auth()->user()->role == 'doctor')
             style="background-color: #991f1f;"
         @elseif(auth()->user()->role == 'nurse')

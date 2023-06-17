@@ -22,7 +22,19 @@
                  class="user-image img-circle elevation-2"
                  alt="{{ Auth::user()->name }}">
         @endif
-        <span @if(config('adminlte.usermenu_image')) class="d-none d-md-inline" @endif>
+        <span @if(config('adminlte.usermenu_image')) class="d-none d-md-inline" @endif 
+        
+        @if(auth()->user()->role == 'admin')
+            style="color: white;"
+        @elseif(auth()->user()->role == 'doctor')
+            style="color: white;"
+        @elseif(auth()->user()->role == 'nurse')
+            style="color: white;"
+        @elseif(auth()->user()->role == 'dentist')
+            style="color: white;"
+        @elseif(auth()->user()->role == 'faculty')
+            style="color: white;"
+        @endif>
             {{ Auth::user()->name }}
         </span>
     </a>
