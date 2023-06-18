@@ -425,7 +425,7 @@ return [
         ],
         [
             'text' => 'Inventory',
-            'route'  => 'nurse.InventoryIndex',
+            'route'  => 'inventory.index',
             'icon' => 'fas fa-sharp fa-regular fa-box',
             'can' => 'nurse',
         ],

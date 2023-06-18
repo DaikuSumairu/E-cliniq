@@ -7,6 +7,13 @@
 @stop
 
 @section('content')
+    <form action="{{ route('nurse.recordIndex') }}" method="GET">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search by school ID" name="query" value="{{ $query }}">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+    </form>
+
     <table class="table table-sm table-bordered">
         <tr>
             <th>Name</th>

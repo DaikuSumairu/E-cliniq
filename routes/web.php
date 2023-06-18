@@ -156,18 +156,8 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
         ->name('nurse.medExamCreate');
 
     //Inventory
-    Route::resource('inventory', InventoryController::class)->names([
-        'index' => 'nurse.InventoryIndex',
-        'create' => 'nurse.InventoryCreate',
-        'store' => 'nurse.InventoryStore',
-        'show' => 'nurse.InventoryShow',
-        'edit' => 'nurse.InventoryEdit',
-        'update' => 'nurse.InventoryUpdate',
-        'delete' => 'nurse.InventoryDelete',
-    ]);
     Route::get('/nurse/inventory/create', [InventoryController::class, 'create'])->name('nurse.InventoryCreate');
     Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory.index');
-    Route::get('/nurse/inventory', [InventoryController::class, 'index'])->name('nurse.InventoryIndex');
     Route::post('/inventory', [InventoryController::class, 'store'])->name('inventory.store');
     Route::delete('/inventory/{id}', [InventoryController::class, 'destroy'])->name('inventory.destroy');
     Route::get('/inventory/{id}/edit', function ($id) {

@@ -17,9 +17,8 @@
 -->
 
 @section('content')
-
 <!-- Pop-up form for the Adding Medicine Inventory Items-->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-item-modal">Add Item</button>
+<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#add-item-modal">Add Item</button>
 
 <div class="modal fade" id="add-item-modal" tabindex="-1" role="dialog" aria-labelledby="add-item-modal-label" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -54,6 +53,12 @@
 
 <!--Main table for the Inventory Items-->
 <div class="table-responsive pb-4">
+    <form action="{{ route('inventory.index') }}" method="GET">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search by school ID" name="query" value="{{ $query }}">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+    </form>
     <table class="table">
         <thead>
             <tr>

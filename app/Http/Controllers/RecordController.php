@@ -11,17 +11,19 @@ class RecordController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        
+        $query = $request->input('query');
+
         $users = User::whereNotIn('role', [2, 3, 4, 5])
+            ->where('school_id', 'like', "%{$query}%")
             ->orderBy('school_id')
             ->paginate(10);
         $records = Record::all();
 
         if(auth()->user()->role == 'nurse')
         {
-            return view('nurse.record.index',compact('users', 'records'))
+            return view('nurse.record.index',compact('users', 'records', 'query'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
         }
         elseif(auth()->user()->role == 'doctor')

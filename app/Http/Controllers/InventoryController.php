@@ -10,10 +10,15 @@ class InventoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $inventoryItems = Inventory::paginate(10);
-        return view('nurse.inventory.index', compact('inventoryItems'))
+        $query = $request->input('query');
+
+
+        $inventoryItems = Inventory::where('name', 'like', "%{$query}%")
+            ->paginate(10);
+
+        return view('nurse.inventory.index', compact('inventoryItems', 'query'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
