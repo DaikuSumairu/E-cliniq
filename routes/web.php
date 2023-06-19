@@ -126,11 +126,10 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
     //Record
     Route::resource('nurse/records', RecordController::class)->names([
         'index' => 'nurse.recordIndex',
-        'store' => 'nurse.recordStore',
         'show' => 'nurse.recordShow',
         'update' => 'nurse.recordUpdate',
     ])->except([
-        'create','edit'
+        'create', 'store', 'edit'
     ]);
 
     //Record Item (Consultation)
@@ -156,15 +155,15 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
         ->name('nurse.medExamCreate');
 
     //Inventory
-    Route::get('/nurse/inventory/create', [InventoryController::class, 'create'])->name('nurse.InventoryCreate');
-    Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory.index');
-    Route::post('/inventory', [InventoryController::class, 'store'])->name('inventory.store');
-    Route::delete('/inventory/{id}', [InventoryController::class, 'destroy'])->name('inventory.destroy');
-    Route::get('/inventory/{id}/edit', function ($id) {
-        $inventoryItem = Inventory::findOrFail($id);
-        return view('nurse.inventory.edit', compact('inventoryItem'));
-    })->name('inventory.edit');
-    Route::put('/inventory/{id}', 'InventoryController@update')->name('inventory.update');
+    Route::resource('nurse/inventory', InventoryController::class)->names([
+        'index' => 'nurse.inventoryIndex',
+        'store' => 'nurse.inventoryStore',
+        'update' => 'nurse.inventoryUpdate',
+        'show' => 'nurse.inventoryShow',
+        'destroy' => 'nurse.inventoryDestroy',
+    ])->except([
+        'create', 'edit'
+    ]);
 });
 
 ///////////

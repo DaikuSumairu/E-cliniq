@@ -44,7 +44,7 @@ class InventoryController extends Controller
     
         Inventory::create($request->all());
     
-        return redirect()->route('inventory.index')->with('success', 'Inventory item created successfully.');
+        return redirect()->route('nurse.inventoryIndex')->with('success', 'Inventory item created successfully.');
     }
     
 
@@ -79,7 +79,7 @@ class InventoryController extends Controller
     
         $inventory->update($request->all());
     
-        return redirect()->route('inventory.index')->with('success', 'Inventory item updated successfully.');
+        return redirect()->route('nurse.inventoryIndex')->with('success', 'Inventory item updated successfully.');
     }
     
 
@@ -93,6 +93,4 @@ class InventoryController extends Controller
     
         return redirect()->back();
     }
-
-
 }

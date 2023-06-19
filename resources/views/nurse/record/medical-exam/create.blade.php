@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <div class="container mx-auto pb-4" style="height: 625px; overflow: auto;">
+    <div class="container mx-auto pb-4" style="height: 555px; overflow: auto;">
         <form method="POST" action="{{ route('nurse.medExamStore') }}">
             @csrf
             <!-- Record ID Created (Hidden) -->
@@ -771,9 +771,12 @@
                 <div class="position-right ml-auto" style="width: 75px;">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
-            </div>
         </form>
     </div>
+@stop
+
+@section('footer')
+    <p class="mb-0 h5 text-right">Asia Pacific College Data Privacy Act</p>
 @stop
 
 @section('css')

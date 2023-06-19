@@ -117,7 +117,7 @@
                 <div id="consultation-content" class="mini-content pt-1">
                     @if(isset($record->consultation))
                         @if(isset($record) && !empty($record))
-                            <div class="container" style="height: 265px; overflow: auto;">
+                            <div class="container" style="height: 212px; overflow: auto;">
                                 <!-- Complaint -->
                                 <div class="row mx-auto mt-1">
                                     <div class="col-0 ml-1">
@@ -224,7 +224,7 @@
                 <div id="medical-exam-content" class="mini-content pt-1">
                     @if(isset($record->medical_exam))
                         @if(isset($record) && !empty($record))
-                        <div class="container" style="height: 265px; overflow: auto;">
+                        <div class="container" style="height: 212px; overflow: auto;">
                             <div class="row mx-auto mt-1">
                                 <!-- Medical History -->
                                 <div class="col-0 ml-1">                    
@@ -1034,7 +1034,7 @@
                 <div id="dental-exam-content" class="mini-content pt-1">
                     @if(isset($record->dental_exam))
                         @if(isset($record) && !empty($record))
-                            <div class="container" style="height: 265px; overflow: auto;">
+                            <div class="container" style="height: 212px; overflow: auto;">
                             <div class="row">
                                 <div class="col">
                                     <h3 class="mt-2"><strong>INTRAORAL EXAMINATION</strong></h3>
@@ -1907,6 +1907,10 @@
         </div>
     </div>
 @stop
+
+@section('footer')
+    <p class="mb-0 h5 text-right">Asia Pacific College Data Privacy Act</p>
+@endsection
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">

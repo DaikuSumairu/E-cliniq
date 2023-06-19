@@ -17,7 +17,7 @@ class RecordController extends Controller
 
         $users = User::whereNotIn('role', [2, 3, 4, 5])
             ->where('school_id', 'like', "%{$query}%")
-            ->orderBy('school_id')
+            ->orderBy('name')
             ->paginate(10);
         $records = Record::all();
 
@@ -28,12 +28,12 @@ class RecordController extends Controller
         }
         elseif(auth()->user()->role == 'doctor')
         {
-            return view('doctor.record.index',compact('users', 'records'))
+            return view('doctor.record.index',compact('users', 'records', 'query'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
         }
         elseif(auth()->user()->role == 'dentist')
         {
-            return view('dentist.record.index',compact('users', 'records'))
+            return view('dentist.record.index',compact('users', 'records', 'query'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
         }
         elseif(auth()->user()->role == 'student')
@@ -59,29 +59,10 @@ class RecordController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'date_created',
-            'birth_date' => 'required',
-            'age',
-            'sex' => 'required',
-            'civil_status' => 'required',
-            'address' => 'required',
-            'mobile_number' => 'required',
-            'contact_person' => 'required',
-            'contact_person_number' => 'required',
-        ]);
-
-        $userID = $request->input('user_id');
-
-        $recordData = $request->all();
-        $recordData['user_id'] = $userID;
-
-        Record::create($recordData);
-
-        return redirect()->back()->with('success','Record created successfully.');
-    }
+    //public function store(Request $request)
+    //{
+    //    //
+    //}
 
     /**
      * Display the specified resource.

@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <div class="container border mx-auto pb-4" style="height: 625px; overflow: auto;">
+    <div class="container border mx-auto pb-4" style="height: 555px; overflow: auto;">
         <form method="POST" action="{{ route('dentist.dentalExamUpdate', $dentalExam->id) }}">
             @csrf
             @method('PUT')
@@ -1230,6 +1230,10 @@
         </form>
     </div>
 @stop
+
+@section('footer')
+    <p class="mb-0 h5 text-right">Asia Pacific College Data Privacy Act</p>
+@endsection
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
