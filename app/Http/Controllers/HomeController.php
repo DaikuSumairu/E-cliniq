@@ -43,7 +43,7 @@ class HomeController extends Controller
 
     public function nurseHome()
     {
-        return view('nurse.index');
+        return view('nurse.appointment.approve');
     }
 
     public function adminHome()
