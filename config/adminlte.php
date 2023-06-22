@@ -312,17 +312,8 @@ return [
         //Student
         [
             'text' => 'Appointment',
+            'url' => '#',
             'icon' => 'fas fa-sharp fa-solid fa-calendar',
-            'submenu' => [
-                [
-                    'text' => 'Queue Appointment',
-                    'url'  => '#',
-                ],
-                [
-                    'text' => 'Pending Appointment',
-                    'url'  => '#',
-                ],
-            ],
             'can' => 'student',
         ],
         [
@@ -335,17 +326,8 @@ return [
         //Faculty
         [
             'text' => 'Appointment',
+            'url' => '#',
             'icon' => 'fas fa-sharp fa-solid fa-calendar',
-            'submenu' => [
-                [
-                    'text' => 'Queue Appointment',
-                    'url'  => '#',
-                ],
-                [
-                    'text' => 'Pending Appointment',
-                    'url'  => '#',
-                ],
-            ],
             'can' => 'faculty',
         ],
         [
@@ -358,17 +340,8 @@ return [
         //Doctor
         [
             'text' => 'Appointment',
+            'url' => '#',
             'icon' => 'fas fa-sharp fa-solid fa-calendar',
-            'submenu' => [
-                [
-                    'text' => 'Queue Appointment',
-                    'url'  => '#',
-                ],
-                [
-                    'text' => 'Pending Appointment',
-                    'url'  => '#',
-                ],
-            ],
             'can' => 'doctor',
         ],
         [
@@ -381,17 +354,8 @@ return [
         //Dentist
         [
             'text' => 'Appointment',
+            'url' => '#',
             'icon' => 'fas fa-sharp fa-solid fa-calendar',
-            'submenu' => [
-                [
-                    'text' => 'Queue Appointment',
-                    'url'  => '#',
-                ],
-                [
-                    'text' => 'Pending Appointment',
-                    'url'  => '#',
-                ],
-            ],
             'can' => 'dentist',
         ],
         [
@@ -404,17 +368,8 @@ return [
         //Nurse
         [
             'text' => 'Appointment',
+            'url' => '#',
             'icon' => 'fas fa-sharp fa-solid fa-calendar',
-            'submenu' => [
-                [
-                    'text' => 'Queue Appointment',
-                    'url'  => '#',
-                ],
-                [
-                    'text' => 'Pending Appointment',
-                    'url'  => '#',
-                ],
-            ],
             'can' => 'nurse',
         ],
         [

@@ -35,7 +35,10 @@
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'
+            initialView: 'timeGridWeek',
+            nowIndicator: true, // Enable the now indicator to track the current time
+            hiddenDays: [0, 6], // Hide Sunday (0) and Saturday (6)
+            allDaySlot: false, // Disable the "all-day" section
         });
         calendar.render();
       });
