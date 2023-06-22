@@ -776,7 +776,7 @@
 @stop
 
 @section('footer')
-    <p class="mb-0 h5 text-right">Asia Pacific College Data Privacy Act</p>
+    <p class="mb-0 h6">Asia Pacific College Data Privacy Act</p>
 @endsection
 
 @section('css')
