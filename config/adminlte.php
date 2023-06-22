@@ -368,7 +368,7 @@ return [
         //Nurse
         [
             'text' => 'Appointment',
-            'url' => '#',
+            'route' => 'nurse.appointmentIndex',
             'icon' => 'fas fa-sharp fa-solid fa-calendar',
             'can' => 'nurse',
         ],

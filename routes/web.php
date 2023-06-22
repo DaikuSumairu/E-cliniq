@@ -8,6 +8,9 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\MedicalExamController;
 use App\Http\Controllers\DentalExamController;
+use App\Http\Controllers\AppointmentController;
+use App\Models\Appointment;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -123,6 +126,17 @@ Route::middleware(['auth', 'user-access:dentist'])->group(function () {
 Route::middleware(['auth', 'user-access:nurse'])->group(function () {
     Route::get('/nurse/home', [HomeController::class, 'nurseHome'])->name('nurse.home');
 
+    //Appointment
+    Route::resource('nurse/appointments', AppointmentController::class)->names([
+        'index' => 'nurse.appointmentIndex',
+        'update' => 'nurse.appointmentUpdate',
+        'store' => 'nurse.appointmentStore',
+        'destroy' => 'nurse.appointmentDestroy'
+    ])->except([
+        'show', 'create', 'edit'
+    ]);
+    Route::get('/search', [AppointmentController::class, 'search']);
+
     //Record
     Route::resource('nurse/records', RecordController::class)->names([
         'index' => 'nurse.recordIndex',
@@ -138,7 +152,7 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
         'edit' => 'nurse.consultationEdit',
         'update' => 'nurse.consultationUpdate',
     ])->except([
-        'index', 'show', 'delete'
+        'index', 'show', 'destroy'
     ]);
     Route::get('nurse/records/consultation/create/{record}', [ConsultationController::class, 'create'])
         ->name('nurse.consultationCreate');
@@ -149,7 +163,7 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
         'edit' => 'nurse.medExamEdit',
         'update' => 'nurse.medExamUpdate',
     ])->except([
-        'index', 'show', 'delete'
+        'index', 'show', 'destroy'
     ]);
     Route::get('nurse/records/medical_exam/create/{record}', [MedicalExamController::class, 'create'])
         ->name('nurse.medExamCreate');

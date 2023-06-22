@@ -43,24 +43,11 @@ class HomeController extends Controller
 
     public function nurseHome()
     {
-        return view('nurse.appointment.approve');
+        return view('nurse.index');
     }
 
     public function adminHome()
     {
         return view('admin.index');
-    }
-    public function __invoke()
-    {
-        $events = [];
-        $appointments = Appointment::with(['patient'])->get();
-        foreach ($appointments as $appointment) {
-            $events[] = [
-                'title' => $appointment->patient->name,
-                'start' => $appointment->start_time,
-                'end' => $appointment->finish_time,
-            ];
-        }
-        return view(compact('events'));
     }
 }

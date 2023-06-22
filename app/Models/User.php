@@ -73,4 +73,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Record::class);
     }
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
+    }
 }

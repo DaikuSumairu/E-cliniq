@@ -55,7 +55,7 @@
 <div class="table-responsive">
     <form action="{{ route('nurse.inventoryIndex') }}" method="GET">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search by school ID" name="query" value="{{ $query }}">
+            <input type="text" class="form-control" placeholder="Search by item name" name="query" value="{{ $query }}">
             <button class="btn btn-outline-secondary" type="submit">Search</button>
         </div>
     </form>
