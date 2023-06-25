@@ -87,13 +87,13 @@ class AppointmentController extends Controller
 
         // Check if an appointment already exists at the selected start time
         if ($existingAppointments->isNotEmpty()) {
-            return redirect()->back()->with('error', 'An appointment already exists at the selected start time.');
+            return redirect()->back()->with('error', 'An appointment is already taken');
         }
 
         // No conflicting appointment found, proceed with creating the new appointment
         Appointment::create($request->all());
 
-        return redirect()->back()->with('success', 'Record updated successfully');
+        return redirect()->back()->with('success', 'Appointment updated successfully');
     }
 
     /**
