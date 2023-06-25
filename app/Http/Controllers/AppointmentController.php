@@ -79,10 +79,21 @@ class AppointmentController extends Controller
             'reason',
             'status',
         ]);
-    
+
+        // Retrieve existing appointments
+        $existingAppointments = Appointment::where('date', $request->date)
+            ->where('start_time', $request->start_time)
+            ->get();
+
+        // Check if an appointment already exists at the selected start time
+        if ($existingAppointments->isNotEmpty()) {
+            return redirect()->back()->with('error', 'An appointment already exists at the selected start time.');
+        }
+
+        // No conflicting appointment found, proceed with creating the new appointment
         Appointment::create($request->all());
-    
-        return redirect()->back()->with('success','Record updated successfully');
+
+        return redirect()->back()->with('success', 'Record updated successfully');
     }
 
     /**
