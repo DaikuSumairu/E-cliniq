@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Homepage')
+@section('title', 'Appointment')
 
 @section('content_header')
-    <h1>Daily Visit List</h1>
+    <h1>Appointment</h1>
 @stop
 
 @section('content')
@@ -49,24 +49,28 @@
                                     <label for="start_time">Start Time:</label>
                                     <input type="hidden" name="start_time" id="start_time">
                                     <div class="custom-time-picker">
-                                        <select class="hour-input" id="start_hour" required onchange="updateEndTime()" required>
+                                        <select class="hour-input" id="start_hour" onchange="updateEndTime()" required>
                                             <option value="">Hour</option>
                                             <option value="09">09</option>
                                             <option value="10">10</option>
                                             <option value="11">11</option>
-                                            <option value="13">13</option>
-                                            <option value="14">14</option>
-                                            <option value="15">15</option>
-                                            <option value="16">16</option>
-                                            <option value="17">17</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
                                         </select>
                                         <span>:</span>
-                                        <select class="minute-input" id="start_minute" required onchange="updateEndTime()" required>
+                                        <select class="minute-input" id="start_minute" onchange="updateEndTime()" required>
                                             <option value="">Minute</option>
                                             <option value="00">00</option>
                                             <option value="15">15</option>
-                                            <option value="30">30</option>
-                                            <option value="45">45</option>
+                                            <option value="30" disabled>30</option>
+                                            <option value="45" disabled>45</option>
+                                        </select>
+                                        <select class="ampm-input" id="start_ampm" readonly>
+                                            <option value="AM">AM</option>
+                                            <option value="PM">PM</option>
                                         </select>
                                     </div>
                                 </div>
@@ -161,7 +165,7 @@
                                         <div class="col">
                                             <label><strong>Name: </strong></label> {{ $appointment->name }}<br>
                                             <label><strong>ID: </strong></label> {{ $appointment->school_id }}<br>
-                                            <label><strong>Status: </strong></label> {{ $appointment->status }}<br>
+                                            <label><strong>Status: </strong></label><span style="color: green;"> {{ $appointment->status }}</span><br>
                                         </div>
                                         <div class="col">
                                             <label><strong>Date: </strong></label> {{ $appointment->date }}<br>
@@ -177,11 +181,7 @@
                                     </div>
                                     <div class="row mb-2">
                                         <div class="col text-right">
-                                            <form method="POST" action="{{ route('nurse.appointmentDestroy', $appointment->id) }}" onsubmit="return confirm('Are you sure you want to decline this appointment?');">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger mx-2">Decline</button>
-                                            </form>
+                                            <a class="btn btn-info" href="#">Done</a>
                                         </div>
                                     </div>
                                 </div>
@@ -381,41 +381,71 @@
         function updateEndTime() {
             var selectedHour = document.getElementById("start_hour").value;
             var selectedMinute = document.getElementById("start_minute").value;
-    
-            // Disable minute options other than "00" and "15" if the selected hour is "17"
-            if (selectedHour === "17") {
-                var minuteSelect = document.getElementById("start_minute");
-                for (var i = 0; i < minuteSelect.options.length; i++) {
-                    var option = minuteSelect.options[i];
-                    if (option.value !== "00" && option.value !== "15") {
-                        option.disabled = true;
-                    } else {
-                        option.disabled = false;
-                    }
-                }
-            } else {
-                // Enable all minute options for other hours
-                var minuteSelect = document.getElementById("start_minute");
-                for (var i = 0; i < minuteSelect.options.length; i++) {
-                    var option = minuteSelect.options[i];
-                    option.disabled = false;
-                }
+
+            // Automatically set AM if the selected hour is between 9 and 11
+            if (selectedHour >= 9 && selectedHour <= 11) {
+                document.getElementById("start_ampm").value = "AM";
             }
-    
-            var startTime = getSelectedTime();
-            var endTime = new Date(new Date("1970-01-01T" + startTime + "Z").getTime() + (15 * 60000)).toISOString().substr(11, 5);
+
+            // Automatically set PM if the selected hour is between 1 and 5
+            if (selectedHour >= 1 && selectedHour <= 5) {
+                document.getElementById("start_ampm").value = "PM";
+            }
+
+            // Enable/disable minute options based on the selected hour
+            var minuteSelect = document.getElementById("start_minute");
+            if (selectedHour == 5) {
+                minuteSelect.options[1].disabled = false;   // Enable "00"
+                minuteSelect.options[2].disabled = false;   // Enable "15"
+                minuteSelect.options[3].disabled = true;    // Disable "30"
+                minuteSelect.options[4].disabled = true;    // Disable "45"
+            } else {
+                minuteSelect.options[1].disabled = false;   // Enable all options
+                minuteSelect.options[2].disabled = false;
+                minuteSelect.options[3].disabled = false;
+                minuteSelect.options[4].disabled = false;
+            }
+
+            // Calculate and set end time based on the selected start time
+            var selectedAmPm = document.getElementById("start_ampm").value;
+            var startTime = getSelectedTime(selectedHour, selectedMinute, selectedAmPm);
+            var endTime = calculateEndTime(startTime);
             document.getElementById("end_time").value = endTime;
-            document.getElementById("start_time").value = startTime; // Save start time to the "start_time" input field
+
+            // Save start time to the "start_time" input field
+            document.getElementById("start_time").value = startTime;
         }
-    
+
         // Custom Picker
-        function getSelectedTime() {
-            var hour = document.getElementById("start_hour").value;
-            var minute = document.getElementById("start_minute").value;
-    
+        function getSelectedTime(hour, minute, amPm) {
+            hour = parseInt(hour);
+            if (amPm === "PM" && hour !== 12) {
+                hour += 12;
+            } else if (amPm === "AM" && hour === 12) {
+                hour = 0;
+            }
+
             // Format the time as desired (e.g., HH:mm)
             var formattedTime = hour.toString().padStart(2, "0") + ":" + minute.toString().padStart(2, "0");
-    
+
+            return formattedTime;
+        }
+
+        // Calculate end time based on start time
+        function calculateEndTime(startTime) {
+            var hour = parseInt(startTime.substring(0, 2));
+            var minute = parseInt(startTime.substring(3, 5));
+
+            // Add 15 minutes to the start time
+            minute += 15;
+            if (minute >= 60) {
+                minute -= 60;
+                hour += 1;
+            }
+
+            // Format the time as desired (e.g., HH:mm)
+            var formattedTime = hour.toString().padStart(2, "0") + ":" + minute.toString().padStart(2, "0");
+
             return formattedTime;
         }
     </script>

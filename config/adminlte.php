@@ -258,8 +258,8 @@ return [
     |
     */
 
-    'use_route_url' => false,
-    'dashboard_url' => '',
+    'use_route_url' => true,
+    'dashboard_url' => 'nurse.home',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => '',

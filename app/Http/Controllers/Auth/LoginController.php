@@ -62,7 +62,7 @@ class LoginController extends Controller
             }
             else if (auth()->user()->role == 'nurse') 
             {
-                return redirect()->route('nurse.appointmentIndex');
+                return redirect()->route('nurse.home');
             }
             else if (auth()->user()->role == 'dentist') 
             {
