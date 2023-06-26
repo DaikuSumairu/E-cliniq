@@ -113,7 +113,7 @@
 
     <div class="mx-auto mb-2 border" style="width: 1260px;height: 480px;overflow: auto;">
         <div class="row">
-            <div class="col px-0" style="width: 200px; height: 460px;overflow: auto; border: 1px;">
+            <div class="col px-0" style="width: 200px; height: 460px; overflow: auto; border: 1px;">
                 <div id='calendar'></div>
             </div>
             <div class="col-4 px-0">
