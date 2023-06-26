@@ -259,7 +259,13 @@ return [
     */
 
     'use_route_url' => true,
-    'dashboard_url' => 'nurse.home',
+    'dashboard_url' => '',
+    'dashboard_url1' => 'admin.home',
+    'dashboard_url2' => 'doctor.home',
+    'dashboard_url3' => 'nurse.home',
+    'dashboard_url4' => 'dentist.home',
+    'dashboard_url5' => 'faculty.home',
+    'dashboard_url6' => 'student.home',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => '',
