@@ -231,9 +231,9 @@
                                     <h3 class="my-2"><strong>I. Medical History</strong></h3>
                                 </div>
                             </div>
-                            <div class="row row-cols-3">
-                                <!-- Past Medical History -->
+                            <div class="row">
                                 <div class="col">
+                                    <!-- Past Medical History -->
                                     <div class="text-center">
                                         <h4><strong>A. Past Medical Exam</strong></h4>
                                     </div>
@@ -241,7 +241,7 @@
                                         <tr>
                                             <th></th>
                                             <th class="text-center">Normal</th>
-                                            <th class="text-center" width="250px">Findings</th>
+                                            <th class="text-center" width="500px">Findings</th>
                                             </tr>
 
                                         <tr>
@@ -366,7 +366,8 @@
                                         </tr>
                                     </table>
                                 </div>
-
+                            </div>
+                            <div class="row">
                                 <!-- Family History -->
                                 <div class="col">
                                     <div class="text-center">
@@ -376,7 +377,7 @@
                                         <tr>
                                             <th></th>
                                             <th class="text-center">(-)</th>
-                                            <th class="text-center" width="250px">(+)</th>
+                                            <th class="text-center" width="515px">(+)</th>
                                         </tr>
 
                                         <tr>
@@ -470,7 +471,10 @@
                                             </td>
                                         </tr>
                                     </table>
-
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
                                     <!-- Personal and Social History -->
                                     <div class="text-center">
                                         <h4><strong>C. Personal and Social History</strong></h4>
@@ -545,11 +549,44 @@
                                                 </div>
                                             @endif
                                         </div>
+                                        <div class="row mx-1">
+                                            @if($record->medical_exam->personal_and_social_history->hospitalization == 'No')
+                                                <div class="col-0 mb-3">
+                                                    <p class="h5 mr-1"><strong>Hospitalization/s:</strong></p>
+                                                </div>
+                                                <div class="col-0 ml-2">
+                                                    <p class="mr-1">{{ $record->medical_exam->personal_and_social_history->hospitalization }}</p>
+                                                </div>
+                                            @else
+                                                <div class="col-0 mb-3">
+                                                    <p class="h5 mr-1"><strong>Hospitalization/s:</strong></p>
+                                                </div>
+                                                <div class="col-0 ml-2">
+                                                    <p class="mr-1">{{ $record->medical_exam->personal_and_social_history->hosp_times }}</p>
+                                                </div>
+                                            @endif
+                                        </div>
+                                        <div class="row mx-1">
+                                            @if($record->medical_exam->personal_and_social_history->operation == 'No')
+                                                <div class="col-0">
+                                                    <p class="h5 mr-1"><strong>Operation/s:</strong></p>
+                                                </div>
+                                                <div class="col-0 ml-2">
+                                                    <p class="mr-1">{{ $record->medical_exam->personal_and_social_history->operation }}</p>
+                                                </div>
+                                            @else
+                                                <div class="col-0 mb-3">
+                                                    <p class="h5 mr-1"><strong>Operation/s:</strong></p>
+                                                </div>
+                                                <div class="col-0 ml-2">
+                                                    <p class="mr-1">{{ $record->medical_exam->personal_and_social_history->op_times }}</p>
+                                                </div>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
-
-                                <!-- OB-GYNE History -->
                                 <div class="col">
+                                    <!-- OB-GYNE History -->
                                     <div class="text-center">
                                         <h4><strong>D. OB-GYNE History</strong></h4>
                                     </div>
@@ -596,54 +633,19 @@
                                             <td><textarea class="form-control" readonly>{{ $record->medical_exam->ob_gyne_history->medical_exam_response['5_ob_respond'] }}</textarea></td>
                                         </tr>
                                     </table>
-
-                                    <!-- Hospitalization and Operation -->
-                                    <div class="container border my-3 pt-2">
-                                        <div class="row mx-1">
-                                            @if($record->medical_exam->personal_and_social_history->hospitalization == 'No')
-                                                <div class="col-0 mb-3">
-                                                    <p class="h5 mr-1"><strong>E. Hospitalization/s:</strong></p>
-                                                </div>
-                                                <div class="col-0 ml-2">
-                                                    <p class="mr-1">{{ $record->medical_exam->personal_and_social_history->hospitalization }}</p>
-                                                </div>
-                                            @else
-                                                <div class="col-0 mb-3">
-                                                    <p class="h5 mr-1"><strong>E. Hospitalization/s:</strong></p>
-                                                </div>
-                                                <div class="col-0 ml-2">
-                                                    <p class="mr-1">{{ $record->medical_exam->personal_and_social_history->hosp_times }}</p>
-                                                </div>
-                                            @endif
-                                        </div>
-                                        <div class="row mx-1">
-                                            @if($record->medical_exam->personal_and_social_history->operation == 'No')
-                                                <div class="col-0">
-                                                    <p class="h5 mr-1"><strong>F. Operation/s:</strong></p>
-                                                </div>
-                                                <div class="col-0 ml-2">
-                                                    <p class="mr-1">{{ $record->medical_exam->personal_and_social_history->operation }}</p>
-                                                </div>
-                                            @else
-                                                <div class="col-0 mb-3">
-                                                    <p class="h5 mr-1"><strong>F. Operation/s:</strong></p>
-                                                </div>
-                                                <div class="col-0 ml-2">
-                                                    <p class="mr-1">{{ $record->medical_exam->personal_and_social_history->op_times }}</p>
-                                                </div>
-                                            @endif
-                                        </div>
-                                    </div>
-
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
                                     <!-- Review of System -->
                                     <div class="text-center">
-                                        <h4><strong>G. Review of System</strong></h4>
+                                        <h4><strong>E. Review of System</strong></h4>
                                     </div>
                                     <table class="table table-sm table-bordered mb-2">
                                         <tr>
                                             <th></th>
                                             <th class="text-center">(-)</th>
-                                            <th class="text-center" width="250px">(+)</th>
+                                            <th class="text-center" width="525px">(+)</th>
                                         </tr>
 
                                         <tr>

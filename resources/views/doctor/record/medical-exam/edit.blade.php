@@ -17,7 +17,7 @@
 
             <!-- Medical History -->
             <h2><strong>I. Medical History</strong></h2>
-            <div class="row row-cols-3">
+            <div class="row">
                 <div class="col">
                     <!-- Past Medical History -->
                     <div class="text-center">
@@ -27,7 +27,7 @@
                         <tr>
                             <th></th>
                             <th class="text-center">Normal</th>
-                            <th class="text-center" width="250px">Findings</th>
+                            <th class="text-center" width="650px">Findings</th>
                         </tr>
 
                         <tr>
@@ -344,7 +344,9 @@
                         </tr>
                     </table>
                 </div>
+            </div>
 
+            <div class="row">
                 <!-- Family History -->
                 <div class="col">
                     <div class="text-center">
@@ -354,7 +356,7 @@
                         <tr>
                             <th></th>
                             <th class="text-center">(-)</th>
-                            <th class="text-center" width="250px">(+)</th>
+                            <th class="text-center" width="675px">(+)</th>
                         </tr>
                         
                         <tr>
@@ -592,18 +594,22 @@
                             </td>
                         </tr>
                     </table>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col">
                     <!-- Personal and Social History -->
                     <div class="text-center">
-                        <h4><strong>C. Personal and Social History</strong></h4>
+                        <h3><strong>C. Personal and Social History</strong></h3>
                     </div>
                     <div class="container border">
                         <div class="row my-3">
                             @if($medical_exam->personal_and_social_history->smoker == "Yes")
-                                <input type="checkbox" id="smoker" name="smoker" value="Yes" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'smoker')" checked>
+                                <input type="checkbox" id="smoker" name="smoker" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'smoker')" checked>
                                 <input type="hidden" id="smokerHidden" name="smoker" value="Yes">
                             @else
-                                <input type="checkbox" id="smoker" name="smoker" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'smoker')">
+                                <input type="checkbox" id="smoker" name="smoker" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'smoker')">
                             @endif    
                             <div class="col-0">
                                 <p class="mr-1"><strong>Smoker:</strong></p>
@@ -629,10 +635,10 @@
                         </div>
                         <div class="row mb-3">
                             @if($medical_exam->personal_and_social_history->alcoholic == "Yes")
-                                <input type="checkbox" id="alcoholic" name="alcoholic" value="Yes" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'alcoholic')" checked>
+                                <input type="checkbox" id="alcoholic" name="alcoholic" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'alcoholic')" checked>
                                 <input type="hidden" id="alcoholicHidden" name="alcoholic" value="Yes">
                             @else
-                                <input type="checkbox" id="alcoholic" name="alcoholic" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'alcoholic')">
+                                <input type="checkbox" id="alcoholic" name="alcoholic" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'alcoholic')">
                             @endif
                             <div class="col-0">
                                 <p class="mr-1"><strong>Alcoholic:</strong></p>
@@ -658,25 +664,57 @@
                         </div>
                         <div class="row mb-3">
                             @if($medical_exam->personal_and_social_history->medication == "Yes")
-                                <input type="checkbox" id="medication" name="medication" value="Yes" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'medication')" checked>
+                                <input type="checkbox" id="medication" name="medication" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'medication')" checked>
                                 <input type="hidden" id="medicationHidden" name="medication" value="Yes">   
                             @else
-                                <input type="checkbox" id="medication" name="medication" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'medication')">
+                                <input type="checkbox" id="medication" name="medication" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'medication')">
                             @endif
                             <div class="col">
                                 <p><strong>Medication:</strong></p>
                                 @if($medical_exam->personal_and_social_history->medication == "Yes")
-                                    <textarea class="form-control" name="take" id="take" required>{{ $medical_exam->personal_and_social_history->take }}</textarea>
+                                    <textarea class="form-control" name="take" id="take" style="height: 132px;" required>{{ $medical_exam->personal_and_social_history->take }}</textarea>
                                     <input type="hidden" id="medicationValHidden" name="take" value=" " disabled>
                                 @else
-                                    <textarea class="form-control" name="take" id="take" disabled>Not Applicable</textarea>
+                                    <textarea class="form-control" name="take" id="take" style="height: 132px;" disabled>Not Applicable</textarea>
                                 @endif
                             </div>
                         </div>
+                        <div class="row">
+                            @if($medical_exam->personal_and_social_history->hospitalization == "Yes")
+                                <input type="checkbox" id="hospitalization" name="hospitalization" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'hospitalization')" checked>
+                                <input type="hidden" id="hospitalizationHidden" name="hospitalization" value="Yes">
+                            @else
+                                <input type="checkbox" id="hospitalization" name="hospitalization" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'hospitalization')">
+                            @endif
+                            <div class="col-0 mb-3">
+                                <p class="h5 mr-1"><strong>E. Hospitalization/s:</strong></p>
+                            </div>
+                            @if($medical_exam->personal_and_social_history->hospitalization == "Yes")
+                                <input type="number" name="hosp_times" class="col-0 mx-1" style="height: 25px; width: 138px;" id="hosp_times" value="{{ $medical_exam->personal_and_social_history->hosp_times }}" required>
+                                <input type="hidden" id="hospitalizationValHidden" name="hosp_times" value=" " disabled>
+                            @else
+                                <input type="number" name="hosp_times" class="col-0 mx-1" style="height: 25px; width: 138px;" id="hosp_times" disabled>
+                            @endif
+                        </div>
+                        <div class="row">
+                            @if($medical_exam->personal_and_social_history->operation == "Yes")
+                                <input type="checkbox" id="operation" name="operation" value="Yes" class="col-0 ml-1" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'operation')" checked>
+                                <input type="hidden" id="operationHidden" name="operation" value="Yes">
+                            @else
+                                <input type="checkbox" id="operation" name="operation" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'operation')">
+                            @endif
+                            <div class="col-0">
+                                <p class="h5 mr-1"><strong>F. Operation/s:</strong></p>
+                            </div>
+                            @if($medical_exam->personal_and_social_history->operation == "Yes")
+                                <input type="number" name="op_times" class="col-0 mx-1" style="height: 25px; width: 185px;" id="op_times" value="{{ $medical_exam->personal_and_social_history->op_times }}" required>
+                                <input type="hidden" id="operationValHidden" name="op_times" value=" " disabled>
+                            @else
+                                <input type="number" name="op_times" class="col-0 mx-1" style="height: 25px; width: 185px;" id="op_times" disabled>
+                            @endif
+                        </div>
                     </div>
                 </div>
-
-                <!-- OB-GYNE History -->
                 <div class="col">
                     <div class="text-center">
                         <h3><strong>D. OB-GYNE History</strong></h3>
@@ -784,54 +822,20 @@
                             </td>
                         </tr>
                     </table>
-                
-                    <!-- Hospitalization and Operation -->
-                    <div class="container border my-3 pt-2">
-                        <div class="row">
-                            @if($medical_exam->personal_and_social_history->hospitalization == "Yes")
-                                <input type="checkbox" id="hospitalization" name="hospitalization" value="Yes" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'hospitalization')" checked>
-                                <input type="hidden" id="hospitalizationHidden" name="hospitalization" value="Yes">
-                            @else
-                                <input type="checkbox" id="hospitalization" name="hospitalization" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'hospitalization')">
-                            @endif
-                            <div class="col-0 mb-3">
-                                <p class="h5 mr-1"><strong>E. Hospitalization/s:</strong></p>
-                            </div>
-                            @if($medical_exam->personal_and_social_history->hospitalization == "Yes")
-                                <input type="number" name="hosp_times" class="col-0 mx-1" style="height: 25px; width: 138px;" id="hosp_times" value="{{ $medical_exam->personal_and_social_history->hosp_times }}" required>
-                                <input type="hidden" id="hospitalizationValHidden" name="hosp_times" value=" " disabled>
-                            @else
-                                <input type="number" name="hosp_times" class="col-0 mx-1" style="height: 25px; width: 138px;" id="hosp_times" disabled>
-                            @endif
-                        </div>
-                        <div class="row">
-                            @if($medical_exam->personal_and_social_history->operation == "Yes")
-                                <input type="checkbox" id="operation" name="operation" value="Yes" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'operation')" checked>
-                                <input type="hidden" id="operationHidden" name="operation" value="Yes">
-                            @else
-                                <input type="checkbox" id="operation" name="operation" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'operation')">
-                            @endif
-                            <div class="col-0">
-                                <p class="h5 mr-1"><strong>F. Operation/s:</strong></p>
-                            </div>
-                            @if($medical_exam->personal_and_social_history->operation == "Yes")
-                                <input type="number" name="op_times" class="col-0 mx-1" style="height: 25px; width: 185px;" id="op_times" value="{{ $medical_exam->personal_and_social_history->op_times }}" required>
-                                <input type="hidden" id="operationValHidden" name="op_times" value=" " disabled>
-                            @else
-                                <input type="number" name="op_times" class="col-0 mx-1" style="height: 25px; width: 185px;" id="op_times" disabled>
-                            @endif
-                        </div>
-                    </div>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col">
                     <!-- Review of System -->
                     <div class="text-center">
-                        <h3><strong>G. Review of System</strong></h3>
+                        <h3><strong>E. Review of System</strong></h3>
                     </div>
                     <table class="table table-sm table-bordered mb-2">
                         <tr>
                             <th></th>
                             <th class="text-center">(-)</th>
-                            <th class="text-center" width="250px">(+)</th>
+                            <th class="text-center" width="670px">(+)</th>
                         </tr>
 
                         <tr>
@@ -1028,620 +1032,620 @@
                 </div>
             </div>
 
-                <!-- Physical Examination -->
-                <h2><strong>II. Physical Examination</strong></h2>
-                <div class="row mb-3">
-                    <div class="col border">
-                        <p class="mb-1"><strong>Height:</strong></p>
-                        <div class="row">
-                            <div class="col-0 ml-2">
-                                <input type="number" name="height" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="height" value="{{ $medical_exam->physical_examination->height }}" required>cm.
-                            </div>
+            <!-- Physical Examination -->
+            <h2><strong>II. Physical Examination</strong></h2>
+            <div class="row mb-3">
+                <div class="col border">
+                    <p class="mb-1"><strong>Height:</strong></p>
+                    <div class="row">
+                        <div class="col-0 ml-2">
+                            <input type="number" name="height" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="height" value="{{ $medical_exam->physical_examination->height }}" required>cm.
                         </div>
-                    </div> 
-                    <div class="col border">
-                        <p class="mb-1"><strong>Weight:</strong></p>
-                        <div class="row">
-                            <div class="col-0 ml-2">
-                                <input type="number" name="weight" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="weight" value="{{ $medical_exam->physical_examination->weight }}" required>kg.
-                            </div>
+                    </div>
+                </div> 
+                <div class="col border">
+                    <p class="mb-1"><strong>Weight:</strong></p>
+                    <div class="row">
+                        <div class="col-0 ml-2">
+                            <input type="number" name="weight" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="weight" value="{{ $medical_exam->physical_examination->weight }}" required>kg.
                         </div>
-                    </div> 
-                    <div class="col border">
-                        <p class="mb-1"><strong>BP (mm/hg):</strong></p>
-                        <div class="row">
-                            <div class="col-0" style="margin-left: 1px;">
-                                <input type="number" name="bp1" class="col-0 mx-1 mb-1" style="height: 25px; width: 50px;" id="bp1" value="{{ $medical_exam->physical_examination['bp1'] }}" required>
-                            </div>
-                            <div class="col-0">
-                                <p>/</p>
-                            </div>
-                            <div class="col-0">
-                                <input type="number" name="bp2" class="col-0 mx-1 mb-1" style="height: 25px; width: 50px;" id="bp2" value="{{ $medical_exam->physical_examination['bp2'] }}" required>
-                            </div>
-                            <div class="col-0 mb-1 ml-1">
-                                <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpBP" style="display: none;"></i>
-                                <i class="fas fa-arrow-down mt-1 mx-1" id="arrowDownBP" style="display: none;"></i>
-                            </div>
+                    </div>
+                </div> 
+                <div class="col border">
+                    <p class="mb-1"><strong>BP (mm/hg):</strong></p>
+                    <div class="row">
+                        <div class="col-0" style="margin-left: 1px;">
+                            <input type="number" name="bp1" class="col-0 mx-1 mb-1" style="height: 25px; width: 50px;" id="bp1" value="{{ $medical_exam->physical_examination['bp1'] }}" required>
                         </div>
-                    </div> 
-                    <div class="col border">
-                        <p class="mb-1"><strong>Cardiac Rate:</strong></p>
-                        <div class="row">
-                            <div class="col-0 ml-1">
-                                <input type="number" name="cardiac_rate" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="cardiac_rate" value="{{ $medical_exam->physical_examination->cardiac_rate }}" required>
-                            </div>
-                            <div class="col-0">
-                                <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpCR" style="display: none;"></i>
-                                <i class="fas fa-arrow-down mt-1 mx-1" id="arrowDownCR" style="display: none;"></i>
-                            </div>
-                            <div class="col-0">
-                                BPM
-                            </div>
+                        <div class="col-0">
+                            <p>/</p>
                         </div>
-                    </div> 
-                    <div class="col border">
-                        <p class="mb-1"><strong>Respiratory Rate</strong></p>
-                        <div class="row">
-                            <div class="col-0 ml-1">
-                                <input type="number" name="respiratory_rate" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="respiratory_rate" value="{{ $medical_exam->physical_examination->respiratory_rate }}" required>
-                            </div>
-                            <div class="col-0">
-                                <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpRR" style="display: none;"></i>
-                                <i class="fas fa-arrow-down mt-1 mx-1" id="arrowDownRR" style="display: none;"></i>
-                            </div>
-                            <div class="col-0">
-                                BPM
-                            </div>
+                        <div class="col-0">
+                            <input type="number" name="bp2" class="col-0 mx-1 mb-1" style="height: 25px; width: 50px;" id="bp2" value="{{ $medical_exam->physical_examination['bp2'] }}" required>
                         </div>
-                    </div> 
-                    <div class="col border">
-                        <p class="mb-1"><strong>BMI:</strong></p>
-                        <div class="row">
-                            <div class="col-0 ml-1">
-                                <input type="number" name="bmi" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="bmi" value="{{ $medical_exam->physical_examination->bmi }}" readonly>
-                            </div>
-                            <div class="col-0">
-                                <p id="weightCategory"></p>
-                            </div>
+                        <div class="col-0 mb-1 ml-1">
+                            <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpBP" style="display: none;"></i>
+                            <i class="fas fa-arrow-down mt-1 mx-1" id="arrowDownBP" style="display: none;"></i>
                         </div>
-                    </div> 
-                </div>
+                    </div>
+                </div> 
+                <div class="col border">
+                    <p class="mb-1"><strong>Cardiac Rate:</strong></p>
+                    <div class="row">
+                        <div class="col-0 ml-1">
+                            <input type="number" name="cardiac_rate" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="cardiac_rate" value="{{ $medical_exam->physical_examination->cardiac_rate }}" required>
+                        </div>
+                        <div class="col-0">
+                            <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpCR" style="display: none;"></i>
+                            <i class="fas fa-arrow-down mt-1 mx-1" id="arrowDownCR" style="display: none;"></i>
+                        </div>
+                        <div class="col-0">
+                            BPM
+                        </div>
+                    </div>
+                </div> 
+                <div class="col border">
+                    <p class="mb-1"><strong>Respiratory Rate</strong></p>
+                    <div class="row">
+                        <div class="col-0 ml-1">
+                            <input type="number" name="respiratory_rate" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="respiratory_rate" value="{{ $medical_exam->physical_examination->respiratory_rate }}" required>
+                        </div>
+                        <div class="col-0">
+                            <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpRR" style="display: none;"></i>
+                            <i class="fas fa-arrow-down mt-1 mx-1" id="arrowDownRR" style="display: none;"></i>
+                        </div>
+                        <div class="col-0">
+                            BPM
+                        </div>
+                    </div>
+                </div> 
+                <div class="col border">
+                    <p class="mb-1"><strong>BMI:</strong></p>
+                    <div class="row">
+                        <div class="col-0 ml-1">
+                            <input type="number" name="bmi" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="bmi" value="{{ $medical_exam->physical_examination->bmi }}" readonly>
+                        </div>
+                        <div class="col-0">
+                            <p id="weightCategory"></p>
+                        </div>
+                    </div>
+                </div> 
+            </div>
 
-                <div class="row">
-                    <div class="col">
-                        <table class="table table-sm table-bordered mb-2">
-                            <tr>
-                                <th></th>
-                                <th class="text-center">Normal</th>
-                                <th class="text-center" width="250px">Findings</th>
-                            </tr>
+            <div class="row">
+                <div class="col">
+                    <table class="table table-sm table-bordered mb-2">
+                        <tr>
+                            <th></th>
+                            <th class="text-center">Normal</th>
+                            <th class="text-center" width="250px">Findings</th>
+                        </tr>
 
-                            <tr>
-                                <td>General Appearance</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination->general_appearance == "Yes")
-                                        <input type="checkbox" id="general_appearance" name="general_appearance" value="Yes" onchange="toggleTextareaAndHidden('general_appearance', 'toggleTextarea', 'toggleHidden')" checked>
-                                        <input type="hidden" id="general_appearanceHidden" name="general_appearance" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="general_appearance" name="general_appearance" value="Yes" onchange="toggleTextareaAndHidden('general_appearance', 'toggleTextarea', 'toggleHidden')">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($medical_exam->physical_examination->general_appearance == "No")
-                                        <textarea class="form-control" name="1_pe_respond" id="findingsTextarea_general_appearance" required>{{ $medical_exam->physical_examination->medical_exam_response['1_pe_respond'] }}</textarea>
-                                        <input type="hidden" id="general_appearanceRepHidden" name="1_pe_respond" value=" " disabled>
-                                    @else
-                                        <textarea class="form-control" name="1_pe_respond" id="findingsTextarea_general_appearance" disabled>Not Applicable</textarea>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Skin</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination['skin1'] == "Yes")
-                                        <input type="checkbox" id="skin1" name="skin1" value="Yes" onchange="toggleTextareaAndHidden('skin1', 'toggleTextarea', 'toggleHidden')" checked>
-                                        <input type="hidden" id="skin1Hidden" name="skin1" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="skin1" name="skin1" value="Yes" onchange="toggleTextareaAndHidden('skin1', 'toggleTextarea', 'toggleHidden')">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($medical_exam->physical_examination['skin1'] == "No")
-                                        <textarea class="form-control" name="2_pe_respond" id="findingsTextarea_skin1" required>{{ $medical_exam->physical_examination->medical_exam_response['2_pe_respond'] }}</textarea>
-                                        <input type="hidden" id="skin1RepHidden" name="2_pe_respond" value=" " disabled>
-                                    @else
-                                        <textarea class="form-control" name="2_pe_respond" id="findingsTextarea_skin1" disabled>Not Applicable</textarea>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Head and Scalp</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination->head_and_scalp == "Yes")
-                                        <input type="checkbox" id="head_and_scalp" name="head_and_scalp" value="Yes" onchange="toggleTextareaAndHidden('head_and_scalp', 'toggleTextarea', 'toggleHidden')" checked>
-                                        <input type="hidden" id="head_and_scalpHidden" name="head_and_scalp" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="head_and_scalp" name="head_and_scalp" value="Yes" onchange="toggleTextareaAndHidden('head_and_scalp', 'toggleTextarea', 'toggleHidden')">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($medical_exam->physical_examination->head_and_scalp == "No")
-                                        <textarea class="form-control" name="3_pe_respond" id="findingsTextarea_head_and_scalp" required>{{ $medical_exam->physical_examination->medical_exam_response['3_pe_respond'] }}</textarea>
-                                        <input type="hidden" id="head_and_scalpRepHidden" name="3_pe_respond" value=" " disabled>
-                                    @else
-                                        <textarea class="form-control" name="3_pe_respond" id="findingsTextarea_head_and_scalp" disabled>Not Applicable</textarea>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Eyes</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination->eyes == "Yes")
-                                        <input type="checkbox" id="eyes" name="eyes" value="Yes" onchange="updateCheckboxValue(this, 'eyes')" checked>
-                                        <input type="hidden" id="eyesHidden" name="eyes" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="eyes" name="eyes" value="Yes" onchange="updateCheckboxValue(this, 'eyes')">
-                                        <input type="hidden" id="eyesHidden" name="eyes" value="No">
-                                    @endif
-                                </td>
-                                <td>
-                                    <div class="row">
-                                        <div class="col-0">
-                                            @if($medical_exam->physical_examination->eyes == "No")
-                                                <input type="number" name="od_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_pe_respond" value="{{ $medical_exam->physical_examination->medical_exam_response->od_pe_respond }}">
-                                                <input type="hidden" id="eyesValHidden1" name="od_pe_respond" value=" " disabled>
-                                            @else
-                                                <input type="number" name="od_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_pe_respond" disabled>
-                                            @endif
-                                        </div>
-                                        <div class="col-0">
-                                            <p>/</p>
-                                        </div>
-                                        <div class="col-0">
-                                            @if($medical_exam->physical_examination->eyes == "No")
-                                                <input type="number" name="od1_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od1_pe_respond" value="{{ $medical_exam->physical_examination->medical_exam_response['od1_pe_respond'] }}">
-                                                <input type="hidden" id="eyesValHidden2" name="od1_pe_respond" value=" " disabled>    
-                                            @else
-                                                <input type="number" name="od1_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od1_pe_respond" disabled>
-                                            @endif
-                                        </div>
-                                        <div class="col-0">
-                                            <p>OD</p>
-                                        </div>
-                                        <div class="col-0">
-                                            @if($medical_exam->physical_examination->eyes == "No")
-                                                <input type="number" name="os_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os_pe_respond" value="{{ $medical_exam->physical_examination->medical_exam_response->os_pe_respond }}">
-                                                <input type="hidden" id="eyesValHidden3" name="os_pe_respond" value=" " disabled>    
-                                            @else
-                                                <input type="number" name="os_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os_pe_respond" disabled>
-                                            @endif
-                                        </div>
-                                        <div class="col-0">
-                                            <p>/</p>
-                                        </div>
-                                        <div class="col-0">
-                                            @if($medical_exam->physical_examination->eyes == "No")
-                                                <input type="number" name="os1_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os1_pe_respond" value="{{ $medical_exam->physical_examination->medical_exam_response['os1_pe_respond'] }}">
-                                                <input type="hidden" id="eyesValHidden4" name="os1_pe_respond" value=" " disabled>
-                                            @else
-                                                <input type="number" name="os1_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os1_pe_respond" disabled>
-                                            @endif
-                                        </div>
-                                        <div class="col-0">
-                                            <p>OS</p>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-right">Corrected</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination->corrected == "Yes")
-                                        <input type="checkbox" id="corrected" name="corrected" value="Yes" onchange="updateCheckboxValue(this, 'corrected')" checked>
-                                        <input type="hidden" id="correctedHidden" name="corrected" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="corrected" name="corrected" value="Yes" onchange="updateCheckboxValue(this, 'corrected')">
-                                        <input type="hidden" id="correctedHidden" name="corrected" value="No">
-                                    @endif
-                                </td>
-                                <td>
+                        <tr>
+                            <td>General Appearance</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination->general_appearance == "Yes")
+                                    <input type="checkbox" id="general_appearance" name="general_appearance" value="Yes" onchange="toggleTextareaAndHidden('general_appearance', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="general_appearanceHidden" name="general_appearance" value="Yes">
+                                @else
+                                    <input type="checkbox" id="general_appearance" name="general_appearance" value="Yes" onchange="toggleTextareaAndHidden('general_appearance', 'toggleTextarea', 'toggleHidden')">
+                                @endif
+                            </td>
+                            <td>
+                                @if($medical_exam->physical_examination->general_appearance == "No")
+                                    <textarea class="form-control" name="1_pe_respond" id="findingsTextarea_general_appearance" required>{{ $medical_exam->physical_examination->medical_exam_response['1_pe_respond'] }}</textarea>
+                                    <input type="hidden" id="general_appearanceRepHidden" name="1_pe_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="1_pe_respond" id="findingsTextarea_general_appearance" disabled>Not Applicable</textarea>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Skin</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination['skin1'] == "Yes")
+                                    <input type="checkbox" id="skin1" name="skin1" value="Yes" onchange="toggleTextareaAndHidden('skin1', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="skin1Hidden" name="skin1" value="Yes">
+                                @else
+                                    <input type="checkbox" id="skin1" name="skin1" value="Yes" onchange="toggleTextareaAndHidden('skin1', 'toggleTextarea', 'toggleHidden')">
+                                @endif
+                            </td>
+                            <td>
+                                @if($medical_exam->physical_examination['skin1'] == "No")
+                                    <textarea class="form-control" name="2_pe_respond" id="findingsTextarea_skin1" required>{{ $medical_exam->physical_examination->medical_exam_response['2_pe_respond'] }}</textarea>
+                                    <input type="hidden" id="skin1RepHidden" name="2_pe_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="2_pe_respond" id="findingsTextarea_skin1" disabled>Not Applicable</textarea>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Head and Scalp</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination->head_and_scalp == "Yes")
+                                    <input type="checkbox" id="head_and_scalp" name="head_and_scalp" value="Yes" onchange="toggleTextareaAndHidden('head_and_scalp', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="head_and_scalpHidden" name="head_and_scalp" value="Yes">
+                                @else
+                                    <input type="checkbox" id="head_and_scalp" name="head_and_scalp" value="Yes" onchange="toggleTextareaAndHidden('head_and_scalp', 'toggleTextarea', 'toggleHidden')">
+                                @endif
+                            </td>
+                            <td>
+                                @if($medical_exam->physical_examination->head_and_scalp == "No")
+                                    <textarea class="form-control" name="3_pe_respond" id="findingsTextarea_head_and_scalp" required>{{ $medical_exam->physical_examination->medical_exam_response['3_pe_respond'] }}</textarea>
+                                    <input type="hidden" id="head_and_scalpRepHidden" name="3_pe_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="3_pe_respond" id="findingsTextarea_head_and_scalp" disabled>Not Applicable</textarea>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Eyes</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination->eyes == "Yes")
+                                    <input type="checkbox" id="eyes" name="eyes" value="Yes" onchange="updateCheckboxValue(this, 'eyes')" checked>
+                                    <input type="hidden" id="eyesHidden" name="eyes" value="Yes">
+                                @else
+                                    <input type="checkbox" id="eyes" name="eyes" value="Yes" onchange="updateCheckboxValue(this, 'eyes')">
+                                    <input type="hidden" id="eyesHidden" name="eyes" value="No">
+                                @endif
+                            </td>
+                            <td>
                                 <div class="row">
-                                        <div class="col-0">
-                                            @if($medical_exam->physical_examination->corrected == "No")
-                                                <input type="number" name="od_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_pe_respond1" value="{{ $medical_exam->physical_examination->medical_exam_response['od_pe_respond1'] }}">
-                                                <input type="hidden" id="correctedValHidden1" name="od_pe_respond1" value=" " disabled>
-                                            @else
-                                                <input type="number" name="od_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_pe_respond1" disabled>
-                                            @endif
-                                        </div>
-                                        <div class="col-0">
-                                            <p>/</p>
-                                        </div>
-                                        <div class="col-0">
-                                            @if($medical_exam->physical_examination->corrected == "No")
-                                                <input type="number" name="od1_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od1_pe_respond1" value="{{ $medical_exam->physical_examination->medical_exam_response['od1_pe_respond1'] }}">
-                                                <input type="hidden" id="correctedValHidden2" name="od1_pe_respond1" value=" " disabled>    
-                                            @else
-                                                <input type="number" name="od1_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od1_pe_respond1" disabled>
-                                            @endif
-                                        </div>
-                                        <div class="col-0">
-                                            <p>OD</p>
-                                        </div>
-                                        <div class="col-0">
-                                            @if($medical_exam->physical_examination->corrected == "No")
-                                                <input type="number" name="os_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os_pe_respond1" value="{{ $medical_exam->physical_examination->medical_exam_response['os_pe_respond1'] }}">
-                                                <input type="hidden" id="correctedValHidden3" name="os_pe_respond1" value=" " disabled>    
-                                            @else
-                                                <input type="number" name="os_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os_pe_respond1" disabled>
-                                            @endif
-                                        </div>
-                                        <div class="col-0">
-                                            <p>/</p>
-                                        </div>
-                                        <div class="col-0">
-                                            @if($medical_exam->physical_examination->corrected == "No")
-                                                <input type="number" name="os1_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os1_pe_respond1" value="{{ $medical_exam->physical_examination->medical_exam_response['os1_pe_respond1'] }}">
-                                                <input type="hidden" id="correctedValHidden4" name="os1_pe_respond1" value=" " disabled>
-                                            @else
-                                                <input type="number" name="os1_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os1_pe_respond1" disabled>
-                                            @endif
-                                        </div>
-                                        <div class="col-0">
-                                            <p>OS</p>
-                                        </div>
+                                    <div class="col-0">
+                                        @if($medical_exam->physical_examination->eyes == "No")
+                                            <input type="number" name="od_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_pe_respond" value="{{ $medical_exam->physical_examination->medical_exam_response->od_pe_respond }}">
+                                            <input type="hidden" id="eyesValHidden1" name="od_pe_respond" value=" " disabled>
+                                        @else
+                                            <input type="number" name="od_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_pe_respond" disabled>
+                                        @endif
                                     </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Pupils</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination->pupils == "Yes")
-                                        <input type="checkbox" id="pupils" name="pupils" value="Yes" onchange="toggleTextareaAndHidden('pupils', 'toggleTextarea', 'toggleHidden')" checked>
-                                        <input type="hidden" id="pupilsHidden" name="pupils" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="pupils" name="pupils" value="Yes" onchange="toggleTextareaAndHidden('pupils', 'toggleTextarea', 'toggleHidden')">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($medical_exam->physical_examination->pupils == "No")
-                                        <textarea class="form-control" name="6_pe_respond" id="findingsTextarea_pupils" required>{{ $medical_exam->physical_examination->medical_exam_response['6_pe_respond'] }}</textarea>
-                                        <input type="hidden" id="pupilsRepHidden" name="6_pe_respond" value=" " disabled>
-                                    @else
-                                        <textarea class="form-control" name="6_pe_respond" id="findingsTextarea_pupils" disabled>Not Applicable</textarea>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ear, Eardrums</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination->ear_eardrums == "Yes")
-                                        <input type="checkbox" id="ear_eardrums" name="ear_eardrums" value="Yes" onchange="toggleTextareaAndHidden('ear_eardrums', 'toggleTextarea', 'toggleHidden')" checked>
-                                        <input type="hidden" id="ear_eardrumsHidden" name="ear_eardrums" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="ear_eardrums" name="ear_eardrums" value="Yes" onchange="toggleTextareaAndHidden('ear_eardrums', 'toggleTextarea', 'toggleHidden')">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($medical_exam->physical_examination->ear_eardrums == "No")
-                                        <textarea class="form-control" name="7_pe_respond" id="findingsTextarea_ear_eardrums" required>{{ $medical_exam->physical_examination->medical_exam_response['7_pe_respond'] }}</textarea>
-                                        <input type="hidden" id="ear_eardrumsRepHidden" name="7_pe_respond" value=" " disabled>
-                                    @else
-                                        <textarea class="form-control" name="7_pe_respond" id="findingsTextarea_ear_eardrums" disabled>Not Applicable</textarea>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Nose, Sinuses</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination->nose_sinuses == "Yes")
-                                        <input type="checkbox" id="nose_sinuses" name="nose_sinuses" value="Yes" onchange="toggleTextareaAndHidden('nose_sinuses', 'toggleTextarea', 'toggleHidden')" checked>
-                                        <input type="hidden" id="nose_sinusesHidden" name="nose_sinuses" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="nose_sinuses" name="nose_sinuses" value="Yes" onchange="toggleTextareaAndHidden('nose_sinuses', 'toggleTextarea', 'toggleHidden')">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($medical_exam->physical_examination->nose_sinuses == "No")
-                                        <textarea class="form-control" name="8_pe_respond" id="findingsTextarea_nose_sinuses" required>{{ $medical_exam->physical_examination->medical_exam_response['8_pe_respond'] }}</textarea>
-                                        <input type="hidden" id="nose_sinusesRepHidden" name="8_pe_respond" value=" " disabled>
-                                    @else
-                                        <textarea class="form-control" name="8_pe_respond" id="findingsTextarea_nose_sinuses" disabled>Not Applicable</textarea>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Mouth, Throat</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination->mouth_throat == "Yes")
-                                        <input type="checkbox" id="mouth_throat" name="mouth_throat" value="Yes" onchange="toggleTextareaAndHidden('mouth_throat', 'toggleTextarea', 'toggleHidden')" checked>
-                                        <input type="hidden" id="mouth_throatHidden" name="mouth_throat" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="mouth_throat" name="mouth_throat" value="Yes" onchange="toggleTextareaAndHidden('mouth_throat', 'toggleTextarea', 'toggleHidden')">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($medical_exam->physical_examination->mouth_throat == "No")
-                                        <textarea class="form-control" name="9_pe_respond" id="findingsTextarea_mouth_throat" required>{{ $medical_exam->physical_examination->medical_exam_response['9_pe_respond'] }}</textarea>
-                                        <input type="hidden" id="mouth_throatRepHidden" name="9_pe_respond" value=" " disabled>
-                                    @else
-                                        <textarea class="form-control" name="9_pe_respond" id="findingsTextarea_mouth_throat" disabled>Not Applicable</textarea>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Neck, Thyroid</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination->neck_thyroid == "Yes")
-                                        <input type="checkbox" id="neck_thyroid" name="neck_thyroid" value="Yes" onchange="toggleTextareaAndHidden('neck_thyroid', 'toggleTextarea', 'toggleHidden')" checked>
-                                        <input type="hidden" id="neck_thyroidHidden" name="neck_thyroid" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="neck_thyroid" name="neck_thyroid" value="Yes" onchange="toggleTextareaAndHidden('neck_thyroid', 'toggleTextarea', 'toggleHidden')">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($medical_exam->physical_examination->neck_thyroid == "No")
-                                        <textarea class="form-control" name="10_pe_respond" id="findingsTextarea_neck_thyroid" required>{{ $medical_exam->physical_examination->medical_exam_response['10_pe_respond'] }}</textarea>
-                                        <input type="hidden" id="neck_thyroidRepHidden" name="10_pe_respond" value=" " disabled>
-                                    @else
-                                        <textarea class="form-control" name="10_pe_respond" id="findingsTextarea_neck_thyroid" disabled>Not Applicable</textarea>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Chest, Breast, Axilla</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination->chest_breast_axilla == "Yes")
-                                        <input type="checkbox" id="chest_breast_axilla" name="chest_breast_axilla" value="Yes" onchange="toggleTextareaAndHidden('chest_breast_axilla', 'toggleTextarea', 'toggleHidden')" checked>
-                                        <input type="hidden" id="chest_breast_axillaHidden" name="chest_breast_axilla" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="chest_breast_axilla" name="chest_breast_axilla" value="Yes" onchange="toggleTextareaAndHidden('chest_breast_axilla', 'toggleTextarea', 'toggleHidden')">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($medical_exam->physical_examination->chest_breast_axilla == "No")
-                                        <textarea class="form-control" name="11_pe_respond" id="findingsTextarea_chest_breast_axilla" required>{{ $medical_exam->physical_examination->medical_exam_response['11_pe_respond'] }}</textarea>
-                                        <input type="hidden" id="chest_breast_axillaRepHidden" name="11_pe_respond" value=" " disabled>
-                                    @else
-                                        <textarea class="form-control" name="11_pe_respond" id="findingsTextarea_chest_breast_axilla" disabled>Not Applicable</textarea>
-                                    @endif
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    
-                    <div class="col">
-                        <table class="table table-sm table-bordered mb-2">
-                            <tr>
-                                <th></th>
-                                <th class="text-center">Normal</th>
-                                <th class="text-center" width="250px">Findings</th>
-                            </tr>
-
-                            <tr>
-                                <td>Heart-Cardiovascular</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination->heart_cardiovascular == "Yes")
-                                        <input type="checkbox" id="heart_cardiovascular" name="heart_cardiovascular" value="Yes" onchange="toggleTextareaAndHidden('heart_cardiovascular', 'toggleTextarea', 'toggleHidden')" checked>
-                                        <input type="hidden" id="heart_cardiovascularHidden" name="heart_cardiovascular" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="heart_cardiovascular" name="heart_cardiovascular" value="Yes" onchange="toggleTextareaAndHidden('heart_cardiovascular', 'toggleTextarea', 'toggleHidden')">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($medical_exam->physical_examination->heart_cardiovascular == "No")
-                                        <textarea class="form-control" name="12_pe_respond" id="findingsTextarea_heart_cardiovascular" required>{{ $medical_exam->physical_examination->medical_exam_response['12_pe_respond'] }}</textarea>
-                                        <input type="hidden" id="heart_cardiovascularRepHidden" name="12_pe_respond" value=" " disabled>
-                                    @else
-                                        <textarea class="form-control" name="12_pe_respond" id="findingsTextarea_heart_cardiovascular" disabled>Not Applicable</textarea>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Lungs-Respiratory</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination->lungs_respiratory == "Yes")
-                                        <input type="checkbox" id="lungs_respiratory" name="lungs_respiratory" value="Yes" onchange="toggleTextareaAndHidden('lungs_respiratory', 'toggleTextarea', 'toggleHidden')" checked>
-                                        <input type="hidden" id="lungs_respiratoryHidden" name="lungs_respiratory" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="lungs_respiratory" name="lungs_respiratory" value="Yes" onchange="toggleTextareaAndHidden('lungs_respiratory', 'toggleTextarea', 'toggleHidden')">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($medical_exam->physical_examination->lungs_respiratory == "No")
-                                        <textarea class="form-control" name="13_pe_respond" id="findingsTextarea_lungs_respiratory" required>{{ $medical_exam->physical_examination->medical_exam_response['13_pe_respond'] }}</textarea>
-                                        <input type="hidden" id="lungs_respiratoryRepHidden" name="13_pe_respond" value=" " disabled>
-                                    @else
-                                        <textarea class="form-control" name="13_pe_respond" id="findingsTextarea_lungs_respiratory" disabled>Not Applicable</textarea>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Abdomen</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination->abdomen == "Yes")
-                                        <input type="checkbox" id="abdomen" name="abdomen" value="Yes" onchange="toggleTextareaAndHidden('abdomen', 'toggleTextarea', 'toggleHidden')" checked>
-                                        <input type="hidden" id="abdomenHidden" name="abdomen" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="abdomen" name="abdomen" value="Yes" onchange="toggleTextareaAndHidden('abdomen', 'toggleTextarea', 'toggleHidden')">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($medical_exam->physical_examination->abdomen == "No")
-                                        <textarea class="form-control" name="14_pe_respond" id="findingsTextarea_abdomen" required>{{ $medical_exam->physical_examination->medical_exam_response['14_pe_respond'] }}</textarea>
-                                        <input type="hidden" id="abdomenRepHidden" name="14_pe_respond" value=" " disabled>
-                                    @else
-                                        <textarea class="form-control" name="14_pe_respond" id="findingsTextarea_abdomen" disabled>Not Applicable</textarea>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Back, Flanks</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination->back_flanks == "Yes")
-                                        <input type="checkbox" id="back_flanks" name="back_flanks" value="Yes" onchange="toggleTextareaAndHidden('back_flanks', 'toggleTextarea', 'toggleHidden')" checked>
-                                        <input type="hidden" id="back_flanksHidden" name="back_flanks" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="back_flanks" name="back_flanks" value="Yes" onchange="toggleTextareaAndHidden('back_flanks', 'toggleTextarea', 'toggleHidden')">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($medical_exam->physical_examination->back_flanks == "No")
-                                        <textarea class="form-control" name="15_pe_respond" id="findingsTextarea_back_flanks" required>{{ $medical_exam->physical_examination->medical_exam_response['15_pe_respond'] }}</textarea>
-                                        <input type="hidden" id="back_flanksRepHidden" name="15_pe_respond" value=" " disabled>
-                                    @else
-                                        <textarea class="form-control" name="15_pe_respond" id="findingsTextarea_back_flanks" disabled>Not Applicable</textarea>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Anus, Rectum</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination->anus_rectum == "Yes")
-                                        <input type="checkbox" id="anus_rectum" name="anus_rectum" value="Yes" onchange="toggleTextareaAndHidden('anus_rectum', 'toggleTextarea', 'toggleHidden')" checked>
-                                        <input type="hidden" id="anus_rectumHidden" name="anus_rectum" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="anus_rectum" name="anus_rectum" value="Yes" onchange="toggleTextareaAndHidden('anus_rectum', 'toggleTextarea', 'toggleHidden')">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($medical_exam->physical_examination->anus_rectum == "No")
-                                        <textarea class="form-control" name="16_pe_respond" id="findingsTextarea_anus_rectum" required>{{ $medical_exam->physical_examination->medical_exam_response['16_pe_respond'] }}</textarea>
-                                        <input type="hidden" id="anus_rectumRepHidden" name="16_pe_respond" value=" " disabled>
-                                    @else
-                                        <textarea class="form-control" name="16_pe_respond" id="findingsTextarea_anus_rectum" disabled>Not Applicable</textarea>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Genito-Urinary System</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination->genito_urinary_system == "Yes")
-                                        <input type="checkbox" id="genito_urinary_system" name="genito_urinary_system" value="Yes" onchange="toggleTextareaAndHidden('genito_urinary_system', 'toggleTextarea', 'toggleHidden')" checked>
-                                        <input type="hidden" id="genito_urinary_systemHidden" name="genito_urinary_system" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="genito_urinary_system" name="genito_urinary_system" value="Yes" onchange="toggleTextareaAndHidden('genito_urinary_system', 'toggleTextarea', 'toggleHidden')">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($medical_exam->physical_examination->genito_urinary_system == "No")
-                                        <textarea class="form-control" name="17_pe_respond" id="findingsTextarea_genito_urinary_system" required>{{ $medical_exam->physical_examination->medical_exam_response['17_pe_respond'] }}</textarea>
-                                        <input type="hidden" id="genito_urinary_systemRepHidden" name="17_pe_respond" value=" " disabled>
-                                    @else
-                                        <textarea class="form-control" name="17_pe_respond" id="findingsTextarea_genito_urinary_system" disabled>Not Applicable</textarea>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Inguinal, Genitals</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination->inguinal_genitals == "Yes")
-                                        <input type="checkbox" id="inguinal_genitals" name="inguinal_genitals" value="Yes" onchange="toggleTextareaAndHidden('inguinal_genitals', 'toggleTextarea', 'toggleHidden')" checked>
-                                        <input type="hidden" id="inguinal_genitalsHidden" name="inguinal_genitals" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="inguinal_genitals" name="inguinal_genitals" value="Yes" onchange="toggleTextareaAndHidden('inguinal_genitals', 'toggleTextarea', 'toggleHidden')">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($medical_exam->physical_examination->inguinal_genitals == "No")
-                                        <textarea class="form-control" name="18_pe_respond" id="findingsTextarea_inguinal_genitals" required>{{ $medical_exam->physical_examination->medical_exam_response['18_pe_respond'] }}</textarea>
-                                        <input type="hidden" id="inguinal_genitalsRepHidden" name="18_pe_respond" value=" " disabled>
-                                    @else
-                                        <textarea class="form-control" name="18_pe_respond" id="findingsTextarea_inguinal_genitals" disabled>Not Applicable</textarea>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Musculo-Skeletal</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination['musculo_skeletal1'] == "Yes")
-                                        <input type="checkbox" id="musculo_skeletal1" name="musculo_skeletal1" value="Yes" onchange="toggleTextareaAndHidden('musculo_skeletal1', 'toggleTextarea', 'toggleHidden')" checked>
-                                        <input type="hidden" id="musculo_skeletal1Hidden" name="musculo_skeletal1" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="musculo_skeletal1" name="musculo_skeletal1" value="Yes" onchange="toggleTextareaAndHidden('musculo_skeletal1', 'toggleTextarea', 'toggleHidden')">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($medical_exam->physical_examination['musculo_skeletal1'] == "No")
-                                        <textarea class="form-control" name="19_pe_respond" id="findingsTextarea_musculo_skeletal1" required>{{ $medical_exam->physical_examination->medical_exam_response['19_pe_respond'] }}</textarea>
-                                        <input type="hidden" id="musculo_skeletal1RepHidden" name="19_pe_respond" value=" " disabled>
-                                    @else
-                                        <textarea class="form-control" name="19_pe_respond" id="findingsTextarea_musculo_skeletal1" disabled>Not Applicable</textarea>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Extremities</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination->extremities == "Yes")
-                                        <input type="checkbox" id="extremities" name="extremities" value="Yes" onchange="toggleTextareaAndHidden('extremities', 'toggleTextarea', 'toggleHidden')" checked>
-                                        <input type="hidden" id="extremitiesHidden" name="extremities" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="extremities" name="extremities" value="Yes" onchange="toggleTextareaAndHidden('extremities', 'toggleTextarea', 'toggleHidden')">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($medical_exam->physical_examination->extremities == "No")
-                                        <textarea class="form-control" name="20_pe_respond" id="findingsTextarea_extremities" required>{{ $medical_exam->physical_examination->medical_exam_response['20_pe_respond'] }}</textarea>
-                                        <input type="hidden" id="extremitiesRepHidden" name="20_pe_respond" value=" " disabled>
-                                    @else
-                                        <textarea class="form-control" name="20_pe_respond" id="findingsTextarea_extremities" disabled>Not Applicable</textarea>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Reflexes</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination->reflexes == "Yes")
-                                        <input type="checkbox" id="reflexes" name="reflexes" value="Yes" onchange="toggleTextareaAndHidden('reflexes', 'toggleTextarea', 'toggleHidden')" checked>
-                                        <input type="hidden" id="reflexesHidden" name="reflexes" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="reflexes" name="reflexes" value="Yes" onchange="toggleTextareaAndHidden('reflexes', 'toggleTextarea', 'toggleHidden')">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($medical_exam->physical_examination->reflexes == "No")
-                                        <textarea class="form-control" name="21_pe_respond" id="findingsTextarea_reflexes" required>{{ $medical_exam->physical_examination->medical_exam_response['21_pe_respond'] }}</textarea>
-                                        <input type="hidden" id="reflexesRepHidden" name="21_pe_respond" value=" " disabled>
-                                    @else
-                                        <textarea class="form-control" name="21_pe_respond" id="findingsTextarea_reflexes" disabled>Not Applicable</textarea>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Neurological</td>
-                                <td class="text-center">
-                                    @if($medical_exam->physical_examination->neurological == "Yes")
-                                        <input type="checkbox" id="neurological" name="neurological" value="Yes" onchange="toggleTextareaAndHidden('neurological', 'toggleTextarea', 'toggleHidden')" checked>
-                                        <input type="hidden" id="neurologicalHidden" name="neurological" value="Yes">
-                                    @else
-                                        <input type="checkbox" id="neurological" name="neurological" value="Yes" onchange="toggleTextareaAndHidden('neurological', 'toggleTextarea', 'toggleHidden')">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($medical_exam->physical_examination->neurological == "No")
-                                        <textarea class="form-control" name="22_pe_respond" id="findingsTextarea_neurological" required>{{ $medical_exam->physical_examination->medical_exam_response['22_pe_respond'] }}</textarea>
-                                        <input type="hidden" id="neurologicalRepHidden" name="22_pe_respond" value=" " disabled>
-                                    @else
-                                        <textarea class="form-control" name="22_pe_respond" id="findingsTextarea_neurological" disabled>Not Applicable</textarea>
-                                    @endif
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+                                    <div class="col-0">
+                                        <p>/</p>
+                                    </div>
+                                    <div class="col-0">
+                                        @if($medical_exam->physical_examination->eyes == "No")
+                                            <input type="number" name="od1_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od1_pe_respond" value="{{ $medical_exam->physical_examination->medical_exam_response['od1_pe_respond'] }}">
+                                            <input type="hidden" id="eyesValHidden2" name="od1_pe_respond" value=" " disabled>    
+                                        @else
+                                            <input type="number" name="od1_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od1_pe_respond" disabled>
+                                        @endif
+                                    </div>
+                                    <div class="col-0">
+                                        <p>OD</p>
+                                    </div>
+                                    <div class="col-0">
+                                        @if($medical_exam->physical_examination->eyes == "No")
+                                            <input type="number" name="os_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os_pe_respond" value="{{ $medical_exam->physical_examination->medical_exam_response->os_pe_respond }}">
+                                            <input type="hidden" id="eyesValHidden3" name="os_pe_respond" value=" " disabled>    
+                                        @else
+                                            <input type="number" name="os_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os_pe_respond" disabled>
+                                        @endif
+                                    </div>
+                                    <div class="col-0">
+                                        <p>/</p>
+                                    </div>
+                                    <div class="col-0">
+                                        @if($medical_exam->physical_examination->eyes == "No")
+                                            <input type="number" name="os1_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os1_pe_respond" value="{{ $medical_exam->physical_examination->medical_exam_response['os1_pe_respond'] }}">
+                                            <input type="hidden" id="eyesValHidden4" name="os1_pe_respond" value=" " disabled>
+                                        @else
+                                            <input type="number" name="os1_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os1_pe_respond" disabled>
+                                        @endif
+                                    </div>
+                                    <div class="col-0">
+                                        <p>OS</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">Corrected</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination->corrected == "Yes")
+                                    <input type="checkbox" id="corrected" name="corrected" value="Yes" onchange="updateCheckboxValue(this, 'corrected')" checked>
+                                    <input type="hidden" id="correctedHidden" name="corrected" value="Yes">
+                                @else
+                                    <input type="checkbox" id="corrected" name="corrected" value="Yes" onchange="updateCheckboxValue(this, 'corrected')">
+                                    <input type="hidden" id="correctedHidden" name="corrected" value="No">
+                                @endif
+                            </td>
+                            <td>
+                            <div class="row">
+                                    <div class="col-0">
+                                        @if($medical_exam->physical_examination->corrected == "No")
+                                            <input type="number" name="od_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_pe_respond1" value="{{ $medical_exam->physical_examination->medical_exam_response['od_pe_respond1'] }}">
+                                            <input type="hidden" id="correctedValHidden1" name="od_pe_respond1" value=" " disabled>
+                                        @else
+                                            <input type="number" name="od_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_pe_respond1" disabled>
+                                        @endif
+                                    </div>
+                                    <div class="col-0">
+                                        <p>/</p>
+                                    </div>
+                                    <div class="col-0">
+                                        @if($medical_exam->physical_examination->corrected == "No")
+                                            <input type="number" name="od1_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od1_pe_respond1" value="{{ $medical_exam->physical_examination->medical_exam_response['od1_pe_respond1'] }}">
+                                            <input type="hidden" id="correctedValHidden2" name="od1_pe_respond1" value=" " disabled>    
+                                        @else
+                                            <input type="number" name="od1_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od1_pe_respond1" disabled>
+                                        @endif
+                                    </div>
+                                    <div class="col-0">
+                                        <p>OD</p>
+                                    </div>
+                                    <div class="col-0">
+                                        @if($medical_exam->physical_examination->corrected == "No")
+                                            <input type="number" name="os_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os_pe_respond1" value="{{ $medical_exam->physical_examination->medical_exam_response['os_pe_respond1'] }}">
+                                            <input type="hidden" id="correctedValHidden3" name="os_pe_respond1" value=" " disabled>    
+                                        @else
+                                            <input type="number" name="os_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os_pe_respond1" disabled>
+                                        @endif
+                                    </div>
+                                    <div class="col-0">
+                                        <p>/</p>
+                                    </div>
+                                    <div class="col-0">
+                                        @if($medical_exam->physical_examination->corrected == "No")
+                                            <input type="number" name="os1_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os1_pe_respond1" value="{{ $medical_exam->physical_examination->medical_exam_response['os1_pe_respond1'] }}">
+                                            <input type="hidden" id="correctedValHidden4" name="os1_pe_respond1" value=" " disabled>
+                                        @else
+                                            <input type="number" name="os1_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os1_pe_respond1" disabled>
+                                        @endif
+                                    </div>
+                                    <div class="col-0">
+                                        <p>OS</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Pupils</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination->pupils == "Yes")
+                                    <input type="checkbox" id="pupils" name="pupils" value="Yes" onchange="toggleTextareaAndHidden('pupils', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="pupilsHidden" name="pupils" value="Yes">
+                                @else
+                                    <input type="checkbox" id="pupils" name="pupils" value="Yes" onchange="toggleTextareaAndHidden('pupils', 'toggleTextarea', 'toggleHidden')">
+                                @endif
+                            </td>
+                            <td>
+                                @if($medical_exam->physical_examination->pupils == "No")
+                                    <textarea class="form-control" name="6_pe_respond" id="findingsTextarea_pupils" required>{{ $medical_exam->physical_examination->medical_exam_response['6_pe_respond'] }}</textarea>
+                                    <input type="hidden" id="pupilsRepHidden" name="6_pe_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="6_pe_respond" id="findingsTextarea_pupils" disabled>Not Applicable</textarea>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ear, Eardrums</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination->ear_eardrums == "Yes")
+                                    <input type="checkbox" id="ear_eardrums" name="ear_eardrums" value="Yes" onchange="toggleTextareaAndHidden('ear_eardrums', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="ear_eardrumsHidden" name="ear_eardrums" value="Yes">
+                                @else
+                                    <input type="checkbox" id="ear_eardrums" name="ear_eardrums" value="Yes" onchange="toggleTextareaAndHidden('ear_eardrums', 'toggleTextarea', 'toggleHidden')">
+                                @endif
+                            </td>
+                            <td>
+                                @if($medical_exam->physical_examination->ear_eardrums == "No")
+                                    <textarea class="form-control" name="7_pe_respond" id="findingsTextarea_ear_eardrums" required>{{ $medical_exam->physical_examination->medical_exam_response['7_pe_respond'] }}</textarea>
+                                    <input type="hidden" id="ear_eardrumsRepHidden" name="7_pe_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="7_pe_respond" id="findingsTextarea_ear_eardrums" disabled>Not Applicable</textarea>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nose, Sinuses</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination->nose_sinuses == "Yes")
+                                    <input type="checkbox" id="nose_sinuses" name="nose_sinuses" value="Yes" onchange="toggleTextareaAndHidden('nose_sinuses', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="nose_sinusesHidden" name="nose_sinuses" value="Yes">
+                                @else
+                                    <input type="checkbox" id="nose_sinuses" name="nose_sinuses" value="Yes" onchange="toggleTextareaAndHidden('nose_sinuses', 'toggleTextarea', 'toggleHidden')">
+                                @endif
+                            </td>
+                            <td>
+                                @if($medical_exam->physical_examination->nose_sinuses == "No")
+                                    <textarea class="form-control" name="8_pe_respond" id="findingsTextarea_nose_sinuses" required>{{ $medical_exam->physical_examination->medical_exam_response['8_pe_respond'] }}</textarea>
+                                    <input type="hidden" id="nose_sinusesRepHidden" name="8_pe_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="8_pe_respond" id="findingsTextarea_nose_sinuses" disabled>Not Applicable</textarea>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mouth, Throat</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination->mouth_throat == "Yes")
+                                    <input type="checkbox" id="mouth_throat" name="mouth_throat" value="Yes" onchange="toggleTextareaAndHidden('mouth_throat', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="mouth_throatHidden" name="mouth_throat" value="Yes">
+                                @else
+                                    <input type="checkbox" id="mouth_throat" name="mouth_throat" value="Yes" onchange="toggleTextareaAndHidden('mouth_throat', 'toggleTextarea', 'toggleHidden')">
+                                @endif
+                            </td>
+                            <td>
+                                @if($medical_exam->physical_examination->mouth_throat == "No")
+                                    <textarea class="form-control" name="9_pe_respond" id="findingsTextarea_mouth_throat" required>{{ $medical_exam->physical_examination->medical_exam_response['9_pe_respond'] }}</textarea>
+                                    <input type="hidden" id="mouth_throatRepHidden" name="9_pe_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="9_pe_respond" id="findingsTextarea_mouth_throat" disabled>Not Applicable</textarea>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Neck, Thyroid</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination->neck_thyroid == "Yes")
+                                    <input type="checkbox" id="neck_thyroid" name="neck_thyroid" value="Yes" onchange="toggleTextareaAndHidden('neck_thyroid', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="neck_thyroidHidden" name="neck_thyroid" value="Yes">
+                                @else
+                                    <input type="checkbox" id="neck_thyroid" name="neck_thyroid" value="Yes" onchange="toggleTextareaAndHidden('neck_thyroid', 'toggleTextarea', 'toggleHidden')">
+                                @endif
+                            </td>
+                            <td>
+                                @if($medical_exam->physical_examination->neck_thyroid == "No")
+                                    <textarea class="form-control" name="10_pe_respond" id="findingsTextarea_neck_thyroid" required>{{ $medical_exam->physical_examination->medical_exam_response['10_pe_respond'] }}</textarea>
+                                    <input type="hidden" id="neck_thyroidRepHidden" name="10_pe_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="10_pe_respond" id="findingsTextarea_neck_thyroid" disabled>Not Applicable</textarea>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Chest, Breast, Axilla</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination->chest_breast_axilla == "Yes")
+                                    <input type="checkbox" id="chest_breast_axilla" name="chest_breast_axilla" value="Yes" onchange="toggleTextareaAndHidden('chest_breast_axilla', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="chest_breast_axillaHidden" name="chest_breast_axilla" value="Yes">
+                                @else
+                                    <input type="checkbox" id="chest_breast_axilla" name="chest_breast_axilla" value="Yes" onchange="toggleTextareaAndHidden('chest_breast_axilla', 'toggleTextarea', 'toggleHidden')">
+                                @endif
+                            </td>
+                            <td>
+                                @if($medical_exam->physical_examination->chest_breast_axilla == "No")
+                                    <textarea class="form-control" name="11_pe_respond" id="findingsTextarea_chest_breast_axilla" required>{{ $medical_exam->physical_examination->medical_exam_response['11_pe_respond'] }}</textarea>
+                                    <input type="hidden" id="chest_breast_axillaRepHidden" name="11_pe_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="11_pe_respond" id="findingsTextarea_chest_breast_axilla" disabled>Not Applicable</textarea>
+                                @endif
+                            </td>
+                        </tr>
+                    </table>
                 </div>
+                
+                <div class="col">
+                    <table class="table table-sm table-bordered mb-2">
+                        <tr>
+                            <th></th>
+                            <th class="text-center">Normal</th>
+                            <th class="text-center" width="250px">Findings</th>
+                        </tr>
 
-                <h4><strong>DIAGNOSIS:</strong></h4>
-                <div class="row mx-auto mb-3">
-                    <textarea class="form-control" name="diagnosis" id="diagnosis">{{ $medical_exam->physical_examination->medical_exam_response->diagnosis }}</textarea>
-                </div>
-
-                <div class="position-right ml-auto" style="width: 75px;">
-                    <button type="submit" class="btn btn-primary">Update</button>
+                        <tr>
+                            <td>Heart-Cardiovascular</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination->heart_cardiovascular == "Yes")
+                                    <input type="checkbox" id="heart_cardiovascular" name="heart_cardiovascular" value="Yes" onchange="toggleTextareaAndHidden('heart_cardiovascular', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="heart_cardiovascularHidden" name="heart_cardiovascular" value="Yes">
+                                @else
+                                    <input type="checkbox" id="heart_cardiovascular" name="heart_cardiovascular" value="Yes" onchange="toggleTextareaAndHidden('heart_cardiovascular', 'toggleTextarea', 'toggleHidden')">
+                                @endif
+                            </td>
+                            <td>
+                                @if($medical_exam->physical_examination->heart_cardiovascular == "No")
+                                    <textarea class="form-control" name="12_pe_respond" id="findingsTextarea_heart_cardiovascular" required>{{ $medical_exam->physical_examination->medical_exam_response['12_pe_respond'] }}</textarea>
+                                    <input type="hidden" id="heart_cardiovascularRepHidden" name="12_pe_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="12_pe_respond" id="findingsTextarea_heart_cardiovascular" disabled>Not Applicable</textarea>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lungs-Respiratory</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination->lungs_respiratory == "Yes")
+                                    <input type="checkbox" id="lungs_respiratory" name="lungs_respiratory" value="Yes" onchange="toggleTextareaAndHidden('lungs_respiratory', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="lungs_respiratoryHidden" name="lungs_respiratory" value="Yes">
+                                @else
+                                    <input type="checkbox" id="lungs_respiratory" name="lungs_respiratory" value="Yes" onchange="toggleTextareaAndHidden('lungs_respiratory', 'toggleTextarea', 'toggleHidden')">
+                                @endif
+                            </td>
+                            <td>
+                                @if($medical_exam->physical_examination->lungs_respiratory == "No")
+                                    <textarea class="form-control" name="13_pe_respond" id="findingsTextarea_lungs_respiratory" required>{{ $medical_exam->physical_examination->medical_exam_response['13_pe_respond'] }}</textarea>
+                                    <input type="hidden" id="lungs_respiratoryRepHidden" name="13_pe_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="13_pe_respond" id="findingsTextarea_lungs_respiratory" disabled>Not Applicable</textarea>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Abdomen</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination->abdomen == "Yes")
+                                    <input type="checkbox" id="abdomen" name="abdomen" value="Yes" onchange="toggleTextareaAndHidden('abdomen', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="abdomenHidden" name="abdomen" value="Yes">
+                                @else
+                                    <input type="checkbox" id="abdomen" name="abdomen" value="Yes" onchange="toggleTextareaAndHidden('abdomen', 'toggleTextarea', 'toggleHidden')">
+                                @endif
+                            </td>
+                            <td>
+                                @if($medical_exam->physical_examination->abdomen == "No")
+                                    <textarea class="form-control" name="14_pe_respond" id="findingsTextarea_abdomen" required>{{ $medical_exam->physical_examination->medical_exam_response['14_pe_respond'] }}</textarea>
+                                    <input type="hidden" id="abdomenRepHidden" name="14_pe_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="14_pe_respond" id="findingsTextarea_abdomen" disabled>Not Applicable</textarea>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Back, Flanks</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination->back_flanks == "Yes")
+                                    <input type="checkbox" id="back_flanks" name="back_flanks" value="Yes" onchange="toggleTextareaAndHidden('back_flanks', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="back_flanksHidden" name="back_flanks" value="Yes">
+                                @else
+                                    <input type="checkbox" id="back_flanks" name="back_flanks" value="Yes" onchange="toggleTextareaAndHidden('back_flanks', 'toggleTextarea', 'toggleHidden')">
+                                @endif
+                            </td>
+                            <td>
+                                @if($medical_exam->physical_examination->back_flanks == "No")
+                                    <textarea class="form-control" name="15_pe_respond" id="findingsTextarea_back_flanks" required>{{ $medical_exam->physical_examination->medical_exam_response['15_pe_respond'] }}</textarea>
+                                    <input type="hidden" id="back_flanksRepHidden" name="15_pe_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="15_pe_respond" id="findingsTextarea_back_flanks" disabled>Not Applicable</textarea>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Anus, Rectum</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination->anus_rectum == "Yes")
+                                    <input type="checkbox" id="anus_rectum" name="anus_rectum" value="Yes" onchange="toggleTextareaAndHidden('anus_rectum', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="anus_rectumHidden" name="anus_rectum" value="Yes">
+                                @else
+                                    <input type="checkbox" id="anus_rectum" name="anus_rectum" value="Yes" onchange="toggleTextareaAndHidden('anus_rectum', 'toggleTextarea', 'toggleHidden')">
+                                @endif
+                            </td>
+                            <td>
+                                @if($medical_exam->physical_examination->anus_rectum == "No")
+                                    <textarea class="form-control" name="16_pe_respond" id="findingsTextarea_anus_rectum" required>{{ $medical_exam->physical_examination->medical_exam_response['16_pe_respond'] }}</textarea>
+                                    <input type="hidden" id="anus_rectumRepHidden" name="16_pe_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="16_pe_respond" id="findingsTextarea_anus_rectum" disabled>Not Applicable</textarea>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Genito-Urinary System</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination->genito_urinary_system == "Yes")
+                                    <input type="checkbox" id="genito_urinary_system" name="genito_urinary_system" value="Yes" onchange="toggleTextareaAndHidden('genito_urinary_system', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="genito_urinary_systemHidden" name="genito_urinary_system" value="Yes">
+                                @else
+                                    <input type="checkbox" id="genito_urinary_system" name="genito_urinary_system" value="Yes" onchange="toggleTextareaAndHidden('genito_urinary_system', 'toggleTextarea', 'toggleHidden')">
+                                @endif
+                            </td>
+                            <td>
+                                @if($medical_exam->physical_examination->genito_urinary_system == "No")
+                                    <textarea class="form-control" name="17_pe_respond" id="findingsTextarea_genito_urinary_system" required>{{ $medical_exam->physical_examination->medical_exam_response['17_pe_respond'] }}</textarea>
+                                    <input type="hidden" id="genito_urinary_systemRepHidden" name="17_pe_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="17_pe_respond" id="findingsTextarea_genito_urinary_system" disabled>Not Applicable</textarea>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Inguinal, Genitals</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination->inguinal_genitals == "Yes")
+                                    <input type="checkbox" id="inguinal_genitals" name="inguinal_genitals" value="Yes" onchange="toggleTextareaAndHidden('inguinal_genitals', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="inguinal_genitalsHidden" name="inguinal_genitals" value="Yes">
+                                @else
+                                    <input type="checkbox" id="inguinal_genitals" name="inguinal_genitals" value="Yes" onchange="toggleTextareaAndHidden('inguinal_genitals', 'toggleTextarea', 'toggleHidden')">
+                                @endif
+                            </td>
+                            <td>
+                                @if($medical_exam->physical_examination->inguinal_genitals == "No")
+                                    <textarea class="form-control" name="18_pe_respond" id="findingsTextarea_inguinal_genitals" required>{{ $medical_exam->physical_examination->medical_exam_response['18_pe_respond'] }}</textarea>
+                                    <input type="hidden" id="inguinal_genitalsRepHidden" name="18_pe_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="18_pe_respond" id="findingsTextarea_inguinal_genitals" disabled>Not Applicable</textarea>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Musculo-Skeletal</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination['musculo_skeletal1'] == "Yes")
+                                    <input type="checkbox" id="musculo_skeletal1" name="musculo_skeletal1" value="Yes" onchange="toggleTextareaAndHidden('musculo_skeletal1', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="musculo_skeletal1Hidden" name="musculo_skeletal1" value="Yes">
+                                @else
+                                    <input type="checkbox" id="musculo_skeletal1" name="musculo_skeletal1" value="Yes" onchange="toggleTextareaAndHidden('musculo_skeletal1', 'toggleTextarea', 'toggleHidden')">
+                                @endif
+                            </td>
+                            <td>
+                                @if($medical_exam->physical_examination['musculo_skeletal1'] == "No")
+                                    <textarea class="form-control" name="19_pe_respond" id="findingsTextarea_musculo_skeletal1" required>{{ $medical_exam->physical_examination->medical_exam_response['19_pe_respond'] }}</textarea>
+                                    <input type="hidden" id="musculo_skeletal1RepHidden" name="19_pe_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="19_pe_respond" id="findingsTextarea_musculo_skeletal1" disabled>Not Applicable</textarea>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Extremities</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination->extremities == "Yes")
+                                    <input type="checkbox" id="extremities" name="extremities" value="Yes" onchange="toggleTextareaAndHidden('extremities', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="extremitiesHidden" name="extremities" value="Yes">
+                                @else
+                                    <input type="checkbox" id="extremities" name="extremities" value="Yes" onchange="toggleTextareaAndHidden('extremities', 'toggleTextarea', 'toggleHidden')">
+                                @endif
+                            </td>
+                            <td>
+                                @if($medical_exam->physical_examination->extremities == "No")
+                                    <textarea class="form-control" name="20_pe_respond" id="findingsTextarea_extremities" required>{{ $medical_exam->physical_examination->medical_exam_response['20_pe_respond'] }}</textarea>
+                                    <input type="hidden" id="extremitiesRepHidden" name="20_pe_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="20_pe_respond" id="findingsTextarea_extremities" disabled>Not Applicable</textarea>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Reflexes</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination->reflexes == "Yes")
+                                    <input type="checkbox" id="reflexes" name="reflexes" value="Yes" onchange="toggleTextareaAndHidden('reflexes', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="reflexesHidden" name="reflexes" value="Yes">
+                                @else
+                                    <input type="checkbox" id="reflexes" name="reflexes" value="Yes" onchange="toggleTextareaAndHidden('reflexes', 'toggleTextarea', 'toggleHidden')">
+                                @endif
+                            </td>
+                            <td>
+                                @if($medical_exam->physical_examination->reflexes == "No")
+                                    <textarea class="form-control" name="21_pe_respond" id="findingsTextarea_reflexes" required>{{ $medical_exam->physical_examination->medical_exam_response['21_pe_respond'] }}</textarea>
+                                    <input type="hidden" id="reflexesRepHidden" name="21_pe_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="21_pe_respond" id="findingsTextarea_reflexes" disabled>Not Applicable</textarea>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Neurological</td>
+                            <td class="text-center">
+                                @if($medical_exam->physical_examination->neurological == "Yes")
+                                    <input type="checkbox" id="neurological" name="neurological" value="Yes" onchange="toggleTextareaAndHidden('neurological', 'toggleTextarea', 'toggleHidden')" checked>
+                                    <input type="hidden" id="neurologicalHidden" name="neurological" value="Yes">
+                                @else
+                                    <input type="checkbox" id="neurological" name="neurological" value="Yes" onchange="toggleTextareaAndHidden('neurological', 'toggleTextarea', 'toggleHidden')">
+                                @endif
+                            </td>
+                            <td>
+                                @if($medical_exam->physical_examination->neurological == "No")
+                                    <textarea class="form-control" name="22_pe_respond" id="findingsTextarea_neurological" required>{{ $medical_exam->physical_examination->medical_exam_response['22_pe_respond'] }}</textarea>
+                                    <input type="hidden" id="neurologicalRepHidden" name="22_pe_respond" value=" " disabled>
+                                @else
+                                    <textarea class="form-control" name="22_pe_respond" id="findingsTextarea_neurological" disabled>Not Applicable</textarea>
+                                @endif
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
+
+            <h4><strong>DIAGNOSIS:</strong></h4>
+            <div class="row mx-auto mb-3">
+                <textarea class="form-control" name="diagnosis" id="diagnosis">{{ $medical_exam->physical_examination->medical_exam_response->diagnosis }}</textarea>
+            </div>
+
+            <div class="position-right ml-auto" style="width: 75px;">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
         </form>
+    </div>
 @stop
 
 @section('footer')

@@ -16,7 +16,7 @@
 
             <!-- Medical History -->
             <h2><strong>I. Medical History</strong></h2>
-            <div class="row row-cols-3">
+            <div class="row">
                 <div class="col">
                     <!-- Past Medical History -->
                     <div class="text-center">
@@ -26,7 +26,7 @@
                         <tr>
                             <th></th>
                             <th class="text-center">Normal</th>
-                            <th class="text-center" width="250px">Findings</th>
+                            <th class="text-center" width="650px">Findings</th>
                         </tr>
 
                         <tr>
@@ -151,7 +151,8 @@
                         </tr>
                     </table>
                 </div>
-
+            </div>
+            <div class="row">
                 <!-- Family History -->
                 <div class="col">
                     <div class="text-center">
@@ -161,7 +162,7 @@
                         <tr>
                             <th></th>
                             <th class="text-center">(-)</th>
-                            <th class="text-center" width="250px">(+)</th>
+                            <th class="text-center" width="675px">(+)</th>
                         </tr>
                         
                         <tr>
@@ -255,14 +256,18 @@
                             </td>
                         </tr>
                     </table>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col">
                     <!-- Personal and Social History -->
                     <div class="text-center">
-                        <h4><strong>C. Personal and Social History</strong></h4>
+                        <h3><strong>C. Personal and Social History</strong></h3>
                     </div>
                     <div class="container border">
                         <div class="row my-3">
-                            <input type="checkbox" id="smoker" name="smoker" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'smoker')">
+                            <input type="checkbox" id="smoker" name="smoker" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'smoker')">
                             <div class="col-0">
                                 <p class="mr-1"><strong>Smoker:</strong></p>
                             </div>
@@ -276,7 +281,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <input type="checkbox" id="alcoholic" name="alcoholic" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'alcoholic')">
+                            <input type="checkbox" id="alcoholic" name="alcoholic" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'alcoholic')">
                             <div class="col-0">
                                 <p class="mr-1"><strong>Alcoholic:</strong></p>
                             </div>
@@ -290,17 +295,30 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <input type="checkbox" id="medication" name="medication" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'medication')">
+                            <input type="checkbox" id="medication" name="medication" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'medication')">
                             <div class="col">
                                 <p><strong>Medication:</strong></p>
-                                <textarea class="form-control" name="take" id="take" disabled></textarea>
+                                <textarea class="form-control" name="take" id="take" style="height: 132px;" disabled></textarea>
                             </div>
+                        </div>
+                        <div class="row">
+                            <input type="checkbox" id="hospitalization" name="hospitalization" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'hospitalization')">
+                            <div class="col-0 mb-3">
+                                <p class="h5 mr-1"><strong>Hospitalization/s:</strong></p>
+                            </div>
+                            <input type="number" name="hosp_times" class="col-0 mx-1" style="height: 25px; width: 138px;" id="hosp_times" disabled>
+                        </div>
+                        <div class="row">
+                            <input type="checkbox" id="operation" name="operation" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'operation')">
+                            <div class="col-0">
+                                <p class="h5 mr-1"><strong>Operation/s:</strong></p>
+                            </div>
+                            <input type="number" name="op_times" class="col-0 mx-1" style="height: 25px; width: 185px;" id="op_times" disabled>
                         </div>
                     </div>
                 </div>
-
-                <!-- OB-GYNE History -->
                 <div class="col">
+                    <!-- OB-GYNE History -->
                     <div class="text-center">
                         <h3><strong>D. OB-GYNE History</strong></h3>
                     </div>
@@ -347,34 +365,20 @@
                             <td><textarea class="form-control" name="5_ob_respond" id="findingsTextarea_breast_uterus_ovaries" disabled>Not Applicable</textarea></td>
                         </tr>
                     </table>
-                
-                    <!-- Hospitalization and Operation -->
-                    <div class="container border my-3 pt-2">
-                        <div class="row">
-                            <input type="checkbox" id="hospitalization" name="hospitalization" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'hospitalization')">
-                            <div class="col-0 mb-3">
-                                <p class="h5 mr-1"><strong>E. Hospitalization/s:</strong></p>
-                            </div>
-                            <input type="number" name="hosp_times" class="col-0 mx-1" style="height: 25px; width: 138px;" id="hosp_times" disabled>
-                        </div>
-                        <div class="row">
-                            <input type="checkbox" id="operation" name="operation" value="No" class="col-0" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'operation')">
-                            <div class="col-0">
-                                <p class="h5 mr-1"><strong>F. Operation/s:</strong></p>
-                            </div>
-                            <input type="number" name="op_times" class="col-0 mx-1" style="height: 25px; width: 185px;" id="op_times" disabled>
-                        </div>
-                    </div>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col">
                     <!-- Review of System -->
                     <div class="text-center">
-                        <h3><strong>G. Review of System</strong></h3>
+                        <h3><strong>E. Review of System</strong></h3>
                     </div>
                     <table class="table table-sm table-bordered mb-2">
                         <tr>
                             <th></th>
                             <th class="text-center">(-)</th>
-                            <th class="text-center" width="250px">(+)</th>
+                            <th class="text-center" width="670px">(+)</th>
                         </tr>
 
                         <tr>
@@ -451,328 +455,328 @@
                 </div>
             </div>
 
-                <!-- Physical Examination -->
-                <h2><strong>II. Physical Examination</strong></h2>
-                <div class="row mb-3">
-                    <div class="col border">
-                        <p class="mb-1"><strong>Height:</strong></p>
-                        <div class="row">
-                            <div class="col-0 ml-2">
-                                <input type="number" name="height" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="height" required>cm.
-                            </div>
+            <!-- Physical Examination -->
+            <h2><strong>II. Physical Examination</strong></h2>
+            <div class="row mb-3">
+                <div class="col border">
+                    <p class="mb-1"><strong>Height:</strong></p>
+                    <div class="row">
+                        <div class="col-0 ml-2">
+                            <input type="number" name="height" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="height" required>cm.
                         </div>
-                    </div> 
-                    <div class="col border">
-                        <p class="mb-1"><strong>Weight:</strong></p>
-                        <div class="row">
-                            <div class="col-0 ml-2">
-                                <input type="number" name="weight" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="weight" required>kg.
-                            </div>
+                    </div>
+                </div> 
+                <div class="col border">
+                    <p class="mb-1"><strong>Weight:</strong></p>
+                    <div class="row">
+                        <div class="col-0 ml-2">
+                            <input type="number" name="weight" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="weight" required>kg.
                         </div>
-                    </div> 
-                    <div class="col border">
-                        <p class="mb-1"><strong>BP (mm/hg):</strong></p>
-                        <div class="row">
-                            <div class="col-0" style="margin-left: 1px;">
-                                <input type="number" name="bp1" class="col-0 mx-1 mb-1" style="height: 25px; width: 50px;" id="bp1" required>
-                            </div>
-                            <div class="col-0">
-                                <p>/</p>
-                            </div>
-                            <div class="col-0">
-                                <input type="number" name="bp2" class="col-0 mx-1 mb-1" style="height: 25px; width: 50px;" id="bp2" required>
-                            </div>
-                            <div class="col-0 mb-1 ml-1">
-                                <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpBP" style="display: none;"></i>
-                                <i class="fas fa-arrow-down mt-1 mx-1" id="arrowDownBP" style="display: none;"></i>
-                            </div>
+                    </div>
+                </div> 
+                <div class="col border">
+                    <p class="mb-1"><strong>BP (mm/hg):</strong></p>
+                    <div class="row">
+                        <div class="col-0" style="margin-left: 1px;">
+                            <input type="number" name="bp1" class="col-0 mx-1 mb-1" style="height: 25px; width: 50px;" id="bp1" required>
                         </div>
-                    </div> 
-                    <div class="col border">
-                        <p class="mb-1"><strong>Cardiac Rate:</strong></p>
-                        <div class="row">
-                            <div class="col-0 ml-1">
-                                <input type="number" name="cardiac_rate" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="cardiac_rate" required>
-                            </div>
-                            <div class="col-0">
-                                <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpCR" style="display: none;"></i>
-                                <i class="fas fa-arrow-down mt-1 mx-1" id="arrowDownCR" style="display: none;"></i>
-                            </div>
-                            <div class="col-0">
-                                BPM
-                            </div>
+                        <div class="col-0">
+                            <p>/</p>
                         </div>
-                    </div> 
-                    <div class="col border">
-                        <p class="mb-1"><strong>Respiratory Rate</strong></p>
-                        <div class="row">
-                            <div class="col-0 ml-1">
-                                <input type="number" name="respiratory_rate" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="respiratory_rate" required>
-                            </div>
-                            <div class="col-0">
-                                <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpRR" style="display: none;"></i>
-                                <i class="fas fa-arrow-down mt-1 mx-1" id="arrowDownRR" style="display: none;"></i>
-                            </div>
-                            <div class="col-0">
-                                BPM
-                            </div>
+                        <div class="col-0">
+                            <input type="number" name="bp2" class="col-0 mx-1 mb-1" style="height: 25px; width: 50px;" id="bp2" required>
                         </div>
-                    </div> 
-                    <div class="col border">
-                        <p class="mb-1"><strong>BMI:</strong></p>
-                        <div class="row">
-                            <div class="col-0 ml-1">
-                                <input type="number" name="bmi" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="bmi" readonly>
-                            </div>
-                            <div class="col-0">
-                                <p id="weightCategory"></p>
-                            </div>
+                        <div class="col-0 mb-1 ml-1">
+                            <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpBP" style="display: none;"></i>
+                            <i class="fas fa-arrow-down mt-1 mx-1" id="arrowDownBP" style="display: none;"></i>
                         </div>
-                    </div> 
-                </div>
+                    </div>
+                </div> 
+                <div class="col border">
+                    <p class="mb-1"><strong>Cardiac Rate:</strong></p>
+                    <div class="row">
+                        <div class="col-0 ml-1">
+                            <input type="number" name="cardiac_rate" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="cardiac_rate" required>
+                        </div>
+                        <div class="col-0">
+                            <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpCR" style="display: none;"></i>
+                            <i class="fas fa-arrow-down mt-1 mx-1" id="arrowDownCR" style="display: none;"></i>
+                        </div>
+                        <div class="col-0">
+                            BPM
+                        </div>
+                    </div>
+                </div> 
+                <div class="col border">
+                    <p class="mb-1"><strong>Respiratory Rate</strong></p>
+                    <div class="row">
+                        <div class="col-0 ml-1">
+                            <input type="number" name="respiratory_rate" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="respiratory_rate" required>
+                        </div>
+                        <div class="col-0">
+                            <i class="fas fa-arrow-up mt-1 mx-1" id="arrowUpRR" style="display: none;"></i>
+                            <i class="fas fa-arrow-down mt-1 mx-1" id="arrowDownRR" style="display: none;"></i>
+                        </div>
+                        <div class="col-0">
+                            BPM
+                        </div>
+                    </div>
+                </div> 
+                <div class="col border">
+                    <p class="mb-1"><strong>BMI:</strong></p>
+                    <div class="row">
+                        <div class="col-0 ml-1">
+                            <input type="number" name="bmi" class="col-0 mx-1 mb-2" style="height: 25px; width: 50px;" id="bmi" readonly>
+                        </div>
+                        <div class="col-0">
+                            <p id="weightCategory"></p>
+                        </div>
+                    </div>
+                </div> 
+            </div>
 
-                <div class="row">
-                    <div class="col">
-                        <table class="table table-sm table-bordered mb-2">
-                            <tr>
-                                <th></th>
-                                <th class="text-center">Normal</th>
-                                <th class="text-center" width="250px">Findings</th>
-                            </tr>
+            <div class="row">
+                <div class="col">
+                    <table class="table table-sm table-bordered mb-2">
+                        <tr>
+                            <th></th>
+                            <th class="text-center">Normal</th>
+                            <th class="text-center" width="250px">Findings</th>
+                        </tr>
 
-                            <tr>
-                                <td>General Appearance</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="general_appearance" name="general_appearance" value="Yes" onchange="toggleTextarea('general_appearance')" checked>
-                                </td>
-                                <td><textarea class="form-control" name="1_pe_respond" id="findingsTextarea_general_appearance" disabled>Not Applicable</textarea></td>
-                            </tr>
-                            <tr>
-                                <td>Skin</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="skin1" name="skin1" value="Yes" onchange="toggleTextarea('skin1')" checked>
-                                </td>
-                                <td><textarea class="form-control" name="2_pe_respond" id="findingsTextarea_skin1" disabled>Not Applicable</textarea></td>
-                            </tr>
-                            <tr>
-                                <td>Head and Scalp</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="head_and_scalp" name="head_and_scalp" value="Yes" onchange="toggleTextarea('head_and_scalp')" checked>
-                                </td>
-                                <td><textarea class="form-control" name="3_pe_respond" id="findingsTextarea_head_and_scalp" disabled>Not Applicable</textarea></td>
-                            </tr>
-                            <tr>
-                                <td>Eyes</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="eyes" name="eyes" value="Yes" onchange="updateCheckboxValue(this, 'eyes')" checked>
-                                </td>
-                                <td>
-                                    <div class="row">
-                                        <div class="col-0">
-                                            <input type="number" name="od_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_pe_respond" disabled>
-                                        </div>
-                                        <div class="col-0">
-                                            <p>/</p>
-                                        </div>
-                                        <div class="col-0">
-                                            <input type="number" name="od1_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od1_pe_respond" disabled>
-                                        </div>
-                                        <div class="col-0">
-                                            <p>OD</p>
-                                        </div>
-                                        <div class="col-0">
-                                            <input type="number" name="os_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os_pe_respond" disabled>
-                                        </div>
-                                        <div class="col-0">
-                                            <p>/</p>
-                                        </div>
-                                        <div class="col-0">
-                                            <input type="number" name="os1_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os1_pe_respond" disabled>
-                                        </div>
-                                        <div class="col-0">
-                                            <p>OS</p>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-right">Corrected</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="corrected" name="corrected" value="Yes" onchange="updateCheckboxValue(this, 'corrected')" checked>
-                                </td>
-                                <td>
+                        <tr>
+                            <td>General Appearance</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="general_appearance" name="general_appearance" value="Yes" onchange="toggleTextarea('general_appearance')" checked>
+                            </td>
+                            <td><textarea class="form-control" name="1_pe_respond" id="findingsTextarea_general_appearance" disabled>Not Applicable</textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Skin</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="skin1" name="skin1" value="Yes" onchange="toggleTextarea('skin1')" checked>
+                            </td>
+                            <td><textarea class="form-control" name="2_pe_respond" id="findingsTextarea_skin1" disabled>Not Applicable</textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Head and Scalp</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="head_and_scalp" name="head_and_scalp" value="Yes" onchange="toggleTextarea('head_and_scalp')" checked>
+                            </td>
+                            <td><textarea class="form-control" name="3_pe_respond" id="findingsTextarea_head_and_scalp" disabled>Not Applicable</textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Eyes</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="eyes" name="eyes" value="Yes" onchange="updateCheckboxValue(this, 'eyes')" checked>
+                            </td>
+                            <td>
                                 <div class="row">
-                                        <div class="col-0">
-                                            <input type="number" name="od_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_pe_respond1" disabled>
-                                        </div>
-                                        <div class="col-0">
-                                            <p>/</p>
-                                        </div>
-                                        <div class="col-0">
-                                            <input type="number" name="od1__pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od__pe_respond1" disabled>
-                                        </div>
-                                        <div class="col-0">
-                                            <p>OD</p>
-                                        </div>
-                                        <div class="col-0">
-                                            <input type="number" name="os_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os_pe_respond1" disabled>
-                                        </div>
-                                        <div class="col-0">
-                                            <p>/</p>
-                                        </div>
-                                        <div class="col-0">
-                                            <input type="number" name="os1__pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os__pe_respond1" disabled>
-                                        </div>
-                                        <div class="col-0">
-                                            <p>OS</p>
-                                        </div>
+                                    <div class="col-0">
+                                        <input type="number" name="od_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_pe_respond" disabled>
                                     </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Pupils</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="pupils" name="pupils" value="Yes" onchange="toggleTextarea('pupils')" checked>
-                                </td>
-                                <td><textarea class="form-control" name="6_pe_respond" id="findingsTextarea_pupils" disabled>Not Applicable</textarea></td>
-                            </tr>
-                            <tr>
-                                <td>Ear, Eardrums</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="ear_eardrums" name="ear_eardrums" value="Yes" onchange="toggleTextarea('ear_eardrums')" checked>
-                                </td>
-                                <td><textarea class="form-control" name="7_pe_respond" id="findingsTextarea_ear_eardrums" disabled>Not Applicable</textarea></td>
-                            </tr>
-                            <tr>
-                                <td>Nose, Sinuses</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="nose_sinuses" name="nose_sinuses" value="Yes" onchange="toggleTextarea('nose_sinuses')" checked>
-                                </td>
-                                <td><textarea class="form-control" name="8_pe_respond" id="findingsTextarea_nose_sinuses" disabled>Not Applicable</textarea></td>
-                            </tr>
-                            <tr>
-                                <td>Mouth, Throat</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="mouth_throat" name="mouth_throat" value="Yes" onchange="toggleTextarea('mouth_throat')" checked>
-                                </td>
-                                <td><textarea class="form-control" name="9_pe_respond" id="findingsTextarea_mouth_throat" disabled>Not Applicable</textarea></td>
-                            </tr>
-                            <tr>
-                                <td>Neck, Thyroid</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="neck_thyroid" name="neck_thyroid" value="Yes" onchange="toggleTextarea('neck_thyroid')" checked>
-                                </td>
-                                <td><textarea class="form-control" name="10_pe_respond" id="findingsTextarea_neck_thyroid" disabled>Not Applicable</textarea></td>
-                            </tr>
-                            <tr>
-                                <td>Chest, Breast, Axilla</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="chest_breast_axilla" name="chest_breast_axilla" value="Yes" onchange="toggleTextarea('chest_breast_axilla')" checked>
-                                </td>
-                                <td><textarea class="form-control" name="11_pe_respond" id="findingsTextarea_chest_breast_axilla" disabled>Not Applicable</textarea></td>
-                            </tr>
-                        </table>
-                    </div>
-                    
-                    <div class="col">
-                        <table class="table table-sm table-bordered mb-2">
-                            <tr>
-                                <th></th>
-                                <th class="text-center">Normal</th>
-                                <th class="text-center" width="250px">Findings</th>
-                            </tr>
-
-                            <tr>
-                                <td>Heart-Cardiovascular</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="heart_cardiovascular" name="heart_cardiovascular" value="Yes" onchange="toggleTextarea('heart_cardiovascular')" checked>
-                                </td>
-                                <td><textarea class="form-control" name="12_pe_respond" id="findingsTextarea_heart_cardiovascular" disabled>Not Applicable</textarea></td>
-                            </tr>
-                            <tr>
-                                <td>Lungs-Respiratory</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="lungs_respiratory" name="lungs_respiratory" value="Yes" onchange="toggleTextarea('lungs_respiratory')" checked>
-                                </td>
-                                <td><textarea class="form-control" name="13_pe_respond" id="findingsTextarea_lungs_respiratory" disabled>Not Applicable</textarea></td>
-                            </tr>
-                            <tr>
-                                <td>Abdomen</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="abdomen" name="abdomen" value="Yes" onchange="toggleTextarea('abdomen')" checked>
-                                </td>
-                                <td><textarea class="form-control" name="14_pe_respond" id="findingsTextarea_abdomen" disabled>Not Applicable</textarea></td>
-                            </tr>
-                            <tr>
-                                <td>Back, Flanks</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="back_flanks" name="back_flanks" value="Yes" onchange="toggleTextarea('back_flanks')" checked>
-                                </td>
-                                <td><textarea class="form-control" name="15_pe_respond" id="findingsTextarea_back_flanks" disabled>Not Applicable</textarea></td>
-                            </tr>
-                            <tr>
-                                <td>Anus, Rectum</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="anus_rectum" name="anus_rectum" value="Yes" onchange="toggleTextarea('anus_rectum')" checked>
-                                </td>
-                                <td><textarea class="form-control" name="16_pe_respond" id="findingsTextarea_anus_rectum" disabled>Not Applicable</textarea></td>
-                            </tr>
-                            <tr>
-                                <td>Genito-Urinary System</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="genito_urinary_system" name="genito_urinary_system" value="Yes" onchange="toggleTextarea('genito_urinary_system')" checked>
-                                </td>
-                                <td><textarea class="form-control" name="17_pe_respond" id="findingsTextarea_genito_urinary_system" disabled>Not Applicable</textarea></td>
-                            </tr>
-                            <tr>
-                                <td>Inguinal, Genitals</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="inguinal_genitals" name="inguinal_genitals" value="Yes" onchange="toggleTextarea('inguinal_genitals')" checked>
-                                </td>
-                                <td><textarea class="form-control" name="18_pe_respond" id="findingsTextarea_inguinal_genitals" disabled>Not Applicable</textarea></td>
-                            </tr>
-                            <tr>
-                                <td>Musculo-Skeletal</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="musculo_skeletal1" name="musculo_skeletal1" value="Yes" onchange="toggleTextarea('musculo_skeletal1')" checked>
-                                </td>
-                                <td><textarea class="form-control" name="19_pe_respond" id="findingsTextarea_musculo_skeletal1" disabled>Not Applicable</textarea></td>
-                            </tr>
-                            <tr>
-                                <td>Extremities</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="extremities" name="extremities" value="Yes" onchange="toggleTextarea('extremities')" checked>
-                                </td>
-                                <td><textarea class="form-control" name="20_pe_respond" id="findingsTextarea_extremities" disabled>Not Applicable</textarea></td>
-                            </tr>
-                            <tr>
-                                <td>Reflexes</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="reflexes" name="reflexes" value="Yes" onchange="toggleTextarea('reflexes')" checked>
-                                </td>
-                                <td><textarea class="form-control" name="21_pe_respond" id="findingsTextarea_reflexes" disabled>Not Applicable</textarea></td>
-                            </tr>
-                            <tr>
-                                <td>Neurological</td>
-                                <td class="text-center">
-                                    <input type="checkbox" id="neurological" name="neurological" value="Yes" onchange="toggleTextarea('neurological')" checked>
-                                </td>
-                                <td><textarea class="form-control" name="22_pe_respond" id="findingsTextarea_neurological" disabled>Not Applicable</textarea></td>
-                            </tr>
-                        </table>
-                    </div>
+                                    <div class="col-0">
+                                        <p>/</p>
+                                    </div>
+                                    <div class="col-0">
+                                        <input type="number" name="od1_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od1_pe_respond" disabled>
+                                    </div>
+                                    <div class="col-0">
+                                        <p>OD</p>
+                                    </div>
+                                    <div class="col-0">
+                                        <input type="number" name="os_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os_pe_respond" disabled>
+                                    </div>
+                                    <div class="col-0">
+                                        <p>/</p>
+                                    </div>
+                                    <div class="col-0">
+                                        <input type="number" name="os1_pe_respond" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os1_pe_respond" disabled>
+                                    </div>
+                                    <div class="col-0">
+                                        <p>OS</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">Corrected</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="corrected" name="corrected" value="Yes" onchange="updateCheckboxValue(this, 'corrected')" checked>
+                            </td>
+                            <td>
+                            <div class="row">
+                                    <div class="col-0">
+                                        <input type="number" name="od_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od_pe_respond1" disabled>
+                                    </div>
+                                    <div class="col-0">
+                                        <p>/</p>
+                                    </div>
+                                    <div class="col-0">
+                                        <input type="number" name="od1__pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="od__pe_respond1" disabled>
+                                    </div>
+                                    <div class="col-0">
+                                        <p>OD</p>
+                                    </div>
+                                    <div class="col-0">
+                                        <input type="number" name="os_pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os_pe_respond1" disabled>
+                                    </div>
+                                    <div class="col-0">
+                                        <p>/</p>
+                                    </div>
+                                    <div class="col-0">
+                                        <input type="number" name="os1__pe_respond1" class="col-0 mx-1 mb-2" style="height: 25px; width: 40px;" id="os__pe_respond1" disabled>
+                                    </div>
+                                    <div class="col-0">
+                                        <p>OS</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Pupils</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="pupils" name="pupils" value="Yes" onchange="toggleTextarea('pupils')" checked>
+                            </td>
+                            <td><textarea class="form-control" name="6_pe_respond" id="findingsTextarea_pupils" disabled>Not Applicable</textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Ear, Eardrums</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="ear_eardrums" name="ear_eardrums" value="Yes" onchange="toggleTextarea('ear_eardrums')" checked>
+                            </td>
+                            <td><textarea class="form-control" name="7_pe_respond" id="findingsTextarea_ear_eardrums" disabled>Not Applicable</textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Nose, Sinuses</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="nose_sinuses" name="nose_sinuses" value="Yes" onchange="toggleTextarea('nose_sinuses')" checked>
+                            </td>
+                            <td><textarea class="form-control" name="8_pe_respond" id="findingsTextarea_nose_sinuses" disabled>Not Applicable</textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Mouth, Throat</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="mouth_throat" name="mouth_throat" value="Yes" onchange="toggleTextarea('mouth_throat')" checked>
+                            </td>
+                            <td><textarea class="form-control" name="9_pe_respond" id="findingsTextarea_mouth_throat" disabled>Not Applicable</textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Neck, Thyroid</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="neck_thyroid" name="neck_thyroid" value="Yes" onchange="toggleTextarea('neck_thyroid')" checked>
+                            </td>
+                            <td><textarea class="form-control" name="10_pe_respond" id="findingsTextarea_neck_thyroid" disabled>Not Applicable</textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Chest, Breast, Axilla</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="chest_breast_axilla" name="chest_breast_axilla" value="Yes" onchange="toggleTextarea('chest_breast_axilla')" checked>
+                            </td>
+                            <td><textarea class="form-control" name="11_pe_respond" id="findingsTextarea_chest_breast_axilla" disabled>Not Applicable</textarea></td>
+                        </tr>
+                    </table>
                 </div>
+                
+                <div class="col">
+                    <table class="table table-sm table-bordered mb-2">
+                        <tr>
+                            <th></th>
+                            <th class="text-center">Normal</th>
+                            <th class="text-center" width="250px">Findings</th>
+                        </tr>
 
-                <h4><strong>DIAGNOSIS:</strong></h4>
-                <div class="row mx-auto mb-3">
-                    <textarea class="form-control" name="diagnosis" id="diagnosis"></textarea>
-                </div>
-
-                <div class="position-right ml-auto" style="width: 75px;">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                        <tr>
+                            <td>Heart-Cardiovascular</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="heart_cardiovascular" name="heart_cardiovascular" value="Yes" onchange="toggleTextarea('heart_cardiovascular')" checked>
+                            </td>
+                            <td><textarea class="form-control" name="12_pe_respond" id="findingsTextarea_heart_cardiovascular" disabled>Not Applicable</textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Lungs-Respiratory</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="lungs_respiratory" name="lungs_respiratory" value="Yes" onchange="toggleTextarea('lungs_respiratory')" checked>
+                            </td>
+                            <td><textarea class="form-control" name="13_pe_respond" id="findingsTextarea_lungs_respiratory" disabled>Not Applicable</textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Abdomen</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="abdomen" name="abdomen" value="Yes" onchange="toggleTextarea('abdomen')" checked>
+                            </td>
+                            <td><textarea class="form-control" name="14_pe_respond" id="findingsTextarea_abdomen" disabled>Not Applicable</textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Back, Flanks</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="back_flanks" name="back_flanks" value="Yes" onchange="toggleTextarea('back_flanks')" checked>
+                            </td>
+                            <td><textarea class="form-control" name="15_pe_respond" id="findingsTextarea_back_flanks" disabled>Not Applicable</textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Anus, Rectum</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="anus_rectum" name="anus_rectum" value="Yes" onchange="toggleTextarea('anus_rectum')" checked>
+                            </td>
+                            <td><textarea class="form-control" name="16_pe_respond" id="findingsTextarea_anus_rectum" disabled>Not Applicable</textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Genito-Urinary System</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="genito_urinary_system" name="genito_urinary_system" value="Yes" onchange="toggleTextarea('genito_urinary_system')" checked>
+                            </td>
+                            <td><textarea class="form-control" name="17_pe_respond" id="findingsTextarea_genito_urinary_system" disabled>Not Applicable</textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Inguinal, Genitals</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="inguinal_genitals" name="inguinal_genitals" value="Yes" onchange="toggleTextarea('inguinal_genitals')" checked>
+                            </td>
+                            <td><textarea class="form-control" name="18_pe_respond" id="findingsTextarea_inguinal_genitals" disabled>Not Applicable</textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Musculo-Skeletal</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="musculo_skeletal1" name="musculo_skeletal1" value="Yes" onchange="toggleTextarea('musculo_skeletal1')" checked>
+                            </td>
+                            <td><textarea class="form-control" name="19_pe_respond" id="findingsTextarea_musculo_skeletal1" disabled>Not Applicable</textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Extremities</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="extremities" name="extremities" value="Yes" onchange="toggleTextarea('extremities')" checked>
+                            </td>
+                            <td><textarea class="form-control" name="20_pe_respond" id="findingsTextarea_extremities" disabled>Not Applicable</textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Reflexes</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="reflexes" name="reflexes" value="Yes" onchange="toggleTextarea('reflexes')" checked>
+                            </td>
+                            <td><textarea class="form-control" name="21_pe_respond" id="findingsTextarea_reflexes" disabled>Not Applicable</textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Neurological</td>
+                            <td class="text-center">
+                                <input type="checkbox" id="neurological" name="neurological" value="Yes" onchange="toggleTextarea('neurological')" checked>
+                            </td>
+                            <td><textarea class="form-control" name="22_pe_respond" id="findingsTextarea_neurological" disabled>Not Applicable</textarea></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
+
+            <h4><strong>DIAGNOSIS:</strong></h4>
+            <div class="row mx-auto mb-3">
+                <textarea class="form-control" name="diagnosis" id="diagnosis"></textarea>
+            </div>
+
+            <div class="position-right ml-auto" style="width: 75px;">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
         </form>
+    </div>
 @stop
 
 @section('footer')
