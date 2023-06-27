@@ -687,7 +687,7 @@
                                 <input type="checkbox" id="hospitalization" name="hospitalization" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'hospitalization')">
                             @endif
                             <div class="col-0 mb-3">
-                                <p class="h5 mr-1"><strong>E. Hospitalization/s:</strong></p>
+                                <p class="h5 mr-1"><strong>Hospitalization/s:</strong></p>
                             </div>
                             @if($medical_exam->personal_and_social_history->hospitalization == "Yes")
                                 <input type="number" name="hosp_times" class="col-0 mx-1" style="height: 25px; width: 138px;" id="hosp_times" value="{{ $medical_exam->personal_and_social_history->hosp_times }}" required>
@@ -704,7 +704,7 @@
                                 <input type="checkbox" id="operation" name="operation" value="No" class="col-0 ml-1" style="height: 25px; width: 30px;" onchange="updateCheckboxValue(this, 'operation')">
                             @endif
                             <div class="col-0">
-                                <p class="h5 mr-1"><strong>F. Operation/s:</strong></p>
+                                <p class="h5 mr-1"><strong>Operation/s:</strong></p>
                             </div>
                             @if($medical_exam->personal_and_social_history->operation == "Yes")
                                 <input type="number" name="op_times" class="col-0 mx-1" style="height: 25px; width: 185px;" id="op_times" value="{{ $medical_exam->personal_and_social_history->op_times }}" required>
