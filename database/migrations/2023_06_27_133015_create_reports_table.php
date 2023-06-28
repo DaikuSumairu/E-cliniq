@@ -13,17 +13,13 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->increments('id')->unique();
-            $table->integer('visitone_id')->unsigned();
-            $table->integer('visittwo_id')->unsigned();
-            $table->integer('visitthree_id')->unsigned();
+            $table->integer('visit_id')->unsigned();
+            $table->date('day');
+            $table->string('role');
             $table->timestamps();
 
             //Foreign keys
-            $table->foreign('visitone_id')->references('id')->on('visitsone')
-                ->onDelete('cascade');
-            $table->foreign('visittwo_id')->references('id')->on('visitstwo')
-                ->onDelete('cascade');
-            $table->foreign('visitthree_id')->references('id')->on('visitsthree')
+            $table->foreign('visit_id')->references('id')->on('visits')
                 ->onDelete('cascade');
         });
     }

@@ -10,7 +10,7 @@ class ReportThree extends Model
     use HasFactory;
 
     protected $fillable = [
-        'visitthree_id',
+        'report_id',
         'nephrology',
         'urinary_tract_infection',
         'renal_disease',
@@ -41,8 +41,8 @@ class ReportThree extends Model
     ];
 
     //it belongs to
-    public function visitthree()
+    public function report()
     {
-        return $this->belongsTo(VisitThree::class);
+        return $this->belongsTo(Report::class);
     }
 }

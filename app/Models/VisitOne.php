@@ -10,7 +10,7 @@ class VisitOne extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'visit_id',
         'meds',
         'cardiology',
         'hypertension',
@@ -36,13 +36,9 @@ class VisitOne extends Model
     {
         return $this->hasOne(Inventory::class);
     }
-    public function report()
-    {
-        return $this->hasMany(Report::class);
-    }
 
     //it belongs to
-    public function user()
+    public function visit()
     {
         return $this->belongsTo(Visit::class);
     }

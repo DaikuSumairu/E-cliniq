@@ -30,7 +30,7 @@
                                 <div class="form-group">
                                     <label for="name">Name:</label>
                                     <div class="dropdown">
-                                        <input type="text" class="form-control" id="name" name="name" required data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" required>
+                                        <input type="text" class="form-control" id="name" name="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" required>
                                         <div class="dropdown-menu" aria-labelledby="name" id="dropdown-menu">
                                         </div>
                                     </div>

@@ -10,7 +10,7 @@ class VisitThree extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'visit_id',
         'nephrology',
         'urinary_tract_infection',
         'renal_disease',
@@ -39,15 +39,9 @@ class VisitThree extends Model
         'bronchial_asthma',
         'hypersensitivity',
     ];
-
-    //has relationship
-    public function report()
-    {
-        return $this->hasMany(Report::class);
-    }
-
+    
     //it belongs to
-    public function user()
+    public function visit()
     {
         return $this->belongsTo(Visit::class);
     }

@@ -126,7 +126,7 @@ Route::middleware(['auth', 'user-access:dentist'])->group(function () {
 Route::middleware(['auth', 'user-access:nurse'])->group(function () {
     Route::get('/nurse/home', [HomeController::class, 'nurseHome'])->name('nurse.home');
 
-    //Appointment
+    //Visit
     Route::resource('nurse/daily', VisitController::class)->names([
         'update' => 'nurse.visitUpdate',
         'store' => 'nurse.visitStore',

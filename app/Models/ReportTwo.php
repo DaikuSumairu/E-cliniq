@@ -10,7 +10,7 @@ class ReportTwo extends Model
     use HasFactory;
 
     protected $fillable = [
-        'visittwo_id',
+        'report_id',
         'musculo_skeletal',
         'ligament_sprain',
         'muscle_strain',
@@ -49,8 +49,8 @@ class ReportTwo extends Model
     ];
 
     //it belongs to
-    public function visittwo()
+    public function report()
     {
-        return $this->belongsTo(VisitTwo::class);
+        return $this->belongsTo(Report::class);
     }
 }

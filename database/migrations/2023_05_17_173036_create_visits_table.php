@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('visits', function (Blueprint $table) {
             $table->increments('id')->unique();
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_school_id')->unsigned();
+            $table->date('day');
+            $table->string('role')->nullable();
             $table->timestamps();
 
             //Foreign keys
-            $table->foreign('user_id')->references('id')->on('users')
+            $table->foreign('user_school_id')->references('school_id')->on('users')
                 ->onDelete('cascade');
         });
     }

@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Report extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'visit_id',
+        'day',
+        'role',
+    ];
+
+    //it belongs to
+    public function visit()
+    {
+        return $this->belongsTo(Visit::class);
+    }
 }
