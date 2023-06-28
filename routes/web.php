@@ -9,7 +9,7 @@ use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\MedicalExamController;
 use App\Http\Controllers\DentalExamController;
 use App\Http\Controllers\AppointmentController;
-use App\Models\Appointment;
+use App\Http\Controllers\VisitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -125,6 +125,14 @@ Route::middleware(['auth', 'user-access:dentist'])->group(function () {
 ///////////
 Route::middleware(['auth', 'user-access:nurse'])->group(function () {
     Route::get('/nurse/home', [HomeController::class, 'nurseHome'])->name('nurse.home');
+
+    //Appointment
+    Route::resource('nurse/daily', VisitController::class)->names([
+        'update' => 'nurse.visitUpdate',
+        'store' => 'nurse.visitStore',
+    ])->except([
+        'index', 'show', 'create', 'edit', 'destroy'
+    ]);
 
     //Appointment
     Route::resource('nurse/appointments', AppointmentController::class)->names([

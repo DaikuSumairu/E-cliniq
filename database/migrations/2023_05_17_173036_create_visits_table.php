@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inventories', function (Blueprint $table) {
+        Schema::create('visits', function (Blueprint $table) {
             $table->increments('id')->unique();
-            $table->integer('visitone_id')->nullable()->unsigned();
-            $table->string('name');
-            $table->string('dosage');
-            $table->integer('quantity');
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
 
             //Foreign keys
-            $table->foreign('visitone_id')->references('id')->on('visitsone')
+            $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade');
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inventories');
+        Schema::dropIfExists('visits');
     }
 };
