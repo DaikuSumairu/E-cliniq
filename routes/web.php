@@ -34,6 +34,16 @@ Auth::routes();
 Route::middleware(['auth', 'user-access:student'])->group(function () {
     Route::get('/student/home', [HomeController::class, 'studentHome'])->name('student.home');
 
+    //Appointment
+    Route::resource('student/appointments', AppointmentController::class)->names([
+        'index' => 'student.appointmentIndex',
+        'update' => 'student.appointmentUpdate',
+        'store' => 'student.appointmentStore',
+        'destroy' => 'student.appointmentDestroy'
+    ])->except([
+        'show', 'create', 'edit'
+    ]);
+
     //Record
     Route::resource('student/records', RecordController::class)->names([
         'index' => 'student.recordIndex',
@@ -49,6 +59,16 @@ Route::middleware(['auth', 'user-access:student'])->group(function () {
 Route::middleware(['auth', 'user-access:faculty'])->group(function () {
     Route::get('/faculty/home', [HomeController::class, 'facultyHome'])->name('faculty.home');
 
+    //Appointment
+    Route::resource('faculty/appointments', AppointmentController::class)->names([
+        'index' => 'faculty.appointmentIndex',
+        'update' => 'faculty.appointmentUpdate',
+        'store' => 'faculty.appointmentStore',
+        'destroy' => 'faculty.appointmentDestroy'
+    ])->except([
+        'show', 'create', 'edit'
+    ]);
+
     //Record
     Route::resource('faculty/records', RecordController::class)->names([
         'index' => 'faculty.recordIndex',
@@ -62,6 +82,17 @@ Route::middleware(['auth', 'user-access:faculty'])->group(function () {
 ////////////
 Route::middleware(['auth', 'user-access:doctor'])->group(function () {
     Route::get('/doctor/home', [HomeController::class, 'doctorHome'])->name('doctor.home');
+
+    //Appointment
+    Route::resource('doctor/appointments', AppointmentController::class)->names([
+        'index' => 'doctor.appointmentIndex',
+        'update' => 'doctor.appointmentUpdate',
+        'store' => 'doctor.appointmentStore',
+        'destroy' => 'doctor.appointmentDestroy'
+    ])->except([
+        'show', 'create', 'edit'
+    ]);
+    Route::get('/search', [AppointmentController::class, 'search']);
 
     //Record
     Route::resource('doctor/records', RecordController::class)->names([
@@ -99,6 +130,17 @@ Route::middleware(['auth', 'user-access:doctor'])->group(function () {
 /////////////
 Route::middleware(['auth', 'user-access:dentist'])->group(function () {
     Route::get('/dentist/home', [HomeController::class, 'dentistHome'])->name('dentist.home');
+
+    //Appointment
+    Route::resource('dentist/appointments', AppointmentController::class)->names([
+        'index' => 'dentist.appointmentIndex',
+        'update' => 'dentist.appointmentUpdate',
+        'store' => 'dentist.appointmentStore',
+        'destroy' => 'dentist.appointmentDestroy'
+    ])->except([
+        'show', 'create', 'edit'
+    ]);
+    Route::get('/search', [AppointmentController::class, 'search']);
 
     //Record
     Route::resource('dentist/records', RecordController::class)->names([

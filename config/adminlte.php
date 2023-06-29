@@ -318,7 +318,7 @@ return [
         //Student
         [
             'text' => 'Appointment',
-            'url' => '#',
+            'route' => 'student.appointmentIndex',
             'icon' => 'fas fa-sharp fa-solid fa-calendar',
             'can' => 'student',
         ],
@@ -332,7 +332,7 @@ return [
         //Faculty
         [
             'text' => 'Appointment',
-            'url' => '#',
+            'route' => 'faculty.appointmentIndex',
             'icon' => 'fas fa-sharp fa-solid fa-calendar',
             'can' => 'faculty',
         ],
@@ -346,7 +346,7 @@ return [
         //Doctor
         [
             'text' => 'Appointment',
-            'url' => '#',
+            'route' => 'doctor.appointmentIndex',
             'icon' => 'fas fa-sharp fa-solid fa-calendar',
             'can' => 'doctor',
         ],
@@ -360,7 +360,7 @@ return [
         //Dentist
         [
             'text' => 'Appointment',
-            'url' => '#',
+            'route' => 'dentist.appointmentIndex',
             'icon' => 'fas fa-sharp fa-solid fa-calendar',
             'can' => 'dentist',
         ],

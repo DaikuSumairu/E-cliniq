@@ -20,24 +20,20 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="{{ route('nurse.appointmentStore') }}" onsubmit="return confirm('Are you sure you want to create an appointment?');">
+                    <form method="POST" action="{{ route('faculty.appointmentStore') }}" onsubmit="return confirm('Are you sure you want to create an appointment?');">
                         @csrf
                         <!-- User ID Created (Hidden) -->
-                        <input type="hidden" id="user_id" name="user_id">
+                        <input type="hidden" id="user_id" name="user_id" value="{{ auth()->user()->id }}">
 
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
                                     <label for="name">Name:</label>
-                                    <div class="dropdown">
-                                        <input type="text" class="form-control" id="name" name="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" required>
-                                        <div class="dropdown-menu" aria-labelledby="name" id="dropdown-menu">
-                                        </div>
-                                    </div>
+                                    <input type="text" class="form-control" id="name" name="name" value="{{ auth()->user()->name }}" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="school_id">ID:</label>
-                                    <input type="text" class="form-control" id="school_id" name="school_id" readonly>
+                                    <input type="text" class="form-control" id="school_id" name="school_id" value="{{ auth()->user()->school_id }}" readonly>
                                 </div>
                             </div>
                             <div class="col">
@@ -121,72 +117,107 @@
                 <div class="col" style="height: 415px;overflow: auto;">
                     <div class="col" style="width: 380px; border: 1px;">
                         @foreach ($appointments as $appointment)
-                        @if($appointment->status == 'Pending')
-                        <div id="appointment-{{ $appointment->id }}" class="container my-3 border">
-                            <!-- Add the id attribute to the appointment container -->
-                            <div class="row mt-2" style="width: 380px;">
-                                <div class="col">
-                                    <label><strong>Name: </strong></label> {{ $appointment->name }}<br>
-                                    <label><strong>ID: </strong></label> {{ $appointment->school_id }}<br>
-                                    <label><strong>Status: </strong></label> {{ $appointment->status }}<br>
+                        @if($appointment->name == auth()->user()->name)
+                            @if($appointment->status == 'Pending')
+                                <div id="appointment-{{ $appointment->id }}" class="container my-3 border">
+                                    <!-- Add the id attribute to the appointment container -->
+                                    <div class="row mt-2" style="width: 380px;">
+                                        <div class="col">
+                                            <label><strong>Name: </strong></label> {{ $appointment->name }}<br>
+                                            <label><strong>ID: </strong></label> {{ $appointment->school_id }}<br>
+                                            <label><strong>Status: </strong></label> {{ $appointment->status }}<br>
+                                        </div>
+                                        <div class="col">
+                                            <label><strong>Date: </strong></label> {{ $appointment->date }}<br>
+                                            <label><strong>Start Time: </strong></label> {{ $appointment->start_time }}<br>
+                                            <label><strong>End Time: </strong></label> {{ $appointment->end_time }}
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1 mb-2">
+                                        <div class="col">
+                                            <label><strong>Reason:</strong></label>
+                                            <textarea class="form-control" readonly>{{ $appointment->reason }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col text-right">
+                                            <form method="POST" action="{{ route('faculty.appointmentDestroy', $appointment->id) }}" onsubmit="return confirm('Are you sure you want to decline this appointment?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger mx-2">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <label><strong>Date: </strong></label> {{ $appointment->date }}<br>
-                                    <label><strong>Start Time: </strong></label> {{ $appointment->start_time }}<br>
-                                    <label><strong>End Time: </strong></label> {{ $appointment->end_time }}
+                            @else
+                                <div id="appointment-{{ $appointment->id }}" class="container my-3 border">
+                                    <!-- Add the id attribute to the appointment container -->
+                                    <div class="row mt-2" style="width: 380px;">
+                                        <div class="col">
+                                            <label><strong>Status: </strong></label><span style="color: green;"> {{ $appointment->status }}</span><br>
+                                        </div>
+                                        <div class="col">
+                                            <label><strong>Date: </strong></label> {{ $appointment->date }}<br>
+                                            <label><strong>Start Time: </strong></label> {{ $appointment->start_time }}<br>
+                                            <label><strong>End Time: </strong></label> {{ $appointment->end_time }}
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1 mb-2">
+                                        <div class="col">
+                                            <label><strong>Reason:</strong></label>
+                                            <textarea class="form-control" readonly>{{ $appointment->reason }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row mt-1 mb-2">
-                                <div class="col">
-                                    <label><strong>Reason:</strong></label>
-                                    <textarea class="form-control" readonly>{{ $appointment->reason }}</textarea>
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col text-right">
-                                    <form method="POST" action="{{ route('nurse.appointmentUpdate', $appointment->id) }}" onsubmit="return confirm('Are you sure you want to accept this appointment?');">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="hidden" name="status" value="Accept">
-                                        <button type="submit" class="btn btn-success">Accept</button>
-                                    </form>
-                                </div>
-                                <div class="col-0 text-right">
-                                    <form method="POST" action="{{ route('nurse.appointmentDestroy', $appointment->id) }}" onsubmit="return confirm('Are you sure you want to decline this appointment?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger mx-2">Decline</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                            @endif
                         @else
-                        <div id="appointment-{{ $appointment->id }}" class="container my-3 border">
-                            <!-- Add the id attribute to the appointment container -->
-                            <div class="row mt-2" style="width: 380px;">
-                                <div class="col">
-                                    <label><strong>Name: </strong></label> {{ $appointment->name }}<br>
-                                    <label><strong>ID: </strong></label> {{ $appointment->school_id }}<br>
-                                    <label><strong>Status: </strong></label><span style="color: green;"> {{ $appointment->status }}</span><br>
+                            @if($appointment->status == 'Pending')
+                                <div id="appointment-{{ $appointment->id }}" class="container my-3 border">
+                                    <!-- Add the id attribute to the appointment container -->
+                                    <div class="row mt-2" style="width: 380px;">
+                                        <div class="col">
+                                            <label><strong>Status: </strong></label> {{ $appointment->status }}<br>
+                                        </div>
+                                        <div class="col">
+                                            <label><strong>Date: </strong></label> {{ $appointment->date }}<br>
+                                            <label><strong>Start Time: </strong></label> {{ $appointment->start_time }}<br>
+                                            <label><strong>End Time: </strong></label> {{ $appointment->end_time }}
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1 mb-2">
+                                        <div class="col">
+                                            <label><strong>Reason:</strong></label>
+                                            <textarea class="form-control" readonly>{{ $appointment->reason }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <label><strong>Date: </strong></label> {{ $appointment->date }}<br>
-                                    <label><strong>Start Time: </strong></label> {{ $appointment->start_time }}<br>
-                                    <label><strong>End Time: </strong></label> {{ $appointment->end_time }}
+                            @else
+                                <div id="appointment-{{ $appointment->id }}" class="container my-3 border">
+                                    <!-- Add the id attribute to the appointment container -->
+                                    <div class="row mt-2" style="width: 380px;">
+                                        <div class="col">
+                                            <label><strong>Status: </strong></label><span style="color: green;"> {{ $appointment->status }}</span><br>
+                                        </div>
+                                        <div class="col">
+                                            <label><strong>Date: </strong></label> {{ $appointment->date }}<br>
+                                            <label><strong>Start Time: </strong></label> {{ $appointment->start_time }}<br>
+                                            <label><strong>End Time: </strong></label> {{ $appointment->end_time }}
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1 mb-2">
+                                        <div class="col">
+                                            <label><strong>Reason:</strong></label>
+                                            <textarea class="form-control" readonly>{{ $appointment->reason }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row mt-1 mb-2">
-                                <div class="col">
-                                    <label><strong>Reason:</strong></label>
-                                    <textarea class="form-control" readonly>{{ $appointment->reason }}</textarea>
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col text-right">
-                                    <a class="btn btn-info" href="#">Done</a>
-                                </div>
-                            </div>
-                        </div>
+                            @endif
                         @endif
                         @endforeach
                     </div>

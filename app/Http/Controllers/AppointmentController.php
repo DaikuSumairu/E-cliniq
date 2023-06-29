@@ -93,7 +93,18 @@ class AppointmentController extends Controller
         // No conflicting appointment found, proceed with creating the new appointment
         Appointment::create($request->all());
 
-        return redirect()->back()->with('success', 'Appointment updated successfully');
+        if(auth()->user()->role == 'nurse')
+        {
+            return redirect()->back()->with('success', 'Appointment updated successfully');
+        }
+        elseif(auth()->user()->role == 'student')
+        {
+            return redirect()->back()->with('success', 'Appointment updated successfully');
+        }
+        elseif(auth()->user()->role == 'faculty')
+        {
+            return redirect()->back()->with('success', 'Appointment updated successfully');
+        }
     }
 
     /**
@@ -122,7 +133,19 @@ class AppointmentController extends Controller
         ]);
 
         $appointment->update($request->all());
-        return redirect()->back();
+        
+        if(auth()->user()->role == 'nurse')
+        {
+            return redirect()->back();
+        }
+        elseif(auth()->user()->role == 'doctor')
+        {
+            return redirect()->back();
+        }
+        elseif(auth()->user()->role == 'dentist')
+        {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -132,6 +155,17 @@ class AppointmentController extends Controller
     {
         $appointment->delete();
     
-        return redirect()->back();
+        if(auth()->user()->role == 'nurse')
+        {
+            return redirect()->back();
+        }
+        elseif(auth()->user()->role == 'student')
+        {
+            return redirect()->back();
+        }
+        elseif(auth()->user()->role == 'faculty')
+        {
+            return redirect()->back();
+        }
     }
 }

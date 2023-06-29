@@ -7,110 +7,6 @@
 @stop
 
 @section('content')
-    <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#create-appointment-modal">Create Appointment</button>
-
-    <!-- Create Modal -->
-    <div class="modal fade" id="create-appointment-modal" tabindex="-1" role="dialog" aria-labelledby="create-appointment-modal-label" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="create-appointment-modal-label">Creating an Appointment</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" action="{{ route('nurse.appointmentStore') }}" onsubmit="return confirm('Are you sure you want to create an appointment?');">
-                        @csrf
-                        <!-- User ID Created (Hidden) -->
-                        <input type="hidden" id="user_id" name="user_id">
-
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="name">Name:</label>
-                                    <div class="dropdown">
-                                        <input type="text" class="form-control" id="name" name="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" required>
-                                        <div class="dropdown-menu" aria-labelledby="name" id="dropdown-menu">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="school_id">ID:</label>
-                                    <input type="text" class="form-control" id="school_id" name="school_id" readonly>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="date">Date:</label>
-                                    <input type="date" class="form-control" id="date" name="date" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="start_time">Start Time:</label>
-                                    <input type="hidden" name="start_time" id="start_time">
-                                    <div class="custom-time-picker">
-                                        <select class="hour-input" id="start_hour" onchange="updateEndTime()" required>
-                                            <option value="">Hour</option>
-                                            <option value="09">09</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                        <span>:</span>
-                                        <select class="minute-input" id="start_minute" onchange="updateEndTime()" required>
-                                            <option value="">Minute</option>
-                                            <option value="00">00</option>
-                                            <option value="15">15</option>
-                                            <option value="30" disabled>30</option>
-                                            <option value="45" disabled>45</option>
-                                        </select>
-                                        <select class="ampm-input" id="start_ampm" readonly>
-                                            <option value="AM">AM</option>
-                                            <option value="PM">PM</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="end_time">End Time:</label>
-                                    <input type="time" class="form-control" id="end_time" name="end_time" readonly>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="reason" required>Reason:</label>
-                            <textarea type="time" class="form-control" id="reason" name="reason" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Add Item</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Error Modal -->
-    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="errorModalLabel">Error</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>{{ session('error') }}</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="mx-auto mb-2 border" style="width: 1260px;height: 480px;overflow: auto;">
         <div class="row">
             <div class="col px-0" style="width: 200px; height: 460px; overflow: auto; border: 1px;">
@@ -144,7 +40,7 @@
                             </div>
                             <div class="row mb-2">
                                 <div class="col text-right">
-                                    <form method="POST" action="{{ route('nurse.appointmentUpdate', $appointment->id) }}" onsubmit="return confirm('Are you sure you want to accept this appointment?');">
+                                    <form method="POST" action="{{ route('doctor.appointmentUpdate', $appointment->id) }}" onsubmit="return confirm('Are you sure you want to accept this appointment?');">
                                         @csrf
                                         @method('PUT')
                                         <input type="hidden" name="status" value="Accept">
@@ -152,7 +48,7 @@
                                     </form>
                                 </div>
                                 <div class="col-0 text-right">
-                                    <form method="POST" action="{{ route('nurse.appointmentDestroy', $appointment->id) }}" onsubmit="return confirm('Are you sure you want to decline this appointment?');">
+                                    <form method="POST" action="{{ route('doctor.appointmentDestroy', $appointment->id) }}" onsubmit="return confirm('Are you sure you want to decline this appointment?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger mx-2">Decline</button>
@@ -179,11 +75,6 @@
                                 <div class="col">
                                     <label><strong>Reason:</strong></label>
                                     <textarea class="form-control" readonly>{{ $appointment->reason }}</textarea>
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col text-right">
-                                    <a class="btn btn-info" href="#">Done</a>
                                 </div>
                             </div>
                         </div>
@@ -517,13 +408,4 @@
             return formattedTime;
         }
     </script>
-
-    <!-- Error script for modal -->
-    @if (session('error'))
-        <script>
-            $(function() {
-                $('#errorModal').modal('show');
-            });
-        </script>
-    @endif
 @stop

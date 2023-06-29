@@ -52,7 +52,7 @@
                     <div class="form-group">
                         <label for="name">Sub Complaint:</label>
                         <select class="form-control hour-input" id="sub_complaint" required>
-                            <option value=" ">-- Select Sub Complaint --</option>
+                            <option value=" ">-- Select First in the Main Complaint --</option>
                         </select>
                     </div>
                 </div>
