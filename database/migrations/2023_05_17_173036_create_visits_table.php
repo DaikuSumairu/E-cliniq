@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('visits', function (Blueprint $table) {
             $table->increments('id')->unique();
-            $table->integer('user_school_id')->unsigned();
+            $table->string('user_school_id')->nullable();
             $table->date('day');
-            $table->string('role')->nullable();
             $table->timestamps();
 
             //Foreign keys

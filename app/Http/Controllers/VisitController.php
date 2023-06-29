@@ -15,6 +15,17 @@ use Illuminate\Http\Request;
 
 class VisitController extends Controller
 {
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('name');
+    
+        // Perform a query to retrieve the users based on the search term
+        $users = User::where('name', 'like', '%' . $searchTerm . '%')->get(['name', 'school_id']);
+        
+        // Return the users as a JSON response
+        return response()->json($users);
+    }
+    
     /**
      * Display a listing of the resource.
      */
@@ -36,8 +47,11 @@ class VisitController extends Controller
      */
     public function store(Request $request)
     {
+        $userID = $request->input('user_school_id');
+        $visitData = $request->all();
+        $visitData['user_school_id'] = $userID;
 
-        $visit = Visit::create($request->all());
+        $visit = Visit::create($visitData);
 
         $reportData = $request->all();
         $reportData['visit_id'] = $visit->id;
@@ -75,8 +89,11 @@ class VisitController extends Controller
             'anorexia',
         ]);
 
+        $visitOneData = $request->all();
+        $visitOneData['visit_id'] = $visit->id;
+
         // Create a VisitOne record
-        $visitOne = VisitOne::create($request->all());
+        $visitOne = VisitOne::create($visitOneData);
 
         // Get all VisitOne records where answered
         $visitOne = VisitOne::where('visit_id', $visit->id)->first();
@@ -92,71 +109,71 @@ class VisitController extends Controller
                 if ($reportOne) {
                     //Cardiology
                     if ($visitOne->meds === 'Yes') {
-                        $reportOne->meds += 1;
+                        $reportOne->meds_count += 1;
                     }
                     if ($visitOne->hypertension === 'Yes') {
-                        $reportOne->hypertension += 1;
+                        $reportOne->hypertension_count += 1;
                     }
                     if ($visitOne->bp_monitoring === 'Yes') {
-                        $reportOne->bp_monitoring += 1;
+                        $reportOne->bp_monitoring_count += 1;
                     }
                     if ($visitOne->bradycardia === 'Yes') {
-                        $reportOne->bradycardia += 1;
+                        $reportOne->bradycardia_count += 1;
                     }
                     if ($visitOne->hypotension === 'Yes') {
-                        $reportOne->hypotension += 1;
+                        $reportOne->hypotension_count += 1;
                     }
 
                     //Pulmonology
                     if ($visitOne->urti === 'Yes') {
-                        $reportOne->urti += 1;
+                        $reportOne->urti_count += 1;
                     }
                     if ($visitOne->pneumonia === 'Yes') {
-                        $reportOne->pneumonia += 1;
+                        $reportOne->pneumonia_count += 1;
                     }
                     if ($visitOne->ptb === 'Yes') {
-                        $reportOne->ptb += 1;
+                        $reportOne->ptb_count += 1;
                     }
                     if ($visitOne->bronchitis === 'Yes') {
-                        $reportOne->bronchitis += 1;
+                        $reportOne->bronchitis_count += 1;
                     }
                     if ($visitOne->lung_pathology === 'Yes') {
-                        $reportOne->lung_pathology += 1;
+                        $reportOne->lung_pathology_count += 1;
                     }
                     if ($visitOne->acute_bronchitis === 'Yes') {
-                        $reportOne->acute_bronchitis += 1;
+                        $reportOne->acute_bronchitis_count += 1;
                     }
 
                     //Gastroenterology
                     if ($visitOne->acute_gastroenteritis === 'Yes') {
-                        $reportOne->acute_gastroenteritis += 1;
+                        $reportOne->acute_gastroenteritis_count += 1;
                     }
                     if ($visitOne->gerd === 'Yes') {
-                        $reportOne->gerd += 1;
+                        $reportOne->gerd_count += 1;
                     }
                     if ($visitOne->hemorrhoids === 'Yes') {
-                        $reportOne->hemorrhoids += 1;
+                        $reportOne->hemorrhoids_count += 1;
                     }
                     if ($visitOne->anorexia === 'Yes') {
-                        $reportOne->anorexia += 1;
+                        $reportOne->anorexia_count += 1;
                     }
 
-                    $reportOne->cardiology = $reportOne->hypertension + 
-                                            $reportOne->bp_monitoring + 
-                                            $reportOne->bradycardia + 
-                                            $reportOne->hypotension;
+                    $reportOne->cardiology_count = $reportOne->hypertension_count + 
+                                            $reportOne->bp_monitoring_count + 
+                                            $reportOne->bradycardia_count + 
+                                            $reportOne->hypotension_count;
 
-                    $reportOne->pulmonology = $reportOne->urti + 
-                                            $reportOne->pneumonia + 
-                                            $reportOne->ptb + 
-                                            $reportOne->bronchitis + 
-                                            $reportOne->lung_pathology + 
-                                            $reportOne->acute_bronchitis; 
+                    $reportOne->pulmonology_count = $reportOne->urti_count + 
+                                            $reportOne->pneumonia_count + 
+                                            $reportOne->ptb_count + 
+                                            $reportOne->bronchitis_count + 
+                                            $reportOne->lung_pathology_count + 
+                                            $reportOne->acute_bronchitis_count; 
 
-                    $reportOne->gastroenterology = $reportOne->acute_gastroenteritis +
-                                                $reportOne->gerd +
-                                                $reportOne->hemorrhoids +
-                                                $reportOne->anorexia;
+                    $reportOne->gastroenterology_count = $reportOne->acute_gastroenteritis_count +
+                                                $reportOne->gerd_count +
+                                                $reportOne->hemorrhoids_count +
+                                                $reportOne->anorexia_count;
 
                     $reportOne->save();
                 }elseif (!$reportOne) {
@@ -171,43 +188,43 @@ class VisitController extends Controller
                     // Set the values based on the request
     
                     //Cardiology
-                    $reportOne->meds = $visitOne->meds === 'Yes' ? 1 : 0;
-                    $reportOne->hypertension = $visitOne->hypertension === 'Yes' ? 1 : 0;
-                    $reportOne->bp_monitoring = $visitOne->bp_monitoring === 'Yes' ? 1 : 0;
-                    $reportOne->bradycardia = $visitOne->bradycardia === 'Yes' ? 1 : 0;
-                    $reportOne->hypotension = $visitOne->hypotension === 'Yes' ? 1 : 0;
+                    $reportOne->meds_count = $visitOne->meds === 'Yes' ? 1 : 0;
+                    $reportOne->hypertension_count = $visitOne->hypertension === 'Yes' ? 1 : 0;
+                    $reportOne->bp_monitoring_count = $visitOne->bp_monitoring === 'Yes' ? 1 : 0;
+                    $reportOne->bradycardia_count = $visitOne->bradycardia === 'Yes' ? 1 : 0;
+                    $reportOne->hypotension_count = $visitOne->hypotension === 'Yes' ? 1 : 0;
     
                     //Pulmonology
-                    $reportOne->urti = $visitOne->urti === 'Yes' ? 1 : 0;
-                    $reportOne->pneumonia = $visitOne->pneumonia === 'Yes' ? 1 : 0;
-                    $reportOne->ptb = $visitOne->ptb === 'Yes' ? 1 : 0;
-                    $reportOne->bronchitis = $visitOne->bronchitis === 'Yes' ? 1 : 0;
-                    $reportOne->lung_pathology = $visitOne->lung_pathology === 'Yes' ? 1 : 0;
-                    $reportOne->acute_bronchitis = $visitOne->acute_bronchitis === 'Yes' ? 1 : 0;
+                    $reportOne->urti_count = $visitOne->urti === 'Yes' ? 1 : 0;
+                    $reportOne->pneumonia_count = $visitOne->pneumonia === 'Yes' ? 1 : 0;
+                    $reportOne->ptb_count = $visitOne->ptb === 'Yes' ? 1 : 0;
+                    $reportOne->bronchitis_count = $visitOne->bronchitis === 'Yes' ? 1 : 0;
+                    $reportOne->lung_pathology_count = $visitOne->lung_pathology === 'Yes' ? 1 : 0;
+                    $reportOne->acute_bronchitis_count = $visitOne->acute_bronchitis === 'Yes' ? 1 : 0;
     
                     //Gastroenterology
-                    $reportOne->acute_gastroenteritis = $visitOne->acute_gastroenteritis === 'Yes' ? 1 : 0;
-                    $reportOne->gerd = $visitOne->gerd === 'Yes' ? 1 : 0;
-                    $reportOne->hemorrhoids = $visitOne->hemorrhoids === 'Yes' ? 1 : 0;
-                    $reportOne->anorexia = $visitOne->anorexia === 'Yes' ? 1 : 0;
+                    $reportOne->acute_gastroenteritis_count = $visitOne->acute_gastroenteritis === 'Yes' ? 1 : 0;
+                    $reportOne->gerd_count = $visitOne->gerd === 'Yes' ? 1 : 0;
+                    $reportOne->hemorrhoids_count = $visitOne->hemorrhoids === 'Yes' ? 1 : 0;
+                    $reportOne->anorexia_count = $visitOne->anorexia === 'Yes' ? 1 : 0;
     
-                    $reportOne->cardiology = $reportOne->meds +
-                                            $reportOne->hypertension +
-                                            $reportOne->bp_monitoring +
-                                            $reportOne->bradycardia +
-                                            $reportOne->hypotension;
+                    $reportOne->cardiology_count = $reportOne->meds_count +
+                                            $reportOne->hypertension_count +
+                                            $reportOne->bp_monitoring_count +
+                                            $reportOne->bradycardia_count +
+                                            $reportOne->hypotension_count;
     
-                    $reportOne->pulmonology = $reportOne->urti +
-                                            $reportOne->pneumonia +
-                                            $reportOne->ptb +
-                                            $reportOne->bronchitis +
-                                            $reportOne->lung_pathology +
-                                            $reportOne->acute_bronchitis;
+                    $reportOne->pulmonology_count = $reportOne->urti_count +
+                                            $reportOne->pneumonia_count +
+                                            $reportOne->ptb_count +
+                                            $reportOne->bronchitis_count +
+                                            $reportOne->lung_pathology_count +
+                                            $reportOne->acute_bronchitis_count;
     
-                    $reportOne->gastroenterology = $reportOne->acute_gastroenteritis +
-                                                $reportOne->gerd +
-                                                $reportOne->hemorrhoids +
-                                                $reportOne->anorexia;
+                    $reportOne->gastroenterology_count = $reportOne->acute_gastroenteritis_count +
+                                                $reportOne->gerd_count +
+                                                $reportOne->hemorrhoids_count +
+                                                $reportOne->anorexia_count;
     
                     $reportOne->save();
                 }
@@ -253,8 +270,11 @@ class VisitController extends Controller
             'bruise',
         ]);
 
+        $visitTwoData = $request->all();
+        $visitTwoData['visit_id'] = $visit->id;
+
         // Create a VisitTwo record
-        $visitTwo = VisitTwo::create($request->all());
+        $visitTwo = VisitTwo::create($visitTwoData);
 
         // Get all VisitTwo records where answered
         $visitTwo = VisitTwo::where('visit_id', $visit->id)->first();
@@ -270,138 +290,138 @@ class VisitController extends Controller
                 if ($reportTwo) {
                     //Musculo Skeletal
                     if ($visitTwo->ligament_sprain === 'Yes') {
-                        $reportTwo->ligament_sprain += 1;
+                        $reportTwo->ligament_sprain_count += 1;
                     }
                     if ($visitTwo->muscle_strain === 'Yes') {
-                        $reportTwo->muscle_strain += 1;
+                        $reportTwo->muscle_strain_count += 1;
                     }
                     if ($visitTwo->costrochondritis === 'Yes') {
-                        $reportTwo->costrochondritis += 1;
+                        $reportTwo->costrochondritis_count += 1;
                     }
                     if ($visitTwo->soft_tissue_contusion === 'Yes') {
-                        $reportTwo->soft_tissue_contusion += 1;
+                        $reportTwo->soft_tissue_contusion_count += 1;
                     }
                     if ($visitTwo->fracture === 'Yes') {
-                        $reportTwo->fracture += 1;
+                        $reportTwo->fracture_count += 1;
                     }
                     if ($visitTwo->gouty_arthritis === 'Yes') {
-                        $reportTwo->gouty_arthritis += 1;
+                        $reportTwo->gouty_arthritis_count += 1;
                     }
                     if ($visitTwo->plantar_fasciitis === 'Yes') {
-                        $reportTwo->plantar_fasciitis += 1;
+                        $reportTwo->plantar_fasciitis_count += 1;
                     }
                     if ($visitTwo->dislocation === 'Yes') {
-                        $reportTwo->dislocation += 1;
+                        $reportTwo->dislocation_count += 1;
                     }
 
                     //Opthalmology
                     if ($visitTwo->conjunctivitis === 'Yes') {
-                        $reportTwo->conjunctivitis += 1;
+                        $reportTwo->conjunctivitis_count += 1;
                     }
                     if ($visitTwo->stye === 'Yes') {
-                        $reportTwo->stye += 1;
+                        $reportTwo->stye_count += 1;
                     }
                     if ($visitTwo->foreign_body === 'Yes') {
-                        $reportTwo->foreign_body += 1;
+                        $reportTwo->foreign_body_count += 1;
                     }
 
                     //ENT
                     if ($visitTwo->stomatitis === 'Yes') {
-                        $reportTwo->stomatitis += 1;
+                        $reportTwo->stomatitis_count += 1;
                     }
                     if ($visitTwo->epistaxis === 'Yes') {
-                        $reportTwo->epistaxis += 1;
+                        $reportTwo->epistaxis_count += 1;
                     }
                     if ($visitTwo->otitis_media === 'Yes') {
-                        $reportTwo->otitis_media += 1;
+                        $reportTwo->otitis_media_count += 1;
                     }
                     if ($visitTwo->foreign_body_removal === 'Yes') {
-                        $reportTwo->foreign_body_removal += 1;
+                        $reportTwo->foreign_body_removal_count += 1;
                     }
 
                     //Neurology
                     if ($visitTwo->tension_headache === 'Yes') {
-                        $reportTwo->tension_headache += 1;
+                        $reportTwo->tension_headache_count += 1;
                     }
                     if ($visitTwo->migraine === 'Yes') {
-                        $reportTwo->migraine += 1;
+                        $reportTwo->migraine_count += 1;
                     }
                     if ($visitTwo->vertigo === 'Yes') {
-                        $reportTwo->vertigo += 1;
+                        $reportTwo->vertigo_count += 1;
                     }
                     if ($visitTwo->hyperventilation_syndrome === 'Yes') {
-                        $reportTwo->hyperventilation_syndrome += 1;
+                        $reportTwo->hyperventilation_syndrome_count += 1;
                     }
                     if ($visitTwo->insomnia === 'Yes') {
-                        $reportTwo->insomnia += 1;
+                        $reportTwo->insomnia_count += 1;
                     }
                     if ($visitTwo->seizure === 'Yes') {
-                        $reportTwo->seizure += 1;
+                        $reportTwo->seizure_count += 1;
                     }
                     if ($visitTwo->bell_palsy === 'Yes') {
-                        $reportTwo->bell_palsy += 1;
+                        $reportTwo->bell_palsy_count += 1;
                     }
 
                     //Dermatology
                     if ($visitTwo->folliculitis === 'Yes') {
-                        $reportTwo->folliculitis += 1;
+                        $reportTwo->folliculitis_count += 1;
                     }
                     if ($visitTwo->carbuncle === 'Yes') {
-                        $reportTwo->carbuncle += 1;
+                        $reportTwo->carbuncle_count += 1;
                     }
                     if ($visitTwo->burn === 'Yes') {
-                        $reportTwo->burn += 1;
+                        $reportTwo->burn_count += 1;
                     }
                     if ($visitTwo->wound_dressing === 'Yes') {
-                        $reportTwo->wound_dressing += 1;
+                        $reportTwo->wound_dressing_count += 1;
                     }
                     if ($visitTwo->infected_wound === 'Yes') {
-                        $reportTwo->infected_wound += 1;
+                        $reportTwo->infected_wound_count += 1;
                     }
                     if ($visitTwo->blister_wound === 'Yes') {
-                        $reportTwo->blister_wound += 1;
+                        $reportTwo->blister_wound_count += 1;
                     }
                     if ($visitTwo->seborrheic_dermatitis === 'Yes') {
-                        $reportTwo->seborrheic_dermatitis += 1;
+                        $reportTwo->seborrheic_dermatitis_count += 1;
                     }
                     if ($visitTwo->bruise === 'Yes') {
-                        $reportTwo->bruise += 1;
+                        $reportTwo->bruise_count += 1;
                     }
 
-                    $reportTwo->musculo_skeletal = $reportTwo->ligament_sprain +
-                                                $reportTwo->muscle_strain +
-                                                $reportTwo->costrochondritis +
-                                                $reportTwo->soft_tissue_contusion +
-                                                $reportTwo->fracture +
-                                                $reportTwo->gouty_arthritis +
-                                                $reportTwo->plantar_fasciitis +
-                                                $reportTwo->dislocation;
+                    $reportTwo->musculo_skeletal_count = $reportTwo->ligament_sprain_count +
+                                                $reportTwo->muscle_strain_count +
+                                                $reportTwo->costrochondritis_count +
+                                                $reportTwo->soft_tissue_contusion_count +
+                                                $reportTwo->fracture_count +
+                                                $reportTwo->gouty_arthritis_count +
+                                                $reportTwo->plantar_fasciitis_count +
+                                                $reportTwo->dislocation_count;
 
-                    $reportTwo->opthalmology = $reportTwo->conjunctivitis +
-                                            $reportTwo->stye +
-                                            $reportTwo->foreign_body;
+                    $reportTwo->opthalmology_count = $reportTwo->conjunctivitis_count +
+                                            $reportTwo->stye_count +
+                                            $reportTwo->foreign_body_count;
 
-                    $reportTwo->ent = $reportTwo->stomatitis +
-                                    $reportTwo->epistaxis +
-                                    $reportTwo->otitis_media +
-                                    $reportTwo->foreign_body_removal;
+                    $reportTwo->ent_count = $reportTwo->stomatitis_count +
+                                    $reportTwo->epistaxis_count +
+                                    $reportTwo->otitis_media_count +
+                                    $reportTwo->foreign_body_removal_count;
 
-                    $reportTwo->neurology = $reportTwo->tension_headache +
-                                            $reportTwo->migraine +
-                                            $reportTwo->vertigo +
-                                            $reportTwo->hyperventilation_syndrome +
-                                            $reportTwo->insomnia +
-                                            $reportTwo->seizure +
-                                            $reportTwo->bell_palsy;
+                    $reportTwo->neurology_count = $reportTwo->tension_headache_count +
+                                            $reportTwo->migraine_count +
+                                            $reportTwo->vertigo_count +
+                                            $reportTwo->hyperventilation_syndrome_count +
+                                            $reportTwo->insomnia_count +
+                                            $reportTwo->seizure_count +
+                                            $reportTwo->bell_palsy_count;
                     
-                    $reportTwo->dermatology = $reportTwo->folliculitis +
-                                            $reportTwo->carbuncle +
-                                            $reportTwo->burn +
-                                            $reportTwo->wound_dressing +
-                                            $reportTwo->infected_wound +
-                                            $reportTwo->blister_wound +
-                                            $reportTwo->seborrheic_dermatitis +
-                                            $reportTwo->bruise;
+                    $reportTwo->dermatology_count = $reportTwo->folliculitis_count +
+                                            $reportTwo->carbuncle_count +
+                                            $reportTwo->burn_count +
+                                            $reportTwo->wound_dressing_count +
+                                            $reportTwo->infected_wound_count +
+                                            $reportTwo->blister_wound_count +
+                                            $reportTwo->seborrheic_dermatitis_count +
+                                            $reportTwo->bruise_count;
 
                     $reportTwo->save();
                 }elseif (!$reportTwo) {
@@ -416,79 +436,79 @@ class VisitController extends Controller
                     // Set the values based on the request
     
                     //Musculo Skeletal
-                    $reportTwo->ligament_sprain = $visitTwo->ligament_sprain === 'Yes' ? 1 : 0;
-                    $reportTwo->muscle_strain = $visitTwo->muscle_strain === 'Yes' ? 1 : 0;
-                    $reportTwo->costrochondritis = $visitTwo->costrochondritis === 'Yes' ? 1 : 0;
-                    $reportTwo->soft_tissue_contusion = $visitTwo->soft_tissue_contusion === 'Yes' ? 1 : 0;
-                    $reportTwo->fracture = $visitTwo->fracture === 'Yes' ? 1 : 0;
-                    $reportTwo->gouty_arthritis = $visitTwo->gouty_arthritis === 'Yes' ? 1 : 0;
-                    $reportTwo->plantar_fasciitis = $visitTwo->plantar_fasciitis === 'Yes' ? 1 : 0;
-                    $reportTwo->dislocation = $visitTwo->dislocation === 'Yes' ? 1 : 0;
+                    $reportTwo->ligament_sprain_count = $visitTwo->ligament_sprain === 'Yes' ? 1 : 0;
+                    $reportTwo->muscle_strain_count = $visitTwo->muscle_strain === 'Yes' ? 1 : 0;
+                    $reportTwo->costrochondritis_count = $visitTwo->costrochondritis === 'Yes' ? 1 : 0;
+                    $reportTwo->soft_tissue_contusion_count = $visitTwo->soft_tissue_contusion === 'Yes' ? 1 : 0;
+                    $reportTwo->fracture_count = $visitTwo->fracture === 'Yes' ? 1 : 0;
+                    $reportTwo->gouty_arthritis_count = $visitTwo->gouty_arthritis === 'Yes' ? 1 : 0;
+                    $reportTwo->plantar_fasciitis_count = $visitTwo->plantar_fasciitis === 'Yes' ? 1 : 0;
+                    $reportTwo->dislocation_count = $visitTwo->dislocation === 'Yes' ? 1 : 0;
     
                     //Opthalmology
-                    $reportTwo->conjunctivitis = $visitTwo->conjunctivitis === 'Yes' ? 1 : 0;
-                    $reportTwo->stye = $visitTwo->stye === 'Yes' ? 1 : 0;
-                    $reportTwo->foreign_body = $visitTwo->foreign_body === 'Yes' ? 1 : 0;
+                    $reportTwo->conjunctivitis_count = $visitTwo->conjunctivitis === 'Yes' ? 1 : 0;
+                    $reportTwo->stye_count = $visitTwo->stye === 'Yes' ? 1 : 0;
+                    $reportTwo->foreign_body_count = $visitTwo->foreign_body === 'Yes' ? 1 : 0;
     
                     //ENT
-                    $reportTwo->stomatitis = $visitTwo->stomatitis === 'Yes' ? 1 : 0;
-                    $reportTwo->epistaxis = $visitTwo->epistaxis === 'Yes' ? 1 : 0;
-                    $reportTwo->otitis_media = $visitTwo->otitis_media === 'Yes' ? 1 : 0;
-                    $reportTwo->foreign_body_removal = $visitTwo->foreign_body_removal === 'Yes' ? 1 : 0;
+                    $reportTwo->stomatitis_count = $visitTwo->stomatitis === 'Yes' ? 1 : 0;
+                    $reportTwo->epistaxis_count = $visitTwo->epistaxis === 'Yes' ? 1 : 0;
+                    $reportTwo->otitis_media_count = $visitTwo->otitis_media === 'Yes' ? 1 : 0;
+                    $reportTwo->foreign_body_removal_count = $visitTwo->foreign_body_removal === 'Yes' ? 1 : 0;
 
                     //Neurology
-                    $reportTwo->tension_headache = $visitTwo->tension_headache === 'Yes' ? 1 : 0;
-                    $reportTwo->migraine = $visitTwo->migraine === 'Yes' ? 1 : 0;
-                    $reportTwo->vertigo = $visitTwo->vertigo === 'Yes' ? 1 : 0;
-                    $reportTwo->hyperventilation_syndrome = $visitTwo->hyperventilation_syndrome === 'Yes' ? 1 : 0;
-                    $reportTwo->insomnia = $visitTwo->insomnia === 'Yes' ? 1 : 0;
-                    $reportTwo->seizure = $visitTwo->seizure === 'Yes' ? 1 : 0;
-                    $reportTwo->bell_palsy = $visitTwo->bell_palsy === 'Yes' ? 1 : 0;
+                    $reportTwo->tension_headache_count = $visitTwo->tension_headache === 'Yes' ? 1 : 0;
+                    $reportTwo->migraine_count = $visitTwo->migraine === 'Yes' ? 1 : 0;
+                    $reportTwo->vertigo_count = $visitTwo->vertigo === 'Yes' ? 1 : 0;
+                    $reportTwo->hyperventilation_syndrome_count = $visitTwo->hyperventilation_syndrome === 'Yes' ? 1 : 0;
+                    $reportTwo->insomnia_count = $visitTwo->insomnia === 'Yes' ? 1 : 0;
+                    $reportTwo->seizure_count = $visitTwo->seizure === 'Yes' ? 1 : 0;
+                    $reportTwo->bell_palsy_count = $visitTwo->bell_palsy === 'Yes' ? 1 : 0;
 
                     //Dermatology
-                    $reportTwo->folliculitis = $visitTwo->folliculitis === 'Yes' ? 1 : 0;
-                    $reportTwo->carbuncle = $visitTwo->carbuncle === 'Yes' ? 1 : 0;
-                    $reportTwo->burn = $visitTwo->burn === 'Yes' ? 1 : 0;
-                    $reportTwo->wound_dressing = $visitTwo->wound_dressing === 'Yes' ? 1 : 0;
-                    $reportTwo->infected_wound = $visitTwo->infected_wound === 'Yes' ? 1 : 0;
-                    $reportTwo->blister_wound = $visitTwo->blister_wound === 'Yes' ? 1 : 0;
-                    $reportTwo->seborrheic_dermatitis = $visitTwo->seborrheic_dermatitis === 'Yes' ? 1 : 0;
-                    $reportTwo->bruise = $visitTwo->bruise === 'Yes' ? 1 : 0;
+                    $reportTwo->folliculitis_count = $visitTwo->folliculitis === 'Yes' ? 1 : 0;
+                    $reportTwo->carbuncle_count = $visitTwo->carbuncle === 'Yes' ? 1 : 0;
+                    $reportTwo->burn_count = $visitTwo->burn === 'Yes' ? 1 : 0;
+                    $reportTwo->wound_dressing_count = $visitTwo->wound_dressing === 'Yes' ? 1 : 0;
+                    $reportTwo->infected_wound_count = $visitTwo->infected_wound === 'Yes' ? 1 : 0;
+                    $reportTwo->blister_wound_count = $visitTwo->blister_wound === 'Yes' ? 1 : 0;
+                    $reportTwo->seborrheic_dermatitis_count = $visitTwo->seborrheic_dermatitis === 'Yes' ? 1 : 0;
+                    $reportTwo->bruise_count = $visitTwo->bruise === 'Yes' ? 1 : 0;
     
-                    $reportTwo->musculo_skeletal = $reportTwo->ligament_sprain +
-                                                $reportTwo->muscle_strain +
-                                                $reportTwo->costrochondritis +
-                                                $reportTwo->soft_tissue_contusion +
-                                                $reportTwo->fracture +
-                                                $reportTwo->gouty_arthritis +
-                                                $reportTwo->plantar_fasciitis +
-                                                $reportTwo->dislocation;
+                    $reportTwo->musculo_skeletal_count = $reportTwo->ligament_sprain_count +
+                                                $reportTwo->muscle_strain_count +
+                                                $reportTwo->costrochondritis_count +
+                                                $reportTwo->soft_tissue_contusion_count +
+                                                $reportTwo->fracture_count +
+                                                $reportTwo->gouty_arthritis_count +
+                                                $reportTwo->plantar_fasciitis_count +
+                                                $reportTwo->dislocation_count;
 
-                    $reportTwo->opthalmology = $reportTwo->conjunctivitis +
-                                            $reportTwo->stye +
-                                            $reportTwo->foreign_body;
+                    $reportTwo->opthalmology_count = $reportTwo->conjunctivitis_count +
+                                            $reportTwo->stye_count +
+                                            $reportTwo->foreign_body_count;
 
-                    $reportTwo->ent = $reportTwo->stomatitis +
-                                    $reportTwo->epistaxis +
-                                    $reportTwo->otitis_media +
-                                    $reportTwo->foreign_body_removal;
+                    $reportTwo->ent_count = $reportTwo->stomatitis_count +
+                                    $reportTwo->epistaxis_count +
+                                    $reportTwo->otitis_media_count +
+                                    $reportTwo->foreign_body_removal_count;
 
-                    $reportTwo->neurology = $reportTwo->tension_headache +
-                                            $reportTwo->migraine +
-                                            $reportTwo->vertigo +
-                                            $reportTwo->hyperventilation_syndrome +
-                                            $reportTwo->insomnia +
-                                            $reportTwo->seizure +
-                                            $reportTwo->bell_palsy;
+                    $reportTwo->neurology_count = $reportTwo->tension_headache_count +
+                                            $reportTwo->migraine_count +
+                                            $reportTwo->vertigo_count +
+                                            $reportTwo->hyperventilation_syndrome_count +
+                                            $reportTwo->insomnia_count +
+                                            $reportTwo->seizure_count +
+                                            $reportTwo->bell_palsy_count;
                     
-                    $reportTwo->dermatology = $reportTwo->folliculitis +
-                                            $reportTwo->carbuncle +
-                                            $reportTwo->burn +
-                                            $reportTwo->wound_dressing +
-                                            $reportTwo->infected_wound +
-                                            $reportTwo->blister_wound +
-                                            $reportTwo->seborrheic_dermatitis +
-                                            $reportTwo->bruise;
+                    $reportTwo->dermatology_count = $reportTwo->folliculitis_count +
+                                            $reportTwo->carbuncle_count +
+                                            $reportTwo->burn_count +
+                                            $reportTwo->wound_dressing_count +
+                                            $reportTwo->infected_wound_count +
+                                            $reportTwo->blister_wound_count +
+                                            $reportTwo->seborrheic_dermatitis_count +
+                                            $reportTwo->bruise_count;
     
                     $reportTwo->save();
                 }
@@ -526,8 +546,11 @@ class VisitController extends Controller
             'hypersensitivity',
         ]);
 
+        $visitThreeData = $request->all();
+        $visitThreeData['visit_id'] = $visit->id;
+
         // Create a VisitThree record
-        $visitThree = VisitThree::create($request->all());
+        $visitThree = VisitThree::create($visitThreeData);
 
         // Get all VisitThree records where answered
         $visitThree = VisitThree::where('visit_id', $visit->id)->first();
@@ -543,105 +566,105 @@ class VisitController extends Controller
                 if ($reportThree) {
                     //Nephrology
                     if ($visitThree->urinary_tract_infection === 'Yes') {
-                        $reportThree->urinary_tract_infection += 1;
+                        $reportThree->urinary_tract_infection_count += 1;
                     }
                     if ($visitThree->renal_disease === 'Yes') {
-                        $reportThree->renal_disease += 1;
+                        $reportThree->renal_disease_count += 1;
                     }
                     if ($visitThree->urolithiasis === 'Yes') {
-                        $reportThree->urolithiasis += 1;
+                        $reportThree->urolithiasis_count += 1;
                     }
 
                     //Endocrinology
                     if ($visitThree->hypoglycemia === 'Yes') {
-                        $reportThree->hypoglycemia += 1;
+                        $reportThree->hypoglycemia_count += 1;
                     }
                     if ($visitThree->dyslipidemia === 'Yes') {
-                        $reportThree->dyslipidemia += 1;
+                        $reportThree->dyslipidemia_count += 1;
                     }
                     if ($visitThree->diabetes_mellitus === 'Yes') {
-                        $reportThree->diabetes_mellitus += 1;
+                        $reportThree->diabetes_mellitus_count += 1;
                     }
 
                     //OB-Gyne
                     if ($visitThree->dysmenorrhea === 'Yes') {
-                        $reportThree->dysmenorrhea += 1;
+                        $reportThree->dysmenorrhea_count += 1;
                     }
                     if ($visitThree->hormonal_imbalance === 'Yes') {
-                        $reportThree->hormonal_imbalance += 1;
+                        $reportThree->hormonal_imbalance_count += 1;
                     }
                     if ($visitThree->pregnancy === 'Yes') {
-                        $reportThree->pregnancy += 1;
+                        $reportThree->pregnancy_count += 1;
                     }
 
                     //Hematologic
                     if ($visitThree->leukemia === 'Yes') {
-                        $reportThree->leukemia += 1;
+                        $reportThree->leukemia_count += 1;
                     }
                     if ($visitThree->blood_dyscrasia === 'Yes') {
-                        $reportThree->blood_dyscrasia += 1;
+                        $reportThree->blood_dyscrasia_count += 1;
                     }
                     if ($visitThree->anemia === 'Yes') {
-                        $reportThree->anemia += 1;
+                        $reportThree->anemia_count += 1;
                     }
 
                     //Surgery
                     if ($visitThree->lacerated_wound === 'Yes') {
-                        $reportThree->lacerated_wound += 1;
+                        $reportThree->lacerated_wound_count += 1;
                     }
                     if ($visitThree->punctured_wound === 'Yes') {
-                        $reportThree->punctured_wound += 1;
+                        $reportThree->punctured_wound_count += 1;
                     }
                     if ($visitThree->animal_bite === 'Yes') {
-                        $reportThree->animal_bite += 1;
+                        $reportThree->animal_bite_count += 1;
                     }
                     if ($visitThree->superfacial_abrasions === 'Yes') {
-                        $reportThree->superfacial_abrasions += 1;
+                        $reportThree->superfacial_abrasions_count += 1;
                     }
                     if ($visitThree->foreign_body_removal1 === 'Yes') {
-                        $reportThree->foreign_body_removal1 += 1;
+                        $reportThree->foreign_body_removal1_count += 1;
                     }
 
                     //Allergology
                     if ($visitThree->contact_dermatitis === 'Yes') {
-                        $reportThree->contact_dermatitis += 1;
+                        $reportThree->contact_dermatitis_count += 1;
                     }
                     if ($visitThree->allergic_rhinitis === 'Yes') {
-                        $reportThree->allergic_rhinitis += 1;
+                        $reportThree->allergic_rhinitis_count += 1;
                     }
                     if ($visitThree->bronchial_asthma === 'Yes') {
-                        $reportThree->bronchial_asthma += 1;
+                        $reportThree->bronchial_asthma_count += 1;
                     }
                     if ($visitThree->hypersensitivity === 'Yes') {
-                        $reportThree->hypersensitivity += 1;
+                        $reportThree->hypersensitivity_count += 1;
                     }
 
-                    $reportThree->nephrology = $reportThree->urinary_tract_infection +
-                                            $reportThree->renal_disease +
-                                            $reportThree->urolithiasis;
+                    $reportThree->nephrology_count = $reportThree->urinary_tract_infection_count +
+                                            $reportThree->renal_disease_count +
+                                            $reportThree->urolithiasis_count;
 
-                    $reportThree->endocrinology = $reportThree->hypoglycemia +
-                                                $reportThree->dyslipidemia +
-                                                $reportThree->diabetes_mellitus;
+                    $reportThree->endocrinology_count = $reportThree->hypoglycemia_count +
+                                                $reportThree->dyslipidemia_count +
+                                                $reportThree->diabetes_mellitus_count;
 
-                    $reportThree->ob_gyne = $reportThree->dysmenorrhea +
-                                            $reportThree->hormonal_imbalance +
-                                            $reportThree->pregnancy;
+                    $reportThree->ob_gyne_count = $reportThree->dysmenorrhea_count +
+                                            $reportThree->hormonal_imbalance_count +
+                                            $reportThree->pregnancy_count;
 
-                    $reportThree->hematologic = $reportThree->leukemia +
-                                            $reportThree->blood_dyscrasia +
-                                            $reportThree->anemia;
+                    $reportThree->hematologic_count = $reportThree->leukemia_count +
+                                            $reportThree->blood_dyscrasia_count +
+                                            $reportThree->anemia_count;
 
-                    $reportThree->surgery = $reportThree->lacerated_wound +
-                                            $reportThree->punctured_wound +
-                                            $reportThree->animal_bite + 
-                                            $reportThree->superfacial_abrasions + 
-                                            $reportThree->foreign_body_removal1;
+                    $reportThree->surgery_count = $reportThree->lacerated_wound_count +
+                                            $reportThree->punctured_wound_count +
+                                            $reportThree->animal_bite_count + 
+                                            $reportThree->superfacial_abrasions_count + 
+                                            $reportThree->foreign_body_removal1_count;
 
-                    $reportThree->allergology = $reportThree->contact_dermatitis +
-                                            $reportThree->allergic_rhinitis +
-                                            $reportThree->bronchial_asthma + 
-                                            $reportThree->hypersensitivity;
+                    $reportThree->allergology_count = $reportThree->contact_dermatitis_count +
+                                            $reportThree->allergic_rhinitis_count +
+                                            $reportThree->bronchial_asthma_count + 
+                                            $reportThree->hypersensitivity_count;
 
                     $reportTwo->save();
                 }elseif (!$reportThree) {
@@ -656,69 +679,70 @@ class VisitController extends Controller
                     // Set the values based on the request
     
                     //Nephrology
-                    $reportThree->urinary_tract_infection = $visitThree->urinary_tract_infection === 'Yes' ? 1 : 0;
-                    $reportThree->renal_disease = $visitThree->renal_disease === 'Yes' ? 1 : 0;
-                    $reportThree->urolithiasis = $visitThree->urolithiasis === 'Yes' ? 1 : 0;
+                    $reportThree->urinary_tract_infection_count = $visitThree->urinary_tract_infection === 'Yes' ? 1 : 0;
+                    $reportThree->renal_disease_count = $visitThree->renal_disease === 'Yes' ? 1 : 0;
+                    $reportThree->urolithiasis_count = $visitThree->urolithiasis === 'Yes' ? 1 : 0;
     
                     //Endocrinology
-                    $reportThree->hypoglycemia = $visitThree->hypoglycemia === 'Yes' ? 1 : 0;
-                    $reportThree->dyslipidemia = $visitThree->dyslipidemia === 'Yes' ? 1 : 0;
-                    $reportThree->diabetes_mellitus = $visitThree->diabetes_mellitus === 'Yes' ? 1 : 0;
+                    $reportThree->hypoglycemia_count = $visitThree->hypoglycemia === 'Yes' ? 1 : 0;
+                    $reportThree->dyslipidemia_count = $visitThree->dyslipidemia === 'Yes' ? 1 : 0;
+                    $reportThree->diabetes_mellitus_count = $visitThree->diabetes_mellitus === 'Yes' ? 1 : 0;
     
                     //OB-Gyne
-                    $reportThree->dysmenorrhea = $visitThree->dysmenorrhea === 'Yes' ? 1 : 0;
-                    $reportThree->hormonal_imbalance = $visitThree->hormonal_imbalance === 'Yes' ? 1 : 0;
-                    $reportThree->pregnancy = $visitThree->pregnancy === 'Yes' ? 1 : 0;
+                    $reportThree->dysmenorrhea_count = $visitThree->dysmenorrhea === 'Yes' ? 1 : 0;
+                    $reportThree->hormonal_imbalance_count = $visitThree->hormonal_imbalance === 'Yes' ? 1 : 0;
+                    $reportThree->pregnancy_count = $visitThree->pregnancy === 'Yes' ? 1 : 0;
     
                     //Hematologic
-                    $reportThree->leukemia = $visitThree->leukemia === 'Yes' ? 1 : 0;
-                    $reportThree->blood_dyscrasia = $visitThree->blood_dyscrasia === 'Yes' ? 1 : 0;
-                    $reportThree->anemia = $visitThree->anemia === 'Yes' ? 1 : 0;
+                    $reportThree->leukemia_count = $visitThree->leukemia === 'Yes' ? 1 : 0;
+                    $reportThree->blood_dyscrasia_count = $visitThree->blood_dyscrasia === 'Yes' ? 1 : 0;
+                    $reportThree->anemia_count = $visitThree->anemia === 'Yes' ? 1 : 0;
     
                     //Surgery
-                    $reportThree->lacerated_wound = $visitThree->lacerated_wound === 'Yes' ? 1 : 0;
-                    $reportThree->punctured_wound = $visitThree->punctured_wound === 'Yes' ? 1 : 0;
-                    $reportThree->animal_bite = $visitThree->animal_bite === 'Yes' ? 1 : 0;
-                    $reportThree->superfacial_abrasions = $visitThree->superfacial_abrasions === 'Yes' ? 1 : 0;
-                    $reportThree->foreign_body_removal1 = $visitThree->foreign_body_removal1 === 'Yes' ? 1 : 0;
+                    $reportThree->lacerated_wound_count = $visitThree->lacerated_wound === 'Yes' ? 1 : 0;
+                    $reportThree->punctured_wound_count = $visitThree->punctured_wound === 'Yes' ? 1 : 0;
+                    $reportThree->animal_bite_count = $visitThree->animal_bite === 'Yes' ? 1 : 0;
+                    $reportThree->superfacial_abrasions_count = $visitThree->superfacial_abrasions === 'Yes' ? 1 : 0;
+                    $reportThree->foreign_body_removal1_count = $visitThree->foreign_body_removal1 === 'Yes' ? 1 : 0;
                     
                     //Allergology
-                    $reportThree->contact_dermatitis = $visitThree->contact_dermatitis === 'Yes' ? 1 : 0;
-                    $reportThree->allergic_rhinitis = $visitThree->allergic_rhinitis === 'Yes' ? 1 : 0;
-                    $reportThree->bronchial_asthma = $visitThree->bronchial_asthma === 'Yes' ? 1 : 0;
-                    $reportThree->hypersensitivity = $visitThree->hypersensitivity === 'Yes' ? 1 : 0;
+                    $reportThree->contact_dermatitis_count = $visitThree->contact_dermatitis === 'Yes' ? 1 : 0;
+                    $reportThree->allergic_rhinitis_count = $visitThree->allergic_rhinitis === 'Yes' ? 1 : 0;
+                    $reportThree->bronchial_asthma_count = $visitThree->bronchial_asthma === 'Yes' ? 1 : 0;
+                    $reportThree->hypersensitivity_count = $visitThree->hypersensitivity === 'Yes' ? 1 : 0;
     
-                    $reportThree->nephrology = $reportThree->urinary_tract_infection +
-                                            $reportThree->renal_disease +
-                                            $reportThree->urolithiasis;
+                    $reportThree->nephrology_count = $reportThree->urinary_tract_infection_count +
+                                            $reportThree->renal_disease_count +
+                                            $reportThree->urolithiasis_count;
 
-                    $reportThree->endocrinology = $reportThree->hypoglycemia +
-                                                $reportThree->dyslipidemia +
-                                                $reportThree->diabetes_mellitus;
+                    $reportThree->endocrinology_count = $reportThree->hypoglycemia_count +
+                                                $reportThree->dyslipidemia_count +
+                                                $reportThree->diabetes_mellitus_count;
 
-                    $reportThree->ob_gyne = $reportThree->dysmenorrhea +
-                                            $reportThree->hormonal_imbalance +
-                                            $reportThree->pregnancy;
+                    $reportThree->ob_gyne_count = $reportThree->dysmenorrhea_count +
+                                            $reportThree->hormonal_imbalance_count +
+                                            $reportThree->pregnancy_count;
 
-                    $reportThree->hematologic = $reportThree->leukemia +
-                                            $reportThree->blood_dyscrasia +
-                                            $reportThree->anemia;
+                    $reportThree->hematologic_count = $reportThree->leukemia_count +
+                                            $reportThree->blood_dyscrasia_count +
+                                            $reportThree->anemia_count;
 
-                    $reportThree->surgery = $reportThree->lacerated_wound +
-                                            $reportThree->punctured_wound +
-                                            $reportThree->animal_bite + 
-                                            $reportThree->superfacial_abrasions + 
-                                            $reportThree->foreign_body_removal1;
+                    $reportThree->surgery_count = $reportThree->lacerated_wound_count +
+                                            $reportThree->punctured_wound_count +
+                                            $reportThree->animal_bite_count + 
+                                            $reportThree->superfacial_abrasions_count + 
+                                            $reportThree->foreign_body_removal1_count;
 
-                    $reportThree->allergology = $reportThree->contact_dermatitis +
-                                            $reportThree->allergic_rhinitis +
-                                            $reportThree->bronchial_asthma + 
-                                            $reportThree->hypersensitivity;
+                    $reportThree->allergology_count = $reportThree->contact_dermatitis_count +
+                                            $reportThree->allergic_rhinitis_count +
+                                            $reportThree->bronchial_asthma_count + 
+                                            $reportThree->hypersensitivity_count;
     
                     $reportOne->save();
                 }
             }
         }
+        return redirect()->route('nurse.home')->with('success', 'Inventory item created successfully.');
     }
 
     /**

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->increments('id')->unique();
             $table->integer('visit_id')->unsigned();
             $table->date('day');
-            $table->string('role');
             $table->timestamps();
 
             //Foreign keys

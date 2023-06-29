@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamps();
 
             //Foreign keys
-            $table->foreign('visitone_id')->references('id')->on('visitsone')
+            $table->foreign('visitone_id')->references('id')->on('visit_ones')
                 ->onDelete('cascade');
         });
     }

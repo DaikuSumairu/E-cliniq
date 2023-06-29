@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Inventory;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -43,7 +44,9 @@ class HomeController extends Controller
 
     public function nurseHome()
     {
-        return view('nurse.index');
+        $inventory=Inventory::all();
+
+        return view('nurse.index',compact('inventory'));
     }
 
     public function adminHome()

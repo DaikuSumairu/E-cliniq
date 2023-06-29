@@ -12,7 +12,6 @@ class Report extends Model
     protected $fillable = [
         'visit_id',
         'day',
-        'role',
     ];
 
     //it belongs to

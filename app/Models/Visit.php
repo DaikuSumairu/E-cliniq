@@ -12,7 +12,6 @@ class Visit extends Model
     protected $fillable = [
         'user_school_id',
         'day',
-        'role',
     ];
 
     //has relationship

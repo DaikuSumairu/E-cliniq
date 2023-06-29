@@ -175,6 +175,7 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
     ])->except([
         'index', 'show', 'create', 'edit', 'destroy'
     ]);
+    Route::get('/search', [VisitController::class, 'search'])->name('search');
 
     //Appointment
     Route::resource('nurse/appointments', AppointmentController::class)->names([
