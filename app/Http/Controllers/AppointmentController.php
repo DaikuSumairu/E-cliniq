@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Inventory;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -29,9 +30,11 @@ class AppointmentController extends Controller
 
         $appointed = Appointment::all();
 
+        $inventory = Inventory::all();
+
         if(auth()->user()->role == 'nurse')
         {
-            return view('nurse.appointment.index',compact('appointments', 'appointed'))
+            return view('nurse.appointment.index',compact('appointments', 'appointed', 'inventory'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
         }
         elseif(auth()->user()->role == 'doctor')

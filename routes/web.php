@@ -176,6 +176,8 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
         'index', 'show', 'create', 'edit', 'destroy'
     ]);
     Route::get('/search', [VisitController::class, 'search'])->name('search');
+    Route::delete('nurse/appointment/{appointment}', [VisitController::class, 'createdestroy'])
+    ->name('nurse.visitCreateDestroy');
 
     //Appointment
     Route::resource('nurse/appointments', AppointmentController::class)->names([

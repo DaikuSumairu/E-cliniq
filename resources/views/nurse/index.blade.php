@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Homepage')
+@section('title', 'Daily Visit')
 
 @section('content_header')
-    <h1>Daily Visit List</h1>
+    <h1>Daily Visit</h1>
 @stop
 
 @section('content')
