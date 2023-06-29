@@ -8,8 +8,11 @@
 
 @section('content')
     <div class="container border" style="height: 470px;">
-        
+        @foreach($reports as $report)
+            
+        @endforeach
     </div>
+    {!! $reports->links('custom.pagination', ['paginator' => $reports]) !!}
 @stop
 
 @section('footer')

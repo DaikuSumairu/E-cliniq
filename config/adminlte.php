@@ -393,7 +393,7 @@ return [
         [
             'text' => 'Reports',
             'icon' => 'fas fa-sharp fa-regular fa-folder',
-            'url' => '#',
+            'route' => 'nurse.reportIndex',
             'can' => 'nurse',
         ],
         

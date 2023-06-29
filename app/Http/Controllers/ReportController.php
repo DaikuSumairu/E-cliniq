@@ -12,7 +12,10 @@ class ReportController extends Controller
      */
     public function index()
     {
-        //
+        $reports = Report::paginate(1);
+
+        return view('nurse.report.index',compact('reports'))
+        ->with('i', (request()->input('page', 1) - 1) * 1);
     }
 
     /**

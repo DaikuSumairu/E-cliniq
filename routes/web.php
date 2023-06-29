@@ -10,6 +10,7 @@ use App\Http\Controllers\MedicalExamController;
 use App\Http\Controllers\DentalExamController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\VisitController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -228,6 +229,13 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
         'update' => 'nurse.inventoryUpdate',
         'show' => 'nurse.inventoryShow',
         'destroy' => 'nurse.inventoryDestroy',
+    ])->except([
+        'create', 'edit'
+    ]);
+
+    //Report
+    Route::resource('nurse/report', ReportController::class)->names([
+        'index' => 'nurse.reportIndex',
     ])->except([
         'create', 'edit'
     ]);
