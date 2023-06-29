@@ -154,52 +154,8 @@
                                     <!-- Add the id attribute to the appointment container -->
                                     <div class="row mt-2" style="width: 380px;">
                                         <div class="col">
-                                            <label><strong>Status: </strong></label><span style="color: green;"> {{ $appointment->status }}</span><br>
-                                        </div>
-                                        <div class="col">
-                                            <label><strong>Date: </strong></label> {{ $appointment->date }}<br>
-                                            <label><strong>Start Time: </strong></label> {{ $appointment->start_time }}<br>
-                                            <label><strong>End Time: </strong></label> {{ $appointment->end_time }}
-                                        </div>
-                                    </div>
-                                    <div class="row mt-1 mb-2">
-                                        <div class="col">
-                                            <label><strong>Reason:</strong></label>
-                                            <textarea class="form-control" readonly>{{ $appointment->reason }}</textarea>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-2">
-                                    </div>
-                                </div>
-                            @endif
-                        @else
-                            @if($appointment->status == 'Pending')
-                                <div id="appointment-{{ $appointment->id }}" class="container my-3 border">
-                                    <!-- Add the id attribute to the appointment container -->
-                                    <div class="row mt-2" style="width: 380px;">
-                                        <div class="col">
-                                            <label><strong>Status: </strong></label> {{ $appointment->status }}<br>
-                                        </div>
-                                        <div class="col">
-                                            <label><strong>Date: </strong></label> {{ $appointment->date }}<br>
-                                            <label><strong>Start Time: </strong></label> {{ $appointment->start_time }}<br>
-                                            <label><strong>End Time: </strong></label> {{ $appointment->end_time }}
-                                        </div>
-                                    </div>
-                                    <div class="row mt-1 mb-2">
-                                        <div class="col">
-                                            <label><strong>Reason:</strong></label>
-                                            <textarea class="form-control" readonly>{{ $appointment->reason }}</textarea>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-2">
-                                    </div>
-                                </div>
-                            @else
-                                <div id="appointment-{{ $appointment->id }}" class="container my-3 border">
-                                    <!-- Add the id attribute to the appointment container -->
-                                    <div class="row mt-2" style="width: 380px;">
-                                        <div class="col">
+                                            <label><strong>Name: </strong></label> {{ $appointment->name }}<br>
+                                            <label><strong>ID: </strong></label> {{ $appointment->school_id }}<br>
                                             <label><strong>Status: </strong></label><span style="color: green;"> {{ $appointment->status }}</span><br>
                                         </div>
                                         <div class="col">
@@ -286,17 +242,31 @@
                 }
             });
             @else
-            calendar.addEvent({
-                title: '{{ $appointedones->reason }}',
-                start: '{{ $appointedones->date }}T{{ $appointedones->start_time }}',
-                end: '{{ $appointedones->date }}T{{ $appointedones->end_time }}',
-                color: 'green',
-                extendedProps: {
-                    id: '{{ $appointedones->id }}', // Add the appointment's id as an extended property
-                    name: '{{ $appointedones->name }}',
-                    schoolId: '{{ $appointedones->school_id }}'
-                }
-            });
+                @if(auth()->user()->name == $appointedones->name)
+                calendar.addEvent({
+                    title: '{{ $appointedones->reason }}',
+                    start: '{{ $appointedones->date }}T{{ $appointedones->start_time }}',
+                    end: '{{ $appointedones->date }}T{{ $appointedones->end_time }}',
+                    color: 'green',
+                    extendedProps: {
+                        id: '{{ $appointedones->id }}', // Add the appointment's id as an extended property
+                        name: '{{ $appointedones->name }}',
+                        schoolId: '{{ $appointedones->school_id }}'
+                    }
+                });
+                @else
+                calendar.addEvent({
+                    title: '{{ $appointedones->reason }}',
+                    start: '{{ $appointedones->date }}T{{ $appointedones->start_time }}',
+                    end: '{{ $appointedones->date }}T{{ $appointedones->end_time }}',
+                    color: 'red',
+                    extendedProps: {
+                        id: '{{ $appointedones->id }}', // Add the appointment's id as an extended property
+                        name: '{{ $appointedones->name }}',
+                        schoolId: '{{ $appointedones->school_id }}'
+                    }
+                });
+                @endif
             @endif
             @endforeach
 
