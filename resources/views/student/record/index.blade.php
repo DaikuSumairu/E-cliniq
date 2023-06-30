@@ -8,13 +8,6 @@
 
 @section('content')
     @if(isset($record))
-        <!-- Show the content if the user ID matches the record's user ID -->
-        <div class="position-relative">
-            <!-- Going Back to Patient's Record -->
-            <div class="position-left">
-                <a class="btn btn-primary" href="{{ route('student.home') }}">Go Back</a>
-            </div>
-        </div>
 
         <!-- Genral Information -->
         <div class="container shadow mt-4 px-4 py-3 mx-auto mb-3" style="border-style: solid; border-color: #bfbfbf;">

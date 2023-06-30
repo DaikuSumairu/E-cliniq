@@ -14,6 +14,20 @@ class Report extends Model
         'day',
     ];
 
+    //has relationship
+    public function reportone()
+    {
+        return $this->hasOne(ReportOne::class);
+    }
+    public function reporttwo()
+    {
+        return $this->hasOne(ReportTwo::class);
+    }
+    public function reportthree()
+    {
+        return $this->hasOne(ReportThree::class);
+    }
+
     //it belongs to
     public function visit()
     {

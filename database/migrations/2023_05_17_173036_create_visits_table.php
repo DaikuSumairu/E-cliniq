@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('visits', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->string('user_school_id')->nullable();
+            $table->string('role')->nullable();
             $table->date('day');
             $table->timestamps();
 

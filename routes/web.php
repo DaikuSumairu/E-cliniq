@@ -247,4 +247,10 @@ Route::middleware(['auth', 'user-access:nurse'])->group(function () {
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
 
+    //Report
+    Route::resource('admin/report', ReportController::class)->names([
+        'index' => 'admin.reportIndex',
+    ])->except([
+        'create', 'edit'
+    ]);
 });

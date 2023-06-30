@@ -80,7 +80,7 @@
                             <label for="reason" required>Reason:</label>
                             <textarea type="time" class="form-control" id="reason" name="reason" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Add Item</button>
+                        <button type="submit" class="btn btn-primary">Create Appointment</button>
                     </form>
                 </div>
             </div>

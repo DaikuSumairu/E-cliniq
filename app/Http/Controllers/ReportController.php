@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Visit;
 use App\Models\Report;
 use Illuminate\Http\Request;
 
@@ -12,10 +13,16 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $reports = Report::paginate(1);
+        $reports = Visit::all();
 
-        return view('nurse.report.index',compact('reports'))
-        ->with('i', (request()->input('page', 1) - 1) * 1);
+        if(auth()->user()->role == 'nurse')
+        {
+            return view('nurse.report.index',compact('reports'));
+        }
+        elseif(auth()->user()->role == 'admin')
+        {  
+            return view('admin.index',compact('reports'));
+        }
     }
 
     /**

@@ -49,8 +49,15 @@ class VisitController extends Controller
     public function store(Request $request)
     {
         $userID = $request->input('user_school_id');
-        $visitData = $request->all();
-        $visitData['user_school_id'] = $userID;
+    
+        // Retrieve the user record based on the user_school_id
+        $user = User::where('school_id', $userID)->first();
+
+        if ($user) {
+            $visitData = $request->all();
+            $visitData['user_school_id'] = $userID;
+            $visitData['role'] = $user->role;
+        }
 
         $visit = Visit::create($visitData);
 
@@ -777,8 +784,15 @@ class VisitController extends Controller
     public function createdestroy(Request $request, Appointment $appointment)
     {
         $userID = $request->input('user_school_id');
-        $visitData = $request->all();
-        $visitData['user_school_id'] = $userID;
+    
+        // Retrieve the user record based on the user_school_id
+        $user = User::where('school_id', $userID)->first();
+
+        if ($user) {
+            $visitData = $request->all();
+            $visitData['user_school_id'] = $userID;
+            $visitData['role'] = $user->role;
+        }
 
         $visit = Visit::create($visitData);
 

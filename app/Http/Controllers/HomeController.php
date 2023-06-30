@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inventory;
+use App\Models\Visit;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -51,6 +52,7 @@ class HomeController extends Controller
 
     public function adminHome()
     {
-        return view('admin.index');
+        $reports = Visit::all();
+        return view('admin.index', compact('reports'));
     }
 }
